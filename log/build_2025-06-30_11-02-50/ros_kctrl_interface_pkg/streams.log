@@ -1,0 +1,52 @@
+[0.034s] Invoking command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12
+[0.090s] [ 33%] Built target ros2ctrl_udp_client
+[0.101s] [ 50%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_reciever.dir/src/ros2ctrl_udp_reciever.cpp.o[0m
+[0.122s] [ 83%] Built target ros2ctrl_wrapper_node
+[2.813s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:77:2:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ at end of input
+[2.813s]    77 | }
+[2.813s]       |  [01;31m[K^[m[K
+[2.813s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:10:45:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+[2.813s]    10 | class Ros2UdpReciever : public rclcpp::Node [01;36m[K{[m[K
+[2.813s]       |                                             [01;36m[K^[m[K
+[2.816s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:[m[K In constructor ‘[01m[KRos2UdpReciever::[01;32m[KRos2UdpReciever[m[K()[m[K’:
+[2.816s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:13:34:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KRos2UdpReciever[m[K’ does not have any field named ‘[01m[Krunning_[m[K’
+[2.816s]    13 |     : Node("ros2_udp_reciever"), [01;31m[Krunning_[m[K(true)
+[2.816s]       |                                  [01;31m[K^~~~~~~~[m[K
+[2.824s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:15:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krmw_publisher_t[m[K’?
+[2.824s]    15 |         [01;31m[Kpublisher_[m[K = this->create_publisher<std_msgs::msg::String>("detected_devices_raw", 10);
+[2.825s]       |         [01;31m[K^~~~~~~~~~[m[K
+[2.825s]       |         [32m[Krmw_publisher_t[m[K
+[2.833s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:18:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kthread_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpthread_t[m[K’?
+[2.834s]    18 |         [01;31m[Kthread_[m[K = std::thread([this]() { this->udp_listen(); });
+[2.834s]       |         [01;31m[K^~~~~~~[m[K
+[2.834s]       |         [32m[Kpthread_t[m[K
+[2.840s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:[m[K In destructor ‘[01m[Kvirtual Ros2UdpReciever::[01;32m[K~Ros2UdpReciever[m[K()[m[K’:
+[2.840s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:22:9:[m[K [01;31m[Kerror: [m[K‘[01m[Krunning_[m[K’ was not declared in this scope
+[2.840s]    22 |         [01;31m[Krunning_[m[K = false;
+[2.840s]       |         [01;31m[K^~~~~~~~[m[K
+[2.846s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:23:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kthread_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpthread_t[m[K’?
+[2.846s]    23 |         if ([01;31m[Kthread_[m[K.joinable()) thread_.join();
+[2.846s]       |             [01;31m[K^~~~~~~[m[K
+[2.846s]       |             [32m[Kpthread_t[m[K
+[2.847s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:[m[K In member function ‘[01m[Kvoid Ros2UdpReciever::[01;32m[Kudp_listen[m[K()[m[K’:
+[2.847s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:32:9:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ before ‘[01m[Kelse[m[K’
+[2.847s]    32 |         [01;31m[Kelse[m[K {
+[2.847s]       |         [01;31m[K^~~~[m[K
+[2.847s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:29:25:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+[2.847s]    29 |         if (sockfd < 0) [01;36m[K{[m[K
+[2.847s]       |                         [01;36m[K^[m[K
+[2.855s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:48:16:[m[K [01;31m[Kerror: [m[K‘[01m[Krunning_[m[K’ was not declared in this scope
+[2.855s]    48 |         while ([01;31m[Krunning_[m[K) {
+[2.855s]       |                [01;31m[K^~~~~~~~[m[K
+[2.864s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:58:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Krmw_publisher_t[m[K’?
+[2.864s]    58 |                     [01;31m[Kpublisher_[m[K->publish(ros_msg);
+[2.864s]       |                     [01;31m[K^~~~~~~~~~[m[K
+[2.864s]       |                     [32m[Krmw_publisher_t[m[K
+[2.867s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:[m[K At global scope:
+[2.867s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:77:2:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id at end of input
+[2.868s]    77 | }
+[2.868s]       |  [01;31m[K^[m[K
+[3.811s] gmake[2]: *** [CMakeFiles/ros2ctrl_udp_reciever.dir/build.make:76: CMakeFiles/ros2ctrl_udp_reciever.dir/src/ros2ctrl_udp_reciever.cpp.o] Error 1
+[3.811s] gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/ros2ctrl_udp_reciever.dir/all] Error 2
+[3.811s] gmake: *** [Makefile:146: all] Error 2
+[3.814s] Invoked command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg' returned '2': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12

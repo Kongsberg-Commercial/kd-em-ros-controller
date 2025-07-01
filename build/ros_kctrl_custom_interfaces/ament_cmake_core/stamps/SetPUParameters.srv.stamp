@@ -1,0 +1,8 @@
+# EDIT FOR PURPOSE
+
+# Request fields here
+string sounder_name
+---
+# Response fields here
+bool success
+string message

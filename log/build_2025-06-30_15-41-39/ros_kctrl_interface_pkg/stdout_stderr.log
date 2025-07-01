@@ -1,0 +1,11 @@
+[ 50%] Built target ros2ctrl_udp_client
+[ 33%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_receiver.dir/src/ros2ctrl_udp_receiver.cpp.o[0m
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kros2ctrl_udp_receiver.hpp: No such file or directory
+    1 | #include [01;31m[K"ros2ctrl_udp_receiver.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/ros2ctrl_udp_receiver.dir/build.make:76: CMakeFiles/ros2ctrl_udp_receiver.dir/src/ros2ctrl_udp_receiver.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/ros2ctrl_udp_receiver.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[ 83%] Built target ros2ctrl_wrapper_node
+gmake: *** [Makefile:146: all] Error 2

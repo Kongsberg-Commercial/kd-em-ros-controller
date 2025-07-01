@@ -1,0 +1,6 @@
+srv/RequestPUParameters.idl
+srv/RequestPUParameters.srv
+srv/SetPUParameters.idl
+srv/SetPUParameters.srv
+srv/SounderCommand.idl
+srv/SounderCommand.srv

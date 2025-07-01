@@ -1,0 +1,42 @@
+[0.015s] Invoking command in '/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/build/ros_kctrl_interface_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/arveds/ros2_ws/src/ros_kctrl_interface_pkg -DCMAKE_INSTALL_PREFIX=/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/install/ros_kctrl_interface_pkg
+[0.223s] -- The C compiler identification is GNU 13.3.0
+[0.460s] -- The CXX compiler identification is GNU 13.3.0
+[0.591s] -- Detecting C compiler ABI info
+[0.717s] -- Detecting C compiler ABI info - done
+[0.726s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.727s] -- Detecting C compile features
+[0.728s] -- Detecting C compile features - done
+[0.754s] -- Detecting CXX compiler ABI info
+[0.877s] -- Detecting CXX compiler ABI info - done
+[0.885s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.885s] -- Detecting CXX compile features
+[0.885s] -- Detecting CXX compile features - done
+[0.904s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.030s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.153s] -- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)
+[1.265s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.282s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[1.304s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.331s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.438s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.443s] -- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.526s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.574s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.611s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.737s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[1.885s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system thread 
+[1.888s] -- Found ros_kctrl_custom_interfaces: 0.0.0 (/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake)
+[2.005s] -- Configuring done (1.9s)
+[2.023s] -- Generating done (0.0s)
+[2.027s] -- Build files have been written to: /home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/build/ros_kctrl_interface_pkg
+[2.036s] Invoked command in '/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/build/ros_kctrl_interface_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/arveds/ros2_ws/src/ros_kctrl_interface_pkg -DCMAKE_INSTALL_PREFIX=/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/install/ros_kctrl_interface_pkg
+[2.037s] Invoking command in '/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/build/ros_kctrl_interface_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/build/ros_kctrl_interface_pkg -- -j12 -l12
+[2.084s] [ 25%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o[0m
+[2.093s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_client.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Kros2ctrl_udp_client.hpp: No such file or directory
+[2.093s]     1 | #include [01;31m[K"ros2ctrl_udp_client.hpp"[m[K
+[2.093s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.093s] compilation terminated.
+[2.094s] gmake[2]: *** [CMakeFiles/ros2ctrl_udp_client.dir/build.make:76: CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o] Error 1
+[2.094s] gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/ros2ctrl_udp_client.dir/all] Error 2
+[2.095s] gmake: *** [Makefile:146: all] Error 2
+[2.096s] Invoked command in '/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/build/ros_kctrl_interface_pkg' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/build/ros_kctrl_interface_pkg -- -j12 -l12

@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from ros_kctrl_custom_interfaces/srv/StopPinging.srv
+// generated code does not contain a copyright notice
+
+
+module ros_kctrl_custom_interfaces {
+  module srv {
+    @verbatim (language="comment", text=
+      "Request")
+    struct StopPinging_Request {
+      string sounder_name;
+    };
+    @verbatim (language="comment", text=
+      "Response")
+    struct StopPinging_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

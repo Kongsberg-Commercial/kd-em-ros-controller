@@ -1,0 +1,18 @@
+[0.015s] Invoking command in '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces -- -j12 -l12
+[0.105s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.138s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.246s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[0.252s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.365s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.415s] -- Found rosidl_adapter: 4.6.5 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[0.418s] [31mCMake Error at /opt/ros/jazzy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:95 (message):
+[0.418s]   rosidl_generate_interfaces() the passed file 'srv/StartSounder.srv' doesn't
+[0.418s]   exist relative to the CMAKE_CURRENT_SOURCE_DIR
+[0.419s]   '/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces'
+[0.419s] Call Stack (most recent call first):
+[0.419s]   CMakeLists.txt:11 (rosidl_generate_interfaces)
+[0.419s] 
+[0.419s] [0m
+[0.419s] -- Configuring incomplete, errors occurred!
+[0.428s] gmake: *** [Makefile:1895: cmake_check_build_system] Error 1
+[0.431s] Invoked command in '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces -- -j12 -l12

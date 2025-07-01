@@ -1,0 +1,2 @@
+Invoking command in '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces -- -j12 -l12
+Invoked command in '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces -- -j12 -l12

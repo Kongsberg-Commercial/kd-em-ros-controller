@@ -1,0 +1,9 @@
+[31mCMake Error at /opt/ros/jazzy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:95 (message):
+  rosidl_generate_interfaces() the passed file 'srv/StartSounder.srv' doesn't
+  exist relative to the CMAKE_CURRENT_SOURCE_DIR
+  '/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces'
+Call Stack (most recent call first):
+  CMakeLists.txt:11 (rosidl_generate_interfaces)
+
+[0m
+gmake: *** [Makefile:1895: cmake_check_build_system] Error 1

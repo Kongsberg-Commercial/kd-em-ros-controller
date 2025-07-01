@@ -1,0 +1,2 @@
+/usr/bin/ar qc libros2ctrl_udp_client.a CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o
+/usr/bin/ranlib libros2ctrl_udp_client.a

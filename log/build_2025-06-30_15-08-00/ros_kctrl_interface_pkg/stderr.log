@@ -1,0 +1,7 @@
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:[m[K In constructor ‘[01m[KRos2UdpReceiver::[01;32m[KRos2UdpReceiver[m[K()[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_reciever.cpp:32:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksend_handshake[m[K’ was not declared in this scope
+   32 |         [01;31m[Ksend_handshake[m[K();
+      |         [01;31m[K^~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/ros2ctrl_udp_reciever.dir/build.make:76: CMakeFiles/ros2ctrl_udp_reciever.dir/src/ros2ctrl_udp_reciever.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/ros2ctrl_udp_reciever.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

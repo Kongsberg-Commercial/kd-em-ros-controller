@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "ros_kctrl_custom_interfaces/srv/StartSounder_Request",
+      "fields": [
+        {
+          "name": "sounder_name",
+          "type": {
+            "type_id": 17,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "ros_kctrl_custom_interfaces/srv/StartSounder_Request",
+      "hash_string": "RIHS01_bff71a07b24c436032d6c09a017660537e78faadfadf45a2fdedfe74b09d2646"
+    }
+  ]
+}

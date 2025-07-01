@@ -1,0 +1,14 @@
+[0.039s] Invoking command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12
+[0.096s] [ 16%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_receiver.dir/src/ros2ctrl_udp_receiver.cpp.o[0m
+[0.096s] [ 50%] Built target ros2ctrl_udp_client
+[0.107s] In file included from [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:1[m[K:
+[0.107s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/include/ros_kctrl_interface_pkg/ros2ctrl_udp_receiver.hpp:3:10:[m[K [01;31m[Kfatal error: [m[Krclcpp/rclcpp.hpp: No such file or directory
+[0.107s]     3 | #include [01;31m[K<rclcpp/rclcpp.hpp>[m[K
+[0.107s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[0.108s] compilation terminated.
+[0.108s] gmake[2]: *** [CMakeFiles/ros2ctrl_udp_receiver.dir/build.make:76: CMakeFiles/ros2ctrl_udp_receiver.dir/src/ros2ctrl_udp_receiver.cpp.o] Error 1
+[0.109s] gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/ros2ctrl_udp_receiver.dir/all] Error 2
+[0.109s] gmake[1]: *** Waiting for unfinished jobs....
+[0.126s] [ 83%] Built target ros2ctrl_wrapper_node
+[0.127s] gmake: *** [Makefile:146: all] Error 2
+[0.130s] Invoked command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg' returned '2': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12

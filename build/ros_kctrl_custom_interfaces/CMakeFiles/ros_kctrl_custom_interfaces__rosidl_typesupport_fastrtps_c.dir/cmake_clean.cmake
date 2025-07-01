@@ -1,0 +1,21 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.cpp.o"
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.cpp.o.d"
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support_c.cpp.o"
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support_c.cpp.o.d"
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.cpp.o"
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.cpp.o.d"
+  "libros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.pdb"
+  "libros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.so"
+  "rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__rosidl_typesupport_fastrtps_c.h"
+  "rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.cpp"
+  "rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__rosidl_typesupport_fastrtps_c.h"
+  "rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support_c.cpp"
+  "rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__rosidl_typesupport_fastrtps_c.h"
+  "rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.cpp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
