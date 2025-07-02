@@ -108,6 +108,16 @@
               "nested_type_name": ""
             },
             "default_value": ""
+          },
+          {
+            "name": "param_names",
+            "type": {
+              "type_id": 161,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
           }
         ]
       },
@@ -186,7 +196,7 @@
   "type_hashes": [
     {
       "type_name": "ros_kctrl_custom_interfaces/srv/RequestPUParameters",
-      "hash_string": "RIHS01_615be3c0ebb881243fe6128f12772fccd9ab4572e7a8a3e2514b970f1e9f17a9"
+      "hash_string": "RIHS01_456f909d80b7d814bd1a55536085fdcb4a8de4b27301e9cb15d8718e6c485b8d"
     },
     {
       "type_name": "builtin_interfaces/msg/Time",
@@ -194,11 +204,11 @@
     },
     {
       "type_name": "ros_kctrl_custom_interfaces/srv/RequestPUParameters_Event",
-      "hash_string": "RIHS01_589b70bbb60e02809f52db72f4f4fc3326f63b74cfe3b9effdd714c6428592bc"
+      "hash_string": "RIHS01_f46f5cb8a11e8a54c7e9fae9a3e536252a4ebf33f4a677885e94944558522c92"
     },
     {
       "type_name": "ros_kctrl_custom_interfaces/srv/RequestPUParameters_Request",
-      "hash_string": "RIHS01_b92ece611a967011646bdb142efe8d768ebccdf962aaa1c667b4b641e54574e0"
+      "hash_string": "RIHS01_18b710b462f2bc11a526c4b858cb4be2c35cbda88ffc351405b4958c915bb522"
     },
     {
       "type_name": "ros_kctrl_custom_interfaces/srv/RequestPUParameters_Response",

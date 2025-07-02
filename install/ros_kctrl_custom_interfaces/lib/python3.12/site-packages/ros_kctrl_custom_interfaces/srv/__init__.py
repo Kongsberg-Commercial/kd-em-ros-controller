@@ -1,3 +1,7 @@
+from ros_kctrl_custom_interfaces.srv._recording_control import RecordingControl  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._recording_control import RecordingControl_Event  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._recording_control import RecordingControl_Request  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._recording_control import RecordingControl_Response  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._request_pu_parameters import RequestPUParameters  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._request_pu_parameters import RequestPUParameters_Event  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._request_pu_parameters import RequestPUParameters_Request  # noqa: F401
@@ -10,3 +14,7 @@ from ros_kctrl_custom_interfaces.srv._sounder_command import SounderCommand  # n
 from ros_kctrl_custom_interfaces.srv._sounder_command import SounderCommand_Event  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._sounder_command import SounderCommand_Request  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._sounder_command import SounderCommand_Response  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._update_recording_path import UpdateRecordingPath  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._update_recording_path import UpdateRecordingPath_Event  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._update_recording_path import UpdateRecordingPath_Request  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._update_recording_path import UpdateRecordingPath_Response  # noqa: F401

@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from ros_kctrl_custom_interfaces/srv/RecordingControl.srv
+// generated code does not contain a copyright notice
+
+
+module ros_kctrl_custom_interfaces {
+  module srv {
+    struct RecordingControl_Request {
+      string sounder_name;
+
+      boolean turn_on;
+    };
+    struct RecordingControl_Response {
+      boolean success;
+
+      string message;
+    };
+  };
+};

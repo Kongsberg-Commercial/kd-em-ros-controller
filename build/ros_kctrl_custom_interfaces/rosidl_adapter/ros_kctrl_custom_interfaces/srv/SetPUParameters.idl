@@ -5,15 +5,13 @@
 
 module ros_kctrl_custom_interfaces {
   module srv {
-    @verbatim (language="comment", text=
-      "EDIT FOR PURPOSE")
     struct SetPUParameters_Request {
-      @verbatim (language="comment", text=
-        "Request fields here")
       string sounder_name;
+
+      sequence<string> param_names;
+
+      sequence<string> param_values;
     };
-    @verbatim (language="comment", text=
-      "Response fields here")
     struct SetPUParameters_Response {
       boolean success;
 

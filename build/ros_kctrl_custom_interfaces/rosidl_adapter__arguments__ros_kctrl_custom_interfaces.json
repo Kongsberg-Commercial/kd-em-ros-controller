@@ -3,6 +3,8 @@
   "non_idl_tuples": [
     "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces:srv/SounderCommand.srv",
     "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces:srv/SetPUParameters.srv",
-    "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces:srv/RequestPUParameters.srv"
+    "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces:srv/RequestPUParameters.srv",
+    "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces:srv/RecordingControl.srv",
+    "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces:srv/UpdateRecordingPath.srv"
   ]
 }

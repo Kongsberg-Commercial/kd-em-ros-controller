@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_type_description"
+  "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RecordingControl.json"
   "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RequestPUParameters.json"
   "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/SetPUParameters.json"
   "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/SounderCommand.json"
+  "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.json"
 )
 
 # Per-language clean rules from dependency scanning.

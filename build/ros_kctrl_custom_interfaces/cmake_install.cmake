@@ -59,6 +59,14 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros_kctrl_custom_interfaces/srv" TYPE FILE FILES "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RecordingControl.json")
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros_kctrl_custom_interfaces/srv" TYPE FILE FILES "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.json")
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces" TYPE DIRECTORY FILES "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/" REGEX "/[^/]*\\.h$")
 endif()
 
@@ -383,6 +391,14 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros_kctrl_custom_interfaces/srv" TYPE FILE FILES "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/RecordingControl.idl")
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros_kctrl_custom_interfaces/srv" TYPE FILE FILES "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.idl")
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros_kctrl_custom_interfaces/srv" TYPE FILE FILES "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/SounderCommand.srv")
 endif()
 
@@ -392,6 +408,14 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros_kctrl_custom_interfaces/srv" TYPE FILE FILES "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/RequestPUParameters.srv")
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros_kctrl_custom_interfaces/srv" TYPE FILE FILES "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/RecordingControl.srv")
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ros_kctrl_custom_interfaces/srv" TYPE FILE FILES "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.srv")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)

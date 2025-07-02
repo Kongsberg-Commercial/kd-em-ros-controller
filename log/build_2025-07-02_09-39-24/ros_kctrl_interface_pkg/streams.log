@@ -1,0 +1,15 @@
+[0.038s] Invoking command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12
+[0.087s] [ 50%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o[0m
+[0.087s] [ 50%] Built target ros2ctrl_udp_receiver
+[0.497s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_client.cpp:66:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kbool Ros2CtrlUdpClient::[01;32m[Ksend_request_installation_and_runtime_parameters[m[K(const std::string&)[m[K’
+[0.497s]    66 | bool [01;31m[KRos2CtrlUdpClient[m[K::send_request_installation_and_runtime_parameters(const std::string& sounder_name) {
+[0.497s]       |      [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[0.497s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_client.cpp:66:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kbool Ros2CtrlUdpClient::[01;32m[Ksend_request_installation_and_runtime_parameters[m[K(const std::string&)[m[K’
+[0.497s] In file included from [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_client.cpp:1[m[K:
+[0.497s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/include/ros_kctrl_interface_pkg/ros2ctrl_udp_client.hpp:6:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass Ros2CtrlUdpClient[m[K’ defined here
+[0.497s]     6 | class [01;36m[KRos2CtrlUdpClient[m[K {
+[0.497s]       |       [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[0.535s] gmake[2]: *** [CMakeFiles/ros2ctrl_udp_client.dir/build.make:76: CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o] Error 1
+[0.535s] gmake[1]: *** [CMakeFiles/Makefile2:141: CMakeFiles/ros2ctrl_udp_client.dir/all] Error 2
+[0.535s] gmake: *** [Makefile:146: all] Error 2
+[0.537s] Invoked command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg' returned '2': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12

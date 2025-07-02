@@ -11,10 +11,10 @@ ros_kctrl_custom_interfaces__srv__RequestPUParameters__get_type_hash(
 {
   (void)type_support;
   static rosidl_type_hash_t hash = {1, {
-      0x61, 0x5b, 0xe3, 0xc0, 0xeb, 0xb8, 0x81, 0x24,
-      0x3f, 0xe6, 0x12, 0x8f, 0x12, 0x77, 0x2f, 0xcc,
-      0xd9, 0xab, 0x45, 0x72, 0xe7, 0xa8, 0xa3, 0xe2,
-      0x51, 0x4b, 0x97, 0x0f, 0x1e, 0x9f, 0x17, 0xa9,
+      0x45, 0x6f, 0x90, 0x9d, 0x80, 0xb7, 0xd8, 0x14,
+      0xbd, 0x1a, 0x55, 0x53, 0x60, 0x85, 0xfd, 0xcb,
+      0x4a, 0x8d, 0xe4, 0xb2, 0x73, 0x01, 0xe9, 0xcb,
+      0x15, 0xd8, 0x71, 0x8e, 0x6c, 0x48, 0x5b, 0x8d,
     }};
   return &hash;
 }
@@ -26,10 +26,10 @@ ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__get_type_hash(
 {
   (void)type_support;
   static rosidl_type_hash_t hash = {1, {
-      0xb9, 0x2e, 0xce, 0x61, 0x1a, 0x96, 0x70, 0x11,
-      0x64, 0x6b, 0xdb, 0x14, 0x2e, 0xfe, 0x8d, 0x76,
-      0x8e, 0xbc, 0xcd, 0xf9, 0x62, 0xaa, 0xa1, 0xc6,
-      0x67, 0xb4, 0xb6, 0x41, 0xe5, 0x45, 0x74, 0xe0,
+      0x18, 0xb7, 0x10, 0xb4, 0x62, 0xf2, 0xbc, 0x11,
+      0xa5, 0x26, 0xc4, 0xb8, 0x58, 0xcb, 0x4b, 0xe2,
+      0xc3, 0x5c, 0xbd, 0xa8, 0x8f, 0xfc, 0x35, 0x14,
+      0x05, 0xb4, 0x95, 0x8c, 0x91, 0x5b, 0xb5, 0x22,
     }};
   return &hash;
 }
@@ -56,10 +56,10 @@ ros_kctrl_custom_interfaces__srv__RequestPUParameters_Event__get_type_hash(
 {
   (void)type_support;
   static rosidl_type_hash_t hash = {1, {
-      0x58, 0x9b, 0x70, 0xbb, 0xb6, 0x0e, 0x02, 0x80,
-      0x9f, 0x52, 0xdb, 0x72, 0xf4, 0xf4, 0xfc, 0x33,
-      0x26, 0xf6, 0x3b, 0x74, 0xcf, 0xe3, 0xb9, 0xef,
-      0xfd, 0xd7, 0x14, 0xc6, 0x42, 0x85, 0x92, 0xbc,
+      0xf4, 0x6f, 0x5c, 0xb8, 0xa1, 0x1e, 0x8a, 0x54,
+      0xc7, 0xe9, 0xfa, 0xe9, 0xa3, 0xe5, 0x36, 0x25,
+      0x2a, 0x4e, 0xbf, 0x33, 0xf4, 0xa6, 0x77, 0x88,
+      0x5e, 0x94, 0x94, 0x45, 0x58, 0x52, 0x2c, 0x92,
     }};
   return &hash;
 }
@@ -68,8 +68,8 @@ ros_kctrl_custom_interfaces__srv__RequestPUParameters_Event__get_type_hash(
 #include <string.h>
 
 // Include directives for referenced types
-#include "service_msgs/msg/detail/service_event_info__functions.h"
 #include "builtin_interfaces/msg/detail/time__functions.h"
+#include "service_msgs/msg/detail/service_event_info__functions.h"
 
 // Hashes for external referenced types
 #ifndef NDEBUG
@@ -182,12 +182,23 @@ ros_kctrl_custom_interfaces__srv__RequestPUParameters__get_type_description(
 }
 // Define type names, field names, and default values
 static char ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__FIELD_NAME__sounder_name[] = "sounder_name";
+static char ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__FIELD_NAME__param_names[] = "param_names";
 
 static rosidl_runtime_c__type_description__Field ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__FIELDS[] = {
   {
     {ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__FIELD_NAME__sounder_name, 12, 12},
     {
       rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_STRING,
+      0,
+      0,
+      {NULL, 0, 0},
+    },
+    {NULL, 0, 0},
+  },
+  {
+    {ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__FIELD_NAME__param_names, 11, 11},
+    {
+      rosidl_runtime_c__type_description__FieldType__FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE,
       0,
       0,
       {NULL, 0, 0},
@@ -205,7 +216,7 @@ ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__get_type_descript
   static const rosidl_runtime_c__type_description__TypeDescription description = {
     {
       {ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__TYPE_NAME, 59, 59},
-      {ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__FIELDS, 1, 1},
+      {ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__FIELDS, 2, 2},
     },
     {NULL, 0, 0},
   };
@@ -342,12 +353,9 @@ ros_kctrl_custom_interfaces__srv__RequestPUParameters_Event__get_type_descriptio
 }
 
 static char toplevel_type_raw_source[] =
-  "# EDIT FOR PURPOSE\n"
-  "\n"
-  "# Request fields here\n"
   "string sounder_name\n"
+  "string[] param_names\n"
   "---\n"
-  "# Response fields here\n"
   "bool success\n"
   "string message";
 
@@ -364,7 +372,7 @@ ros_kctrl_custom_interfaces__srv__RequestPUParameters__get_individual_type_descr
   static const rosidl_runtime_c__type_description__TypeSource source = {
     {ros_kctrl_custom_interfaces__srv__RequestPUParameters__TYPE_NAME, 51, 51},
     {srv_encoding, 3, 3},
-    {toplevel_type_raw_source, 117, 117},
+    {toplevel_type_raw_source, 73, 73},
   };
   return &source;
 }

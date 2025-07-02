@@ -39,6 +39,16 @@ cdr_serialize(
   // Member: sounder_name
   cdr << ros_message.sounder_name;
 
+  // Member: param_names
+  {
+    cdr << ros_message.param_names;
+  }
+
+  // Member: param_values
+  {
+    cdr << ros_message.param_values;
+  }
+
   return true;
 }
 
@@ -50,6 +60,16 @@ cdr_deserialize(
 {
   // Member: sounder_name
   cdr >> ros_message.sounder_name;
+
+  // Member: param_names
+  {
+    cdr >> ros_message.param_names;
+  }
+
+  // Member: param_values
+  {
+    cdr >> ros_message.param_values;
+  }
 
   return true;
 }
@@ -72,6 +92,30 @@ get_serialized_size(
   current_alignment += padding +
     eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
     (ros_message.sounder_name.size() + 1);
+
+  // Member: param_names
+  {
+    size_t array_size = ros_message.param_names.size();
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        (ros_message.param_names[index].size() + 1);
+    }
+  }
+
+  // Member: param_values
+  {
+    size_t array_size = ros_message.param_values.size();
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        (ros_message.param_values[index].size() + 1);
+    }
+  }
 
   return current_alignment - initial_alignment;
 }
@@ -107,6 +151,36 @@ max_serialized_size_SetPUParameters_Request(
         1;
     }
   }
+  // Member: param_names
+  {
+    size_t array_size = 0;
+    full_bounded = false;
+    is_plain = false;
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    full_bounded = false;
+    is_plain = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
+  }
+  // Member: param_values
+  {
+    size_t array_size = 0;
+    full_bounded = false;
+    is_plain = false;
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    full_bounded = false;
+    is_plain = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
+  }
 
   size_t ret_val = current_alignment - initial_alignment;
   if (is_plain) {
@@ -116,7 +190,7 @@ max_serialized_size_SetPUParameters_Request(
     using DataType = ros_kctrl_custom_interfaces::srv::SetPUParameters_Request;
     is_plain =
       (
-      offsetof(DataType, sounder_name) +
+      offsetof(DataType, param_values) +
       last_member_size
       ) == ret_val;
   }
@@ -132,6 +206,16 @@ cdr_serialize_key(
 {
   // Member: sounder_name
   cdr << ros_message.sounder_name;
+
+  // Member: param_names
+  {
+    cdr << ros_message.param_names;
+  }
+
+  // Member: param_values
+  {
+    cdr << ros_message.param_values;
+  }
 
   return true;
 }
@@ -153,6 +237,30 @@ get_serialized_size_key(
   current_alignment += padding +
     eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
     (ros_message.sounder_name.size() + 1);
+
+  // Member: param_names
+  {
+    size_t array_size = ros_message.param_names.size();
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        (ros_message.param_names[index].size() + 1);
+    }
+  }
+
+  // Member: param_values
+  {
+    size_t array_size = ros_message.param_values.size();
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        (ros_message.param_values[index].size() + 1);
+    }
+  }
 
   return current_alignment - initial_alignment;
 }
@@ -188,6 +296,38 @@ max_serialized_size_key_SetPUParameters_Request(
     }
   }
 
+  // Member: param_names
+  {
+    size_t array_size = 0;
+    full_bounded = false;
+    is_plain = false;
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    full_bounded = false;
+    is_plain = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
+  }
+
+  // Member: param_values
+  {
+    size_t array_size = 0;
+    full_bounded = false;
+    is_plain = false;
+    current_alignment += padding +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
+    full_bounded = false;
+    is_plain = false;
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
+    }
+  }
+
   size_t ret_val = current_alignment - initial_alignment;
   if (is_plain) {
     // All members are plain, and type is not empty.
@@ -196,7 +336,7 @@ max_serialized_size_key_SetPUParameters_Request(
     using DataType = ros_kctrl_custom_interfaces::srv::SetPUParameters_Request;
     is_plain =
       (
-      offsetof(DataType, sounder_name) +
+      offsetof(DataType, param_values) +
       last_member_size
       ) == ret_val;
   }

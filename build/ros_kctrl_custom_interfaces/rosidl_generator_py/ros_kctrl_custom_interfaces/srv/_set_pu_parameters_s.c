@@ -19,6 +19,9 @@
 #include "rosidl_runtime_c/string.h"
 #include "rosidl_runtime_c/string_functions.h"
 
+#include "rosidl_runtime_c/primitives_sequence.h"
+#include "rosidl_runtime_c/primitives_sequence_functions.h"
+
 
 ROSIDL_GENERATOR_C_EXPORT
 bool ros_kctrl_custom_interfaces__srv__set_pu_parameters__request__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -68,6 +71,96 @@ bool ros_kctrl_custom_interfaces__srv__set_pu_parameters__request__convert_from_
     Py_DECREF(encoded_field);
     Py_DECREF(field);
   }
+  {  // param_names
+    PyObject * field = PyObject_GetAttrString(_pymsg, "param_names");
+    if (!field) {
+      return false;
+    }
+    {
+      PyObject * seq_field = PySequence_Fast(field, "expected a sequence in 'param_names'");
+      if (!seq_field) {
+        Py_DECREF(field);
+        return false;
+      }
+      Py_ssize_t size = PySequence_Size(field);
+      if (-1 == size) {
+        Py_DECREF(seq_field);
+        Py_DECREF(field);
+        return false;
+      }
+      if (!rosidl_runtime_c__String__Sequence__init(&(ros_message->param_names), size)) {
+        PyErr_SetString(PyExc_RuntimeError, "unable to create String__Sequence ros_message");
+        Py_DECREF(seq_field);
+        Py_DECREF(field);
+        return false;
+      }
+      rosidl_runtime_c__String * dest = ros_message->param_names.data;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject * item = PySequence_Fast_GET_ITEM(seq_field, i);
+        if (!item) {
+          Py_DECREF(seq_field);
+          Py_DECREF(field);
+          return false;
+        }
+        assert(PyUnicode_Check(item));
+        PyObject * encoded_item = PyUnicode_AsUTF8String(item);
+        if (!encoded_item) {
+          Py_DECREF(seq_field);
+          Py_DECREF(field);
+          return false;
+        }
+        rosidl_runtime_c__String__assign(&dest[i], PyBytes_AS_STRING(encoded_item));
+        Py_DECREF(encoded_item);
+      }
+      Py_DECREF(seq_field);
+    }
+    Py_DECREF(field);
+  }
+  {  // param_values
+    PyObject * field = PyObject_GetAttrString(_pymsg, "param_values");
+    if (!field) {
+      return false;
+    }
+    {
+      PyObject * seq_field = PySequence_Fast(field, "expected a sequence in 'param_values'");
+      if (!seq_field) {
+        Py_DECREF(field);
+        return false;
+      }
+      Py_ssize_t size = PySequence_Size(field);
+      if (-1 == size) {
+        Py_DECREF(seq_field);
+        Py_DECREF(field);
+        return false;
+      }
+      if (!rosidl_runtime_c__String__Sequence__init(&(ros_message->param_values), size)) {
+        PyErr_SetString(PyExc_RuntimeError, "unable to create String__Sequence ros_message");
+        Py_DECREF(seq_field);
+        Py_DECREF(field);
+        return false;
+      }
+      rosidl_runtime_c__String * dest = ros_message->param_values.data;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject * item = PySequence_Fast_GET_ITEM(seq_field, i);
+        if (!item) {
+          Py_DECREF(seq_field);
+          Py_DECREF(field);
+          return false;
+        }
+        assert(PyUnicode_Check(item));
+        PyObject * encoded_item = PyUnicode_AsUTF8String(item);
+        if (!encoded_item) {
+          Py_DECREF(seq_field);
+          Py_DECREF(field);
+          return false;
+        }
+        rosidl_runtime_c__String__assign(&dest[i], PyBytes_AS_STRING(encoded_item));
+        Py_DECREF(encoded_item);
+      }
+      Py_DECREF(seq_field);
+    }
+    Py_DECREF(field);
+  }
 
   return true;
 }
@@ -101,6 +194,58 @@ PyObject * ros_kctrl_custom_interfaces__srv__set_pu_parameters__request__convert
     }
     {
       int rc = PyObject_SetAttrString(_pymessage, "sounder_name", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // param_names
+    PyObject * field = NULL;
+    size_t size = ros_message->param_names.size;
+    rosidl_runtime_c__String * src = ros_message->param_names.data;
+    field = PyList_New(size);
+    if (!field) {
+      return NULL;
+    }
+    for (size_t i = 0; i < size; ++i) {
+      PyObject * decoded_item = PyUnicode_DecodeUTF8(src[i].data, strlen(src[i].data), "replace");
+      if (!decoded_item) {
+        return NULL;
+      }
+      int rc = PyList_SetItem(field, i, decoded_item);
+      (void)rc;
+      assert(rc == 0);
+    }
+    assert(PySequence_Check(field));
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "param_names", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // param_values
+    PyObject * field = NULL;
+    size_t size = ros_message->param_values.size;
+    rosidl_runtime_c__String * src = ros_message->param_values.data;
+    field = PyList_New(size);
+    if (!field) {
+      return NULL;
+    }
+    for (size_t i = 0; i < size; ++i) {
+      PyObject * decoded_item = PyUnicode_DecodeUTF8(src[i].data, strlen(src[i].data), "replace");
+      if (!decoded_item) {
+        return NULL;
+      }
+      int rc = PyList_SetItem(field, i, decoded_item);
+      (void)rc;
+      assert(rc == 0);
+    }
+    assert(PySequence_Check(field));
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "param_values", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -258,8 +403,10 @@ PyObject * ros_kctrl_custom_interfaces__srv__set_pu_parameters__response__conver
 // already included above
 // #include "ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__functions.h"
 
-#include "rosidl_runtime_c/primitives_sequence.h"
-#include "rosidl_runtime_c/primitives_sequence_functions.h"
+// already included above
+// #include "rosidl_runtime_c/primitives_sequence.h"
+// already included above
+// #include "rosidl_runtime_c/primitives_sequence_functions.h"
 
 // Nested array functions includes
 

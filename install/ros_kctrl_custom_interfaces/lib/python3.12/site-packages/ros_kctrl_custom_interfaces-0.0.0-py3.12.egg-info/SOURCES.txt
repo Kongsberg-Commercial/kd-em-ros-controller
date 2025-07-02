@@ -5,9 +5,11 @@ ros_kctrl_custom_interfaces.egg-info/SOURCES.txt
 ros_kctrl_custom_interfaces.egg-info/dependency_links.txt
 ros_kctrl_custom_interfaces.egg-info/top_level.txt
 ros_kctrl_custom_interfaces/srv/__init__.py
+ros_kctrl_custom_interfaces/srv/_recording_control.py
 ros_kctrl_custom_interfaces/srv/_request_pu_parameters.py
 ros_kctrl_custom_interfaces/srv/_set_pu_parameters.py
 ros_kctrl_custom_interfaces/srv/_sounder_command.py
 ros_kctrl_custom_interfaces/srv/_start_pinging.py
 ros_kctrl_custom_interfaces/srv/_start_sounder.py
 ros_kctrl_custom_interfaces/srv/_stop_pinging.py
+ros_kctrl_custom_interfaces/srv/_update_recording_path.py

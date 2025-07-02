@@ -4,10 +4,10 @@
 
 #include <string.h>
 
+#include "ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.h"
 #include "ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
 #include "ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__functions.h"
-#include "ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.h"
 
 #ifdef __cplusplus
 extern "C"

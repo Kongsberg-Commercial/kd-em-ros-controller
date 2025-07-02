@@ -69,6 +69,8 @@ include CMakeFiles/ros_kctrl_custom_interfaces.dir/progress.make
 CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/SounderCommand.srv
 CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/SetPUParameters.srv
 CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/RequestPUParameters.srv
+CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/RecordingControl.srv
+CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.srv
 CMakeFiles/ros_kctrl_custom_interfaces: /opt/ros/jazzy/share/service_msgs/msg/ServiceEventInfo.idl
 
 ros_kctrl_custom_interfaces: CMakeFiles/ros_kctrl_custom_interfaces

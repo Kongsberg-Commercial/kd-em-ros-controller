@@ -1,0 +1,134 @@
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:65:[m[K [01;31m[Kerror: [m[K‘[01m[KRequestParamsInfo[m[K’ is not a member of ‘[01m[Kros_kctrl_custom_interfaces::srv[m[K’; did you mean ‘[01m[KRequestPUParameters[m[K’?
+  131 |         const std::shared_ptr<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K::Request> req,
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                                                                 [32m[KRequestPUParameters[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:91:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  131 |         const std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Request[01;31m[K>[m[K req,
+      |                                                                                           [01;31m[K^[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:65:[m[K [01;31m[Kerror: [m[K‘[01m[KRequestParamsInfo[m[K’ is not a member of ‘[01m[Kros_kctrl_custom_interfaces::srv[m[K’; did you mean ‘[01m[KRequestPUParameters[m[K’?
+  131 |         const std::shared_ptr<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K::Request> req,
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                                                                 [32m[KRequestPUParameters[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:91:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  131 |         const std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Request[01;31m[K>[m[K req,
+      |                                                                                           [01;31m[K^[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:65:[m[K [01;31m[Kerror: [m[K‘[01m[KRequestParamsInfo[m[K’ is not a member of ‘[01m[Kros_kctrl_custom_interfaces::srv[m[K’; did you mean ‘[01m[KRequestPUParameters[m[K’?
+  131 |         const std::shared_ptr<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K::Request> req,
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                                                                 [32m[KRequestPUParameters[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:91:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  131 |         const std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Request[01;31m[K>[m[K req,
+      |                                                                                           [01;31m[K^[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:15:[m[K [01;31m[Kerror: [m[Kinvalid template-id
+  131 |         const [01;31m[Kstd[m[K::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Request> req,
+      |               [01;31m[K^~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kros_kctrl_custom_interfaces::srv::RequestParamsInfo[m[K’ has not been declared
+  131 |         const std::shared_ptr<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K::Request> req,
+      |                                                                 [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:131:9:[m[K [01;31m[Kerror: [m[Kmissing template argument list after ‘[01m[Kstd::shared_ptr[m[K’; template placeholder not permitted in parameter
+  131 |         [01;31m[Kconst[m[K std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Request> req,
+      |         [01;31m[K^~~~~[m[K
+      |              [32m[K<>[m[K
+In file included from [01m[K/usr/include/c++/13/bits/shared_ptr.h:53[m[K,
+                 from [01m[K/usr/include/c++/13/memory:80[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:169[m[K,
+                 from [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:1[m[K:
+[01m[K/usr/include/c++/13/bits/shared_ptr_base.h:395:11:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class _Tp> class std::shared_ptr[m[K’ declared here
+  395 |     class [01;36m[Kshared_ptr[m[K;
+      |           [01;36m[K^~~~~~~~~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:59:[m[K [01;31m[Kerror: [m[K‘[01m[KRequestParamsInfo[m[K’ is not a member of ‘[01m[Kros_kctrl_custom_interfaces::srv[m[K’; did you mean ‘[01m[KRequestPUParameters[m[K’?
+  132 |         std::shared_ptr<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K::Response> res)
+      |                                                           [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                                                           [32m[KRequestPUParameters[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:86:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  132 |         std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Response[01;31m[K>[m[K res)
+      |                                                                                      [01;31m[K^[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:59:[m[K [01;31m[Kerror: [m[K‘[01m[KRequestParamsInfo[m[K’ is not a member of ‘[01m[Kros_kctrl_custom_interfaces::srv[m[K’; did you mean ‘[01m[KRequestPUParameters[m[K’?
+  132 |         std::shared_ptr<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K::Response> res)
+      |                                                           [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                                                           [32m[KRequestPUParameters[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:86:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  132 |         std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Response[01;31m[K>[m[K res)
+      |                                                                                      [01;31m[K^[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:59:[m[K [01;31m[Kerror: [m[K‘[01m[KRequestParamsInfo[m[K’ is not a member of ‘[01m[Kros_kctrl_custom_interfaces::srv[m[K’; did you mean ‘[01m[KRequestPUParameters[m[K’?
+  132 |         std::shared_ptr<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K::Response> res)
+      |                                                           [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                                                           [32m[KRequestPUParameters[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:86:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  132 |         std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Response[01;31m[K>[m[K res)
+      |                                                                                      [01;31m[K^[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:9:[m[K [01;31m[Kerror: [m[Kinvalid template-id
+  132 |         [01;31m[Kstd[m[K::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Response> res)
+      |         [01;31m[K^~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:59:[m[K [01;31m[Kerror: [m[K‘[01m[Kros_kctrl_custom_interfaces::srv::RequestParamsInfo[m[K’ has not been declared
+  132 |         std::shared_ptr<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K::Response> res)
+      |                                                           [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:132:9:[m[K [01;31m[Kerror: [m[Kmissing template argument list after ‘[01m[Kstd::shared_ptr[m[K’; template placeholder not permitted in parameter
+  132 |         [01;31m[Kstd[m[K::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestParamsInfo::Response> res)
+      |         [01;31m[K^~~[m[K
+      |            [32m[K<>[m[K
+[01m[K/usr/include/c++/13/bits/shared_ptr_base.h:395:11:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class _Tp> class std::shared_ptr[m[K’ declared here
+  395 |     class [01;36m[Kshared_ptr[m[K;
+      |           [01;36m[K^~~~~~~~~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:148:55:[m[K [01;31m[Kerror: [m[K‘[01m[KRequestParamsInfo[m[K’ is not a member of ‘[01m[Kros_kctrl_custom_interfaces::srv[m[K’; did you mean ‘[01m[KRequestPUParameters[m[K’?
+  148 |     rclcpp::Service<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K>::SharedPtr request_params_info_srv_;
+      |                                                       [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                                                       [32m[KRequestPUParameters[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:148:72:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  148 |     rclcpp::Service<ros_kctrl_custom_interfaces::srv::RequestParamsInfo[01;31m[K>[m[K::SharedPtr request_params_info_srv_;
+      |                                                                        [01;31m[K^[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:148:75:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+  148 |     rclcpp::Service<ros_kctrl_custom_interfaces::srv::RequestParamsInfo>::[01;31m[KSharedPtr[m[K request_params_info_srv_;
+      |                                                                           [01;31m[K^~~~~~~~~[m[K
+      |                                                                                    [32m[K;[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:148:85:[m[K [01;31m[Kerror: [m[K‘[01m[Krequest_params_info_srv_[m[K’ does not name a type
+  148 |     rclcpp::Service<ros_kctrl_custom_interfaces::srv::RequestParamsInfo>::SharedPtr [01;31m[Krequest_params_info_srv_[m[K;
+      |                                                                                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:[m[K In constructor ‘[01m[KRos2CtrlWrapperNode::[01;32m[KRos2CtrlWrapperNode[m[K()[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:49:9:[m[K [01;31m[Kerror: [m[K‘[01m[Krequest_params_info_srv_[m[K’ was not declared in this scope
+   49 |         [01;31m[Krequest_params_info_srv_[m[K = this->create_service<ros_kctrl_custom_interfaces::srv::RequestParamsInfo>(
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:49:91:[m[K [01;31m[Kerror: [m[K‘[01m[KRequestParamsInfo[m[K’ is not a member of ‘[01m[Kros_kctrl_custom_interfaces::srv[m[K’; did you mean ‘[01m[KRequestPUParameters[m[K’?
+   49 |         request_params_info_srv_ = this->create_service<ros_kctrl_custom_interfaces::srv::[01;31m[KRequestParamsInfo[m[K>(
+      |                                                                                           [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                                                                                           [32m[KRequestPUParameters[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:49:109:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KRos2CtrlWrapperNode::create_service<<expression error> >(const char [26], std::_Bind_helper<false, void (Ros2CtrlWrapperNode::*)(...), Ros2CtrlWrapperNode*, const std::_Placeholder<1>&, const std::_Placeholder<2>&>::type)[m[K’
+   49 |         request_params_info_srv_ = [01;31m[Kthis->create_service<ros_kctrl_custom_interfaces::srv::RequestParamsInfo>([m[K
+      |                                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+   50 | [01;31m[K            "kctrl/request_params_info",[m[K
+      |             [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                                                                     
+   51 | [01;31m[K            std::bind(&Ros2CtrlWrapperNode::requestParamsInfoCallback, this, std::placeholders::_1, std::placeholders::_2)[m[K
+      |             [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+   52 | [01;31m[K        )[m[K;
+      |         [01;31m[K~[m[K                                                                                                    
+In file included from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:172[m[K:
+[01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/node.hpp:302:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class ServiceT, class CallbackT> typename rclcpp::Service<ServiceT>::SharedPtr rclcpp::Node::[01;32m[Kcreate_service[m[K(const std::string&, CallbackT&&, const rmw_qos_profile_t&, rclcpp::CallbackGroup::SharedPtr)[m[K’
+  302 |   [01;36m[Kcreate_service[m[K(
+      |   [01;36m[K^~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/node.hpp:302:3:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 2 provided
+In file included from [01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/node.hpp:1663[m[K:
+[01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/node_impl.hpp:175:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class ServiceT, class CallbackT> typename rclcpp::Service<ServiceT>::SharedPtr rclcpp::Node::[01;32m[Kcreate_service[m[K(const std::string&, CallbackT&&, const rclcpp::QoS&, rclcpp::CallbackGroup::SharedPtr)[m[K’
+  175 | [01;36m[KNode[m[K::create_service(
+      | [01;36m[K^~~~[m[K
+[01m[K/opt/ros/jazzy/include/rclcpp/rclcpp/node_impl.hpp:175:1:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:49:109:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   49 |         request_params_info_srv_ = [01;31m[Kthis->create_service<ros_kctrl_custom_interfaces::srv::RequestParamsInfo>([m[K
+      |                                    [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+   50 | [01;31m[K            "kctrl/request_params_info",[m[K
+      |             [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                                                                     
+   51 | [01;31m[K            std::bind(&Ros2CtrlWrapperNode::requestParamsInfoCallback, this, std::placeholders::_1, std::placeholders::_2)[m[K
+      |             [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+   52 | [01;31m[K        )[m[K;
+      |         [01;31m[K~[m[K                                                                                                    
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:[m[K In member function ‘[01m[Kvoid Ros2CtrlWrapperNode::[01;32m[KrequestParamsInfoCallback[m[K(...)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:134:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kreq[m[K’ was not declared in this scope
+  134 |         bool ok = udp_client_->send_request_params_info([01;31m[Kreq[m[K->sounder_name, req->param_names);
+      |                                                         [01;31m[K^~~[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:135:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kres[m[K’ was not declared in this scope
+  135 |         [01;31m[Kres[m[K->success = ok;
+      |         [01;31m[K^~~[m[K
+gmake[2]: *** [CMakeFiles/ros2ctrl_wrapper_node.dir/build.make:76: CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:167: CMakeFiles/ros2ctrl_wrapper_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

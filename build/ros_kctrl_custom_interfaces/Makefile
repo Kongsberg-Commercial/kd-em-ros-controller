@@ -418,6 +418,78 @@ ros_kctrl_custom_interfaces__py/fast:
 	$(MAKE) $(MAKESILENT) -f /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces__py/CMakeFiles/ros_kctrl_custom_interfaces__py.dir/build.make /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces__py/CMakeFiles/ros_kctrl_custom_interfaces__py.dir/build
 .PHONY : ros_kctrl_custom_interfaces__py/fast
 
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.o: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.o
+
+# target to build an object file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.o
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.i: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.i
+
+# target to preprocess a source file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.i
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.s: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.s
+
+# target to generate assembly for a file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.s
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.o: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.o
+
+# target to build an object file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.o
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.i: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.i
+
+# target to preprocess a source file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.i
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.s: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.s
+
+# target to generate assembly for a file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.s
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o
+
+# target to build an object file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i
+
+# target to preprocess a source file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.i
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s
+
+# target to generate assembly for a file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.s
+
 rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__description.o: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__description.c.o
 .PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__description.o
 
@@ -634,6 +706,78 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c.s
 .PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c.s
 
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.o: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.o
+
+# target to build an object file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.o
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.i: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.i
+
+# target to preprocess a source file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.i
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.s: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.s
+
+# target to generate assembly for a file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.c.s
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.o: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.o
+
+# target to build an object file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.o
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.i: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.i
+
+# target to preprocess a source file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.i
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.s: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.s
+
+# target to generate assembly for a file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.c.s
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o
+
+# target to build an object file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.o
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.o
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i
+
+# target to preprocess a source file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.i
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.i
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s: rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s
+
+# target to generate assembly for a file
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.s
+.PHONY : rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.s
+
 rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_c.o: rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_c.c.o
 .PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_c.o
 
@@ -705,6 +849,30 @@ rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.e
 rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c.s
 .PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c.s
+
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.o: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.o
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.o
+
+# target to build an object file
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.o
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.o
+
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.i: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.i
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.i
+
+# target to preprocess a source file
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.i
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.i
+
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.s: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.s
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.s
+
+# target to generate assembly for a file
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.s
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.s
 
 rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.o: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.c.o
 .PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.o
@@ -778,6 +946,54 @@ rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_sounder_command_s.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_sounder_command_s.c.s
 .PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_sounder_command_s.c.s
 
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.o: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.o
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.o
+
+# target to build an object file
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.o
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.o
+
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.i: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.i
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.i
+
+# target to preprocess a source file
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.i
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.i
+
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.s: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.s
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.s
+
+# target to generate assembly for a file
+rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.s
+.PHONY : rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.s
+
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.o: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.o
+
+# target to build an object file
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o
+
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.i: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i
+
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.s: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s
+
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.o: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o
 .PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.o
 
@@ -849,6 +1065,54 @@ rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_suppo
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.s
 .PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.s
+
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.o: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.o
+
+# target to build an object file
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o
+
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.i: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i
+
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.s: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s
+.PHONY : rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s
+
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.o: rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.o
+
+# target to build an object file
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o
+
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.i: rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i
+
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.s: rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s
 
 rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.o: rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o
 .PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.o
@@ -922,6 +1186,54 @@ rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_sup
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.s
 .PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.s
 
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.o: rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.o
+
+# target to build an object file
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o
+
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.i: rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i
+
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.s: rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s
+.PHONY : rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s
+
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.o: rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.o
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.o
+
+# target to build an object file
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.o
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.o
+
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.i: rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.i
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.i
+
+# target to preprocess a source file
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.i
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.i
+
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.s: rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.s
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.s
+
+# target to generate assembly for a file
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.s
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.s
+
 rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.o: rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.cpp.o
 .PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.o
 
@@ -993,6 +1305,54 @@ rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_com
 rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.cpp.s
 .PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.cpp.s
+
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.o: rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.o
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.o
+
+# target to build an object file
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.o
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.o
+
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.i: rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.i
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.i
+
+# target to preprocess a source file
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.i
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.i
+
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.s: rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.s
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.s
+
+# target to generate assembly for a file
+rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.s
+.PHONY : rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.cpp.s
+
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.o: rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.o
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.o
+
+# target to build an object file
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.o
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.o
+
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.i: rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.i
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.i
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.i
+
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.s: rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.s
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.s
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.s
 
 rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/request_pu_parameters__type_support.o: rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/request_pu_parameters__type_support.cpp.o
 .PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/request_pu_parameters__type_support.o
@@ -1066,6 +1426,54 @@ rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastr
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/sounder_command__type_support.cpp.s
 .PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/sounder_command__type_support.cpp.s
 
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.o: rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.o
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.o
+
+# target to build an object file
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.o
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.o
+
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.i: rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.i
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.i
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.i
+
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.s: rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.s
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.s
+.PHONY : rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.cpp.s
+
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o: rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o
+
+# target to build an object file
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o
+
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i: rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.i
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.i
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.i
+
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s: rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.s
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.s
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.s
+
 rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.o: rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.c.o
 .PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.o
 
@@ -1137,6 +1545,54 @@ rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/sounde
 rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c.s
 .PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c.s
+
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o: rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.o
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o
+
+# target to build an object file
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.o
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.o
+
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i: rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.i
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.i
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.i
+
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s: rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.s
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.s
+.PHONY : rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.c.s
+
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o: rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.o
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o
+
+# target to build an object file
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.o
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.o
+
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i: rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.i
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.i
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.i
+
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s: rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.s
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.s
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.s
 
 rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.o: rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.cpp.o
 .PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.o
@@ -1210,6 +1666,30 @@ rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/soun
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.cpp.s
 .PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.cpp.s
 
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o: rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.o
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o
+
+# target to build an object file
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.o
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.o
+
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i: rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.i
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i
+
+# target to preprocess a source file
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.i
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.i
+
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s: rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.s
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s
+
+# target to generate assembly for a file
+rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/build.make CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.s
+.PHONY : rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1242,6 +1722,15 @@ help:
 	@echo "... ros_kctrl_custom_interfaces_s__rosidl_typesupport_c"
 	@echo "... ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c"
 	@echo "... ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.o"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.i"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.s"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.o"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.i"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.s"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s"
 	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__description.o"
 	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__description.i"
 	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__description.s"
@@ -1269,6 +1758,15 @@ help:
 	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.o"
 	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.i"
 	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.s"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.o"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.i"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__description.s"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.o"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.i"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.s"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i"
+	@echo "... rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_c.o"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_c.i"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_c.s"
@@ -1278,6 +1776,9 @@ help:
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.o"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.i"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.s"
+	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.o"
+	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.i"
+	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.s"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.o"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.i"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.s"
@@ -1287,6 +1788,12 @@ help:
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_sounder_command_s.o"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_sounder_command_s.i"
 	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_sounder_command_s.s"
+	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.o"
+	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.i"
+	@echo "... rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.s"
+	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.o"
+	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.i"
+	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.s"
 	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.o"
 	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.i"
 	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.s"
@@ -1296,6 +1803,12 @@ help:
 	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.o"
 	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.i"
 	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.s"
+	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.o"
+	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.i"
+	@echo "... rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.s"
+	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.o"
+	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.i"
+	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.s"
 	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.o"
 	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.i"
 	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.s"
@@ -1305,6 +1818,12 @@ help:
 	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.o"
 	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.i"
 	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.s"
+	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.o"
+	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.i"
+	@echo "... rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.s"
+	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.o"
+	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.i"
+	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.s"
 	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.o"
 	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.i"
 	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.s"
@@ -1314,6 +1833,12 @@ help:
 	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.o"
 	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.i"
 	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.s"
+	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.o"
+	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.i"
+	@echo "... rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support_c.s"
+	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.o"
+	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.i"
+	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.s"
 	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/request_pu_parameters__type_support.o"
 	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/request_pu_parameters__type_support.i"
 	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/request_pu_parameters__type_support.s"
@@ -1323,6 +1848,12 @@ help:
 	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/sounder_command__type_support.o"
 	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/sounder_command__type_support.i"
 	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/sounder_command__type_support.s"
+	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.o"
+	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.i"
+	@echo "... rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/update_recording_path__type_support.s"
+	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o"
+	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i"
+	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s"
 	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.o"
 	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.i"
 	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.s"
@@ -1332,6 +1863,12 @@ help:
 	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.o"
 	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.i"
 	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.s"
+	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o"
+	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i"
+	@echo "... rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s"
+	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.o"
+	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.i"
+	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.s"
 	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.o"
 	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.i"
 	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.s"
@@ -1341,6 +1878,9 @@ help:
 	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.o"
 	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.i"
 	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.s"
+	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.o"
+	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.i"
+	@echo "... rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.s"
 .PHONY : help
 
 

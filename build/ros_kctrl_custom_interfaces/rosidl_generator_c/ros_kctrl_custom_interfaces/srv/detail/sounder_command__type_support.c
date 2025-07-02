@@ -4,10 +4,10 @@
 
 #include <string.h>
 
-#include "ros_kctrl_custom_interfaces/srv/detail/sounder_command__functions.h"
+#include "ros_kctrl_custom_interfaces/srv/detail/sounder_command__struct.h"
 #include "ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.h"
 #include "rosidl_typesupport_interface/macros.h"
-#include "ros_kctrl_custom_interfaces/srv/detail/sounder_command__struct.h"
+#include "ros_kctrl_custom_interfaces/srv/detail/sounder_command__functions.h"
 
 #ifdef __cplusplus
 extern "C"

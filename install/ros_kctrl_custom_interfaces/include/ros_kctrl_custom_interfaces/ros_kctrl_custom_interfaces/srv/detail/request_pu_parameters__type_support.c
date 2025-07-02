@@ -14,6 +14,7 @@
 
 // Include directives for member types
 // Member `sounder_name`
+// Member `param_names`
 #include "rosidl_runtime_c/string_functions.h"
 
 #ifdef __cplusplus
@@ -35,7 +36,62 @@ void ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_types
   ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__RequestPUParameters_Request_message_member_array[1] = {
+size_t ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__size_function__RequestPUParameters_Request__param_names(
+  const void * untyped_member)
+{
+  const rosidl_runtime_c__String__Sequence * member =
+    (const rosidl_runtime_c__String__Sequence *)(untyped_member);
+  return member->size;
+}
+
+const void * ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__get_const_function__RequestPUParameters_Request__param_names(
+  const void * untyped_member, size_t index)
+{
+  const rosidl_runtime_c__String__Sequence * member =
+    (const rosidl_runtime_c__String__Sequence *)(untyped_member);
+  return &member->data[index];
+}
+
+void * ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__get_function__RequestPUParameters_Request__param_names(
+  void * untyped_member, size_t index)
+{
+  rosidl_runtime_c__String__Sequence * member =
+    (rosidl_runtime_c__String__Sequence *)(untyped_member);
+  return &member->data[index];
+}
+
+void ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__fetch_function__RequestPUParameters_Request__param_names(
+  const void * untyped_member, size_t index, void * untyped_value)
+{
+  const rosidl_runtime_c__String * item =
+    ((const rosidl_runtime_c__String *)
+    ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__get_const_function__RequestPUParameters_Request__param_names(untyped_member, index));
+  rosidl_runtime_c__String * value =
+    (rosidl_runtime_c__String *)(untyped_value);
+  *value = *item;
+}
+
+void ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__assign_function__RequestPUParameters_Request__param_names(
+  void * untyped_member, size_t index, const void * untyped_value)
+{
+  rosidl_runtime_c__String * item =
+    ((rosidl_runtime_c__String *)
+    ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__get_function__RequestPUParameters_Request__param_names(untyped_member, index));
+  const rosidl_runtime_c__String * value =
+    (const rosidl_runtime_c__String *)(untyped_value);
+  *item = *value;
+}
+
+bool ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__resize_function__RequestPUParameters_Request__param_names(
+  void * untyped_member, size_t size)
+{
+  rosidl_runtime_c__String__Sequence * member =
+    (rosidl_runtime_c__String__Sequence *)(untyped_member);
+  rosidl_runtime_c__String__Sequence__fini(member);
+  return rosidl_runtime_c__String__Sequence__init(member, size);
+}
+
+static rosidl_typesupport_introspection_c__MessageMember ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__RequestPUParameters_Request_message_member_array[2] = {
   {
     "sounder_name",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
@@ -53,13 +109,31 @@ static rosidl_typesupport_introspection_c__MessageMember ros_kctrl_custom_interf
     NULL,  // fetch(index, &value) function pointer
     NULL,  // assign(index, value) function pointer
     NULL  // resize(index) function pointer
+  },
+  {
+    "param_names",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is key
+    true,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request, param_names),  // bytes offset in struct
+    NULL,  // default value
+    ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__size_function__RequestPUParameters_Request__param_names,  // size() function pointer
+    ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__get_const_function__RequestPUParameters_Request__param_names,  // get_const(index) function pointer
+    ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__get_function__RequestPUParameters_Request__param_names,  // get(index) function pointer
+    ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__fetch_function__RequestPUParameters_Request__param_names,  // fetch(index, &value) function pointer
+    ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__assign_function__RequestPUParameters_Request__param_names,  // assign(index, value) function pointer
+    ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__resize_function__RequestPUParameters_Request__param_names  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__RequestPUParameters_Request_message_members = {
   "ros_kctrl_custom_interfaces__srv",  // message namespace
   "RequestPUParameters_Request",  // message name
-  1,  // number of fields
+  2,  // number of fields
   sizeof(ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request),
   false,  // has_any_key_member_
   ros_kctrl_custom_interfaces__srv__RequestPUParameters_Request__rosidl_typesupport_introspection_c__RequestPUParameters_Request_message_member_array,  // message members

@@ -63,17 +63,23 @@ class SetPUParameters_Request(metaclass=Metaclass_SetPUParameters_Request):
 
     __slots__ = [
         '_sounder_name',
+        '_param_names',
+        '_param_values',
         '_check_fields',
     ]
 
     _fields_and_field_types = {
         'sounder_name': 'string',
+        'param_names': 'sequence<string>',
+        'param_values': 'sequence<string>',
     }
 
     # This attribute is used to store an rosidl_parser.definition variable
     # related to the data type of each of the components the message.
     SLOT_TYPES = (
         rosidl_parser.definition.UnboundedString(),  # noqa: E501
+        rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.UnboundedString()),  # noqa: E501
+        rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.UnboundedString()),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -86,6 +92,8 @@ class SetPUParameters_Request(metaclass=Metaclass_SetPUParameters_Request):
                 'Invalid arguments passed to constructor: %s' % \
                 ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.sounder_name = kwargs.get('sounder_name', str())
+        self.param_names = kwargs.get('param_names', [])
+        self.param_values = kwargs.get('param_values', [])
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -119,6 +127,10 @@ class SetPUParameters_Request(metaclass=Metaclass_SetPUParameters_Request):
             return False
         if self.sounder_name != other.sounder_name:
             return False
+        if self.param_names != other.param_names:
+            return False
+        if self.param_values != other.param_values:
+            return False
         return True
 
     @classmethod
@@ -138,6 +150,52 @@ class SetPUParameters_Request(metaclass=Metaclass_SetPUParameters_Request):
                 isinstance(value, str), \
                 "The 'sounder_name' field must be of type 'str'"
         self._sounder_name = value
+
+    @builtins.property
+    def param_names(self):
+        """Message field 'param_names'."""
+        return self._param_names
+
+    @param_names.setter
+    def param_names(self, value):
+        if self._check_fields:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 all(isinstance(v, str) for v in value) and
+                 True), \
+                "The 'param_names' field must be a set or sequence and each value of type 'str'"
+        self._param_names = value
+
+    @builtins.property
+    def param_values(self):
+        """Message field 'param_values'."""
+        return self._param_values
+
+    @param_values.setter
+    def param_values(self, value):
+        if self._check_fields:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 all(isinstance(v, str) for v in value) and
+                 True), \
+                "The 'param_values' field must be a set or sequence and each value of type 'str'"
+        self._param_values = value
 
 
 # Import statements for member types

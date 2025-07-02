@@ -14,12 +14,31 @@ Ros2UdpReceiver::Ros2UdpReceiver()
 : Node("ros2_udp_receiver"), running_(true)
 {
     pub_version_      = this->create_publisher<std_msgs::msg::String>("kctrl/version", 10);
+    pub_version_raw_  = this->create_publisher<std_msgs::msg::String>("kctrl/version_raw", 10);
+
     pub_devices_      = this->create_publisher<std_msgs::msg::String>("kctrl/detected_devices", 10);
+    pub_devices_raw_  = this->create_publisher<std_msgs::msg::String>("kctrl/detected_devices_raw", 10);
+
     pub_param_        = this->create_publisher<std_msgs::msg::String>("kctrl/parameters", 10);
+    pub_param_raw_    = this->create_publisher<std_msgs::msg::String>("kctrl/parameters_raw", 10);
+
     pub_multicast_    = this->create_publisher<std_msgs::msg::String>("kctrl/multicast", 10);
+    pub_multicast_raw_= this->create_publisher<std_msgs::msg::String>("kctrl/multicast_raw", 10);
+
     pub_status_       = this->create_publisher<std_msgs::msg::String>("kctrl/status", 10);
+    pub_status_raw_   = this->create_publisher<std_msgs::msg::String>("kctrl/status_raw", 10);
+
     pub_unknown812_   = this->create_publisher<std_msgs::msg::String>("kctrl/unknown812", 10);
+    pub_unknown812_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/unknown812_raw", 10);
+
     pub_unknown813_   = this->create_publisher<std_msgs::msg::String>("kctrl/unknown813", 10);
+    pub_unknown813_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/unknown813_raw", 10);
+
+    pub_info_warn_error_ = this->create_publisher<std_msgs::msg::String>("kctrl/info_warn_error", 10);
+    pub_info_warn_error_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/info_warn_error_raw", 10);
+
+    pub_device_disconnected_ = this->create_publisher<std_msgs::msg::String>("kctrl/device_disconnected", 10);
+    pub_device_disconnected_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/device_disconnected_raw", 10);
 
     RCLCPP_INFO(this->get_logger(), "ROS2 UDP Receiver Node started.");
 
@@ -32,7 +51,6 @@ Ros2UdpReceiver::~Ros2UdpReceiver() {
     if (thread_.joinable()) thread_.join();
 }
 
-// --- UDP HANDSHAKE ---
 void Ros2UdpReceiver::send_handshake() {
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
@@ -41,8 +59,8 @@ void Ros2UdpReceiver::send_handshake() {
     }
     sockaddr_in destaddr{};
     destaddr.sin_family = AF_INET;
-    destaddr.sin_port = htons(4001); // K-Controller handshake port
-    std::string kctrl_host_ip = "192.168.48.1"; // Adjust to your Windows host IP
+    destaddr.sin_port = htons(4001);
+    std::string kctrl_host_ip = "192.168.48.1";
     inet_pton(AF_INET, kctrl_host_ip.c_str(), &destaddr.sin_addr);
 
     std::string msg = "Hello";
@@ -54,7 +72,6 @@ void Ros2UdpReceiver::send_handshake() {
     close(sockfd);
 }
 
-// --- UDP LISTEN & ROUTER ---
 void Ros2UdpReceiver::udp_listen() {
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
@@ -93,6 +110,8 @@ void Ros2UdpReceiver::udp_listen() {
                     case 616: handle_kssis_616(msg); break;
                     case 812: handle_kssis_812(msg); break;
                     case 813: handle_kssis_813(msg); break;
+                    case 499: handle_kssis_499(msg); break;
+                    case 998: handle_kssis_998(msg); break;
                     default: break;
                 }
             }
@@ -103,14 +122,17 @@ void Ros2UdpReceiver::udp_listen() {
 
 // --- KSSIS HANDLER FUNCTIONS ---
 void Ros2UdpReceiver::handle_kssis_1(const std::string& msg) {
+    publish_string(pub_version_raw_, msg);
     size_t pos = msg.find("KCTRL_VER=");
     std::string version = (pos != std::string::npos) ? msg.substr(pos + 10) : "Unknown";
     publish_string(pub_version_, "K-Controller Version: " + version);
 }
 void Ros2UdpReceiver::handle_kssis_12(const std::string& msg) {
+    publish_string(pub_devices_raw_, msg);
     publish_string(pub_devices_, parse_and_pretty_print_devices(msg));
 }
 void Ros2UdpReceiver::handle_kssis_401(const std::string& msg) {
+    publish_string(pub_param_raw_, msg);
     size_t start = msg.find('[');
     size_t end = msg.rfind(']');
     if (start == std::string::npos || end == std::string::npos || end <= start) {
@@ -132,6 +154,7 @@ void Ros2UdpReceiver::handle_kssis_401(const std::string& msg) {
     publish_string(pub_param_, oss.str());
 }
 void Ros2UdpReceiver::handle_kssis_455(const std::string& msg) {
+    publish_string(pub_multicast_raw_, msg);
     std::stringstream ss(msg);
     std::string token;
     std::vector<std::string> parts;
@@ -149,7 +172,8 @@ void Ros2UdpReceiver::handle_kssis_455(const std::string& msg) {
     publish_string(pub_multicast_, oss.str());
 }
 void Ros2UdpReceiver::handle_kssis_616(const std::string& msg) {
-    size_t start = msg.find(',', 9); // skip "$KSSIS,616,"
+    publish_string(pub_status_raw_, msg);
+    size_t start = msg.find(',', 9);
     if (start == std::string::npos) {
         publish_string(pub_status_, "Invalid status datagram.");
         return;
@@ -172,10 +196,72 @@ void Ros2UdpReceiver::handle_kssis_616(const std::string& msg) {
     publish_string(pub_status_, oss.str());
 }
 void Ros2UdpReceiver::handle_kssis_812(const std::string& msg) {
+    publish_string(pub_unknown812_raw_, msg);
     publish_string(pub_unknown812_, "[KSSIS,812] Received data (not parsed).");
 }
 void Ros2UdpReceiver::handle_kssis_813(const std::string& msg) {
+    publish_string(pub_unknown813_raw_, msg);
     publish_string(pub_unknown813_, "[KSSIS,813] Received message.");
+}
+void Ros2UdpReceiver::handle_kssis_499(const std::string& msg) {
+    publish_string(pub_info_warn_error_raw_, msg);
+
+    std::string device, level, text, timestamp;
+
+    std::stringstream ss(msg);
+    std::string part;
+    std::vector<std::string> tokens;
+    while (std::getline(ss, part, ',')) {
+        tokens.push_back(part);
+    }
+
+    for (const auto& token : tokens) {
+        if (token.rfind("$KSSIS", 0) == 0) continue; 
+        else if (token.find("499") == 0) continue;   
+        else if (device.empty()) { device = token; continue; }
+
+        auto eq = token.find('=');
+        if (eq == std::string::npos) continue;
+        std::string key = token.substr(0, eq);
+        std::string val = token.substr(eq + 1);
+        if (key == "TIMESTAMP") timestamp = val;
+        else if (key == "LEVEL") level = val;
+        else if (key == "MSG") text = val;
+    }
+
+    std::string level_str = level;
+    if      (level == "0") level_str = "INFO";
+    else if (level == "1") level_str = "WARNING";
+    else if (level == "2") level_str = "ERROR";
+
+    std::ostringstream oss;
+    oss << "K-Controller Report\n";
+    oss << "  Device   : " << device << "\n";
+    if (!timestamp.empty())
+        oss << "  Timestamp: " << timestamp << "\n";
+    oss << "  Level    : " << level_str << "\n";
+    oss << "  Msg      : " << text;
+
+    publish_string(pub_info_warn_error_, oss.str());
+}
+void Ros2UdpReceiver::handle_kssis_998(const std::string& msg) {
+    publish_string(pub_device_disconnected_raw_, msg);
+
+    // Example: $KSSIS,998,EM2040_38
+    std::stringstream ss(msg);
+    std::string token;
+    std::vector<std::string> tokens;
+    while (std::getline(ss, token, ',')) {
+        tokens.push_back(token);
+    }
+
+    std::string device = (tokens.size() >= 3) ? tokens[2] : "Unknown";
+
+    std::ostringstream oss;
+    oss << "Device Disconnected\n";
+    oss << "  Device: " << device;
+
+    publish_string(pub_device_disconnected_, oss.str());
 }
 
 // --- HELPERS ---
@@ -191,12 +277,10 @@ std::string Ros2UdpReceiver::parse_and_pretty_print_devices(const std::string& m
     size_t dataStart = start + std::string("$KSSIS,12,").length();
     std::string body = msg.substr(dataStart);
 
-    // Remove trailing $$$ if present
     if (body.size() >= 3 && body.compare(body.size() - 3, 3, "$$$") == 0) {
         body = body.substr(0, body.size() - 3);
     }
 
-    // Split each device by $$$
     std::vector<std::string> deviceEntries;
     size_t pos = 0, found;
     while ((found = body.find("$$$", pos)) != std::string::npos) {
@@ -229,7 +313,6 @@ std::string Ros2UdpReceiver::parse_and_pretty_print_devices(const std::string& m
             deviceInfo[key] = value;
         }
 
-        // Output device info
         oss << "-------------------- Device #" << deviceCount++ << " --------------------\n";
         if (deviceInfo.count("NAME"))         oss << "  Name           : " << deviceInfo["NAME"] << '\n';
         if (deviceInfo.count("IP"))           oss << "  IP Address     : " << deviceInfo["IP"] << '\n';
@@ -247,7 +330,6 @@ std::string Ros2UdpReceiver::parse_and_pretty_print_devices(const std::string& m
     return oss.str();
 }
 
-// main
 int main(int argc, char * argv[]) {
     rclcpp::init(argc, argv);
     auto node = std::make_shared<Ros2UdpReceiver>();

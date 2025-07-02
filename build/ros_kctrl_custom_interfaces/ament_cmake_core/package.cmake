@@ -1,6 +1,6 @@
 set(_AMENT_PACKAGE_NAME "ros_kctrl_custom_interfaces")
 set(ros_kctrl_custom_interfaces_VERSION "0.0.0")
-set(ros_kctrl_custom_interfaces_MAINTAINER "arveds <arveds@todo.todo>")
+set(ros_kctrl_custom_interfaces_MAINTAINER "arveds <arve.daae.solberg@kd.kongsberg.com>")
 set(ros_kctrl_custom_interfaces_BUILD_DEPENDS )
 set(ros_kctrl_custom_interfaces_BUILDTOOL_DEPENDS "ament_cmake" "rosidl_default_generators")
 set(ros_kctrl_custom_interfaces_BUILD_EXPORT_DEPENDS )

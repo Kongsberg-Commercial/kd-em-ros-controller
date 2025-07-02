@@ -5,7 +5,9 @@
   "idl_tuples": [
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/SounderCommand.idl",
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/SetPUParameters.idl",
-    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/RequestPUParameters.idl"
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/RequestPUParameters.idl",
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/RecordingControl.idl",
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/UpdateRecordingPath.idl"
   ],
   "ros_interface_dependencies": [
     "service_msgs:/opt/ros/jazzy/share/service_msgs/msg/ServiceEventInfo.idl",
@@ -24,6 +26,8 @@
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/SounderCommand.idl",
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/SetPUParameters.idl",
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/RequestPUParameters.idl",
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/RecordingControl.idl",
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.idl",
     "/opt/ros/jazzy/share/service_msgs/msg/ServiceEventInfo.idl",
     "/opt/ros/jazzy/share/builtin_interfaces/msg/Duration.idl",
     "/opt/ros/jazzy/share/builtin_interfaces/msg/Time.idl"

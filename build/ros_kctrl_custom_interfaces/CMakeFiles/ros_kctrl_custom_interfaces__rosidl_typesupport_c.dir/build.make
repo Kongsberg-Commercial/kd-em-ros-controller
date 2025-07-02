@@ -78,6 +78,8 @@ rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_suppo
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp: rosidl_adapter/ros_kctrl_custom_interfaces/srv/SounderCommand.idl
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp: rosidl_adapter/ros_kctrl_custom_interfaces/srv/SetPUParameters.idl
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp: rosidl_adapter/ros_kctrl_custom_interfaces/srv/RequestPUParameters.idl
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp: rosidl_adapter/ros_kctrl_custom_interfaces/srv/RecordingControl.idl
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp: rosidl_adapter/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.idl
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp: /opt/ros/jazzy/share/service_msgs/msg/ServiceEventInfo.idl
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp: /opt/ros/jazzy/share/builtin_interfaces/msg/Duration.idl
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp: /opt/ros/jazzy/share/builtin_interfaces/msg/Time.idl
@@ -89,6 +91,12 @@ rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_sup
 
 rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp
+
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp
+
+rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp
 
 CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/flags.make
 CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.o: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp
@@ -132,11 +140,41 @@ CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupp
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.s
 
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/flags.make
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o -MF CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o.d -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o -c /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp > CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.i
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.s
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/flags.make
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o -MF CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o.d -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o -c /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp > CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.i
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.s
+
 # Object files for target ros_kctrl_custom_interfaces__rosidl_typesupport_c
 ros_kctrl_custom_interfaces__rosidl_typesupport_c_OBJECTS = \
 "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.o" \
 "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_support.cpp.o" \
-"CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o"
+"CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o" \
+"CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o" \
+"CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o"
 
 # External object files for target ros_kctrl_custom_interfaces__rosidl_typesupport_c
 ros_kctrl_custom_interfaces__rosidl_typesupport_c_EXTERNAL_OBJECTS =
@@ -144,6 +182,8 @@ ros_kctrl_custom_interfaces__rosidl_typesupport_c_EXTERNAL_OBJECTS =
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.o
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_support.cpp.o
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o
+libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o
+libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/build.make
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: libros_kctrl_custom_interfaces__rosidl_generator_c.so
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: /opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_c.so
@@ -154,7 +194,7 @@ libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: /opt/ros/jazzy/lib/libb
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: /opt/ros/jazzy/lib/librosidl_runtime_c.so
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: /opt/ros/jazzy/lib/librcutils.so
 libros_kctrl_custom_interfaces__rosidl_typesupport_c.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libros_kctrl_custom_interfaces__rosidl_typesupport_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library libros_kctrl_custom_interfaces__rosidl_typesupport_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -165,9 +205,11 @@ CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/clean
 
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp
 CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp
 CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_support.cpp
 CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/depend: rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp
 	cd /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/depend
 

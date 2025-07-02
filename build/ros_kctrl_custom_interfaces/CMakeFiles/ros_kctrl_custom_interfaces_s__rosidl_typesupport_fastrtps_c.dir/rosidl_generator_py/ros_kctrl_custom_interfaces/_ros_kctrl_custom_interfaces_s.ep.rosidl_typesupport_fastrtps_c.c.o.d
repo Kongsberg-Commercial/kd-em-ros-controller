@@ -240,4 +240,10 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
  /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__functions.h \
  /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.h \
  /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__struct.h \
- /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__functions.h
+ /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__functions.h \
+ /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.h \
+ /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__struct.h \
+ /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.h \
+ /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.h \
+ /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__struct.h \
+ /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.h

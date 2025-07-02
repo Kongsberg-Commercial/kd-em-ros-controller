@@ -59,12 +59,30 @@ struct SetPUParameters_Request_
   using _sounder_name_type =
     std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>;
   _sounder_name_type sounder_name;
+  using _param_names_type =
+    std::vector<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>>;
+  _param_names_type param_names;
+  using _param_values_type =
+    std::vector<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>>;
+  _param_values_type param_values;
 
   // setters for named parameter idiom
   Type & set__sounder_name(
     const std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> & _arg)
   {
     this->sounder_name = _arg;
+    return *this;
+  }
+  Type & set__param_names(
+    const std::vector<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>> & _arg)
+  {
+    this->param_names = _arg;
+    return *this;
+  }
+  Type & set__param_values(
+    const std::vector<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>> & _arg)
+  {
+    this->param_values = _arg;
     return *this;
   }
 
@@ -111,6 +129,12 @@ struct SetPUParameters_Request_
   bool operator==(const SetPUParameters_Request_ & other) const
   {
     if (this->sounder_name != other.sounder_name) {
+      return false;
+    }
+    if (this->param_names != other.param_names) {
+      return false;
+    }
+    if (this->param_values != other.param_values) {
       return false;
     }
     return true;

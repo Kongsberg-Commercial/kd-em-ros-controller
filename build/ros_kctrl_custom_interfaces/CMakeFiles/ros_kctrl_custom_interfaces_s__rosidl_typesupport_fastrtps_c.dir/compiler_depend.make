@@ -3,6 +3,9 @@
 
 CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o: rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c \
   rosidl_generator_c/ros_kctrl_custom_interfaces/msg/rosidl_generator_c__visibility_control.h \
+  rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.h \
+  rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__struct.h \
+  rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.h \
   rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__functions.h \
   rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__struct.h \
   rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.h \
@@ -12,6 +15,9 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
   rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__functions.h \
   rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__struct.h \
   rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.h \
+  rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.h \
+  rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__struct.h \
+  rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.h \
   /opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/time__struct.h \
   /opt/ros/jazzy/include/rcutils/rcutils/allocator.h \
   /opt/ros/jazzy/include/rcutils/rcutils/macros.h \
@@ -304,8 +310,6 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
 
 /usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
 
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
-
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
@@ -316,17 +320,15 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
-/usr/include/python3.12/memoryobject.h:
+/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
-/usr/include/python3.12/listobject.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
-/usr/include/python3.12/pystrtod.h:
-
-/usr/include/python3.12/iterobject.h:
-
-/usr/include/features-time64.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
 /usr/include/python3.12/genericaliasobject.h:
 
@@ -350,12 +352,6 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
 
 /usr/include/python3.12/cpython/traceback.h:
 
-/usr/include/python3.12/cpython/pymem.h:
-
-/usr/include/python3.12/exports.h:
-
-/usr/include/python3.12/cpython/pyframe.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/python3.12/cpython/pyerrors.h:
@@ -363,6 +359,8 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
 /usr/include/python3.12/cpython/longobject.h:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
+
+/usr/include/python3.12/memoryobject.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
@@ -376,27 +374,21 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
 
 /usr/include/linux/close_range.h:
 
+/usr/include/python3.12/cpython/pyframe.h:
+
+/usr/include/python3.12/exports.h:
+
+/usr/include/python3.12/cpython/pymem.h:
+
 /usr/include/python3.12/cpython/fileutils.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
-
-/usr/include/python3.12/intrcheck.h:
-
-/usr/include/python3.12/traceback.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/python3.12/cpython/context.h:
 
 /usr/include/python3.12/cpython/complexobject.h:
 
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_description/field__struct.h:
-
-/usr/include/python3.12/import.h:
-
-/usr/include/python3.12/setobject.h:
 
 /usr/include/python3.12/cpython/import.h:
 
@@ -422,21 +414,31 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
 
 /usr/include/python3.12/cpython/bytesobject.h:
 
-/opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_description/individual_type_description__struct.h:
+/usr/include/python3.12/abstract.h:
 
-/opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h:
+/usr/include/x86_64-linux-gnu/bits/statx-generic.h:
 
-/opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_description/type_description__struct.h:
+/usr/include/python3.12/cpython/pylifecycle.h:
 
-/usr/include/python3.12/fileobject.h:
+/usr/include/python3.12/cpython/pytime.h:
 
-/opt/ros/jazzy/include/rcutils/rcutils/visibility_control_macros.h:
+/usr/include/python3.12/cpython/cellobject.h:
 
 /usr/include/python3.12/dictobject.h:
 
 /usr/include/python3.12/Python.h:
 
+/usr/include/python3.12/cpython/object.h:
+
+/usr/include/python3.12/bytearrayobject.h:
+
+/usr/include/python3.12/rangeobject.h:
+
 /opt/ros/jazzy/include/rcutils/rcutils/sha256.h:
+
+/usr/include/python3.12/pyframe.h:
+
+/usr/include/linux/stat.h:
 
 /usr/include/asm-generic/errno-base.h:
 
@@ -458,13 +460,33 @@ CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosi
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
-/usr/include/linux/stddef.h:
+/usr/include/python3.12/cpython/code.h:
 
-/usr/include/inttypes.h:
+/usr/include/python3.12/cpython/abstract.h:
+
+/usr/include/python3.12/bltinmodule.h:
+
+/opt/ros/jazzy/include/rcutils/rcutils/macros.h:
+
+/opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h:
+
+/opt/ros/jazzy/include/rcutils/rcutils/visibility_control_macros.h:
+
+/usr/include/python3.12/fileobject.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.h:
+
+/usr/include/python3.12/pythread.h:
+
+/opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_description/type_description__struct.h:
 
 /usr/include/python3.12/cpython/longintrepr.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/inttypes.h:
 
 rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.h:
 
@@ -482,18 +504,6 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
-/opt/ros/jazzy/include/rcutils/rcutils/macros.h:
-
-/usr/include/python3.12/cpython/code.h:
-
-/usr/include/python3.12/cpython/abstract.h:
-
-/usr/include/python3.12/bltinmodule.h:
-
-/usr/include/python3.12/pymath.h:
-
-/usr/include/x86_64-linux-gnu/bits/errno.h:
-
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
 /usr/include/python3.12/cpython/pystate.h:
@@ -503,6 +513,24 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 /usr/include/python3.12/cpython/pyctype.h:
 
 rosidl_generator_c/ros_kctrl_custom_interfaces/msg/rosidl_generator_c__visibility_control.h:
+
+/usr/include/linux/types.h:
+
+rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c:
+
+/usr/include/linux/stddef.h:
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__struct.h:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/python3.12/pymath.h:
+
+/opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_description/individual_type_description__struct.h:
+
+/opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h:
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.h:
 
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/service_type_support_struct.h:
 
@@ -522,6 +550,22 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__struc
 
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_description/type_source__struct.h:
 
+/usr/include/python3.12/cpython/fileobject.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
+/usr/include/python3.12/cpython/warnings.h:
+
+/usr/include/python3.12/objimpl.h:
+
+/usr/include/python3.12/fileutils.h:
+
+/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
+
+/usr/include/features-time64.h:
+
+/usr/include/python3.12/iterobject.h:
+
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/string.h:
 
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_description/field_type__struct.h:
@@ -536,47 +580,29 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__str
 
 /usr/include/x86_64-linux-gnu/bits/stat.h:
 
+/opt/ros/jazzy/include/rcutils/rcutils/visibility_control.h:
+
 rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__functions.h:
 
-/usr/include/python3.12/cpython/warnings.h:
-
-/usr/include/python3.12/objimpl.h:
-
-/usr/include/python3.12/fileutils.h:
-
-/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
-/usr/include/python3.12/cpython/pylifecycle.h:
-
-/usr/include/python3.12/cpython/pytime.h:
-
-/usr/include/python3.12/cpython/cellobject.h:
-
-/usr/include/python3.12/cpython/fileobject.h:
-
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
-
-/usr/include/python3.12/cpython/object.h:
-
-/usr/include/python3.12/bytearrayobject.h:
-
-/usr/include/python3.12/rangeobject.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c:
-
-/usr/include/linux/types.h:
-
-/usr/include/linux/stat.h:
-
-/usr/include/python3.12/pyframe.h:
-
 /usr/include/python3.12/cpython/memoryobject.h:
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__struct.h:
+
+/usr/include/errno.h:
 
 rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.h:
 
 /usr/include/asm-generic/int-ll64.h:
+
+/usr/include/python3.12/cpython/modsupport.h:
+
+/usr/include/python3.12/cpython/dictobject.h:
+
+/usr/include/pthread.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.h:
 
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_hash.h:
 
@@ -590,27 +616,17 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 
 /usr/include/ctype.h:
 
-/usr/include/errno.h:
-
-/usr/include/python3.12/cpython/modsupport.h:
-
-/usr/include/python3.12/cpython/dictobject.h:
-
-/usr/include/pthread.h:
-
-/opt/ros/jazzy/include/rcutils/rcutils/visibility_control.h:
-
 /usr/include/features.h:
 
 /usr/include/python3.12/unicodeobject.h:
 
 /usr/include/limits.h:
 
-/opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h:
-
 /usr/include/linux/errno.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.h:
 
 /usr/include/linux/limits.h:
 
@@ -630,9 +646,21 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h:
 
-/usr/include/python3.12/abstract.h:
+/usr/include/python3.12/import.h:
 
-/usr/include/x86_64-linux-gnu/bits/statx-generic.h:
+/usr/include/python3.12/setobject.h:
+
+/usr/include/python3.12/intrcheck.h:
+
+/usr/include/python3.12/traceback.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/python3.12/listobject.h:
+
+/usr/include/python3.12/pystrtod.h:
 
 /usr/include/python3.12/methodobject.h:
 
@@ -652,8 +680,6 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/wint_t.h:
-
 /usr/include/python3.12/cpython/methodobject.h:
 
 /opt/ros/jazzy/include/rcutils/rcutils/allocator.h:
@@ -670,6 +696,12 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/python3.12/pymem.h:
+
+/usr/include/python3.12/pystate.h:
+
 /usr/include/string.h:
 
 /usr/include/stdc-predef.h:
@@ -682,19 +714,11 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 
 /usr/include/python3.12/pythonrun.h:
 
-/usr/include/python3.12/pythread.h:
-
 /usr/include/python3.12/pytypedefs.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
 /usr/include/python3.12/sliceobject.h:
-
-/usr/include/python3.12/pymem.h:
-
-/usr/include/python3.12/pystate.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
 /usr/include/python3.12/structseq.h:
 
@@ -708,11 +732,11 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 
 /usr/include/python3.12/tracemalloc.h:
 
-/usr/include/python3.12/longobject.h:
-
 /usr/include/python3.12/cpython/tupleobject.h:
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/python3.12/longobject.h:
 
 /usr/include/python3.12/tupleobject.h:
 
@@ -784,8 +808,6 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/usr/include/x86_64-linux-gnu/bits/sched.h:
-
 /usr/include/x86_64-linux-gnu/bits/struct_stat.h:
 
 /usr/include/time.h:
@@ -835,7 +857,3 @@ rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters_
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:

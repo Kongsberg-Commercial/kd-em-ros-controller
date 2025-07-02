@@ -3,8 +3,8 @@
 <package format="3">
   <name>ros_kctrl_custom_interfaces</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="arveds@todo.todo">arveds</maintainer>
+  <description>Custom interfaces for ROS2 wrapper for K-Controller</description>
+  <maintainer email="arve.daae.solberg@kd.kongsberg.com">arveds</maintainer>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

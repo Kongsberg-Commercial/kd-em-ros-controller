@@ -1,0 +1,88 @@
+-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+-- Found ros_kctrl_custom_interfaces: 0.0.0 (/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake)
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg
+[ 16%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_receiver.dir/src/ros2ctrl_udp_receiver.cpp.o[0m
+[ 50%] [32m[1mLinking CXX static library libros2ctrl_udp_client.a[0m
+[ 50%] Built target ros2ctrl_udp_client
+[ 66%] [32mBuilding CXX object CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o[0m
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:[m[K In constructor ‘[01m[KRos2UdpReceiver::[01;32m[KRos2UdpReceiver[m[K()[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:17:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_version_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_version_[m[K’?
+   17 |     [01;31m[Kpub_version_raw_[m[K  = this->create_publisher<std_msgs::msg::String>("kctrl/version_raw", 10);
+      |     [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |     [32m[Kpub_version_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:20:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_devices_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_devices_[m[K’?
+   20 |     [01;31m[Kpub_devices_raw_[m[K  = this->create_publisher<std_msgs::msg::String>("kctrl/detected_devices_raw", 10);
+      |     [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |     [32m[Kpub_devices_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:23:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_param_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_param_[m[K’?
+   23 |     [01;31m[Kpub_param_raw_[m[K    = this->create_publisher<std_msgs::msg::String>("kctrl/parameters_raw", 10);
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+      |     [32m[Kpub_param_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:26:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_multicast_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_multicast_[m[K’?
+   26 |     [01;31m[Kpub_multicast_raw_[m[K= this->create_publisher<std_msgs::msg::String>("kctrl/multicast_raw", 10);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+      |     [32m[Kpub_multicast_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:29:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_status_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_status_[m[K’?
+   29 |     [01;31m[Kpub_status_raw_[m[K   = this->create_publisher<std_msgs::msg::String>("kctrl/status_raw", 10);
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+      |     [32m[Kpub_status_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:32:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_unknown812_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_unknown812_[m[K’?
+   32 |     [01;31m[Kpub_unknown812_raw_[m[K = this->create_publisher<std_msgs::msg::String>("kctrl/unknown812_raw", 10);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |     [32m[Kpub_unknown812_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:35:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_unknown813_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_unknown813_[m[K’?
+   35 |     [01;31m[Kpub_unknown813_raw_[m[K = this->create_publisher<std_msgs::msg::String>("kctrl/unknown813_raw", 10);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |     [32m[Kpub_unknown813_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:[m[K In member function ‘[01m[Kvoid Ros2UdpReceiver::[01;32m[Khandle_kssis_1[m[K(const std::string&)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:117:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_version_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_version_[m[K’?
+  117 |     publish_string([01;31m[Kpub_version_raw_[m[K, msg);
+      |                    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |                    [32m[Kpub_version_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:[m[K In member function ‘[01m[Kvoid Ros2UdpReceiver::[01;32m[Khandle_kssis_12[m[K(const std::string&)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:123:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_devices_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_devices_[m[K’?
+  123 |     publish_string([01;31m[Kpub_devices_raw_[m[K, msg);
+      |                    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |                    [32m[Kpub_devices_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:[m[K In member function ‘[01m[Kvoid Ros2UdpReceiver::[01;32m[Khandle_kssis_401[m[K(const std::string&)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:127:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_param_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_param_[m[K’?
+  127 |     publish_string([01;31m[Kpub_param_raw_[m[K, msg);
+      |                    [01;31m[K^~~~~~~~~~~~~~[m[K
+      |                    [32m[Kpub_param_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:[m[K In member function ‘[01m[Kvoid Ros2UdpReceiver::[01;32m[Khandle_kssis_455[m[K(const std::string&)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:149:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_multicast_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_multicast_[m[K’?
+  149 |     publish_string([01;31m[Kpub_multicast_raw_[m[K, msg);
+      |                    [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+      |                    [32m[Kpub_multicast_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:[m[K In member function ‘[01m[Kvoid Ros2UdpReceiver::[01;32m[Khandle_kssis_616[m[K(const std::string&)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:167:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_status_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_status_[m[K’?
+  167 |     publish_string([01;31m[Kpub_status_raw_[m[K, msg);
+      |                    [01;31m[K^~~~~~~~~~~~~~~[m[K
+      |                    [32m[Kpub_status_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:[m[K In member function ‘[01m[Kvoid Ros2UdpReceiver::[01;32m[Khandle_kssis_812[m[K(const std::string&)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:191:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_unknown812_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_unknown812_[m[K’?
+  191 |     publish_string([01;31m[Kpub_unknown812_raw_[m[K, msg);
+      |                    [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |                    [32m[Kpub_unknown812_[m[K
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:[m[K In member function ‘[01m[Kvoid Ros2UdpReceiver::[01;32m[Khandle_kssis_813[m[K(const std::string&)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_udp_receiver.cpp:195:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_unknown813_raw_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpub_unknown813_[m[K’?
+  195 |     publish_string([01;31m[Kpub_unknown813_raw_[m[K, msg);
+      |                    [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+      |                    [32m[Kpub_unknown813_[m[K
+[ 83%] [32m[1mLinking CXX executable ros2ctrl_wrapper_node[0m
+[ 83%] Built target ros2ctrl_wrapper_node
+gmake[2]: *** [CMakeFiles/ros2ctrl_udp_receiver.dir/build.make:76: CMakeFiles/ros2ctrl_udp_receiver.dir/src/ros2ctrl_udp_receiver.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/ros2ctrl_udp_receiver.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

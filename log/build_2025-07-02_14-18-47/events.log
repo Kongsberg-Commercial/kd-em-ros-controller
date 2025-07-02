@@ -1,0 +1,604 @@
+[0.000000] (-) TimerEvent: {}
+[0.000147] (ros_kctrl_custom_interfaces) JobQueued: {'identifier': 'ros_kctrl_custom_interfaces', 'dependencies': OrderedDict()}
+[0.000543] (ros_kctrl_interface_pkg) JobQueued: {'identifier': 'ros_kctrl_interface_pkg', 'dependencies': OrderedDict({'ros_kctrl_custom_interfaces': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces'})}
+[0.000608] (ros_kctrl_custom_interfaces) JobStarted: {'identifier': 'ros_kctrl_custom_interfaces'}
+[0.007248] (ros_kctrl_custom_interfaces) JobProgress: {'identifier': 'ros_kctrl_custom_interfaces', 'progress': 'cmake'}
+[0.008668] (ros_kctrl_custom_interfaces) JobProgress: {'identifier': 'ros_kctrl_custom_interfaces', 'progress': 'build'}
+[0.008736] (ros_kctrl_custom_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces', '--', '-j12', '-l12'], 'cwd': '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'arveds', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/share/gz', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'WT_PROFILE_ID': '{885670e4-9bfb-5ad2-b9b5-7648656d319d}', 'HOME': '/home/arveds', 'OLDPWD': '/home/arveds', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/arveds/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'arveds', 'NAME': 'KPC22024636', 'WSL_INTEROP': '/run/WSL/470_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/dotnet/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/arveds/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files (x86)/Nmap:/snap/bin', 'WT_SESSION': '2e51b831-f245-4679-84f7-d18763bb41ee', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[0.042779] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.071020] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.099541] (-) TimerEvent: {}
+[0.171903] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[0.176639] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.199640] (-) TimerEvent: {}
+[0.275365] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.299756] (-) TimerEvent: {}
+[0.312242] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.5 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[0.399996] (-) TimerEvent: {}
+[0.500320] (-) TimerEvent: {}
+[0.600668] (-) TimerEvent: {}
+[0.608197] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[0.693640] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.700849] (-) TimerEvent: {}
+[0.801158] (-) TimerEvent: {}
+[0.801721] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.804882] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[0.901297] (-) TimerEvent: {}
+[1.001648] (-) TimerEvent: {}
+[1.034474] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[1.057788] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Configuring done (1.0s)\n'}
+[1.100417] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[1.101754] (-) TimerEvent: {}
+[1.115475] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Build files have been written to: /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces\n'}
+[1.148499] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[  1%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[1.158525] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[  1%] Built target ament_cmake_python_copy_ros_kctrl_custom_interfaces\n'}
+[1.201896] (-) TimerEvent: {}
+[1.302289] (-) TimerEvent: {}
+[1.385103] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[  1%] Built target ros_kctrl_custom_interfaces__rosidl_generator_type_description\n'}
+[1.394638] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[1.397015] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[1.402445] (-) TimerEvent: {}
+[1.404949] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[  4%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[1.421126] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'writing ros_kctrl_custom_interfaces.egg-info/PKG-INFO\n'}
+[1.421581] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'writing dependency_links to ros_kctrl_custom_interfaces.egg-info/dependency_links.txt\n'}
+[1.421906] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'writing top-level names to ros_kctrl_custom_interfaces.egg-info/top_level.txt\n'}
+[1.498456] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"reading manifest file 'ros_kctrl_custom_interfaces.egg-info/SOURCES.txt'\n"}
+[1.499148] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"writing manifest file 'ros_kctrl_custom_interfaces.egg-info/SOURCES.txt'\n"}
+[1.502580] (-) TimerEvent: {}
+[1.529284] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[  4%] Built target ament_cmake_python_build_ros_kctrl_custom_interfaces_egg\n'}
+[1.602732] (-) TimerEvent: {}
+[1.703162] (-) TimerEvent: {}
+[1.803495] (-) TimerEvent: {}
+[1.903809] (-) TimerEvent: {}
+[2.004174] (-) TimerEvent: {}
+[2.021304] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[  4%] Built target ros_kctrl_custom_interfaces__cpp\n'}
+[2.104338] (-) TimerEvent: {}
+[2.117775] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.c.o\x1b[0m\n'}
+[2.118178] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c.o\x1b[0m\n'}
+[2.118409] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__description.c.o\x1b[0m\n'}
+[2.118568] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__description.c.o\x1b[0m\n'}
+[2.118939] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__functions.c.o\x1b[0m\n'}
+[2.119235] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__functions.c.o\x1b[0m\n'}
+[2.119418] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__description.c.o\x1b[0m\n'}
+[2.119716] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.c.o\x1b[0m\n'}
+[2.120117] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 18%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__functions.c.o\x1b[0m\n'}
+[2.120267] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c.o\x1b[0m\n'}
+[2.120352] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c.o\x1b[0m\n'}
+[2.125289] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_c.dir/rosidl_generator_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o\x1b[0m\n'}
+[2.204504] (-) TimerEvent: {}
+[2.275304] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 25%] \x1b[32m\x1b[1mLinking C shared library libros_kctrl_custom_interfaces__rosidl_generator_c.so\x1b[0m\n'}
+[2.304623] (-) TimerEvent: {}
+[2.336678] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 25%] Built target ros_kctrl_custom_interfaces__rosidl_generator_c\n'}
+[2.346853] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 26%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[2.347246] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[2.347682] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[2.347911] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[2.348123] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[2.348540] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 34%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[2.404803] (-) TimerEvent: {}
+[2.505256] (-) TimerEvent: {}
+[2.605625] (-) TimerEvent: {}
+[2.706106] (-) TimerEvent: {}
+[2.806483] (-) TimerEvent: {}
+[2.815990] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.o\x1b[0m\n'}
+[2.816268] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_support.cpp.o\x1b[0m\n'}
+[2.816442] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o\x1b[0m\n'}
+[2.817862] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o\x1b[0m\n'}
+[2.844819] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.o\x1b[0m\n'}
+[2.845193] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_support.cpp.o\x1b[0m\n'}
+[2.845417] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o\x1b[0m\n'}
+[2.851463] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o\x1b[0m\n'}
+[2.906643] (-) TimerEvent: {}
+[2.920292] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking CXX shared library libros_kctrl_custom_interfaces__rosidl_typesupport_c.so\x1b[0m\n'}
+[3.009901] (-) TimerEvent: {}
+[3.016720] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c.o\x1b[0m\n'}
+[3.017054] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.c.o\x1b[0m\n'}
+[3.027192] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.c.o\x1b[0m\n'}
+[3.028353] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c.o\x1b[0m\n'}
+[3.053296] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 54%] Built target ros_kctrl_custom_interfaces__rosidl_typesupport_c\n'}
+[3.061183] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.cpp.o\x1b[0m\n'}
+[3.073811] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.cpp.o\x1b[0m\n'}
+[3.110038] (-) TimerEvent: {}
+[3.119510] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.cpp.o\x1b[0m\n'}
+[3.127325] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp.o\x1b[0m\n'}
+[3.136164] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 62%] \x1b[32m\x1b[1mLinking C shared library libros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[3.210391] (-) TimerEvent: {}
+[3.231108] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 62%] Built target ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c\n'}
+[3.310581] (-) TimerEvent: {}
+[3.412632] (-) TimerEvent: {}
+[3.460275] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/sounder_command__type_support.cpp.o\x1b[0m\n'}
+[3.469256] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 65%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/set_pu_parameters__type_support.cpp.o\x1b[0m\n'}
+[3.480732] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/request_pu_parameters__type_support.cpp.o\x1b[0m\n'}
+[3.513512] (-) TimerEvent: {}
+[3.530811] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support_c.cpp.o\x1b[0m\n'}
+[3.613670] (-) TimerEvent: {}
+[3.714137] (-) TimerEvent: {}
+[3.715550] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support_c.cpp.o\x1b[0m\n'}
+[3.723933] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps/recording_control__type_support.cpp.o\x1b[0m\n'}
+[3.745845] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support_c.cpp.o\x1b[0m\n'}
+[3.771300] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX shared library libros_kctrl_custom_interfaces__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[3.814272] (-) TimerEvent: {}
+[3.914730] (-) TimerEvent: {}
+[3.997866] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 75%] Built target ros_kctrl_custom_interfaces__rosidl_typesupport_cpp\n'}
+[4.004355] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding CXX object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support_c.cpp.o\x1b[0m\n'}
+[4.014871] (-) TimerEvent: {}
+[4.118060] (-) TimerEvent: {}
+[4.186750] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 78%] \x1b[32m\x1b[1mLinking CXX shared library libros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[4.218238] (-) TimerEvent: {}
+[4.318790] (-) TimerEvent: {}
+[4.373835] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 78%] Built target ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp\n'}
+[4.418973] (-) TimerEvent: {}
+[4.519444] (-) TimerEvent: {}
+[4.619936] (-) TimerEvent: {}
+[4.720412] (-) TimerEvent: {}
+[4.815044] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 79%] \x1b[32m\x1b[1mLinking CXX shared library libros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[4.820615] (-) TimerEvent: {}
+[4.838182] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 81%] \x1b[32m\x1b[1mLinking CXX shared library libros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[4.920792] (-) TimerEvent: {}
+[4.930819] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 81%] Built target ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[4.935460] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 81%] Built target ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c\n'}
+[4.952743] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 81%] Built target ros_kctrl_custom_interfaces\n'}
+[4.970375] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 82%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[5.020987] (-) TimerEvent: {}
+[5.121376] (-) TimerEvent: {}
+[5.221775] (-) TimerEvent: {}
+[5.322060] (-) TimerEvent: {}
+[5.422434] (-) TimerEvent: {}
+[5.522824] (-) TimerEvent: {}
+[5.623177] (-) TimerEvent: {}
+[5.723500] (-) TimerEvent: {}
+[5.739480] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 82%] Built target ros_kctrl_custom_interfaces__py\n'}
+[5.761915] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_sounder_command_s.c.o\x1b[0m\n'}
+[5.762171] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_set_pu_parameters_s.c.o\x1b[0m\n'}
+[5.762879] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.c.o\x1b[0m\n'}
+[5.763577] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.o\x1b[0m\n'}
+[5.823669] (-) TimerEvent: {}
+[5.924066] (-) TimerEvent: {}
+[5.991230] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 90%] \x1b[32m\x1b[1mLinking C shared library libros_kctrl_custom_interfaces__rosidl_generator_py.so\x1b[0m\n'}
+[6.024192] (-) TimerEvent: {}
+[6.050393] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 90%] Built target ros_kctrl_custom_interfaces__rosidl_generator_py\n'}
+[6.071920] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_c.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[6.072102] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[6.072755] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding C object CMakeFiles/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[6.124364] (-) TimerEvent: {}
+[6.223390] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[6.224523] (-) TimerEvent: {}
+[6.246852] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[6.247082] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[6.287488] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[100%] Built target ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c\n'}
+[6.297439] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[100%] Built target ros_kctrl_custom_interfaces_s__rosidl_typesupport_c\n'}
+[6.297862] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'[100%] Built target ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c\n'}
+[6.312708] (ros_kctrl_custom_interfaces) CommandEnded: {'returncode': 0}
+[6.313597] (ros_kctrl_custom_interfaces) JobProgress: {'identifier': 'ros_kctrl_custom_interfaces', 'progress': 'install'}
+[6.323963] (ros_kctrl_custom_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces'], 'cwd': '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'arveds', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/share/gz', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'WT_PROFILE_ID': '{885670e4-9bfb-5ad2-b9b5-7648656d319d}', 'HOME': '/home/arveds', 'OLDPWD': '/home/arveds', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/arveds/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'arveds', 'NAME': 'KPC22024636', 'WSL_INTEROP': '/run/WSL/470_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/dotnet/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/arveds/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files (x86)/Nmap:/snap/bin', 'WT_SESSION': '2e51b831-f245-4679-84f7-d18763bb41ee', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[6.324915] (-) TimerEvent: {}
+[6.332312] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[6.332755] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ament_index/resource_index/rosidl_interfaces/ros_kctrl_custom_interfaces\n'}
+[6.332870] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/SounderCommand.json\n'}
+[6.332972] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/SetPUParameters.json\n'}
+[6.333250] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/RequestPUParameters.json\n'}
+[6.333516] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/RecordingControl.json\n'}
+[6.333701] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces\n'}
+[6.333931] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg\n'}
+[6.334113] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[6.334401] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv\n'}
+[6.334500] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/stop_pinging.h\n'}
+[6.334690] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/set_pu_parameters.h\n'}
+[6.334867] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail\n'}
+[6.335053] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__struct.h\n'}
+[6.335248] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__functions.c\n'}
+[6.335432] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__functions.c\n'}
+[6.335614] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.h\n'}
+[6.335854] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__type_support.h\n'}
+[6.336051] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__description.c\n'}
+[6.336315] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__struct.h\n'}
+[6.336587] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__struct.h\n'}
+[6.336764] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__struct.h\n'}
+[6.336959] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__description.c\n'}
+[6.337153] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__functions.c\n'}
+[6.337347] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.h\n'}
+[6.337540] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c\n'}
+[6.337762] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.h\n'}
+[6.337973] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__description.c\n'}
+[6.338167] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__functions.h\n'}
+[6.338384] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__description.c\n'}
+[6.338573] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__functions.h\n'}
+[6.338892] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__type_support.c\n'}
+[6.338974] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__type_support.c\n'}
+[6.339042] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__functions.h\n'}
+[6.339208] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__description.c\n'}
+[6.339415] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.c\n'}
+[6.339610] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c\n'}
+[6.339842] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__functions.h\n'}
+[6.340039] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__type_support.h\n'}
+[6.340233] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__struct.h\n'}
+[6.340427] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__type_support.c\n'}
+[6.340623] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__description.c\n'}
+[6.340871] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__functions.c\n'}
+[6.340944] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__description.c\n'}
+[6.341013] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.h\n'}
+[6.341081] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__functions.c\n'}
+[6.341149] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.h\n'}
+[6.341333] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__functions.h\n'}
+[6.341532] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.c\n'}
+[6.341801] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__functions.c\n'}
+[6.341916] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__struct.h\n'}
+[6.341999] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.c\n'}
+[6.342218] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__type_support.h\n'}
+[6.342351] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__struct.h\n'}
+[6.342437] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__functions.h\n'}
+[6.342572] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/recording_control.h\n'}
+[6.342646] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/start_sounder.h\n'}
+[6.342717] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/request_pu_parameters.h\n'}
+[6.342920] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/sounder_command.h\n'}
+[6.343119] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/start_pinging.h\n'}
+[6.343318] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/environment/library_path.sh\n'}
+[6.343516] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/environment/library_path.dsv\n'}
+[6.343715] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_generator_c.so\n'}
+[6.343914] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_generator_c.so" to ""\n'}
+[6.344132] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces\n'}
+[6.344333] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg\n'}
+[6.344533] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[6.344808] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv\n'}
+[6.345013] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail\n'}
+[6.345218] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__rosidl_typesupport_fastrtps_c.h\n'}
+[6.345357] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__rosidl_typesupport_fastrtps_c.h\n'}
+[6.345558] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__rosidl_typesupport_fastrtps_c.h\n'}
+[6.345780] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__rosidl_typesupport_fastrtps_c.h\n'}
+[6.345970] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__rosidl_typesupport_fastrtps_c.h\n'}
+[6.346107] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__rosidl_typesupport_fastrtps_c.h\n'}
+[6.346253] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__rosidl_typesupport_fastrtps_c.h\n'}
+[6.346376] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[6.346512] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[6.346727] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces\n'}
+[6.346869] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg\n'}
+[6.347053] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[6.347195] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv\n'}
+[6.347362] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail\n'}
+[6.347552] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__rosidl_typesupport_introspection_c.h\n'}
+[6.347743] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__rosidl_typesupport_introspection_c.h\n'}
+[6.348000] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.c\n'}
+[6.348138] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__rosidl_typesupport_introspection_c.h\n'}
+[6.348214] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__type_support.c\n'}
+[6.348387] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__type_support.c\n'}
+[6.348567] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__rosidl_typesupport_introspection_c.h\n'}
+[6.348816] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.c\n'}
+[6.348999] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.c\n'}
+[6.349179] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__type_support.c\n'}
+[6.349369] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__rosidl_typesupport_introspection_c.h\n'}
+[6.349540] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__rosidl_typesupport_introspection_c.h\n'}
+[6.349712] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__rosidl_typesupport_introspection_c.h\n'}
+[6.349925] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.c\n'}
+[6.350098] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.so\n'}
+[6.350377] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c.so" to ""\n'}
+[6.350455] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_c.so\n'}
+[6.350514] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_c.so" to ""\n'}
+[6.350573] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces\n'}
+[6.350637] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg\n'}
+[6.350694] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[6.350751] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv\n'}
+[6.350921] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/request_pu_parameters.hpp\n'}
+[6.351088] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail\n'}
+[6.351255] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.hpp\n'}
+[6.351422] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.hpp\n'}
+[6.351589] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__struct.hpp\n'}
+[6.351760] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__builder.hpp\n'}
+[6.351925] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__type_support.hpp\n'}
+[6.352091] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__struct.hpp\n'}
+[6.352281] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__builder.hpp\n'}
+[6.352535] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__builder.hpp\n'}
+[6.352708] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__struct.hpp\n'}
+[6.352898] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__traits.hpp\n'}
+[6.353085] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.hpp\n'}
+[6.353275] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.hpp\n'}
+[6.353543] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__traits.hpp\n'}
+[6.353619] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__traits.hpp\n'}
+[6.353693] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__struct.hpp\n'}
+[6.353823] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__traits.hpp\n'}
+[6.353898] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__struct.hpp\n'}
+[6.353960] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__type_support.hpp\n'}
+[6.354024] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__traits.hpp\n'}
+[6.354207] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__builder.hpp\n'}
+[6.354381] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__traits.hpp\n'}
+[6.354554] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__struct.hpp\n'}
+[6.354726] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__builder.hpp\n'}
+[6.354899] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__builder.hpp\n'}
+[6.355072] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__traits.hpp\n'}
+[6.355259] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__type_support.hpp\n'}
+[6.355432] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__struct.hpp\n'}
+[6.355605] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__builder.hpp\n'}
+[6.355777] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/start_pinging.hpp\n'}
+[6.355998] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/recording_control.hpp\n'}
+[6.356157] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/stop_pinging.hpp\n'}
+[6.356223] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/sounder_command.hpp\n'}
+[6.356416] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/start_sounder.hpp\n'}
+[6.356595] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/set_pu_parameters.hpp\n'}
+[6.356772] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces\n'}
+[6.356949] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg\n'}
+[6.357126] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[6.357329] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv\n'}
+[6.357515] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail\n'}
+[6.357701] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[6.357947] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[6.358139] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[6.358328] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[6.358515] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[6.358699] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[6.358886] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[6.359076] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/dds_fastrtps\n'}
+[6.359261] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[6.359456] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[6.359637] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces\n'}
+[6.359818] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv\n'}
+[6.360005] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail\n'}
+[6.360186] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__rosidl_typesupport_introspection_cpp.hpp\n'}
+[6.360376] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__rosidl_typesupport_introspection_cpp.hpp\n'}
+[6.360553] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[6.360722] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__type_support.cpp\n'}
+[6.360875] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__type_support.cpp\n'}
+[6.361043] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_pinging__type_support.cpp\n'}
+[6.361210] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/sounder_command__type_support.cpp\n'}
+[6.361397] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/request_pu_parameters__rosidl_typesupport_introspection_cpp.hpp\n'}
+[6.361571] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.cpp\n'}
+[6.361777] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/start_sounder__rosidl_typesupport_introspection_cpp.hpp\n'}
+[6.362048] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/recording_control__rosidl_typesupport_introspection_cpp.hpp\n'}
+[6.362231] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/set_pu_parameters__type_support.cpp\n'}
+[6.362408] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__type_support.cpp\n'}
+[6.362584] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/include/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces/srv/detail/stop_pinging__rosidl_typesupport_introspection_cpp.hpp\n'}
+[6.362759] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[6.362938] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[6.363114] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_cpp.so\n'}
+[6.363303] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_typesupport_cpp.so" to ""\n'}
+[6.363473] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/environment/pythonpath.sh\n'}
+[6.363648] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/environment/pythonpath.dsv\n'}
+[6.363819] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces-0.0.0-py3.12.egg-info\n'}
+[6.363990] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[6.364160] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[6.364349] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[6.364522] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[6.364706] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces\n'}
+[6.364880] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.so\n'}
+[6.365054] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_c.so\n'}
+[6.365233] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[6.365427] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[6.365614] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/__init__.py\n'}
+[6.365953] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv\n'}
+[6.366042] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_request_pu_parameters.py\n'}
+[6.366109] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_stop_pinging.py\n'}
+[6.366172] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_set_pu_parameters.py\n'}
+[6.366233] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.c\n'}
+[6.366294] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_start_pinging.py\n'}
+[6.366357] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_start_sounder.py\n'}
+[6.366419] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_start_pinging_s.c\n'}
+[6.366480] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_set_pu_parameters_s.c\n'}
+[6.366540] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_start_sounder_s.c\n'}
+[6.366600] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/__init__.py\n'}
+[6.366659] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_recording_control.py\n'}
+[6.366719] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_sounder_command_s.c\n'}
+[6.366778] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_recording_control_s.c\n'}
+[6.366838] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_sounder_command.py\n'}
+[6.366904] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_stop_pinging_s.c\n'}
+[6.366966] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c.so\n'}
+[6.367027] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/_ros_kctrl_custom_interfaces_s.ep.rosidl_typesupport_c.c\n'}
+[6.410709] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"Listing '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces'...\n"}
+[6.410979] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"Compiling '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/__init__.py'...\n"}
+[6.411131] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"Listing '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv'...\n"}
+[6.411310] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"Compiling '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/__init__.py'...\n"}
+[6.411444] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"Compiling '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_recording_control.py'...\n"}
+[6.411562] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"Compiling '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_request_pu_parameters.py'...\n"}
+[6.411710] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"Compiling '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_set_pu_parameters.py'...\n"}
+[6.411857] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b"Compiling '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/srv/_sounder_command.py'...\n"}
+[6.417125] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.so\n'}
+[6.417683] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[6.418084] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c.so\n'}
+[6.418433] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c.so" to ""\n'}
+[6.418699] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_c.so\n'}
+[6.418985] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces_s__rosidl_typesupport_c.so" to ""\n'}
+[6.419177] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_generator_py.so\n'}
+[6.419547] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/libros_kctrl_custom_interfaces__rosidl_generator_py.so" to ""\n'}
+[6.419643] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/SounderCommand.idl\n'}
+[6.420127] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/SetPUParameters.idl\n'}
+[6.420346] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/RequestPUParameters.idl\n'}
+[6.420587] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/RecordingControl.idl\n'}
+[6.420838] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/SounderCommand.srv\n'}
+[6.421183] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/SetPUParameters.srv\n'}
+[6.421634] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/RequestPUParameters.srv\n'}
+[6.421839] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/srv/RecordingControl.srv\n'}
+[6.422126] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ament_index/resource_index/package_run_dependencies/ros_kctrl_custom_interfaces\n'}
+[6.422364] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ament_index/resource_index/parent_prefix_path/ros_kctrl_custom_interfaces\n'}
+[6.422577] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/environment/ament_prefix_path.sh\n'}
+[6.422723] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/environment/ament_prefix_path.dsv\n'}
+[6.423011] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/environment/path.sh\n'}
+[6.423275] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/environment/path.dsv\n'}
+[6.423464] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/local_setup.bash\n'}
+[6.423671] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/local_setup.sh\n'}
+[6.423880] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/local_setup.zsh\n'}
+[6.424101] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/local_setup.dsv\n'}
+[6.424257] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/package.dsv\n'}
+[6.424485] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ament_index/resource_index/packages/ros_kctrl_custom_interfaces\n'}
+[6.424888] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_generator_cExport.cmake\n'}
+[6.425120] (-) TimerEvent: {}
+[6.425317] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[6.425506] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[6.425624] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[6.425835] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[6.426146] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[6.426363] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfaces__rosidl_typesupport_cExport.cmake\n'}
+[6.426543] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[6.426641] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_generator_cppExport.cmake\n'}
+[6.426715] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[6.426786] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[6.426857] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[6.426925] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[6.426993] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[6.427060] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[6.427138] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_generator_pyExport.cmake\n'}
+[6.427231] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/export_ros_kctrl_custom_interfaces__rosidl_generator_pyExport-noconfig.cmake\n'}
+[6.427308] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[6.427380] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[6.427452] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[6.427523] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[6.427595] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[6.427666] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[6.427736] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[6.427806] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfacesConfig.cmake\n'}
+[6.427894] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake/ros_kctrl_custom_interfacesConfig-version.cmake\n'}
+[6.427986] (ros_kctrl_custom_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/package.xml\n'}
+[6.429504] (ros_kctrl_custom_interfaces) CommandEnded: {'returncode': 0}
+[6.453454] (ros_kctrl_custom_interfaces) JobEnded: {'identifier': 'ros_kctrl_custom_interfaces', 'rc': 0}
+[6.454591] (ros_kctrl_interface_pkg) JobStarted: {'identifier': 'ros_kctrl_interface_pkg'}
+[6.505203] (ros_kctrl_interface_pkg) JobProgress: {'identifier': 'ros_kctrl_interface_pkg', 'progress': 'cmake'}
+[6.505716] (ros_kctrl_interface_pkg) JobProgress: {'identifier': 'ros_kctrl_interface_pkg', 'progress': 'build'}
+[6.506096] (ros_kctrl_interface_pkg) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg', '--', '-j12', '-l12'], 'cwd': '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'arveds', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/share/gz', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'WT_PROFILE_ID': '{885670e4-9bfb-5ad2-b9b5-7648656d319d}', 'HOME': '/home/arveds', 'OLDPWD': '/home/arveds', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/arveds/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'arveds', 'NAME': 'KPC22024636', 'WSL_INTEROP': '/run/WSL/470_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/dotnet/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/arveds/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files (x86)/Nmap:/snap/bin', 'WT_SESSION': '2e51b831-f245-4679-84f7-d18763bb41ee', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[6.525303] (-) TimerEvent: {}
+[6.530845] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[6.625620] (-) TimerEvent: {}
+[6.716557] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Found rclcpp: 28.1.9 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[6.725708] (-) TimerEvent: {}
+[6.794779] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[6.804417] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[6.818835] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[6.825912] (-) TimerEvent: {}
+[6.836114] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[6.921606] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[6.926042] (-) TimerEvent: {}
+[6.926495] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[7.026199] (-) TimerEvent: {}
+[7.077410] (ros_kctrl_interface_pkg) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[7.126413] (-) TimerEvent: {}
+[7.224222] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[7.226518] (-) TimerEvent: {}
+[7.265372] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Found ros_kctrl_custom_interfaces: 0.0.0 (/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/share/ros_kctrl_custom_interfaces/cmake)\n'}
+[7.326706] (-) TimerEvent: {}
+[7.379485] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Configuring done (0.9s)\n'}
+[7.400605] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[7.407796] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Build files have been written to: /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg\n'}
+[7.426846] (-) TimerEvent: {}
+[7.448551] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o\x1b[0m\n'}
+[7.454298] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/ros2ctrl_udp_receiver.dir/src/ros2ctrl_udp_receiver.cpp.o\x1b[0m\n'}
+[7.526982] (-) TimerEvent: {}
+[7.627362] (-) TimerEvent: {}
+[7.727746] (-) TimerEvent: {}
+[7.828130] (-) TimerEvent: {}
+[7.897820] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[ 50%] \x1b[32m\x1b[1mLinking CXX static library libros2ctrl_udp_client.a\x1b[0m\n'}
+[7.928276] (-) TimerEvent: {}
+[7.935933] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[ 50%] Built target ros2ctrl_udp_client\n'}
+[7.969226] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o\x1b[0m\n'}
+[8.028422] (-) TimerEvent: {}
+[8.128777] (-) TimerEvent: {}
+[8.229188] (-) TimerEvent: {}
+[8.329641] (-) TimerEvent: {}
+[8.430110] (-) TimerEvent: {}
+[8.530642] (-) TimerEvent: {}
+[8.630981] (-) TimerEvent: {}
+[8.731354] (-) TimerEvent: {}
+[8.831703] (-) TimerEvent: {}
+[8.932096] (-) TimerEvent: {}
+[9.032494] (-) TimerEvent: {}
+[9.132896] (-) TimerEvent: {}
+[9.233308] (-) TimerEvent: {}
+[9.333712] (-) TimerEvent: {}
+[9.434124] (-) TimerEvent: {}
+[9.534610] (-) TimerEvent: {}
+[9.635013] (-) TimerEvent: {}
+[9.735431] (-) TimerEvent: {}
+[9.835843] (-) TimerEvent: {}
+[9.936330] (-) TimerEvent: {}
+[10.036751] (-) TimerEvent: {}
+[10.137185] (-) TimerEvent: {}
+[10.237546] (-) TimerEvent: {}
+[10.337975] (-) TimerEvent: {}
+[10.438387] (-) TimerEvent: {}
+[10.538775] (-) TimerEvent: {}
+[10.639178] (-) TimerEvent: {}
+[10.739583] (-) TimerEvent: {}
+[10.840051] (-) TimerEvent: {}
+[10.940479] (-) TimerEvent: {}
+[11.040880] (-) TimerEvent: {}
+[11.141290] (-) TimerEvent: {}
+[11.241691] (-) TimerEvent: {}
+[11.342128] (-) TimerEvent: {}
+[11.442531] (-) TimerEvent: {}
+[11.542990] (-) TimerEvent: {}
+[11.643405] (-) TimerEvent: {}
+[11.743771] (-) TimerEvent: {}
+[11.844138] (-) TimerEvent: {}
+[11.944561] (-) TimerEvent: {}
+[12.045007] (-) TimerEvent: {}
+[12.145419] (-) TimerEvent: {}
+[12.245844] (-) TimerEvent: {}
+[12.346274] (-) TimerEvent: {}
+[12.446686] (-) TimerEvent: {}
+[12.547038] (-) TimerEvent: {}
+[12.647407] (-) TimerEvent: {}
+[12.747816] (-) TimerEvent: {}
+[12.848181] (-) TimerEvent: {}
+[12.948528] (-) TimerEvent: {}
+[13.048960] (-) TimerEvent: {}
+[13.149371] (-) TimerEvent: {}
+[13.249828] (-) TimerEvent: {}
+[13.350215] (-) TimerEvent: {}
+[13.450612] (-) TimerEvent: {}
+[13.551067] (-) TimerEvent: {}
+[13.651417] (-) TimerEvent: {}
+[13.751890] (-) TimerEvent: {}
+[13.852317] (-) TimerEvent: {}
+[13.952720] (-) TimerEvent: {}
+[14.053080] (-) TimerEvent: {}
+[14.153487] (-) TimerEvent: {}
+[14.253904] (-) TimerEvent: {}
+[14.354320] (-) TimerEvent: {}
+[14.391398] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[ 83%] \x1b[32m\x1b[1mLinking CXX executable ros2ctrl_wrapper_node\x1b[0m\n'}
+[14.454559] (-) TimerEvent: {}
+[14.554980] (-) TimerEvent: {}
+[14.655202] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[ 83%] Built target ros2ctrl_wrapper_node\n'}
+[14.655420] (-) TimerEvent: {}
+[14.755718] (-) TimerEvent: {}
+[14.856085] (-) TimerEvent: {}
+[14.956471] (-) TimerEvent: {}
+[15.056865] (-) TimerEvent: {}
+[15.157309] (-) TimerEvent: {}
+[15.257709] (-) TimerEvent: {}
+[15.358115] (-) TimerEvent: {}
+[15.458510] (-) TimerEvent: {}
+[15.558849] (-) TimerEvent: {}
+[15.659236] (-) TimerEvent: {}
+[15.759623] (-) TimerEvent: {}
+[15.812109] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable ros2ctrl_udp_receiver\x1b[0m\n'}
+[15.859796] (-) TimerEvent: {}
+[15.960203] (-) TimerEvent: {}
+[16.037473] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'[100%] Built target ros2ctrl_udp_receiver\n'}
+[16.047525] (ros_kctrl_interface_pkg) CommandEnded: {'returncode': 0}
+[16.048205] (ros_kctrl_interface_pkg) JobProgress: {'identifier': 'ros_kctrl_interface_pkg', 'progress': 'install'}
+[16.048655] (ros_kctrl_interface_pkg) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg'], 'cwd': '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'arveds', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/sdformat_vendor/share/gz', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'WT_PROFILE_ID': '{885670e4-9bfb-5ad2-b9b5-7648656d319d}', 'HOME': '/home/arveds', 'OLDPWD': '/home/arveds', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/arveds/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'arveds', 'NAME': 'KPC22024636', 'WSL_INTEROP': '/run/WSL/470_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/dotnet/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/arveds/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files (x86)/Nmap:/snap/bin', 'WT_SESSION': '2e51b831-f245-4679-84f7-d18763bb41ee', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:'}), 'shell': False}
+[16.055905] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[16.057243] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/ros2ctrl_wrapper_node\n'}
+[16.060135] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/ros2ctrl_wrapper_node" to ""\n'}
+[16.060294] (-) TimerEvent: {}
+[16.060378] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/libros2ctrl_udp_client.a\n'}
+[16.060681] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/ros2ctrl_udp_receiver\n'}
+[16.063575] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/ros2ctrl_udp_receiver" to ""\n'}
+[16.063946] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include/\n'}
+[16.064142] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//nlohmann\n'}
+[16.064339] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//nlohmann/json.hpp\n'}
+[16.064668] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//ros_kctrl_interface_pkg\n'}
+[16.064877] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//ros_kctrl_interface_pkg/ros2ctrl_udp_receiver.hpp\n'}
+[16.065088] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//ros_kctrl_interface_pkg/ros2ctrl_udp_client.hpp\n'}
+[16.065286] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ament_index/resource_index/package_run_dependencies/ros_kctrl_interface_pkg\n'}
+[16.065554] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ament_index/resource_index/parent_prefix_path/ros_kctrl_interface_pkg\n'}
+[16.065777] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/environment/ament_prefix_path.sh\n'}
+[16.066027] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/environment/ament_prefix_path.dsv\n'}
+[16.066221] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/environment/path.sh\n'}
+[16.066432] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/environment/path.dsv\n'}
+[16.066822] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/local_setup.bash\n'}
+[16.066973] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/local_setup.sh\n'}
+[16.067176] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/local_setup.zsh\n'}
+[16.068112] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/local_setup.dsv\n'}
+[16.068358] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/package.dsv\n'}
+[16.068591] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ament_index/resource_index/packages/ros_kctrl_interface_pkg\n'}
+[16.068807] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/cmake/ros_kctrl_interface_pkgConfig.cmake\n'}
+[16.069018] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/cmake/ros_kctrl_interface_pkgConfig-version.cmake\n'}
+[16.069227] (ros_kctrl_interface_pkg) StdoutLine: {'line': b'-- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/package.xml\n'}
+[16.069870] (ros_kctrl_interface_pkg) CommandEnded: {'returncode': 0}
+[16.082679] (ros_kctrl_interface_pkg) JobEnded: {'identifier': 'ros_kctrl_interface_pkg', 'rc': 0}
+[16.083820] (-) EventReactorShutdown: {}

@@ -1,0 +1,13 @@
+[0.065s] Invoking command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12
+[0.126s] [ 16%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o[0m
+[0.138s] [ 50%] Built target ros2ctrl_udp_receiver
+[0.644s] [ 66%] [32m[1mLinking CXX static library libros2ctrl_udp_client.a[0m
+[0.680s] [ 66%] Built target ros2ctrl_udp_client
+[0.709s] [ 83%] [32mBuilding CXX object CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o[0m
+[3.014s] [01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:220:10:[m[K [01;31m[Kerror: [m[Kextra qualification ‘[01m[KRos2CtrlWrapperNode::[m[K’ on member ‘[01m[KdisconnectSounderCallback[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.014s]   220 |     void [01;31m[KRos2CtrlWrapperNode[m[K::disconnectSounderCallback(
+[3.014s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[4.808s] gmake[2]: *** [CMakeFiles/ros2ctrl_wrapper_node.dir/build.make:76: CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o] Error 1
+[4.808s] gmake[1]: *** [CMakeFiles/Makefile2:167: CMakeFiles/ros2ctrl_wrapper_node.dir/all] Error 2
+[4.808s] gmake: *** [Makefile:146: all] Error 2
+[4.810s] Invoked command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg' returned '2': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12

@@ -12,6 +12,16 @@
             "nested_type_name": ""
           },
           "default_value": ""
+        },
+        {
+          "name": "param_names",
+          "type": {
+            "type_id": 161,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
         }
       ]
     },
@@ -20,7 +30,7 @@
   "type_hashes": [
     {
       "type_name": "ros_kctrl_custom_interfaces/srv/RequestPUParameters_Request",
-      "hash_string": "RIHS01_b92ece611a967011646bdb142efe8d768ebccdf962aaa1c667b4b641e54574e0"
+      "hash_string": "RIHS01_18b710b462f2bc11a526c4b858cb4be2c35cbda88ffc351405b4958c915bb522"
     }
   ]
 }

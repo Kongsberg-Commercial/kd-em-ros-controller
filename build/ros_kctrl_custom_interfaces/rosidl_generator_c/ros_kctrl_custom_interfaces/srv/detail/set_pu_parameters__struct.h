@@ -22,13 +22,16 @@ extern "C"
 
 // Include directives for member types
 // Member 'sounder_name'
+// Member 'param_names'
+// Member 'param_values'
 #include "rosidl_runtime_c/string.h"
 
 /// Struct defined in srv/SetPUParameters in the package ros_kctrl_custom_interfaces.
 typedef struct ros_kctrl_custom_interfaces__srv__SetPUParameters_Request
 {
-  /// Request fields here
   rosidl_runtime_c__String sounder_name;
+  rosidl_runtime_c__String__Sequence param_names;
+  rosidl_runtime_c__String__Sequence param_values;
 } ros_kctrl_custom_interfaces__srv__SetPUParameters_Request;
 
 // Struct for a sequence of ros_kctrl_custom_interfaces__srv__SetPUParameters_Request.

@@ -1,0 +1,242 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-512dfb88fcb99074eb15.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				},
+				{
+					"build" : "ros_kctrl_custom_interfaces__py",
+					"jsonFile" : "directory-ros_kctrl_custom_interfaces__py-ceda78cdb99e1a75d68d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/ros_kctrl_custom_interfaces__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "ros_kctrl_custom_interfaces",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_ros_kctrl_custom_interfaces_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_ros_kctrl_custom_interfaces_egg-08c2cdbc3966833afb40.json",
+					"name" : "ament_cmake_python_build_ros_kctrl_custom_interfaces_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_ros_kctrl_custom_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_ros_kctrl_custom_interfaces-f926962429a4b7ff3e5f.json",
+					"name" : "ament_cmake_python_copy_ros_kctrl_custom_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces-c20c47d2a22386811d98.json",
+					"name" : "ros_kctrl_custom_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__cpp-3a6b46db4838c0895880.json",
+					"name" : "ros_kctrl_custom_interfaces__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ros_kctrl_custom_interfaces__py::@bffe116fb4a08668f307",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__py-3ecc26629e68f5ff5fed.json",
+					"name" : "ros_kctrl_custom_interfaces__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_generator_c-d4d56b230cde629b5184.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_generator_py-e7845226b39da9be13b6.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_generator_type_description::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_generator_type_description-c23da5ac45c1d211d31f.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_generator_type_description",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_typesupport_c-137a6b827e776fa09770.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_typesupport_cpp-6d3ca55e1b124bb21b8e.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c-142939bbed1ae5b432ce.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp-104da5764d6933045ae2.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c-5de818183e91f192eb4d.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp-41ecb48831dd49b5e904.json",
+					"name" : "ros_kctrl_custom_interfaces__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces_s__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces_s__rosidl_typesupport_c-6bfc4327b8964c415d58.json",
+					"name" : "ros_kctrl_custom_interfaces_s__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c-52149873b246563ef0e6.json",
+					"name" : "ros_kctrl_custom_interfaces_s__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c-6efc4b453314977a1afb.json",
+					"name" : "ros_kctrl_custom_interfaces_s__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_custom_interfaces_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_custom_interfaces_uninstall-a7d4f2378ce54660e7a5.json",
+					"name" : "ros_kctrl_custom_interfaces_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-46fb8dfa926aecac7f76.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces",
+		"source" : "/home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

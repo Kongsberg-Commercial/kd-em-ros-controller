@@ -24,16 +24,32 @@ namespace srv
 namespace builder
 {
 
+class Init_RequestPUParameters_Request_param_names
+{
+public:
+  explicit Init_RequestPUParameters_Request_param_names(::ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request & msg)
+  : msg_(msg)
+  {}
+  ::ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request param_names(::ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request::_param_names_type arg)
+  {
+    msg_.param_names = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request msg_;
+};
+
 class Init_RequestPUParameters_Request_sounder_name
 {
 public:
   Init_RequestPUParameters_Request_sounder_name()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  ::ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request sounder_name(::ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request::_sounder_name_type arg)
+  Init_RequestPUParameters_Request_param_names sounder_name(::ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request::_sounder_name_type arg)
   {
     msg_.sounder_name = std::move(arg);
-    return std::move(msg_);
+    return Init_RequestPUParameters_Request_param_names(msg_);
   }
 
 private:

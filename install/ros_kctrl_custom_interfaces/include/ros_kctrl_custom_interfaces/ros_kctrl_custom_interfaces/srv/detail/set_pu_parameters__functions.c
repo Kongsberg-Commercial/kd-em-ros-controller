@@ -12,6 +12,8 @@
 
 // Include directives for member types
 // Member `sounder_name`
+// Member `param_names`
+// Member `param_values`
 #include "rosidl_runtime_c/string_functions.h"
 
 bool
@@ -22,6 +24,16 @@ ros_kctrl_custom_interfaces__srv__SetPUParameters_Request__init(ros_kctrl_custom
   }
   // sounder_name
   if (!rosidl_runtime_c__String__init(&msg->sounder_name)) {
+    ros_kctrl_custom_interfaces__srv__SetPUParameters_Request__fini(msg);
+    return false;
+  }
+  // param_names
+  if (!rosidl_runtime_c__String__Sequence__init(&msg->param_names, 0)) {
+    ros_kctrl_custom_interfaces__srv__SetPUParameters_Request__fini(msg);
+    return false;
+  }
+  // param_values
+  if (!rosidl_runtime_c__String__Sequence__init(&msg->param_values, 0)) {
     ros_kctrl_custom_interfaces__srv__SetPUParameters_Request__fini(msg);
     return false;
   }
@@ -36,6 +48,10 @@ ros_kctrl_custom_interfaces__srv__SetPUParameters_Request__fini(ros_kctrl_custom
   }
   // sounder_name
   rosidl_runtime_c__String__fini(&msg->sounder_name);
+  // param_names
+  rosidl_runtime_c__String__Sequence__fini(&msg->param_names);
+  // param_values
+  rosidl_runtime_c__String__Sequence__fini(&msg->param_values);
 }
 
 bool
@@ -47,6 +63,18 @@ ros_kctrl_custom_interfaces__srv__SetPUParameters_Request__are_equal(const ros_k
   // sounder_name
   if (!rosidl_runtime_c__String__are_equal(
       &(lhs->sounder_name), &(rhs->sounder_name)))
+  {
+    return false;
+  }
+  // param_names
+  if (!rosidl_runtime_c__String__Sequence__are_equal(
+      &(lhs->param_names), &(rhs->param_names)))
+  {
+    return false;
+  }
+  // param_values
+  if (!rosidl_runtime_c__String__Sequence__are_equal(
+      &(lhs->param_values), &(rhs->param_values)))
   {
     return false;
   }
@@ -64,6 +92,18 @@ ros_kctrl_custom_interfaces__srv__SetPUParameters_Request__copy(
   // sounder_name
   if (!rosidl_runtime_c__String__copy(
       &(input->sounder_name), &(output->sounder_name)))
+  {
+    return false;
+  }
+  // param_names
+  if (!rosidl_runtime_c__String__Sequence__copy(
+      &(input->param_names), &(output->param_names)))
+  {
+    return false;
+  }
+  // param_values
+  if (!rosidl_runtime_c__String__Sequence__copy(
+      &(input->param_values), &(output->param_values)))
   {
     return false;
   }

@@ -73,6 +73,26 @@
               "nested_type_name": ""
             },
             "default_value": ""
+          },
+          {
+            "name": "param_names",
+            "type": {
+              "type_id": 161,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
+          },
+          {
+            "name": "param_values",
+            "type": {
+              "type_id": 161,
+              "capacity": 0,
+              "string_capacity": 0,
+              "nested_type_name": ""
+            },
+            "default_value": ""
           }
         ]
       },
@@ -151,7 +171,7 @@
   "type_hashes": [
     {
       "type_name": "ros_kctrl_custom_interfaces/srv/SetPUParameters_Event",
-      "hash_string": "RIHS01_ea62fdf5447b58c670fd55a3466d6d90a50300050a168ae6f2e69d178b86167c"
+      "hash_string": "RIHS01_0f4c4bf7155be7f35e1e58ee79138d22b55a5c878d95bbb401b7c6088f3b0570"
     },
     {
       "type_name": "builtin_interfaces/msg/Time",
@@ -159,7 +179,7 @@
     },
     {
       "type_name": "ros_kctrl_custom_interfaces/srv/SetPUParameters_Request",
-      "hash_string": "RIHS01_372180fce5c4dd193af6060d9f566683dac20c44b13628b2a8664d7ffbbf868d"
+      "hash_string": "RIHS01_38375f49e72638d446767f388ee9b656536b249aae21cc7263518776b91a9515"
     },
     {
       "type_name": "ros_kctrl_custom_interfaces/srv/SetPUParameters_Response",

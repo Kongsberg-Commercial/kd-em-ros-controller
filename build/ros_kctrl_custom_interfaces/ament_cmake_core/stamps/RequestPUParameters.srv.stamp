@@ -1,8 +1,5 @@
-# EDIT FOR PURPOSE
-
-# Request fields here
 string sounder_name
+string[] param_names
 ---
-# Response fields here
 bool success
 string message

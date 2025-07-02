@@ -1,3 +1,5 @@
 /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/SounderCommand.idl
 /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/SetPUParameters.idl
 /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/RequestPUParameters.idl
+/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/RecordingControl.idl
+/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/UpdateRecordingPath.idl

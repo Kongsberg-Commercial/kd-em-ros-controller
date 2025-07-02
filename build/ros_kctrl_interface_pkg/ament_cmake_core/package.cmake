@@ -1,6 +1,6 @@
 set(_AMENT_PACKAGE_NAME "ros_kctrl_interface_pkg")
 set(ros_kctrl_interface_pkg_VERSION "0.0.1")
-set(ros_kctrl_interface_pkg_MAINTAINER "arveds <arveds@todo.todo>")
+set(ros_kctrl_interface_pkg_MAINTAINER "arveds <arve.daae.solberg@kd.kongsberg.com>")
 set(ros_kctrl_interface_pkg_BUILD_DEPENDS "rclcpp" "std_msgs" "ros_kctrl_custom_interfaces" "boost")
 set(ros_kctrl_interface_pkg_BUILDTOOL_DEPENDS "ament_cmake")
 set(ros_kctrl_interface_pkg_BUILD_EXPORT_DEPENDS "rclcpp" "std_msgs" "ros_kctrl_custom_interfaces" "boost")

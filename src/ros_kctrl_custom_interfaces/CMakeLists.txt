@@ -12,6 +12,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/SounderCommand.srv"
   "srv/SetPUParameters.srv"
   "srv/RequestPUParameters.srv"
+  "srv/RecordingControl.srv"
+  "srv/UpdateRecordingPath.srv"
   # Only add DEPENDENCIES if you use std_msgs types
   # DEPENDENCIES std_msgs
 )

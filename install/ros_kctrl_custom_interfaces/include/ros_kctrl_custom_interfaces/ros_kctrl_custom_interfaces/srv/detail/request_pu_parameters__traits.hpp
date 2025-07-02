@@ -32,6 +32,24 @@ inline void to_flow_style_yaml(
   {
     out << "sounder_name: ";
     rosidl_generator_traits::value_to_yaml(msg.sounder_name, out);
+    out << ", ";
+  }
+
+  // member: param_names
+  {
+    if (msg.param_names.size() == 0) {
+      out << "param_names: []";
+    } else {
+      out << "param_names: [";
+      size_t pending_items = msg.param_names.size();
+      for (auto item : msg.param_names) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
   }
   out << "}";
 }  // NOLINT(readability/fn_size)
@@ -48,6 +66,26 @@ inline void to_block_style_yaml(
     out << "sounder_name: ";
     rosidl_generator_traits::value_to_yaml(msg.sounder_name, out);
     out << "\n";
+  }
+
+  // member: param_names
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.param_names.size() == 0) {
+      out << "param_names: []\n";
+    } else {
+      out << "param_names:\n";
+      for (auto item : msg.param_names) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
   }
 }  // NOLINT(readability/fn_size)
 

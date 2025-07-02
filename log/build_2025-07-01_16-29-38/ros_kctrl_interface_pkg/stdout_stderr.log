@@ -1,0 +1,13 @@
+[ 16%] [32mBuilding CXX object CMakeFiles/ros2ctrl_udp_client.dir/src/ros2ctrl_udp_client.cpp.o[0m
+[ 50%] Built target ros2ctrl_udp_receiver
+[ 66%] [32m[1mLinking CXX static library libros2ctrl_udp_client.a[0m
+[ 66%] Built target ros2ctrl_udp_client
+[ 83%] [32mBuilding CXX object CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o[0m
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:[m[K In member function ‘[01m[Kvoid Ros2CtrlWrapperNode::[01;32m[KrequestPUParametersCallback[m[K(std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request_<std::allocator<void> > >, std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestPUParameters_Response_<std::allocator<void> > >)[m[K’:
+[01m[K/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/src/ros2ctrl_wrapper_node.cpp:134:83:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing std::__shared_ptr_access<ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request_<std::allocator<void> >, __gnu_cxx::_S_atomic, false, false>::element_type = struct ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct ros_kctrl_custom_interfaces::srv::RequestPUParameters_Request_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kparam_names[m[K’; did you mean ‘[01m[Kparameter_names[m[K’?
+  134 |         bool ok = udp_client_->send_request_pu_parameters(req->sounder_name, req->[01;31m[Kparam_names[m[K);
+      |                                                                                   [01;31m[K^~~~~~~~~~~[m[K
+      |                                                                                   [32m[Kparameter_names[m[K
+gmake[2]: *** [CMakeFiles/ros2ctrl_wrapper_node.dir/build.make:76: CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:167: CMakeFiles/ros2ctrl_wrapper_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

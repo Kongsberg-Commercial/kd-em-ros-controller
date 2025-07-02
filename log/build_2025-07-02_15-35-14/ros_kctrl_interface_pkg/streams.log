@@ -1,0 +1,35 @@
+[0.044s] Invoking command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12
+[0.095s] [ 33%] Built target ros2ctrl_udp_client
+[0.096s] [ 66%] Built target ros2ctrl_udp_receiver
+[0.125s] [ 83%] [32mBuilding CXX object CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o[0m
+[6.225s] [100%] [32m[1mLinking CXX executable ros2ctrl_wrapper_node[0m
+[6.508s] [100%] Built target ros2ctrl_wrapper_node
+[6.517s] Invoked command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg' returned '0': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --build /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg -- -j12 -l12
+[6.520s] Invoking command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --install /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg
+[6.526s] -- Install configuration: ""
+[6.528s] -- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/ros2ctrl_wrapper_node
+[6.530s] -- Set non-toolchain portion of runtime path of "/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/ros2ctrl_wrapper_node" to ""
+[6.530s] -- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/libros2ctrl_udp_client.a
+[6.531s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/lib/ros_kctrl_interface_pkg/ros2ctrl_udp_receiver
+[6.531s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include/
+[6.532s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//nlohmann
+[6.532s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//nlohmann/json.hpp
+[6.532s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//ros_kctrl_interface_pkg
+[6.532s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//ros_kctrl_interface_pkg/ros2ctrl_udp_receiver.hpp
+[6.532s] -- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/include//ros_kctrl_interface_pkg/ros2ctrl_udp_client.hpp
+[6.532s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ament_index/resource_index/package_run_dependencies/ros_kctrl_interface_pkg
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ament_index/resource_index/parent_prefix_path/ros_kctrl_interface_pkg
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/environment/ament_prefix_path.sh
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/environment/ament_prefix_path.dsv
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/environment/path.sh
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/environment/path.dsv
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/local_setup.bash
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/local_setup.sh
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/local_setup.zsh
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/local_setup.dsv
+[6.533s] -- Installing: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/package.dsv
+[6.533s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ament_index/resource_index/packages/ros_kctrl_interface_pkg
+[6.534s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/cmake/ros_kctrl_interface_pkgConfig.cmake
+[6.534s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/cmake/ros_kctrl_interface_pkgConfig-version.cmake
+[6.534s] -- Up-to-date: /home/arveds/ros2_ws/install/ros_kctrl_interface_pkg/share/ros_kctrl_interface_pkg/package.xml
+[6.535s] Invoked command in '/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg' returned '0': CMAKE_PREFIX_PATH=/home/arveds/ros2_ws/install/ros_kctrl_custom_interfaces:/home/arveds/ros2_ws/install/ros_kctrl_interface_pkg:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy /usr/bin/cmake --install /home/arveds/ros2_ws/build/ros_kctrl_interface_pkg

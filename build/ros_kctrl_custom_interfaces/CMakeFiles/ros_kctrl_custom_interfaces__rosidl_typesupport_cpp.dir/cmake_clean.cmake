@@ -1,15 +1,21 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o"
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp.o.d"
   "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o"
   "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp.o.d"
   "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_support.cpp.o"
   "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_support.cpp.o.d"
   "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.o"
   "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp.o.d"
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o"
+  "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp.o.d"
   "libros_kctrl_custom_interfaces__rosidl_typesupport_cpp.pdb"
   "libros_kctrl_custom_interfaces__rosidl_typesupport_cpp.so"
+  "rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/recording_control__type_support.cpp"
   "rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/request_pu_parameters__type_support.cpp"
   "rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/set_pu_parameters__type_support.cpp"
   "rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/sounder_command__type_support.cpp"
+  "rosidl_typesupport_cpp/ros_kctrl_custom_interfaces/srv/update_recording_path__type_support.cpp"
 )
 
 # Per-language clean rules from dependency scanning.
