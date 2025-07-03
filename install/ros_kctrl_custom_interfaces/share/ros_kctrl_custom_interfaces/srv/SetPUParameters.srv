@@ -1,6 +1,0 @@
-string sounder_name
-string[] param_names
-string[] param_values
----
-bool success
-string message

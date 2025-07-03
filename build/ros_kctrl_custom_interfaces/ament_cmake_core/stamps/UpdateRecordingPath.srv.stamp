@@ -1,5 +1,0 @@
-string sounder_name
-string folder_path
----
-bool success
-string message
