@@ -88,6 +88,25 @@ bool Ros2CtrlUdpClient::send_disconnect_sounder(const std::string& sounder_name)
     return send_udp_cmd(msg, "disconnect sounder", sounder_name);
 }
 
+bool Ros2CtrlUdpClient::send_export_pu_parameters(const std::string& sounder_name, const std::string& filename) {
+    std::ostringstream oss;
+    oss << "$KSSIS,991," << sounder_name;
+    if (!filename.empty()) {
+        oss << ",FILENAME=" << filename;
+    }
+    return send_udp_cmd(oss.str(), "export pu parameters", sounder_name);
+}
+
+bool Ros2CtrlUdpClient::send_request_detected_sounders() {
+    return send_udp_cmd("$KSSIS,997", "request detected sounders", "");
+}
+
+bool Ros2CtrlUdpClient::send_import_pu_parameters(const std::string& sounder_name, const std::string& pu_parameters_xml) {
+    std::ostringstream oss;
+    oss << "$KSSIS,992," << sounder_name << "," << pu_parameters_xml;
+    return send_udp_cmd(oss.str(), "import pu parameters", sounder_name);
+}
+
 bool Ros2CtrlUdpClient::send_udp_cmd(const std::string& msg, const std::string& action, const std::string& sounder_name) {
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {

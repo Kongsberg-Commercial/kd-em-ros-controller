@@ -139,13 +139,43 @@ CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.s
 
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/flags.make
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o -MF CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o.d -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o -c /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c > CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.i
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.s
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/flags.make
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o: rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o -MF CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o.d -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o -c /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c > CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.i
+
+CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c -o CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.s
+
 # Object files for target ros_kctrl_custom_interfaces__rosidl_generator_py
 ros_kctrl_custom_interfaces__rosidl_generator_py_OBJECTS = \
 "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_sounder_command_s.c.o" \
 "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_set_pu_parameters_s.c.o" \
 "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.c.o" \
 "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.o" \
-"CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.o"
+"CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.o" \
+"CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o" \
+"CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o"
 
 # External object files for target ros_kctrl_custom_interfaces__rosidl_generator_py
 ros_kctrl_custom_interfaces__rosidl_generator_py_EXTERNAL_OBJECTS =
@@ -155,6 +185,8 @@ libros_kctrl_custom_interfaces__rosidl_generator_py.so: CMakeFiles/ros_kctrl_cus
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_pu_parameters_s.c.o
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_recording_control_s.c.o
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_update_recording_path_s.c.o
+libros_kctrl_custom_interfaces__rosidl_generator_py.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_pu_parameters_s.c.o
+libros_kctrl_custom_interfaces__rosidl_generator_py.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/rosidl_generator_py/ros_kctrl_custom_interfaces/srv/_request_detected_sounders_s.c.o
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/build.make
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: libros_kctrl_custom_interfaces__rosidl_typesupport_c.so
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: /opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_fastrtps_c.so
@@ -185,7 +217,7 @@ libros_kctrl_custom_interfaces__rosidl_generator_py.so: /opt/ros/jazzy/lib/libbu
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: /opt/ros/jazzy/lib/librosidl_runtime_c.so
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: /opt/ros/jazzy/lib/librcutils.so
 libros_kctrl_custom_interfaces__rosidl_generator_py.so: CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C shared library libros_kctrl_custom_interfaces__rosidl_generator_py.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C shared library libros_kctrl_custom_interfaces__rosidl_generator_py.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_py.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

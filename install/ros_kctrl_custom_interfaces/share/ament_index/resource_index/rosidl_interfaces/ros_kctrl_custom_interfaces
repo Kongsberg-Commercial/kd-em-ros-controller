@@ -1,5 +1,9 @@
+srv/PUParameters.idl
+srv/PUParameters.srv
 srv/RecordingControl.idl
 srv/RecordingControl.srv
+srv/RequestDetectedSounders.idl
+srv/RequestDetectedSounders.srv
 srv/RequestPUParameters.idl
 srv/RequestPUParameters.srv
 srv/SetPUParameters.idl

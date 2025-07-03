@@ -4,9 +4,9 @@
 
 #include <string.h>
 
-#include "ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.h"
-#include "ros_kctrl_custom_interfaces/srv/detail/update_recording_path__struct.h"
 #include "ros_kctrl_custom_interfaces/srv/detail/update_recording_path__type_support.h"
+#include "ros_kctrl_custom_interfaces/srv/detail/update_recording_path__struct.h"
+#include "ros_kctrl_custom_interfaces/srv/detail/update_recording_path__functions.h"
 #include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus

@@ -22,6 +22,9 @@ public:
     bool send_recording_control(const std::string& sounder_name, bool turn_on);
     bool send_update_recording_path(const std::string& sounder_name, const std::string& folder_path);
     bool send_disconnect_sounder(const std::string& sounder_name);
+    bool send_export_pu_parameters(const std::string& sounder_name, const std::string& filename);
+    bool send_request_detected_sounders();
+    bool send_import_pu_parameters(const std::string& sounder_name, const std::string& pu_parameters_xml);
 
 private:
     std::string ip_;

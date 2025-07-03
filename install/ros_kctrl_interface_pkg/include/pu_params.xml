@@ -1,0 +1,188 @@
+<!DOCTYPE XML>
+<ALL_TOKENS>
+ <!-- pu simulator on off checkbox -->
+ <!-- BIST tokens -->
+ <!-- Deep water impedans -->
+ <!--  -->
+ <TOKEN>
+  <ID>RUNT_PARAM_CTRL_SHOW</ID>
+  <TYPE>checkbox</TYPE>
+  <VALUE>0</VALUE>
+ </TOKEN>
+ <!-- Input Names -->
+ <TOKEN>
+  <ID>INST_PARAM_CTRL_POS1_NAME</ID>
+  <TYPE>text</TYPE>
+  <VALUE>Position system name</VALUE>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_CTRL_POS2_NAME</ID>
+  <TYPE>text</TYPE>
+  <VALUE>Position system name</VALUE>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_CTRL_POS3_NAME</ID>
+  <TYPE>text</TYPE>
+  <VALUE>Position system name</VALUE>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_CTRL_ATT1_NAME</ID>
+  <TYPE>text</TYPE>
+  <VALUE>Attitude system name</VALUE>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_CTRL_ATT2_NAME</ID>
+  <TYPE>text</TYPE>
+  <VALUE>Attitude system name</VALUE>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_CTRL_DEP_NAME</ID>
+  <TYPE>text</TYPE>
+  <VALUE>Depth system name</VALUE>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_CTRL_SVP_NAME</ID>
+  <TYPE>text</TYPE>
+  <VALUE>Sound velocity name</VALUE>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_CTRL_CLOCK_NAME</ID>
+  <TYPE>text</TYPE>
+  <VALUE>Clock name</VALUE>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <!-- SVP -->
+ <TOKEN>
+  <ID>RUNT_PARAM_CTRL_SVP_FACTORY</ID>
+  <TYPE>button</TYPE>
+  <VALUE/>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>RUNT_PARAM_CTRL_SVP_FILE_UPLOAD</ID>
+  <TYPE>button</TYPE>
+  <VALUE/>
+  <CLASS>max_width</CLASS>
+ </TOKEN>
+ <TOKEN>
+  <ID>RUNT_PARAM_CTRL_SVP_SALIN_SRC</ID>
+  <TYPE>select</TYPE>
+  <VALUE>Salinity</VALUE>
+  <OPTIONS>CTD,Salinity</OPTIONS>
+ </TOKEN>
+ <TOKEN>
+  <ID>RUNT_PARAM_CTRL_SVP_SALIN_VAL</ID>
+  <TYPE>number</TYPE>
+  <VALUE>35.00</VALUE>
+  <MIN>0</MIN>
+  <MAX>40</MAX>
+ </TOKEN>
+ <!-- Output tokens -->
+ <TOKEN>
+  <ID>INST_PARAM_OUTPUT_IP</ID>
+  <TYPE>text</TYPE>
+  <VALUE>10.66.69.38</VALUE>
+  <ENABLED>0</ENABLED>
+ </TOKEN>
+ <!-- Multiport data -->
+ <!-- Multiport data slave -->
+ <!-- Seatex auto setup -->
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_ON</ID>
+  <TYPE>checkbox</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_POSX</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_POSY</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_POSZ</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_ATTX</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_ATTY</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_ATTZ</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_ATTR</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_ATTP</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>INST_PARAM_INPUT_SEATEX_ATTH</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0</VALUE>
+  <HIDE>1</HIDE>
+ </TOKEN>
+ <TOKEN>
+  <ID>RUNT_PARAM_PU_SV_TEMP</ID>
+  <HIDE>1</HIDE>
+  <TYPE>number</TYPE>
+  <VALUE>10.0</VALUE>
+  <MIN>-5.0</MIN>
+  <MAX>60.0</MAX>
+ </TOKEN>
+ <TOKEN>
+  <ID>RUNT_PARAM_PU_ANGULAR_COVERAGE_MODE</ID>
+  <TYPE>select</TYPE>
+  <VALUE>Auto</VALUE>
+  <OPTIONS>Manual,Auto</OPTIONS>
+ </TOKEN>
+ <TOKEN>
+  <ID>RUNT_PARAM_PU_BEAM_SPACING</ID>
+  <TYPE>select</TYPE>
+  <VALUE>High density</VALUE>
+  <OPTIONS>Equidistance,Equiangle,High density</OPTIONS>
+ </TOKEN>
+ <TOKEN>
+  <ID>UNKNOWN_TOKEN</ID>
+  <TYPE>number</TYPE>
+  <VALUE>0.000</VALUE>
+  <MIN>-10000.0</MIN>
+  <MAX>10000.0</MAX>
+ </TOKEN>
+ <TOKEN>
+  <ID>RUNT_PARAM_PU_RX_UNIT</ID>
+  <TYPE>select</TYPE>
+  <VALUE>Both RX in use</VALUE>
+  <OPTIONS>Both RX are deactivated,Only Port RX in use,Only Starboard RX in use,Both RX in use</

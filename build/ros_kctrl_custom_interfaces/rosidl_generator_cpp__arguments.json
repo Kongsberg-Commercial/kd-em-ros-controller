@@ -7,7 +7,9 @@
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/SetPUParameters.idl",
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/RequestPUParameters.idl",
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/RecordingControl.idl",
-    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/UpdateRecordingPath.idl"
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/UpdateRecordingPath.idl",
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/PUParameters.idl",
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces:srv/RequestDetectedSounders.idl"
   ],
   "ros_interface_dependencies": [
     "service_msgs:/opt/ros/jazzy/share/service_msgs/msg/ServiceEventInfo.idl",
@@ -39,6 +41,8 @@
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/RequestPUParameters.idl",
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/RecordingControl.idl",
     "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.idl",
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/PUParameters.idl",
+    "/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_adapter/ros_kctrl_custom_interfaces/srv/RequestDetectedSounders.idl",
     "/opt/ros/jazzy/share/service_msgs/msg/ServiceEventInfo.idl",
     "/opt/ros/jazzy/share/builtin_interfaces/msg/Duration.idl",
     "/opt/ros/jazzy/share/builtin_interfaces/msg/Time.idl"
@@ -48,6 +52,8 @@
     "srv/SetPUParameters.idl:/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/SetPUParameters.json",
     "srv/RequestPUParameters.idl:/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RequestPUParameters.json",
     "srv/RecordingControl.idl:/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RecordingControl.json",
-    "srv/UpdateRecordingPath.idl:/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.json"
+    "srv/UpdateRecordingPath.idl:/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.json",
+    "srv/PUParameters.idl:/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/PUParameters.json",
+    "srv/RequestDetectedSounders.idl:/home/arveds/ros2_ws/build/ros_kctrl_custom_interfaces/rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RequestDetectedSounders.json"
   ]
 }

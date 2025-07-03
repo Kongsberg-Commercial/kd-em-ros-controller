@@ -14,8 +14,9 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/RequestPUParameters.srv"
   "srv/RecordingControl.srv"
   "srv/UpdateRecordingPath.srv"
+  "srv/PUParameters.srv"
+  "srv/RequestDetectedSounders.srv"
   # Only add DEPENDENCIES if you use std_msgs types
   # DEPENDENCIES std_msgs
 )
-
 ament_package()

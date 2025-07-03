@@ -1,6 +1,0 @@
-# Request
-string sounder_name
----
-# Response
-bool success
-string message

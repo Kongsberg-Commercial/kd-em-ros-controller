@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iomanip>
 #include <regex>
+#include <fstream>
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
@@ -28,17 +29,14 @@ Ros2UdpReceiver::Ros2UdpReceiver()
     pub_status_       = this->create_publisher<std_msgs::msg::String>("kctrl/status", 10);
     pub_status_raw_   = this->create_publisher<std_msgs::msg::String>("kctrl/status_raw", 10);
 
-    pub_unknown812_   = this->create_publisher<std_msgs::msg::String>("kctrl/unknown812", 10);
-    pub_unknown812_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/unknown812_raw", 10);
-
-    pub_unknown813_   = this->create_publisher<std_msgs::msg::String>("kctrl/unknown813", 10);
-    pub_unknown813_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/unknown813_raw", 10);
-
     pub_info_warn_error_ = this->create_publisher<std_msgs::msg::String>("kctrl/info_warn_error", 10);
     pub_info_warn_error_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/info_warn_error_raw", 10);
 
     pub_device_disconnected_ = this->create_publisher<std_msgs::msg::String>("kctrl/device_disconnected", 10);
     pub_device_disconnected_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/device_disconnected_raw", 10);
+
+    pub_pu_params_ = this->create_publisher<std_msgs::msg::String>("kctrl/pu_params", 10);
+    pub_pu_params_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/pu_params_raw", 10);
 
     RCLCPP_INFO(this->get_logger(), "ROS2 UDP Receiver Node started.");
 
@@ -108,10 +106,9 @@ void Ros2UdpReceiver::udp_listen() {
                     case 401: handle_kssis_401(msg); break;
                     case 455: handle_kssis_455(msg); break;
                     case 616: handle_kssis_616(msg); break;
-                    case 812: handle_kssis_812(msg); break;
-                    case 813: handle_kssis_813(msg); break;
                     case 499: handle_kssis_499(msg); break;
                     case 998: handle_kssis_998(msg); break;
+                    case 993: handle_kssis_993(msg); break;
                     default: break;
                 }
             }
@@ -195,14 +192,7 @@ void Ros2UdpReceiver::handle_kssis_616(const std::string& msg) {
     }
     publish_string(pub_status_, oss.str());
 }
-void Ros2UdpReceiver::handle_kssis_812(const std::string& msg) {
-    publish_string(pub_unknown812_raw_, msg);
-    publish_string(pub_unknown812_, "[KSSIS,812] Received data (not parsed).");
-}
-void Ros2UdpReceiver::handle_kssis_813(const std::string& msg) {
-    publish_string(pub_unknown813_raw_, msg);
-    publish_string(pub_unknown813_, "[KSSIS,813] Received message.");
-}
+
 void Ros2UdpReceiver::handle_kssis_499(const std::string& msg) {
     publish_string(pub_info_warn_error_raw_, msg);
 
@@ -263,7 +253,41 @@ void Ros2UdpReceiver::handle_kssis_998(const std::string& msg) {
 
     publish_string(pub_device_disconnected_, oss.str());
 }
+void Ros2UdpReceiver::handle_kssis_993(const std::string& msg) {
+    publish_string(pub_pu_params_raw_, msg);
 
+    std::stringstream ss(msg);
+    std::string token;
+    std::vector<std::string> tokens;
+    while (std::getline(ss, token, ',')) {
+        tokens.push_back(token);
+    }
+
+    std::string device = (tokens.size() >= 3) ? tokens[2] : "Unknown";
+
+    size_t xml_start = msg.find('<');
+    std::string xml_str = (xml_start != std::string::npos) ? msg.substr(xml_start) : "[Ingen XML funnet]";
+
+    // ---- NEW: Write XML to file ----
+    std::string xml_file_path = "/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/include/pu_params.xml"; // Change path as needed
+    if (xml_start != std::string::npos) {
+        std::ofstream xml_file(xml_file_path, std::ios::trunc);
+        if (xml_file.is_open()) {
+            xml_file << xml_str;
+            xml_file.close();
+            RCLCPP_INFO(this->get_logger(), "Wrote PU parameters XML to %s", xml_file_path.c_str());
+        } else {
+            RCLCPP_WARN(this->get_logger(), "Failed to open %s for writing PU parameters XML.", xml_file_path.c_str());
+        }
+    }
+
+    std::ostringstream oss;
+    oss << "PU parameters for device: " << device << "\n";
+    oss << "Full XML:\n";
+    oss << xml_str;
+
+    publish_string(pub_pu_params_, oss.str());
+}
 // --- HELPERS ---
 void Ros2UdpReceiver::publish_string(const rclcpp::Publisher<std_msgs::msg::String>::SharedPtr& pub, const std::string& data) {
     auto msg = std_msgs::msg::String();

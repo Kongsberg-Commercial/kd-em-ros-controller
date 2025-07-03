@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-68140041555fc22306de.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ros_kctrl_interface_pkg",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2ctrl_udp_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2ctrl_udp_client-f76e435fc36b7086398a.json",
+					"name" : "ros2ctrl_udp_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2ctrl_udp_receiver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2ctrl_udp_receiver-ded5ff61c3bb2ac4ff83.json",
+					"name" : "ros2ctrl_udp_receiver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros2ctrl_wrapper_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros2ctrl_wrapper_node-cc0a44a5510974851289.json",
+					"name" : "ros2ctrl_wrapper_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ros_kctrl_interface_pkg_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ros_kctrl_interface_pkg_uninstall-273ed5ec0b8e79a37402.json",
+					"name" : "ros_kctrl_interface_pkg_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-bb24733f9ec000e71c6c.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/arveds/ros2_ws/build/ros_kctrl_interface_pkg",
+		"source" : "/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

@@ -71,6 +71,8 @@ CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custo
 CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/RequestPUParameters.srv
 CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/RecordingControl.srv
 CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/UpdateRecordingPath.srv
+CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/PUParameters.srv
+CMakeFiles/ros_kctrl_custom_interfaces: /home/arveds/ros2_ws/src/ros_kctrl_custom_interfaces/srv/RequestDetectedSounders.srv
 CMakeFiles/ros_kctrl_custom_interfaces: /opt/ros/jazzy/share/service_msgs/msg/ServiceEventInfo.idl
 
 ros_kctrl_custom_interfaces: CMakeFiles/ros_kctrl_custom_interfaces

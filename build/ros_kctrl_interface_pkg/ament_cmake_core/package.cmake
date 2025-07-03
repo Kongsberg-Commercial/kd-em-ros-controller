@@ -5,7 +5,7 @@ set(ros_kctrl_interface_pkg_BUILD_DEPENDS "rclcpp" "std_msgs" "ros_kctrl_custom_
 set(ros_kctrl_interface_pkg_BUILDTOOL_DEPENDS "ament_cmake")
 set(ros_kctrl_interface_pkg_BUILD_EXPORT_DEPENDS "rclcpp" "std_msgs" "ros_kctrl_custom_interfaces" "boost")
 set(ros_kctrl_interface_pkg_BUILDTOOL_EXPORT_DEPENDS )
-set(ros_kctrl_interface_pkg_EXEC_DEPENDS "rclcpp" "std_msgs" "ros_kctrl_custom_interfaces" "boost")
+set(ros_kctrl_interface_pkg_EXEC_DEPENDS "launch" "launch_ros" "rclcpp" "std_msgs" "ros_kctrl_custom_interfaces" "boost")
 set(ros_kctrl_interface_pkg_TEST_DEPENDS )
 set(ros_kctrl_interface_pkg_GROUP_DEPENDS )
 set(ros_kctrl_interface_pkg_MEMBER_OF_GROUPS )

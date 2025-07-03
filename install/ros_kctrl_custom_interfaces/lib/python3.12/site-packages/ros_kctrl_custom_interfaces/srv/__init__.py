@@ -1,7 +1,15 @@
+from ros_kctrl_custom_interfaces.srv._pu_parameters import PUParameters  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._pu_parameters import PUParameters_Event  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._pu_parameters import PUParameters_Request  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._pu_parameters import PUParameters_Response  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._recording_control import RecordingControl  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._recording_control import RecordingControl_Event  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._recording_control import RecordingControl_Request  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._recording_control import RecordingControl_Response  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._request_detected_sounders import RequestDetectedSounders  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._request_detected_sounders import RequestDetectedSounders_Event  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._request_detected_sounders import RequestDetectedSounders_Request  # noqa: F401
+from ros_kctrl_custom_interfaces.srv._request_detected_sounders import RequestDetectedSounders_Response  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._request_pu_parameters import RequestPUParameters  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._request_pu_parameters import RequestPUParameters_Event  # noqa: F401
 from ros_kctrl_custom_interfaces.srv._request_pu_parameters import RequestPUParameters_Request  # noqa: F401

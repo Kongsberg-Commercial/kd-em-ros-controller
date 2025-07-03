@@ -24,10 +24,9 @@ private:
     void handle_kssis_401(const std::string& msg);
     void handle_kssis_455(const std::string& msg);
     void handle_kssis_616(const std::string& msg);
-    void handle_kssis_812(const std::string& msg);
-    void handle_kssis_813(const std::string& msg);
     void handle_kssis_499(const std::string& msg);
     void handle_kssis_998(const std::string& msg);
+    void handle_kssis_993(const std::string& msg);
 
     // Helpers
     void publish_string(const rclcpp::Publisher<std_msgs::msg::String>::SharedPtr& pub, const std::string& data);
@@ -43,10 +42,9 @@ private:
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_param_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_multicast_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_status_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_unknown812_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_unknown813_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_info_warn_error_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_device_disconnected_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_pu_params_;
 
     // Raw publishers
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_version_raw_;
@@ -54,8 +52,7 @@ private:
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_param_raw_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_multicast_raw_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_status_raw_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_unknown812_raw_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_unknown813_raw_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_info_warn_error_raw_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_device_disconnected_raw_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_pu_params_raw_;
 };

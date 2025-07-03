@@ -4,9 +4,9 @@
 
 #include <string.h>
 
+#include "ros_kctrl_custom_interfaces/srv/detail/recording_control__struct.h"
 #include "ros_kctrl_custom_interfaces/srv/detail/recording_control__functions.h"
 #include "ros_kctrl_custom_interfaces/srv/detail/recording_control__type_support.h"
-#include "ros_kctrl_custom_interfaces/srv/detail/recording_control__struct.h"
 #include "rosidl_typesupport_interface/macros.h"
 
 #ifdef __cplusplus

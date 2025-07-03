@@ -1,3 +1,0 @@
-[ 33%] Built target ros2ctrl_udp_client
-[ 66%] Built target ros2ctrl_udp_receiver
-[ 83%] [32mBuilding CXX object CMakeFiles/ros2ctrl_wrapper_node.dir/src/ros2ctrl_wrapper_node.cpp.o[0m

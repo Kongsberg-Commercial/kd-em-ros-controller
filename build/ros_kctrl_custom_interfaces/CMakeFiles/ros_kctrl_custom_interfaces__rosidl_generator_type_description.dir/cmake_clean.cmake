@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ros_kctrl_custom_interfaces__rosidl_generator_type_description"
+  "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/PUParameters.json"
   "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RecordingControl.json"
+  "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RequestDetectedSounders.json"
   "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/RequestPUParameters.json"
   "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/SetPUParameters.json"
   "rosidl_generator_type_description/ros_kctrl_custom_interfaces/srv/SounderCommand.json"

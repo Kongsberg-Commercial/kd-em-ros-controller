@@ -1,10 +1,14 @@
 #include "rclcpp/rclcpp.hpp"
+#include <fstream>
+#include <sstream>
 #include "ros_kctrl_custom_interfaces/srv/sounder_command.hpp"
 #include "ros_kctrl_custom_interfaces/srv/request_pu_parameters.hpp"
 #include "ros_kctrl_interface_pkg/ros2ctrl_udp_client.hpp"
 #include "ros_kctrl_custom_interfaces/srv/set_pu_parameters.hpp"
 #include "ros_kctrl_custom_interfaces/srv/recording_control.hpp"
 #include "ros_kctrl_custom_interfaces/srv/update_recording_path.hpp"
+#include "ros_kctrl_custom_interfaces/srv/pu_parameters.hpp"
+#include "ros_kctrl_custom_interfaces/srv/request_detected_sounders.hpp"
 
 class Ros2CtrlWrapperNode : public rclcpp::Node {
 public:
@@ -76,6 +80,18 @@ public:
         disconnect_sounder_srv_ = this->create_service<ros_kctrl_custom_interfaces::srv::SounderCommand>(
             "kctrl/disconnect_sounder",
             std::bind(&Ros2CtrlWrapperNode::disconnectSounderCallback, this, std::placeholders::_1, std::placeholders::_2)
+        );
+        export_pu_parameters_srv_ = this->create_service<ros_kctrl_custom_interfaces::srv::PUParameters>(
+            "kctrl/export_pu_parameters",
+            std::bind(&Ros2CtrlWrapperNode::exportPUParametersCallback, this, std::placeholders::_1, std::placeholders::_2)
+        );
+        request_detected_sounders_srv_ = this->create_service<ros_kctrl_custom_interfaces::srv::RequestDetectedSounders>(
+            "kctrl/request_detected_sounders",
+            std::bind(&Ros2CtrlWrapperNode::requestDetectedSoundersCallback, this, std::placeholders::_1, std::placeholders::_2)
+        );
+        import_pu_parameters_srv_ = this->create_service<ros_kctrl_custom_interfaces::srv::PUParameters>(
+            "kctrl/import_pu_parameters",
+            std::bind(&Ros2CtrlWrapperNode::importPUParametersCallback, this, std::placeholders::_1, std::placeholders::_2)
         );
 
         RCLCPP_INFO(this->get_logger(), "ROS2_Ctrl Wrapper Node started.");
@@ -226,6 +242,44 @@ private:
         res->message = ok ? "Disconnect sounder command sent" : "Failed to send disconnect sounder command";
     }
 
+    void exportPUParametersCallback(
+        const std::shared_ptr<ros_kctrl_custom_interfaces::srv::PUParameters::Request> req,
+        std::shared_ptr<ros_kctrl_custom_interfaces::srv::PUParameters::Response> res)
+    {
+        bool ok = udp_client_->send_export_pu_parameters(req->sounder_name, req->file_name);
+        res->success = ok;
+        res->message = ok ? "Export PU parameters command sent" : "Failed to send export PU parameters command";
+    }
+
+    void requestDetectedSoundersCallback(
+        const std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestDetectedSounders::Request> /*req*/,
+        std::shared_ptr<ros_kctrl_custom_interfaces::srv::RequestDetectedSounders::Response> res)
+    {
+        bool ok = udp_client_->send_request_detected_sounders();
+        res->success = ok;
+        res->message = ok ? "Request detected sounders command sent" : "Failed to send request detected sounders command";
+    }
+
+    void importPUParametersCallback(
+        const std::shared_ptr<ros_kctrl_custom_interfaces::srv::PUParameters::Request> req,
+        std::shared_ptr<ros_kctrl_custom_interfaces::srv::PUParameters::Response> res)
+    {
+        std::ifstream xml_file(req->file_name);
+        if (!xml_file) {
+            res->success = false;
+            res->message = "Failed to open XML file: " + req->file_name;
+            return;
+        }
+
+        std::stringstream buffer;
+        buffer << xml_file.rdbuf();
+        std::string xml_content = buffer.str();
+
+        bool ok = udp_client_->send_import_pu_parameters(req->sounder_name, xml_content);
+        res->success = ok;
+        res->message = ok ? "Import PU parameters command sent" : "Failed to send import PU parameters command";
+    }
+
     rclcpp::Service<ros_kctrl_custom_interfaces::srv::SounderCommand>::SharedPtr start_sounder_srv_;
     rclcpp::Service<ros_kctrl_custom_interfaces::srv::SounderCommand>::SharedPtr start_pinging_srv_;
     rclcpp::Service<ros_kctrl_custom_interfaces::srv::SounderCommand>::SharedPtr stop_pinging_srv_;
@@ -241,6 +295,9 @@ private:
     rclcpp::Service<ros_kctrl_custom_interfaces::srv::RecordingControl>::SharedPtr recording_control_srv_;
     rclcpp::Service<ros_kctrl_custom_interfaces::srv::UpdateRecordingPath>::SharedPtr update_recording_path_srv_;
     rclcpp::Service<ros_kctrl_custom_interfaces::srv::SounderCommand>::SharedPtr disconnect_sounder_srv_;
+    rclcpp::Service<ros_kctrl_custom_interfaces::srv::PUParameters>::SharedPtr export_pu_parameters_srv_;
+    rclcpp::Service<ros_kctrl_custom_interfaces::srv::RequestDetectedSounders>::SharedPtr request_detected_sounders_srv_;
+    rclcpp::Service<ros_kctrl_custom_interfaces::srv::PUParameters>::SharedPtr import_pu_parameters_srv_;
 
     std::shared_ptr<Ros2CtrlUdpClient> udp_client_;
 };
