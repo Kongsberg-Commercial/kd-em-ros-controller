@@ -25,4 +25,4 @@ ros2 launch ros_kctrl_interface_pkg ros2_ctrl_launch.py
 
 ## License
 
-MIT License (or your chosen license)
+Apache 2.0
