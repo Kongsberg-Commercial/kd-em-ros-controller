@@ -261,6 +261,5 @@ This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) fo
 
 For questions or support, open a GitHub issue or contact the maintainers at:
 - [Kongsberg Commercial GitHub](https://github.com/Kongsberg-Commercial)
-- Your company helpdesk or project lead
 
 ---
