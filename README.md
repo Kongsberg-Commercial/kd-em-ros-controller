@@ -134,7 +134,7 @@ Or add this line to your `~/.bashrc` for automatic loading.
 | `ros2_start_sounder SOUNDER`         | Send start sounder command              |
 | ...                                  | ...                                     |
 
-**Tip:** See [Lists/ros2_kctrl_bash_command.md](ros2_kctrl_bash_command.md) for the full list and details.
+**Tip:** See [ros2_kctrl_bash_command.md](Lists/ros2_kctrl_bash_commands.md) for the full list and details.
 
 ---
 
