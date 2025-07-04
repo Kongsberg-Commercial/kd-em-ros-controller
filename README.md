@@ -57,6 +57,9 @@ This project is designed to make integration with K-Controller hardware easy for
 
 ## Getting Started
 
+> **New to WSL and ROS 2 Jazzy on Ubuntu 24.04?**  
+> See the [WSL Ubuntu 24.04 & ROS 2 Jazzy Setup Tutorial](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html#wsl-support) for a full guide to installing WSL, Ubuntu 24.04, and ROS 2 Jazzy.
+
 ### 1. Clone the Repository
 
 Open a terminal and run:
@@ -131,7 +134,7 @@ Or add this line to your `~/.bashrc` for automatic loading.
 | `ros2_start_sounder SOUNDER`         | Send start sounder command              |
 | ...                                  | ...                                     |
 
-**Tip:** See inside `.ros2_kctrl_aliases.sh` for the full list and details.
+**Tip:** See [ros2_kctrl_bash_command.md](ros2_kctrl_bash_command.md) for the full list and details.
 
 ---
 
