@@ -96,6 +96,10 @@ colcon build
 After building, source the setup script to overlay this workspace on your ROS2 environment:
 
 ```bash
+source /opt/ros/<ros-distro>/setup.bash
+```
+
+```bash
 source install/setup.bash
 ```
 To make this automatic in every new terminal, add the line above to your `~/.bashrc` or use the provided bash alias script.
