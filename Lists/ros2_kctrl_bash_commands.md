@@ -31,7 +31,7 @@
 
 | Command                                   | Example usage                                      |
 |--------------------------------------------|----------------------------------------------------|
-| `ros2_recording_control SOUNDER true|false` | `ros2_recording_control MySounder true`           |
+| `ros2_recording_control SOUNDER true/false`| `ros2_recording_control MySounder true`           |
 | `ros2_update_recording_path SOUNDER PATH`  | `ros2_update_recording_path MySounder /tmp/rec`    |
 
 ---
