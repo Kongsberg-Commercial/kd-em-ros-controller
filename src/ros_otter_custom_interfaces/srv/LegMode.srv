@@ -1,0 +1,12 @@
+float64 lat0
+string lat0_dir
+float64 lon0
+string lon0_dir
+float64 lat1
+string lat1_dir
+float64 lon1
+string lon1_dir
+float64 speed
+---
+bool success
+string message
