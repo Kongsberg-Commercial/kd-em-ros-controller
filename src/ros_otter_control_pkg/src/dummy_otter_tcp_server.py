@@ -14,7 +14,7 @@ def handle_client(conn, addr):
             # Echo received data, or print it
             print(f"[Dummy Otter] Received: {data.decode(errors='replace').strip()}")
             # Respond with a fake NMEA sentence for testing, if you want:
-            conn.sendall(b"$PMARFAKE,1,2,3*42\r\n")
+            conn.sendall(b"$PMAROTR,1000,1050,45.6,46.1,12.3,12.6,24.9,4*1F\r\n")
     except Exception as e:
         print(f"[Dummy Otter] Exception: {e}")
     finally:
