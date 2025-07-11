@@ -19,6 +19,12 @@ public:
             std::chrono::seconds(1),
             std::bind(&LegPublisher::publish_leg, this)
         );
+        
+        // Initialize mission data (example polygon)
+        initialize_mission_data();
+        
+        // Calculate survey parameters
+        calculate_survey_parameters();
     }
 
 private:
@@ -32,9 +38,11 @@ private:
     LatLonPoint nearest_vertice_start_;
     LatLonPoint farther_neighbor_vertice_;
     LatLonPoint survey_start_point_;
+    LatLonPoint survey_end_point_;  // Intersection point with polygon boundary
     
     // Survey parameters
     double swath_width_;  // in meters
+    double initial_vector_bearing_;  // bearing from nearest to farther neighbor
     bool survey_started_;
     
     void initialize_mission_data() {
@@ -69,7 +77,7 @@ private:
         
         // Find nearest vertex from initial start point
         double min_distance = std::numeric_limits<double>::max();
-        int nearest_index = 0;
+        size_t nearest_index = 0;
         
         for (size_t i = 0; i < mission_boundary_vertices_.size(); ++i) {
             double distance = calculate_distance(initial_start_point_, mission_boundary_vertices_[i]);
@@ -117,14 +125,22 @@ private:
 
 
         // Calculate initial vector leg (bearing from nearest to farther neighbor)
-        double initial_vector_bearing = calculate_bearing(nearest_vertice_start_, farther_neighbor_vertice_);
-        RCLCPP_INFO(this->get_logger(), "Initial vector bearing: %.2f degrees", initial_vector_bearing);
+        initial_vector_bearing_ = calculate_bearing(nearest_vertice_start_, farther_neighbor_vertice_);
+        RCLCPP_INFO(this->get_logger(), "Initial vector bearing: %.2f degrees", initial_vector_bearing_);
         
-
         // Calculate survey start point (swath width distance along the vector)
-        survey_start_point_ = calculate_point_at_distance_bearing(nearest_vertice_start_, swath_width_, initial_vector_bearing);
+        survey_start_point_ = calculate_point_at_distance_bearing(nearest_vertice_start_, swath_width_, initial_vector_bearing_);
         RCLCPP_INFO(this->get_logger(), "Survey start point: %.6f Lat, %.6f Lon", 
                     survey_start_point_.lat, survey_start_point_.lon);
+        
+        // Find intersection with polygon boundary from survey start point
+        survey_end_point_ = findNearestPolygonIntersection(mission_boundary_vertices_, survey_start_point_, initial_vector_bearing_);
+        
+        // Calculate distance from survey start to end point
+        double survey_leg_distance = calculate_distance(survey_start_point_, survey_end_point_);
+        RCLCPP_INFO(this->get_logger(), "Survey end point (intersection): %.6f Lat, %.6f Lon", 
+                    survey_end_point_.lat, survey_end_point_.lon);
+        RCLCPP_INFO(this->get_logger(), "Survey leg distance: %.2f meters", survey_leg_distance);
         
         // Survey not started yet
         survey_started_ = false;
@@ -134,10 +150,10 @@ private:
     {
         // Use calculated survey parameters instead of hardcoded values
         // This is currently just placeholder of a published leg for now...
-        double lat0 = nearest_vertice_start_.lat;     // Nearest vertex start
-        double lon0 = nearest_vertice_start_.lon;     
-        double lat1 = survey_start_point_.lat;        // Survey start point
-        double lon1 = survey_start_point_.lon;        
+        double lat0 = survey_start_point_.lat;        // Survey start point
+        double lon0 = survey_start_point_.lon;        
+        double lat1 = survey_end_point_.lat;          // Survey end point (intersection)
+        double lon1 = survey_end_point_.lon;          
         double speed = 2.5;                           // Speed in meters/second
 
         // Format each field
@@ -172,7 +188,7 @@ private:
         
         // Log survey status
         if (!survey_started_) {
-            RCLCPP_INFO(this->get_logger(), "Survey not started yet. Publishing nearest vertex to survey start leg.");
+            RCLCPP_INFO(this->get_logger(), "Survey not started yet. Publishing survey start to boundary intersection leg.");
         }
     }
 
