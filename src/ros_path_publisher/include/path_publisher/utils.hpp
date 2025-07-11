@@ -197,3 +197,43 @@ inline LatLonPoint findNearestPolygonIntersection(const std::vector<LatLonPoint>
     
     return found_intersection ? nearest_intersection : ray_origin;
 }
+
+// Helper function to find which edge of the polygon was intersected
+// Returns the index of the edge, or -1 if no intersection found
+inline int findIntersectedEdgeIndex(const std::vector<LatLonPoint>& polygon, 
+                                   const LatLonPoint& ray_origin, 
+                                   double bearing_degrees,
+                                   LatLonPoint& intersection,
+                                   LatLonPoint& edge_start,
+                                   LatLonPoint& edge_end) {
+    if (polygon.empty()) {
+        return -1;
+    }
+    
+    // Create a point along the ray direction
+    LatLonPoint ray_direction = calculate_point_at_distance_bearing(ray_origin, 111000.0, bearing_degrees);
+    
+    double min_distance = std::numeric_limits<double>::max();
+    int intersected_edge_index = -1;
+    
+    // Check intersection with each edge of the polygon
+    for (size_t i = 0; i < polygon.size(); ++i) {
+        LatLonPoint seg_start = polygon[i];
+        LatLonPoint seg_end = polygon[(i + 1) % polygon.size()];
+        
+        LatLonPoint temp_intersection;
+        double t;
+        if (findRaySegmentIntersection(ray_origin, ray_direction, seg_start, seg_end, temp_intersection, &t)) {
+            double distance = calculate_distance(ray_origin, temp_intersection);
+            if (distance < min_distance) {
+                min_distance = distance;
+                intersection = temp_intersection;
+                edge_start = seg_start;
+                edge_end = seg_end;
+                intersected_edge_index = static_cast<int>(i);
+            }
+        }
+    }
+    
+    return intersected_edge_index;
+}
