@@ -36,13 +36,13 @@ private:
     
     // Calculated survey parameters
     LatLonPoint nearest_vertice_start_;
-    LatLonPoint farther_neighbor_vertice_;
+    LatLonPoint closer_neighbor_vertice_;
     LatLonPoint survey_start_point_;
     LatLonPoint survey_end_point_;  // Intersection point with polygon boundary
     
     // Survey parameters
     double swath_width_;  // in meters
-    double initial_vector_bearing_;  // bearing from nearest to farther neighbor
+    double initial_vector_bearing_;  // bearing from nearest to closer neighbor
     double overlap_percentage_;  // percentage of swath width for overlap (50% default)
     bool survey_started_;
     
@@ -123,23 +123,23 @@ private:
         double dist_to_prev = calculate_distance(nearest_vertice_start_, mission_boundary_vertices_[prev_index]);
         double dist_to_next = calculate_distance(nearest_vertice_start_, mission_boundary_vertices_[next_index]);
         
-        // and choose the farther one
-        if (dist_to_prev > dist_to_next) {
-            farther_neighbor_vertice_ = mission_boundary_vertices_[prev_index];
+        // and choose the closer one
+        if (dist_to_prev < dist_to_next) {
+            closer_neighbor_vertice_ = mission_boundary_vertices_[prev_index];
         } else {
-            farther_neighbor_vertice_ = mission_boundary_vertices_[next_index];
+            closer_neighbor_vertice_ = mission_boundary_vertices_[next_index];
         }
         
-        RCLCPP_INFO(this->get_logger(), "Farther neighbor vertex: %.6f Lat, %.6f Lon", 
-                    farther_neighbor_vertice_.lat, farther_neighbor_vertice_.lon);
+        RCLCPP_INFO(this->get_logger(), "Closer neighbor vertex: %.6f Lat, %.6f Lon", 
+                    closer_neighbor_vertice_.lat, closer_neighbor_vertice_.lon);
 
 
-        // Calculate initial vector leg (bearing from nearest to farther neighbor)
-        initial_vector_bearing_ = calculate_bearing(nearest_vertice_start_, farther_neighbor_vertice_);
+        // Calculate initial vector leg (bearing from nearest to closer neighbor)
+        initial_vector_bearing_ = calculate_bearing(nearest_vertice_start_, closer_neighbor_vertice_);
         RCLCPP_INFO(this->get_logger(), "Initial vector bearing: %.2f degrees", initial_vector_bearing_);
         
-        // Calculate survey start point (swath width distance along the vector)
-        survey_start_point_ = calculate_point_at_distance_bearing(nearest_vertice_start_, swath_width_, initial_vector_bearing_);
+        // Set survey start point directly at the nearest vertex
+        survey_start_point_ = nearest_vertice_start_;
         RCLCPP_INFO(this->get_logger(), "Survey start point: %.6f Lat, %.6f Lon", 
                     survey_start_point_.lat, survey_start_point_.lon);
         
