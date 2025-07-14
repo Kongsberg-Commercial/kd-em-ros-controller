@@ -7,3 +7,9 @@ __pycache__/
 *.swp
 .vscode/
 .idea/
+
+# node_modules from backend webapp
+web_app/backend/node_modules/
+
+# polygons.txt local save only
+web_app/backend/polygons.txt
