@@ -9,7 +9,7 @@ class LegPublisher : public rclcpp::Node
 {
 public:
     LegPublisher()
-    : Node("leg_publisher"), survey_started_(false)
+    : Node("leg_publisher"), survey_started_(false), polygon_data_received_(false)
     {
         // Publisher on /path topic
         pub_ = this->create_publisher<std_msgs::msg::String>("/path", 10);
@@ -20,11 +20,11 @@ public:
             std::bind(&LegPublisher::publish_leg, this)
         );
         
-        // Initialize mission data (example polygon)
-        initialize_mission_data();
-        
-        // Calculate survey parameters
-        calculate_survey_parameters();
+        // Subscription to receive polygon data from webapp
+        polygon_sub_ = this->create_subscription<std_msgs::msg::String>(
+            "polygon_data", 10,
+            std::bind(&LegPublisher::polygon_data_callback, this, std::placeholders::_1)
+        );
     }
 
 private:
@@ -51,6 +51,12 @@ private:
     LatLonPoint last_boundary_edge_start_;  // Start of the edge where last intersection occurred
     LatLonPoint last_boundary_edge_end_;    // End of the edge where last intersection occurred
     
+    // Subscription to receive polygon data from webapp
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr polygon_sub_;
+    
+    // Flag to track if we have received polygon data
+    bool polygon_data_received_;
+
     void initialize_mission_data() {
         // Example mission boundary vertices (polygon)
         // TODO: Get these from webapp
@@ -143,52 +149,84 @@ private:
         RCLCPP_INFO(this->get_logger(), "Survey start point: %.6f Lat, %.6f Lon", 
                     survey_start_point_.lat, survey_start_point_.lon);
         
-        // Find intersection with polygon boundary from survey start point
-        LatLonPoint temp_intersection;
-        int intersected_edge_index = findIntersectedEdgeIndex(mission_boundary_vertices_, 
-                                                             survey_start_point_, 
-                                                             initial_vector_bearing_,
-                                                             temp_intersection,
-                                                             last_boundary_edge_start_,
-                                                             last_boundary_edge_end_);
+        // For first leg, set end point directly to closer neighbor vertex (not ray intersection)
+        survey_end_point_ = closer_neighbor_vertice_;
+        last_survey_leg_end_point_ = survey_end_point_;
         
-        if (intersected_edge_index >= 0) {
-            survey_end_point_ = temp_intersection;
-            last_survey_leg_end_point_ = survey_end_point_;
-            
-            // Calculate distance from survey start to end point
-            double survey_leg_distance = calculate_distance(survey_start_point_, survey_end_point_);
-            RCLCPP_INFO(this->get_logger(), "Survey end point (intersection): %.6f Lat, %.6f Lon", 
-                        survey_end_point_.lat, survey_end_point_.lon);
-            RCLCPP_INFO(this->get_logger(), "Survey leg distance: %.2f meters", survey_leg_distance);
-            RCLCPP_INFO(this->get_logger(), "Intersected edge index: %d", intersected_edge_index);
-        } else {
-            RCLCPP_ERROR(this->get_logger(), "No intersection found with polygon boundary!");
-            survey_end_point_ = survey_start_point_; // Fallback
-        }
+        // Set the edge information for the first leg (from nearest to closer neighbor)
+        last_boundary_edge_start_ = nearest_vertice_start_;
+        last_boundary_edge_end_ = closer_neighbor_vertice_;
+        
+        // Calculate distance from survey start to end point
+        double survey_leg_distance = calculate_distance(survey_start_point_, survey_end_point_);
+        RCLCPP_INFO(this->get_logger(), "Survey end point (closer neighbor): %.6f Lat, %.6f Lon", 
+                    survey_end_point_.lat, survey_end_point_.lon);
+        RCLCPP_INFO(this->get_logger(), "Survey leg distance: %.2f meters", survey_leg_distance);
         
         // Survey not started yet
         survey_started_ = false;
         RCLCPP_INFO(this->get_logger(), "Survey started: %s", survey_started_ ? "true" : "false");
     }
+
+
+    // Callback function to handle polygon data from webapp
+    void polygon_data_callback(const std_msgs::msg::String::SharedPtr msg) {
+        RCLCPP_INFO(this->get_logger(), "Received polygon data: %s", msg->data.c_str());
+        
+        try {
+            // Parse JSON data (simplified parsing)
+            // Expected format: {"vertices":[[lat1,lon1],[lat2,lon2],...], "start":[lat,lon]}
+            std::string data = msg->data;
+            
+            // TODO: Replace with proper JSON parsing (like nlohmann/json)
+            // For now, let's trigger survey calculation with existing data
+            polygon_data_received_ = true;
+            
+            // Initialize mission data and calculate survey parameters
+            initialize_mission_data();
+            calculate_survey_parameters();
+            
+            RCLCPP_INFO(this->get_logger(), "Polygon data processed. Starting survey...");
+            
+        } catch (const std::exception& e) {
+            RCLCPP_ERROR(this->get_logger(), "Failed to parse polygon data: %s", e.what());
+        }
+    }
+
+
+    // Publish the survey leg
     void publish_leg()
     {
+        // Only publish if we have received polygon data
+        if (!polygon_data_received_) {
+            return;
+        }
+        
         double lat0, lon0, lat1, lon1;
         
+        // If survey has not started, publish the first leg from survey start point to closer neighbor vertex
         if (!survey_started_) {
-            // First leg: from survey start point to boundary intersection
+            // First leg: from survey start point to closer neighbor vertex
             lat0 = survey_start_point_.lat;
             lon0 = survey_start_point_.lon;
             lat1 = survey_end_point_.lat;
             lon1 = survey_end_point_.lon;
             
-            RCLCPP_INFO(this->get_logger(), "Publishing first survey leg: start to boundary intersection");
-        } else {
+            RCLCPP_INFO(this->get_logger(), "Publishing first survey leg: start to closer neighbor vertex");
+        } 
+
+        // If survey has started, calculate the next leg based on overlap percentage and last leg end
+        else { 
             // Subsequent legs: calculate next survey line
             
             // Calculate start point: overlap_percentage% of swath width from last end point along the boundary edge
             double overlap_distance = (overlap_percentage_ / 100.0) * swath_width_;
-            double edge_bearing = calculate_bearing(last_boundary_edge_start_, last_boundary_edge_end_);
+            
+            // Get the correct edge bearing - use next edge if at/near a vertex
+            double edge_bearing = getNextEdgeBearing(mission_boundary_vertices_,
+                                                   last_survey_leg_end_point_, 
+                                                   last_boundary_edge_start_, 
+                                                   last_boundary_edge_end_);
             
             LatLonPoint start_leg_point = calculate_point_at_distance_bearing(last_survey_leg_end_point_, 
                                                                             overlap_distance, 
@@ -204,13 +242,29 @@ private:
             // Update last survey leg end point for next iteration
             last_survey_leg_end_point_ = end_leg_point;
             
+            // Update boundary edge information for next iteration
+            // Find which edge the new end point intersected
+            LatLonPoint temp_intersection;
+            int intersected_edge_index = findIntersectedEdgeIndex(mission_boundary_vertices_, 
+                                                                 start_leg_point, 
+                                                                 opposite_bearing,
+                                                                 temp_intersection,
+                                                                 last_boundary_edge_start_,
+                                                                 last_boundary_edge_end_);
+            
             lat0 = start_leg_point.lat;
             lon0 = start_leg_point.lon;
             lat1 = end_leg_point.lat;
             lon1 = end_leg_point.lon;
             
             RCLCPP_INFO(this->get_logger(), "Publishing subsequent survey leg: %.2f%% overlap", overlap_percentage_);
+            RCLCPP_INFO(this->get_logger(), "Edge bearing used: %.2f degrees", edge_bearing);
             RCLCPP_INFO(this->get_logger(), "Opposite bearing: %.2f degrees", opposite_bearing);
+            if (intersected_edge_index >= 0) {
+                RCLCPP_INFO(this->get_logger(), "Intersected edge index: %d", intersected_edge_index);
+            } else {
+                RCLCPP_WARN(this->get_logger(), "No edge intersection found for boundary tracking");
+            }
         }
         
         double speed = 2.5;  // Speed in meters/second
