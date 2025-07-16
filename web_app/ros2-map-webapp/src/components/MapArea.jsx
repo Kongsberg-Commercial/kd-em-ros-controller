@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { MapContainer, TileLayer, Polygon, Marker, useMapEvents } from "react-leaflet";
+import React, { useState, useEffect } from "react";
+import { MapContainer, TileLayer, Polygon, Marker, Polyline, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -25,6 +25,17 @@ const greenMarkerIcon = new L.Icon({
   shadowAnchor: null,
 });
 
+// Black marker for debug intersection points
+const blackMarkerIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png",
+  iconSize: [16, 16],
+  iconAnchor: [8, 16],
+  popupAnchor: [0, -16],
+  shadowUrl: null,
+  shadowSize: null,
+  shadowAnchor: null,
+});
+
 const DEFAULT_CENTER = [59.4303437, 10.4726724]; // Horten
 
 function ClickHandler({ addVertex, setStart, enableVertexPlacement }) {
@@ -45,6 +56,40 @@ export default function MapArea() {
   const [vertices, setVertices] = useState([]);
   const [start, setStart] = useState(null);
   const [enableVertexPlacement, setEnableVertexPlacement] = useState(true);
+  const [debugData, setDebugData] = useState(null);
+  const [pathData, setPathData] = useState([]);
+  
+  // WebSocket connection for real-time updates
+  useEffect(() => {
+    const ws = new WebSocket('ws://localhost:8080');
+    
+    ws.onopen = () => {
+      console.log('WebSocket connected');
+    };
+    
+    ws.onmessage = (event) => {
+      try {
+        const message = JSON.parse(event.data);
+        console.log('WebSocket message received:', message);
+        
+        if (message.type === 'debug_data') {
+          setDebugData(message.data);
+        } else if (message.type === 'path_update') {
+          setPathData(prev => [...prev, message.data]);
+        }
+      } catch (e) {
+        console.error('Failed to parse WebSocket message:', e);
+      }
+    };
+    
+    ws.onclose = () => {
+      console.log('WebSocket disconnected');
+    };
+    
+    return () => {
+      ws.close();
+    };
+  }, []);
 
   // Handler for dragging vertices
   const moveVertex = (index, newLatLng) => {
@@ -61,6 +106,27 @@ export default function MapArea() {
   // Erase all vertices
   const eraseAllVertices = () => {
     setVertices([]);
+  };
+  
+  // Clear debug data
+  const clearDebugData = () => {
+    setDebugData(null);
+    setPathData([]);
+  };
+  
+  // Calculate ray end point for visualization
+  const calculateRayEndPoint = (start, bearing, distance = 0.005) => {
+    const R = 6371000; // Earth's radius in meters
+    const lat1 = start[0] * Math.PI / 180;
+    const lon1 = start[1] * Math.PI / 180;
+    const bearingRad = bearing * Math.PI / 180;
+    
+    const lat2 = Math.asin(Math.sin(lat1) * Math.cos(distance / R) +
+                          Math.cos(lat1) * Math.sin(distance / R) * Math.cos(bearingRad));
+    const lon2 = lon1 + Math.atan2(Math.sin(bearingRad) * Math.sin(distance / R) * Math.cos(lat1),
+                                  Math.cos(distance / R) - Math.sin(lat1) * Math.sin(lat2));
+    
+    return [lat2 * 180 / Math.PI, lon2 * 180 / Math.PI];
   };
 
   return (
@@ -97,6 +163,7 @@ export default function MapArea() {
           onClick={eraseAllVertices}
           disabled={vertices.length === 0}
           style={{
+            marginRight: "10px",
             padding: "8px 12px",
             borderRadius: "4px",
             border: "none",
@@ -104,6 +171,19 @@ export default function MapArea() {
           }}
         >
           Erase All
+        </button>
+        <button
+          onClick={clearDebugData}
+          style={{
+            padding: "8px 12px",
+            borderRadius: "4px",
+            border: "none",
+            fontWeight: "bold",
+            backgroundColor: "#f39c12",
+            color: "white"
+          }}
+        >
+          Clear Debug
         </button>
       </div>
       <MapContainer
@@ -142,6 +222,48 @@ export default function MapArea() {
             icon={greenMarkerIcon}
           />
         )}
+        
+        {/* Debug visualization */}
+        {debugData && (
+          <>
+            {/* Debug start point (black marker) */}
+            <Marker
+              position={debugData.start_point}
+              icon={blackMarkerIcon}
+            />
+            
+            {/* Debug end point (black marker) if intersection found */}
+            {(debugData.intersection_found === "true" || debugData.intersection_found === true) && (
+              <Marker
+                position={debugData.end_point}
+                icon={blackMarkerIcon}
+              />
+            )}
+            
+            {/* Ray line (white line) showing survey bearing */}
+            {debugData.survey_bearing !== undefined && (
+              <Polyline
+                positions={[
+                  debugData.start_point,
+                  calculateRayEndPoint(debugData.start_point, debugData.survey_bearing)
+                ]}
+                color="white"
+                weight={3}
+                opacity={0.8}
+              />
+            )}
+            
+            {/* Survey leg line (red line) */}
+            {(debugData.intersection_found === "true" || debugData.intersection_found === true) && (
+              <Polyline
+                positions={[debugData.start_point, debugData.end_point]}
+                color="red"
+                weight={2}
+                opacity={0.7}
+              />
+            )}
+          </>
+        )}
       </MapContainer>
       <button
         onClick={() => {
@@ -160,6 +282,27 @@ export default function MapArea() {
       <div style={{ fontSize: "0.95em", marginTop: "6px", color: "#aaa", textAlign: "center", lineHeight: "1.3" }}>
         Left click to add vertex (when ON) &nbsp;|&nbsp; Right click to set start position &nbsp;|&nbsp; Undo/Erase buttons &nbsp;|&nbsp; Drag vertices when placement is OFF
       </div>
+      
+      {/* Debug info display */}
+      {debugData && (
+        <div style={{ 
+          marginTop: "10px", 
+          padding: "10px", 
+          backgroundColor: "#333", 
+          borderRadius: "4px", 
+          fontSize: "0.9em",
+          color: "#fff",
+          textAlign: "left",
+          maxWidth: "600px"
+        }}>
+          <strong>Debug Info (Leg {debugData.leg_number}):</strong><br/>
+          Start: [{debugData.start_point[0].toFixed(6)}, {debugData.start_point[1].toFixed(6)}]<br/>
+          End: [{debugData.end_point[0].toFixed(6)}, {debugData.end_point[1].toFixed(6)}]<br/>
+          Survey Bearing: {debugData.survey_bearing.toFixed(2)}°<br/>
+          Leg Distance: {debugData.leg_distance.toFixed(2)}m<br/>
+          Intersection Found: {String(debugData.intersection_found)} (type: {typeof debugData.intersection_found})
+        </div>
+      )}
     </div>
   );
 }

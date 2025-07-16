@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const rclnodejs = require("rclnodejs");
+const WebSocket = require('ws');
 
 const app = express();
 const port = 3000;
@@ -11,15 +12,64 @@ app.use(express.json());
 
 let polygonPublisher = null;
 let latestPath = null;
+let debugDataPublisher = null;
+
+// WebSocket server for real-time updates
+const wss = new WebSocket.Server({ port: 8080 });
+let connectedClients = [];
+
+wss.on('connection', (ws) => {
+  console.log('New WebSocket client connected');
+  connectedClients.push(ws);
+  
+  ws.on('close', () => {
+    console.log('WebSocket client disconnected');
+    connectedClients = connectedClients.filter(client => client !== ws);
+  });
+});
+
+// Broadcast to all connected clients
+function broadcastToClients(data) {
+  connectedClients.forEach(client => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify(data));
+    }
+  });
+}
 
 // Initialize ROS2 node and publisher/subscriber
 rclnodejs.init().then(() => {
   const node = rclnodejs.createNode('polygon_sender');
   polygonPublisher = node.createPublisher('std_msgs/msg/String', 'polygon_data');
+  
+  // Subscribe to path updates
   node.createSubscription('std_msgs/msg/String', '/path', (msg) => {
     latestPath = msg.data;
     console.log("Received path from ROS2:", latestPath);
+    
+    // Broadcast path to WebSocket clients
+    broadcastToClients({
+      type: 'path_update',
+      data: latestPath
+    });
   });
+  
+  // Subscribe to debug data
+  node.createSubscription('std_msgs/msg/String', '/debug_data', (msg) => {
+    try {
+      const debugData = JSON.parse(msg.data);
+      console.log("Received debug data from ROS2:", debugData);
+      
+      // Broadcast debug data to WebSocket clients
+      broadcastToClients({
+        type: 'debug_data',
+        data: debugData
+      });
+    } catch (e) {
+      console.error("Failed to parse debug data:", e);
+    }
+  });
+  
   rclnodejs.spin(node);
   console.log("ROS2 node started.");
 });

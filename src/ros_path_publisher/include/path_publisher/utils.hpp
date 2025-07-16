@@ -5,6 +5,10 @@
 #include <cmath>
 #include <limits>
 #include <vector>
+#include <iostream>
+
+// Enable debug output temporarily
+#define DEBUG_INTERSECTION
 
 // Structure to represent a lat/lon point
 struct LatLonPoint {
@@ -13,6 +17,15 @@ struct LatLonPoint {
     
     LatLonPoint(double latitude = 0.0, double longitude = 0.0) 
         : lat(latitude), lon(longitude) {}
+};
+
+// Structure to represent a point in local Cartesian coordinates (meters)
+struct CartesianPoint {
+    double x;
+    double y;
+    
+    CartesianPoint(double x_coord = 0.0, double y_coord = 0.0) 
+        : x(x_coord), y(y_coord) {}
 };
 
 // Helper to convert decimal degrees to ddmm.mm (NMEA format)
@@ -50,6 +63,49 @@ inline std::string decDegToNmeaLon(double longitude) {
         << std::fixed << std::setprecision(3)
         << std::setw(6) << min;
     return oss.str() + "," + dir;
+}
+
+// Coordinate transformation functions for accurate intersection calculations
+// Convert lat/lon to local Cartesian coordinates (East-North-Up system)
+// Uses simple equirectangular projection for small areas
+// reference_point: The origin point for the local coordinate system
+inline CartesianPoint latLonToCartesian(const LatLonPoint& point, const LatLonPoint& reference_point) {
+    const double R = 6371000.0; // Earth's radius in meters
+    
+    // Convert degrees to radians
+    double lat_rad = point.lat * M_PI / 180.0;
+    double lon_rad = point.lon * M_PI / 180.0;
+    double ref_lat_rad = reference_point.lat * M_PI / 180.0;
+    double ref_lon_rad = reference_point.lon * M_PI / 180.0;
+    
+    // Calculate differences
+    double dlat = lat_rad - ref_lat_rad;
+    double dlon = lon_rad - ref_lon_rad;
+    
+    // Convert to Cartesian coordinates
+    double x = R * dlon * std::cos(ref_lat_rad);  // Eastward
+    double y = R * dlat;                          // Northward
+    
+    return CartesianPoint(x, y);
+}
+
+// Convert local Cartesian coordinates back to lat/lon
+inline LatLonPoint cartesianToLatLon(const CartesianPoint& point, const LatLonPoint& reference_point) {
+    const double R = 6371000.0; // Earth's radius in meters
+    
+    // Convert reference point to radians
+    double ref_lat_rad = reference_point.lat * M_PI / 180.0;
+    double ref_lon_rad = reference_point.lon * M_PI / 180.0;
+    
+    // Calculate lat/lon differences
+    double dlat = point.y / R;
+    double dlon = point.x / (R * std::cos(ref_lat_rad));
+    
+    // Convert back to degrees
+    double lat = (ref_lat_rad + dlat) * 180.0 / M_PI;
+    double lon = (ref_lon_rad + dlon) * 180.0 / M_PI;
+    
+    return LatLonPoint(lat, lon);
 }
 
 // Compute NMEA 0183 checksum (returns two uppercase hex digits)
@@ -116,47 +172,96 @@ inline LatLonPoint calculate_point_at_distance_bearing(const LatLonPoint& origin
 /*  Helper function to find intersection between a ray and a line segment
     Returns true if intersection exists, false otherwise
         ray_origin: starting point of the ray
-        ray_direction: direction vector of the ray (normalized bearing in lat/lon space)
+        bearing_degrees: bearing direction of the ray in degrees
         seg_start, seg_end: endpoints of the line segment
         intersection: output parameter for the intersection point
         t: output parameter for the distance along the ray (optional) */
-inline bool findRaySegmentIntersection(const LatLonPoint& ray_origin, const LatLonPoint& ray_direction,
+inline bool findRaySegmentIntersection(const LatLonPoint& ray_origin, double bearing_degrees,
                                        const LatLonPoint& seg_start, const LatLonPoint& seg_end,
                                        LatLonPoint& intersection, double* t = nullptr) {
-    // Convert to local coordinate system for easier calculation
-    // We'll work in a small local area where lat/lon can be treated as x/y
+    // Use the ray origin as the reference point for coordinate transformation
+    LatLonPoint reference_point = ray_origin;
     
-    // Calculate direction vectors
-    double ray_dx = ray_direction.lon - ray_origin.lon;
-    double ray_dy = ray_direction.lat - ray_origin.lat;
-    double seg_dx = seg_end.lon - seg_start.lon;
-    double seg_dy = seg_end.lat - seg_start.lat;
+    // Transform all points to local Cartesian coordinates
+    CartesianPoint ray_origin_cart = latLonToCartesian(ray_origin, reference_point);
+    CartesianPoint seg_start_cart = latLonToCartesian(seg_start, reference_point);
+    CartesianPoint seg_end_cart = latLonToCartesian(seg_end, reference_point);
     
-    // Calculate vector from segment start to ray origin
-    double start_to_origin_dx = ray_origin.lon - seg_start.lon;
-    double start_to_origin_dy = ray_origin.lat - seg_start.lat;
+    // Calculate ray direction vector in Cartesian space from bearing
+    double bearing_rad = bearing_degrees * M_PI / 180.0;
+    double ray_dx = std::sin(bearing_rad);  // East component
+    double ray_dy = std::cos(bearing_rad);  // North component
     
-    // Solve the intersection using parametric equations:
-    // Ray: ray_origin + t * ray_direction
-    // Segment: seg_start + s * (seg_end - seg_start)
-    // Where t >= 0 (ray extends forward) and 0 <= s <= 1 (point is on segment)
+    // Calculate segment direction vector
+    double seg_dx = seg_end_cart.x - seg_start_cart.x;
+    double seg_dy = seg_end_cart.y - seg_start_cart.y;
     
-    double denominator = ray_dx * seg_dy - ray_dy * seg_dx;
-    if (std::abs(denominator) < 1e-10) {
+    #ifdef DEBUG_INTERSECTION
+    std::cout << "Intersection calculation:" << std::endl;
+    std::cout << "  Ray origin (lat/lon): (" << ray_origin.lat << ", " << ray_origin.lon << ")" << std::endl;
+    std::cout << "  Ray origin (cart): (" << ray_origin_cart.x << ", " << ray_origin_cart.y << ")" << std::endl;
+    std::cout << "  Ray bearing: " << bearing_degrees << " degrees" << std::endl;
+    std::cout << "  Ray direction: (" << ray_dx << ", " << ray_dy << ")" << std::endl;
+    std::cout << "  Segment start (lat/lon): (" << seg_start.lat << ", " << seg_start.lon << ")" << std::endl;
+    std::cout << "  Segment end (lat/lon): (" << seg_end.lat << ", " << seg_end.lon << ")" << std::endl;
+    std::cout << "  Segment start (cart): (" << seg_start_cart.x << ", " << seg_start_cart.y << ")" << std::endl;
+    std::cout << "  Segment end (cart): (" << seg_end_cart.x << ", " << seg_end_cart.y << ")" << std::endl;
+    std::cout << "  Segment direction: (" << seg_dx << ", " << seg_dy << ")" << std::endl;
+    #endif
+    
+    // Using cross product approach to handle edge cases better
+    double cross_product = ray_dx * seg_dy - ray_dy * seg_dx;
+    
+    if (std::abs(cross_product) < 1e-12) {
         // Lines are parallel or collinear
+        #ifdef DEBUG_INTERSECTION
+        std::cout << "PARALLEL LINES: cross_product=" << cross_product << std::endl;
+        #endif
         return false;
     }
     
-    double t_ray = (start_to_origin_dx * seg_dy - start_to_origin_dy * seg_dx) / denominator;
-    double s_segment = (start_to_origin_dx * ray_dy - start_to_origin_dy * ray_dx) / denominator;
+    // Calculate intersection parameters
+    double dx = seg_start_cart.x - ray_origin_cart.x;
+    double dy = seg_start_cart.y - ray_origin_cart.y;
+    
+    double t_ray = (dx * seg_dy - dy * seg_dx) / cross_product;
+    double s_segment = (dx * ray_dy - dy * ray_dx) / cross_product;
+    
+    #ifdef DEBUG_INTERSECTION
+    std::cout << "  t_ray: " << t_ray << ", s_segment: " << s_segment << std::endl;
+    std::cout << "  cross_product: " << cross_product << std::endl;
+    std::cout << "  dx: " << dx << ", dy: " << dy << std::endl;
+    #endif
     
     // Check if intersection is valid (on ray and on segment)
-    if (t_ray >= 0 && s_segment >= 0 && s_segment <= 1) {
-        intersection.lat = ray_origin.lat + t_ray * ray_dy;
-        intersection.lon = ray_origin.lon + t_ray * ray_dx;
+    // Use more relaxed tolerances to handle floating point precision issues
+    const double EPSILON = 1e-8;
+    if (t_ray >= -EPSILON && s_segment >= -EPSILON && s_segment <= 1.0 + EPSILON) {
+        // Calculate intersection point in Cartesian space
+        CartesianPoint intersection_cart;
+        intersection_cart.x = ray_origin_cart.x + t_ray * ray_dx;
+        intersection_cart.y = ray_origin_cart.y + t_ray * ray_dy;
+        
+        // Convert back to lat/lon
+        intersection = cartesianToLatLon(intersection_cart, reference_point);
+        
+        #ifdef DEBUG_INTERSECTION
+        std::cout << "INTERSECTION FOUND: t=" << t_ray << ", s=" << s_segment << std::endl;
+        std::cout << "  Ray bearing: " << bearing_degrees << " degrees" << std::endl;
+        std::cout << "  Ray direction: (" << ray_dx << ", " << ray_dy << ")" << std::endl;
+        std::cout << "  Cartesian intersection: (" << intersection_cart.x << ", " << intersection_cart.y << ")" << std::endl;
+        std::cout << "  Lat/Lon intersection: (" << intersection.lat << ", " << intersection.lon << ")" << std::endl;
+        #endif
+        
         if (t) *t = t_ray;
         return true;
     }
+    
+    #ifdef DEBUG_INTERSECTION
+    std::cout << "NO INTERSECTION: t=" << t_ray << ", s=" << s_segment << " (need t>=0 and 0<=s<=1)" << std::endl;
+    std::cout << "  Ray bearing: " << bearing_degrees << " degrees" << std::endl;
+    std::cout << "  Ray direction: (" << ray_dx << ", " << ray_dy << ")" << std::endl;
+    #endif
     
     return false;
 }
@@ -171,12 +276,17 @@ inline LatLonPoint findNearestPolygonIntersection(const std::vector<LatLonPoint>
         return ray_origin;
     }
     
-    // Create a point along the ray direction (1 degree away for direction calculation)
-    LatLonPoint ray_direction = calculate_point_at_distance_bearing(ray_origin, 111000.0, bearing_degrees); // ~1 degree
-    
     LatLonPoint nearest_intersection = ray_origin;
     double min_distance = std::numeric_limits<double>::max();
     bool found_intersection = false;
+    int intersected_edge = -1;
+    
+    // Debug output
+    #ifdef DEBUG_INTERSECTION
+    std::cout << "Finding intersection from origin (" << ray_origin.lat << ", " << ray_origin.lon 
+              << ") with bearing " << bearing_degrees << " degrees" << std::endl;
+    std::cout << "Polygon has " << polygon.size() << " vertices" << std::endl;
+    #endif
     
     // Check intersection with each edge of the polygon
     for (size_t i = 0; i < polygon.size(); ++i) {
@@ -185,17 +295,45 @@ inline LatLonPoint findNearestPolygonIntersection(const std::vector<LatLonPoint>
         
         LatLonPoint intersection;
         double t;
-        if (findRaySegmentIntersection(ray_origin, ray_direction, seg_start, seg_end, intersection, &t)) {
+        if (findRaySegmentIntersection(ray_origin, bearing_degrees, seg_start, seg_end, intersection, &t)) {
             double distance = calculate_distance(ray_origin, intersection);
-            if (distance < min_distance) {
+            
+            #ifdef DEBUG_INTERSECTION
+            std::cout << "Edge " << i << " intersects at (" << intersection.lat << ", " << intersection.lon 
+                      << ") distance: " << distance << " t: " << t << std::endl;
+            #endif
+            
+            // Only consider intersections that are at least 50m away to avoid self-intersection
+            // and ensure we get meaningful survey legs
+            if (distance > 50.0 && distance < min_distance) {
                 min_distance = distance;
                 nearest_intersection = intersection;
                 found_intersection = true;
+                intersected_edge = static_cast<int>(i);
             }
+        } else {
+            #ifdef DEBUG_INTERSECTION
+            std::cout << "Edge " << i << " (" << seg_start.lat << ", " << seg_start.lon 
+                      << ") to (" << seg_end.lat << ", " << seg_end.lon << ") - no intersection" << std::endl;
+            #endif
         }
     }
     
-    return found_intersection ? nearest_intersection : ray_origin;
+    #ifdef DEBUG_INTERSECTION
+    if (found_intersection) {
+        std::cout << "Nearest intersection found at (" << nearest_intersection.lat << ", " << nearest_intersection.lon 
+                  << ") distance: " << min_distance << " on edge " << intersected_edge << std::endl;
+    } else {
+        std::cout << "No intersection found, returning fallback point" << std::endl;
+    }
+    #endif
+    
+    // If no intersection found, return a point far along the ray
+    if (!found_intersection) {
+        return calculate_point_at_distance_bearing(ray_origin, 1000.0, bearing_degrees);
+    }
+    
+    return nearest_intersection;
 }
 
 // Helper function to find which edge of the polygon was intersected
@@ -210,9 +348,6 @@ inline int findIntersectedEdgeIndex(const std::vector<LatLonPoint>& polygon,
         return -1;
     }
     
-    // Create a point along the ray direction
-    LatLonPoint ray_direction = calculate_point_at_distance_bearing(ray_origin, 111000.0, bearing_degrees);
-    
     double min_distance = std::numeric_limits<double>::max();
     int intersected_edge_index = -1;
     
@@ -223,9 +358,9 @@ inline int findIntersectedEdgeIndex(const std::vector<LatLonPoint>& polygon,
         
         LatLonPoint temp_intersection;
         double t;
-        if (findRaySegmentIntersection(ray_origin, ray_direction, seg_start, seg_end, temp_intersection, &t)) {
+        if (findRaySegmentIntersection(ray_origin, bearing_degrees, seg_start, seg_end, temp_intersection, &t)) {
             double distance = calculate_distance(ray_origin, temp_intersection);
-            if (distance < min_distance) {
+            if (distance < min_distance && distance > 50.0) { // Must be at least 50m away
                 min_distance = distance;
                 intersection = temp_intersection;
                 edge_start = seg_start;
@@ -236,4 +371,122 @@ inline int findIntersectedEdgeIndex(const std::vector<LatLonPoint>& polygon,
     }
     
     return intersected_edge_index;
+}
+
+// Helper function to find the next unvisited edge from a vertex
+// Returns the bearing to move along the next edge of the polygon
+inline double getNextEdgeBearing(const std::vector<LatLonPoint>& polygon_vertices,
+                                const LatLonPoint& current_point, 
+                                const LatLonPoint& last_edge_start, 
+                                const LatLonPoint& last_edge_end) {
+    // Find which vertex we're closest to
+    double min_distance = std::numeric_limits<double>::max();
+    size_t closest_vertex_index = 0;
+    
+    for (size_t i = 0; i < polygon_vertices.size(); ++i) {
+        double distance = calculate_distance(current_point, polygon_vertices[i]);
+        if (distance < min_distance) {
+            min_distance = distance;
+            closest_vertex_index = i;
+        }
+    }
+    
+    // If we're very close to a vertex (within 10m), use that vertex
+    if (min_distance < 10.0) {
+        LatLonPoint vertex = polygon_vertices[closest_vertex_index];
+        
+        // Get the two neighboring vertices
+        size_t prev_index = (closest_vertex_index == 0) ? 
+            polygon_vertices.size() - 1 : closest_vertex_index - 1;
+        size_t next_index = (closest_vertex_index + 1) % polygon_vertices.size();
+        
+        LatLonPoint prev_vertex = polygon_vertices[prev_index];
+        LatLonPoint next_vertex = polygon_vertices[next_index];
+        
+        // Determine which edge we just came from
+        double dist_to_prev = calculate_distance(last_edge_start, prev_vertex) + 
+                             calculate_distance(last_edge_end, prev_vertex);
+        double dist_to_next = calculate_distance(last_edge_start, next_vertex) + 
+                             calculate_distance(last_edge_end, next_vertex);
+        
+        // Choose the edge we haven't been on (the one farther from last edge)
+        if (dist_to_prev < dist_to_next) {
+            // We came from prev_vertex, so next edge is to next_vertex
+            return calculate_bearing(vertex, next_vertex);
+        } else {
+            // We came from next_vertex, so next edge is to prev_vertex
+            return calculate_bearing(vertex, prev_vertex);
+        }
+    }
+    
+    // If not close to a vertex, use the current edge bearing
+    return calculate_bearing(last_edge_start, last_edge_end);
+}
+
+
+// Helper function to calculate perpendicular bearing to an edge
+// Returns the bearing perpendicular to the edge (90 degrees rotated from edge bearing)
+// inward: if true, returns inward perpendicular; if false, returns outward perpendicular
+inline double calculatePerpendicularBearing(const LatLonPoint& edge_start, const LatLonPoint& edge_end, bool inward = true) {
+    double edge_bearing = calculate_bearing(edge_start, edge_end);
+    
+    // Calculate perpendicular bearing (90 degrees rotation)
+    double perpendicular_bearing;
+    if (inward) {
+        // Rotate 90 degrees counterclockwise (inward to polygon)
+        perpendicular_bearing = edge_bearing - 90.0;
+    } else {
+        // Rotate 90 degrees clockwise (outward from polygon)
+        perpendicular_bearing = edge_bearing + 90.0;
+    }
+    
+    // Normalize to 0-360 degrees
+    while (perpendicular_bearing < 0) perpendicular_bearing += 360.0;
+    while (perpendicular_bearing >= 360) perpendicular_bearing -= 360.0;
+    
+    return perpendicular_bearing;
+}
+
+// Helper function to determine survey bearing based on current edge for alternating pattern
+// Returns alternating bearing for proper lawnmower pattern
+inline double getSurveyBearing(int current_edge_index, int starting_edge_index, 
+                              int polygon_size, double odd_bearing, double even_bearing) {
+    // Calculate edge distance from starting edge
+    int edge_distance = (current_edge_index - starting_edge_index + polygon_size) % polygon_size;
+    
+    // Alternate between odd and even bearing
+    if (edge_distance % 2 == 0) {
+        // Even distance from starting edge: use even bearing
+        return even_bearing;
+    } else {
+        // Odd distance from starting edge: use odd bearing
+        return odd_bearing;
+    }
+}
+
+// Helper function to check if a point is inside a polygon using ray casting algorithm
+inline bool isPointInPolygon(const LatLonPoint& point, const std::vector<LatLonPoint>& polygon) {
+    if (polygon.size() < 3) return false;
+    
+    int crossings = 0;
+    size_t n = polygon.size();
+    
+    for (size_t i = 0; i < n; i++) {
+        size_t j = (i + 1) % n;
+        
+        // Check if ray from point to the right crosses edge (i,j)
+        if (((polygon[i].lat <= point.lat) && (point.lat < polygon[j].lat)) ||
+            ((polygon[j].lat <= point.lat) && (point.lat < polygon[i].lat))) {
+            
+            // Calculate x-coordinate of intersection
+            double x_intersect = polygon[i].lon + (point.lat - polygon[i].lat) * 
+                                (polygon[j].lon - polygon[i].lon) / (polygon[j].lat - polygon[i].lat);
+            
+            if (point.lon < x_intersect) {
+                crossings++;
+            }
+        }
+    }
+    
+    return (crossings % 2) == 1; // Odd number of crossings means inside
 }
