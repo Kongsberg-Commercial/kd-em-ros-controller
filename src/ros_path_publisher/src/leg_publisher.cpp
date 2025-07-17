@@ -11,6 +11,10 @@ public:
     LegPublisher()
     : Node("leg_publisher"), survey_started_(false), polygon_data_received_(false), current_leg_index_(0), last_intersected_edge_index_(0)
     {
+        // Declare parameters for configurable values
+        this->declare_parameter<double>("overlap_percentage", 50.0);
+        this->declare_parameter<double>("swath_width", 50.0);
+        
         // Publisher on /path topic
         pub_ = this->create_publisher<std_msgs::msg::String>("/path", 10);
         
@@ -79,17 +83,48 @@ private:
     // Last intersected edge index for tracking progression
     int last_intersected_edge_index_;
 
+    // Check if survey is complete based on coverage and geometry
+    bool is_survey_complete() {
+        // Calculate polygon perimeter
+        double polygon_perimeter = 0.0;
+        for (size_t i = 0; i < mission_boundary_vertices_.size(); ++i) {
+            size_t next_i = (i + 1) % mission_boundary_vertices_.size();
+            polygon_perimeter += calculate_distance(mission_boundary_vertices_[i], mission_boundary_vertices_[next_i]);
+        }
+        
+        // Calculate effective swath width (accounting for overlap)
+        double effective_swath_width = swath_width_ * (1.0 - overlap_percentage_ / 100.0);
+        
+        // Calculate coverage distance
+        double coverage_distance = current_leg_index_ * effective_swath_width;
+        double coverage_percentage = (coverage_distance / polygon_perimeter) * 100.0;
+        
+        RCLCPP_INFO(this->get_logger(), 
+                   "Survey progress: Leg %d, Perimeter: %.2f m, Coverage: %.1f%%, Effective swath: %.2f m", 
+                   current_leg_index_, polygon_perimeter, coverage_percentage, effective_swath_width);
+        
+        // Consider survey complete if we've covered >90% of the polygon perimeter
+        return coverage_percentage > 90.0;
+    }
+
     void initialize_mission_data() {
         // Mission boundary vertices and initial start point should already be set from webapp data
         // Just set default survey parameters here
         
-        // Example swath width (in meters)
-        // TODO: Get this from topic or webapp
-        swath_width_ = 50.0;
+        // Get configurable parameters
+        swath_width_ = this->get_parameter("swath_width").as_double();
+        overlap_percentage_ = this->get_parameter("overlap_percentage").as_double();
         
-        // Overlap percentage for survey legs (50% default)
-        // TODO: Might Change This or Make It Dynamic | TBD
-        overlap_percentage_ = 50.0;
+        // Validate parameters
+        if (swath_width_ <= 0.0) {
+            RCLCPP_WARN(this->get_logger(), "Invalid swath_width: %.2f, using default 50.0", swath_width_);
+            swath_width_ = 50.0;
+        }
+        
+        if (overlap_percentage_ < 0.0 || overlap_percentage_ > 100.0) {
+            RCLCPP_WARN(this->get_logger(), "Invalid overlap_percentage: %.2f, using default 50.0", overlap_percentage_);
+            overlap_percentage_ = 50.0;
+        }
         
         RCLCPP_INFO(this->get_logger(), "Mission data initialized");
         RCLCPP_INFO(this->get_logger(), "Mission boundary has %zu vertices", mission_boundary_vertices_.size());
@@ -284,14 +319,22 @@ private:
         }
         
         // Check if we've reached the end of the survey
-        if (survey_started_ && current_leg_index_ >= 69) {  // Limit to 10 legs for now
-            RCLCPP_INFO(this->get_logger(), "Survey completed - no more legs to publish");
+        if (survey_started_ && is_survey_complete()) {
+            RCLCPP_INFO(this->get_logger(), "Survey completed based on coverage analysis - no more legs to publish");
             return;
         }
         
+        // Also check for reasonable maximum leg count to prevent infinite surveys
+        if (survey_started_ && current_leg_index_ >= 100) {
+            RCLCPP_WARN(this->get_logger(), "Maximum leg count reached (100) - stopping survey");
+            return;
+        }
+        
+        // Increment the leg index before publishing to ensure consistent state
+        current_leg_index_++;
+        
         // Publish the next leg
         publish_leg();
-        current_leg_index_++;
         
         RCLCPP_INFO(this->get_logger(), "Published leg %d", current_leg_index_);
     }
@@ -344,168 +387,102 @@ private:
 
         // If survey has started, calculate the next leg based on overlap percentage and last leg end
         else { 
-            // Subsequent legs: calculate next survey line
+            // Subsequent legs: calculate next survey line using geometry-based approach
             
-            // Calculate start point: overlap_percentage% of swath width from last end point along the boundary edge
-            double overlap_distance = (overlap_percentage_ / 100.0) * swath_width_;
+            // Calculate effective displacement distance (swath width minus overlap)
+            double effective_swath_width = swath_width_ * (1.0 - overlap_percentage_ / 100.0);
             
-            // Get the correct edge bearing - use next edge if at/near a vertex
-            double edge_bearing = getNextEdgeBearing(mission_boundary_vertices_,
-                                                   last_survey_leg_end_point_, 
-                                                   last_boundary_edge_start_, 
-                                                   last_boundary_edge_end_);
+            // Find the closest point on the polygon boundary to the last leg end point
+            LatLonPoint closest_boundary_point;
+            int closest_edge_index = -1;
+            double min_distance_to_boundary = std::numeric_limits<double>::max();
             
-            LatLonPoint start_leg_point = calculate_point_at_distance_bearing(last_survey_leg_end_point_, 
-                                                                            overlap_distance, 
-                                                                            edge_bearing);
-            
-            // Find which edge we're starting from using the intersected edge from last leg
-            // This gives us the current edge we're following around the polygon
-            int current_edge_index = last_intersected_edge_index_;
-            
-            // Check if we've moved to the next edge by checking if we're close to a vertex
-            double vertex_threshold = 20.0; // meters
+            // Check distance to each edge of the polygon
             for (size_t i = 0; i < mission_boundary_vertices_.size(); ++i) {
-                double dist_to_vertex = calculate_distance(last_survey_leg_end_point_, mission_boundary_vertices_[i]);
-                if (dist_to_vertex < vertex_threshold) {
-                    // We're close to a vertex, so we might be moving to the next edge
-                    // Use the vertex index as the new edge index
-                    current_edge_index = static_cast<int>(i);
-                    RCLCPP_INFO(this->get_logger(), "Near vertex %zu, updating edge index to %d", i, current_edge_index);
-                    break;
+                LatLonPoint edge_start = mission_boundary_vertices_[i];
+                LatLonPoint edge_end = mission_boundary_vertices_[(i + 1) % mission_boundary_vertices_.size()];
+                
+                // Find closest point on this edge to the last leg end point
+                LatLonPoint closest_point_on_edge = findClosestPointOnEdge(last_survey_leg_end_point_, edge_start, edge_end);
+                double distance_to_edge = calculate_distance(last_survey_leg_end_point_, closest_point_on_edge);
+                
+                if (distance_to_edge < min_distance_to_boundary) {
+                    min_distance_to_boundary = distance_to_edge;
+                    closest_boundary_point = closest_point_on_edge;
+                    closest_edge_index = static_cast<int>(i);
                 }
             }
             
+            RCLCPP_INFO(this->get_logger(), "Closest boundary point: (%.6f, %.6f) on edge %d, distance: %.2f m", 
+                       closest_boundary_point.lat, closest_boundary_point.lon, closest_edge_index, min_distance_to_boundary);
+            
+            // Calculate the direction to move along the polygon perimeter
+            // For lawnmower pattern: odd legs move in one direction, even legs in opposite direction
+            bool move_forward = (current_leg_index_ % 2 == 1);
+            
+            // Move along the polygon perimeter by the effective swath width
+            LatLonPoint displaced_point = moveAlongPolygonPerimeter(
+                mission_boundary_vertices_, 
+                closest_boundary_point, 
+                closest_edge_index, 
+                effective_swath_width, 
+                move_forward);
+            
+            RCLCPP_INFO(this->get_logger(), "Leg %d: Moving %s along polygon perimeter by %.2f m", 
+                       current_leg_index_, move_forward ? "forward" : "backward", effective_swath_width);
+            RCLCPP_INFO(this->get_logger(), "Displaced to: (%.6f, %.6f)", displaced_point.lat, displaced_point.lon);
+            
+            // Use the displaced point as the start of the next survey leg
+            LatLonPoint start_leg_point = displaced_point;
+            
             // Get the correct survey bearing based on current leg index (alternating pattern)
-            // Use leg index instead of edge index to ensure proper alternating pattern
             double survey_bearing;
-            if (current_leg_index_ % 2 == 0) {
-                // Even leg numbers (2, 4, 6, ...) use the original bearing (same as first leg)
+            if (current_leg_index_ % 2 == 1) {
+                // Odd leg numbers (1, 3, 5, ...) use the original bearing (same as first leg)
                 survey_bearing = odd_bearing_;
             } else {
-                // Odd leg numbers (1, 3, 5, ...) use the opposite bearing (opposite to first leg)
+                // Even leg numbers (2, 4, 6, ...) use the opposite bearing (opposite to first leg)
                 survey_bearing = even_bearing_;
             }
             
             RCLCPP_INFO(this->get_logger(), "Leg %d: Using %s bearing %.2f degrees", 
                        current_leg_index_, 
-                       (current_leg_index_ % 2 == 0) ? "odd" : "even", 
+                       (current_leg_index_ % 2 == 1) ? "odd" : "even", 
                        survey_bearing);
             
-            // Instead of using the calculated start point directly, move it slightly inside the polygon
-            // to ensure it's a valid starting point for the ray intersection
+            // Use the displaced point as the start of the survey leg
             LatLonPoint perpendicular_point = start_leg_point;
             
-            // Try to find a better start point by moving slightly inward from the boundary
-            double inward_distance = 20.0; // 20 meters inward (increased from 10m)
-            bool moved_inward = false;
-
+            RCLCPP_INFO(this->get_logger(), "Survey leg start point: (%.6f, %.6f)", 
+                       perpendicular_point.lat, perpendicular_point.lon);
             
-            for (size_t i = 0; i < mission_boundary_vertices_.size(); ++i) {
-                LatLonPoint seg_start = mission_boundary_vertices_[i];
-                LatLonPoint seg_end = mission_boundary_vertices_[(i + 1) % mission_boundary_vertices_.size()];
-                
-                // Calculate perpendicular bearing inward from this edge
-                double perp_bearing = calculatePerpendicularBearing(seg_start, seg_end, true);
-                
-                // Check if our start point is near this edge
-                double dist_to_edge_start = calculate_distance(start_leg_point, seg_start);
-                double dist_to_edge_end = calculate_distance(start_leg_point, seg_end);
-                double edge_length = calculate_distance(seg_start, seg_end);
-                
-                // If we're reasonably close to this edge, move inward
-                if (dist_to_edge_start < edge_length * 1.5 && dist_to_edge_end < edge_length * 1.5) {
-                    perpendicular_point = calculate_point_at_distance_bearing(start_leg_point, 
-                                                                            inward_distance, 
-                                                                            perp_bearing);
-                    moved_inward = true;
-                    RCLCPP_INFO(this->get_logger(), "Moved start point inward by %.1fm to (%.6f, %.6f)", 
-                               inward_distance, perpendicular_point.lat, perpendicular_point.lon);
-                    break;
-                }
-            }
-            
-            if (!moved_inward) {
-                // If we couldn't find a nearby edge, try moving inward from the polygon center
-                // Calculate polygon centroid
-                double center_lat = 0.0, center_lon = 0.0;
-                for (const auto& vertex : mission_boundary_vertices_) {
-                    center_lat += vertex.lat;
-                    center_lon += vertex.lon;
-                }
-                center_lat /= mission_boundary_vertices_.size();
-                center_lon /= mission_boundary_vertices_.size();
-                
-                LatLonPoint polygon_center(center_lat, center_lon);
-                double bearing_to_center = calculate_bearing(start_leg_point, polygon_center);
-                perpendicular_point = calculate_point_at_distance_bearing(start_leg_point, 
-                                                                        inward_distance, 
-                                                                        bearing_to_center);
-                RCLCPP_INFO(this->get_logger(), "Moved start point toward polygon center by %.1fm to (%.6f, %.6f)", 
-                           inward_distance, perpendicular_point.lat, perpendicular_point.lon);
-            }
-            
-            // Check if the ray start point is inside the polygon
-            bool start_point_inside = isPointInPolygon(perpendicular_point, mission_boundary_vertices_);
-            if (!start_point_inside) {
-                RCLCPP_WARN(this->get_logger(), "Ray start point (%.6f, %.6f) is outside polygon! This may cause intersection issues.", 
-                           perpendicular_point.lat, perpendicular_point.lon);
-                
-                // If the point is outside, try moving toward the polygon center more aggressively
-                double center_lat = 0.0, center_lon = 0.0;
-                for (const auto& vertex : mission_boundary_vertices_) {
-                    center_lat += vertex.lat;
-                    center_lon += vertex.lon;
-                }
-                center_lat /= mission_boundary_vertices_.size();
-                center_lon /= mission_boundary_vertices_.size();
-                
-                LatLonPoint polygon_center(center_lat, center_lon);
-                double bearing_to_center = calculate_bearing(start_leg_point, polygon_center);
-                
-                // Try increasingly larger distances until we get inside the polygon
-                for (double distance = 30.0; distance <= 100.0; distance += 10.0) {
-                    LatLonPoint test_point = calculate_point_at_distance_bearing(start_leg_point, 
-                                                                               distance, 
-                                                                               bearing_to_center);
-                    if (isPointInPolygon(test_point, mission_boundary_vertices_)) {
-                        perpendicular_point = test_point;
-                        start_point_inside = true;
-                        RCLCPP_INFO(this->get_logger(), "Moved start point toward polygon center by %.1fm to (%.6f, %.6f) - now inside", 
-                                   distance, perpendicular_point.lat, perpendicular_point.lon);
-                        break;
-                    }
-                }
-                
-                if (!start_point_inside) {
-                    RCLCPP_ERROR(this->get_logger(), "Could not find a valid start point inside the polygon!");
-                }
-            } else {
-                RCLCPP_INFO(this->get_logger(), "Ray start point (%.6f, %.6f) is inside polygon", 
-                           perpendicular_point.lat, perpendicular_point.lon);
-            }
-            
+            // Find the end point by intersecting the survey bearing with the polygon
             LatLonPoint end_leg_point = findNearestPolygonIntersection(mission_boundary_vertices_, 
                                                                       perpendicular_point, 
-                                                                      survey_bearing);
+                                                                      survey_bearing,
+                                                                      -1); // Don't exclude any edge
             
-            // Debug: Check if intersection was found
+            // Check if a valid intersection was found
             double leg_distance = calculate_distance(perpendicular_point, end_leg_point);
-            if (leg_distance < 50.0) {
-                RCLCPP_WARN(this->get_logger(), "No valid polygon intersection found (distance: %.2f m)! Start: %.6f,%.6f, End: %.6f,%.6f", 
-                           leg_distance, perpendicular_point.lat, perpendicular_point.lon, end_leg_point.lat, end_leg_point.lon);
+            if (leg_distance < 25.0) {
+                RCLCPP_WARN(this->get_logger(), "No valid polygon intersection found (distance: %.2f m)", leg_distance);
                 RCLCPP_WARN(this->get_logger(), "Survey bearing: %.2f degrees", survey_bearing);
-                RCLCPP_INFO(this->get_logger(), "Original start point: %.6f,%.6f", 
-                           start_leg_point.lat, start_leg_point.lon);
-                RCLCPP_WARN(this->get_logger(), "This may indicate the survey has reached the end of the polygon or there's a geometry issue.");
-            } else {
-                RCLCPP_INFO(this->get_logger(), "Found intersection: Start: %.6f,%.6f, End: %.6f,%.6f", 
-                           perpendicular_point.lat, perpendicular_point.lon, end_leg_point.lat, end_leg_point.lon);
-                RCLCPP_INFO(this->get_logger(), "Survey bearing: %.2f degrees, Leg distance: %.2f meters", 
-                           survey_bearing, leg_distance);
-                RCLCPP_INFO(this->get_logger(), "Original start point: %.6f,%.6f", 
-                           start_leg_point.lat, start_leg_point.lon);
+                RCLCPP_WARN(this->get_logger(), "Start point: (%.6f, %.6f)", perpendicular_point.lat, perpendicular_point.lon);
+                
+                // Check if survey is complete
+                if (is_survey_complete()) {
+                    RCLCPP_INFO(this->get_logger(), "Survey complete - no more valid intersections needed");
+                    return;
+                }
+                
+                RCLCPP_ERROR(this->get_logger(), "Cannot find valid intersection and survey not complete");
+                return;
             }
+            
+            RCLCPP_INFO(this->get_logger(), "Found intersection: Start: (%.6f, %.6f), End: (%.6f, %.6f)", 
+                       perpendicular_point.lat, perpendicular_point.lon, end_leg_point.lat, end_leg_point.lon);
+            RCLCPP_INFO(this->get_logger(), "Survey bearing: %.2f degrees, Leg distance: %.2f meters", 
+                       survey_bearing, leg_distance);
             
             // Publish debug data for visualization
             std::ostringstream debug_json;
@@ -513,28 +490,28 @@ private:
             debug_json << "\"leg_number\":" << current_leg_index_ << ",";
             debug_json << "\"start_point\":[" << perpendicular_point.lat << "," << perpendicular_point.lon << "],";
             debug_json << "\"end_point\":[" << end_leg_point.lat << "," << end_leg_point.lon << "],";
-            debug_json << "\"original_start_point\":[" << start_leg_point.lat << "," << start_leg_point.lon << "],";
             debug_json << "\"survey_bearing\":" << survey_bearing << ",";
+            debug_json << "\"closest_edge_index\":" << closest_edge_index << ",";
+            debug_json << "\"effective_swath_width\":" << effective_swath_width << ",";
             debug_json << "\"leg_distance\":" << leg_distance << ",";
-            debug_json << "\"moved_inward\":true,";
-            debug_json << "\"start_point_inside_polygon\":" << (start_point_inside ? "true" : "false") << ",";
+            debug_json << "\"move_forward\":" << (move_forward ? "true" : "false") << ",";
             debug_json << "\"polygon_vertices\":[";
             for (size_t i = 0; i < mission_boundary_vertices_.size(); ++i) {
                 debug_json << "[" << mission_boundary_vertices_[i].lat << "," << mission_boundary_vertices_[i].lon << "]";
                 if (i < mission_boundary_vertices_.size() - 1) debug_json << ",";
             }
             debug_json << "],";
-            debug_json << "\"intersection_found\":" << (leg_distance >= 50.0 ? "true" : "false");
+            debug_json << "\"intersection_found\":" << (leg_distance >= 25.0 ? "true" : "false");
             debug_json << "}";
             
             std_msgs::msg::String debug_msg;
             debug_msg.data = debug_json.str();
             debug_pub_->publish(debug_msg);
             
-            // Update last survey leg end point for next iteration
+            // Update state for next iteration
             last_survey_leg_end_point_ = end_leg_point;
             
-            // Find the intersected edge with the correct bearing for accurate boundary tracking
+            // Update the last intersected edge index based on where the end point is
             LatLonPoint temp_intersection;
             int intersected_edge_index = findIntersectedEdgeIndex(mission_boundary_vertices_, 
                                                                  perpendicular_point, 
@@ -543,24 +520,21 @@ private:
                                                                  last_boundary_edge_start_,
                                                                  last_boundary_edge_end_);
             
-            // Update the last intersected edge index for next iteration
-            last_intersected_edge_index_ = intersected_edge_index;
+            if (intersected_edge_index >= 0) {
+                last_intersected_edge_index_ = intersected_edge_index;
+            }
             
             lat0 = perpendicular_point.lat;
             lon0 = perpendicular_point.lon;
             lat1 = end_leg_point.lat;
             lon1 = end_leg_point.lon;
             
-            RCLCPP_INFO(this->get_logger(), "Publishing subsequent survey leg: %.2f%% overlap", overlap_percentage_);
-            RCLCPP_INFO(this->get_logger(), "Edge bearing used: %.2f degrees", edge_bearing);
-            RCLCPP_INFO(this->get_logger(), "Current edge index: %d", current_edge_index);
-            RCLCPP_INFO(this->get_logger(), "Survey bearing (alternating pattern): %.2f degrees", survey_bearing);
+            RCLCPP_INFO(this->get_logger(), "Publishing survey leg %d: effective swath %.2f m", 
+                       current_leg_index_, effective_swath_width);
+            RCLCPP_INFO(this->get_logger(), "Survey pattern: %s bearing %.2f degrees", 
+                       (current_leg_index_ % 2 == 1) ? "odd" : "even", survey_bearing);
             if (intersected_edge_index >= 0) {
-                RCLCPP_INFO(this->get_logger(), "Intersected edge index: %d", intersected_edge_index);
-                int edge_distance = (intersected_edge_index - starting_edge_index_ + mission_boundary_vertices_.size()) % mission_boundary_vertices_.size();
-                RCLCPP_INFO(this->get_logger(), "Edge distance from start: %d %s", edge_distance, (edge_distance % 2 == 0) ? "(opposite bearing)" : "(original bearing)");
-            } else {
-                RCLCPP_WARN(this->get_logger(), "No edge intersection found for boundary tracking");
+                RCLCPP_INFO(this->get_logger(), "Intersected edge: %d", intersected_edge_index);
             }
         }
         
@@ -618,3 +592,18 @@ int main(int argc, char ** argv)
 }
 
 // ros2 topic pub --once leg_request std_msgs/msg/String '{data: "next"}'
+
+/* 
+Worked!:D
+
+Received vertices: [
+  [ 59.42907768917837, 10.468919277191164 ],
+  [ 59.431718645652595, 10.471708774566652 ],
+  [ 59.431369440091224, 10.478832721710207 ],
+  [ 59.42757159693651, 10.479390621185305 ],
+  [ 59.42569434466917, 10.475871562957765 ],
+  [ 59.427135035932494, 10.471408367156984 ]
+]
+Received start position: [ 59.424821168605554, 10.471665859222414 ]
+Published polygon to ROS2 topic.
+*/

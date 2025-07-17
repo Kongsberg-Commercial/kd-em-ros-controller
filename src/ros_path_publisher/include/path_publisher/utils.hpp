@@ -305,7 +305,91 @@ inline LatLonPoint findNearestPolygonIntersection(const std::vector<LatLonPoint>
             
             // Only consider intersections that are at least 50m away to avoid self-intersection
             // and ensure we get meaningful survey legs
-            if (distance > 50.0 && distance < min_distance) {
+            if (distance > 1.0 && distance < min_distance) {
+                min_distance = distance;
+                nearest_intersection = intersection;
+                found_intersection = true;
+                intersected_edge = static_cast<int>(i);
+            }
+        } else {
+            #ifdef DEBUG_INTERSECTION
+            std::cout << "Edge " << i << " (" << seg_start.lat << ", " << seg_start.lon 
+                      << ") to (" << seg_end.lat << ", " << seg_end.lon << ") - no intersection" << std::endl;
+            #endif
+        }
+    }
+    
+    #ifdef DEBUG_INTERSECTION
+    if (found_intersection) {
+        std::cout << "Nearest intersection found at (" << nearest_intersection.lat << ", " << nearest_intersection.lon 
+                  << ") distance: " << min_distance << " on edge " << intersected_edge << std::endl;
+    } else {
+        std::cout << "No intersection found, returning fallback point" << std::endl;
+    }
+    #endif
+    
+    // If no intersection found, return a point far along the ray
+    if (!found_intersection) {
+        return calculate_point_at_distance_bearing(ray_origin, 1000.0, bearing_degrees);
+    }
+    
+    return nearest_intersection;
+}
+
+/*  Helper function to find the nearest intersection of a ray with a polygon
+    Returns the nearest intersection point along the ray direction
+    If no intersection is found, returns the ray_origin
+    exclude_edge_index: edge index to exclude from intersection calculations (-1 to include all edges) */
+inline LatLonPoint findNearestPolygonIntersection(const std::vector<LatLonPoint>& polygon, 
+                                                 const LatLonPoint& ray_origin, 
+                                                 double bearing_degrees,
+                                                 int exclude_edge_index = -1) {
+    if (polygon.empty()) {
+        return ray_origin;
+    }
+    
+    LatLonPoint nearest_intersection = ray_origin;
+    double min_distance = std::numeric_limits<double>::max();
+    bool found_intersection = false;
+    int intersected_edge = -1;
+    
+    // Debug output
+    #ifdef DEBUG_INTERSECTION
+    std::cout << "Finding intersection from origin (" << ray_origin.lat << ", " << ray_origin.lon 
+              << ") with bearing " << bearing_degrees << " degrees";
+    if (exclude_edge_index >= 0) {
+        std::cout << " (excluding edge " << exclude_edge_index << ")";
+    }
+    std::cout << std::endl;
+    std::cout << "Polygon has " << polygon.size() << " vertices" << std::endl;
+    #endif
+    
+    // Check intersection with each edge of the polygon
+    for (size_t i = 0; i < polygon.size(); ++i) {
+        // Skip the excluded edge
+        if (exclude_edge_index >= 0 && static_cast<int>(i) == exclude_edge_index) {
+            #ifdef DEBUG_INTERSECTION
+            std::cout << "Skipping edge " << i << " (excluded starting edge)" << std::endl;
+            #endif
+            continue;
+        }
+        
+        LatLonPoint seg_start = polygon[i];
+        LatLonPoint seg_end = polygon[(i + 1) % polygon.size()]; // Wrap around to first vertex
+        
+        LatLonPoint intersection;
+        double t;
+        if (findRaySegmentIntersection(ray_origin, bearing_degrees, seg_start, seg_end, intersection, &t)) {
+            double distance = calculate_distance(ray_origin, intersection);
+            
+            #ifdef DEBUG_INTERSECTION
+            std::cout << "Edge " << i << " intersects at (" << intersection.lat << ", " << intersection.lon 
+                      << ") distance: " << distance << " t: " << t << std::endl;
+            #endif
+            
+            // Only consider intersections that are at least 25m away to avoid self-intersection
+            // and ensure we get meaningful survey legs (reduced from 50m to be more permissive)
+            if (distance > 1.0 && distance < min_distance) {
                 min_distance = distance;
                 nearest_intersection = intersection;
                 found_intersection = true;
@@ -360,7 +444,7 @@ inline int findIntersectedEdgeIndex(const std::vector<LatLonPoint>& polygon,
         double t;
         if (findRaySegmentIntersection(ray_origin, bearing_degrees, seg_start, seg_end, temp_intersection, &t)) {
             double distance = calculate_distance(ray_origin, temp_intersection);
-            if (distance < min_distance && distance > 50.0) { // Must be at least 50m away
+            if (distance < min_distance && distance > 25.0) { // Must be at least 25m away (consistent with other checks)
                 min_distance = distance;
                 intersection = temp_intersection;
                 edge_start = seg_start;
@@ -371,6 +455,67 @@ inline int findIntersectedEdgeIndex(const std::vector<LatLonPoint>& polygon,
     }
     
     return intersected_edge_index;
+}
+
+// Helper function to determine the correct edge for displacement when near a vertex
+// Returns the edge index and bearing to move along the "unexplored" edge
+inline std::pair<size_t, double> getCorrectEdgeForDisplacement(
+    const std::vector<LatLonPoint>& polygon_vertices,
+    const LatLonPoint& current_point,
+    size_t last_edge_index,
+    bool move_forward,
+    double vertex_threshold = 20.0) {
+    
+    // Find if we're near a vertex
+    size_t nearest_vertex_index = 0;
+    double min_vertex_distance = std::numeric_limits<double>::max();
+    
+    for (size_t i = 0; i < polygon_vertices.size(); ++i) {
+        double dist = calculate_distance(current_point, polygon_vertices[i]);
+        if (dist < min_vertex_distance) {
+            min_vertex_distance = dist;
+            nearest_vertex_index = i;
+        }
+    }
+    
+    // If we're near a vertex, we need to choose the correct edge
+    if (min_vertex_distance < vertex_threshold) {
+        size_t target_edge_index;
+        
+        if (move_forward) {
+            // Moving forward: choose the edge that starts from this vertex
+            target_edge_index = nearest_vertex_index;
+        } else {
+            // Moving backward: choose the edge that ends at this vertex
+            target_edge_index = (nearest_vertex_index - 1 + polygon_vertices.size()) % polygon_vertices.size();
+        }
+        
+        // Calculate the bearing for the target edge
+        LatLonPoint edge_start = polygon_vertices[target_edge_index];
+        LatLonPoint edge_end = polygon_vertices[(target_edge_index + 1) % polygon_vertices.size()];
+        
+        double edge_bearing;
+        if (move_forward) {
+            edge_bearing = calculate_bearing(edge_start, edge_end);
+        } else {
+            edge_bearing = calculate_bearing(edge_end, edge_start);
+        }
+        
+        return std::make_pair(target_edge_index, edge_bearing);
+    } else {
+        // We're not near a vertex, use the current edge
+        LatLonPoint edge_start = polygon_vertices[last_edge_index];
+        LatLonPoint edge_end = polygon_vertices[(last_edge_index + 1) % polygon_vertices.size()];
+        
+        double edge_bearing;
+        if (move_forward) {
+            edge_bearing = calculate_bearing(edge_start, edge_end);
+        } else {
+            edge_bearing = calculate_bearing(edge_end, edge_start);
+        }
+        
+        return std::make_pair(last_edge_index, edge_bearing);
+    }
 }
 
 // Helper function to find the next unvisited edge from a vertex
@@ -489,4 +634,96 @@ inline bool isPointInPolygon(const LatLonPoint& point, const std::vector<LatLonP
     }
     
     return (crossings % 2) == 1; // Odd number of crossings means inside
+}
+
+// Helper function to find the closest point on a line segment to a given point
+inline LatLonPoint findClosestPointOnEdge(const LatLonPoint& point, const LatLonPoint& edge_start, const LatLonPoint& edge_end) {
+    // Use the point as reference for coordinate transformation
+    LatLonPoint reference = point;
+    
+    // Transform to Cartesian coordinates
+    CartesianPoint point_cart = latLonToCartesian(point, reference);
+    CartesianPoint edge_start_cart = latLonToCartesian(edge_start, reference);
+    CartesianPoint edge_end_cart = latLonToCartesian(edge_end, reference);
+    
+    // Vector from edge_start to edge_end
+    double edge_dx = edge_end_cart.x - edge_start_cart.x;
+    double edge_dy = edge_end_cart.y - edge_start_cart.y;
+    
+    // Vector from edge_start to point
+    double point_dx = point_cart.x - edge_start_cart.x;
+    double point_dy = point_cart.y - edge_start_cart.y;
+    
+    // Calculate the projection parameter
+    double edge_length_sq = edge_dx * edge_dx + edge_dy * edge_dy;
+    
+    if (edge_length_sq == 0.0) {
+        // Edge is a point, return edge_start
+        return edge_start;
+    }
+    
+    double t = (point_dx * edge_dx + point_dy * edge_dy) / edge_length_sq;
+    
+    // Clamp t to [0, 1] to stay on the edge segment
+    t = std::max(0.0, std::min(1.0, t));
+    
+    // Calculate the closest point in Cartesian coordinates
+    CartesianPoint closest_cart;
+    closest_cart.x = edge_start_cart.x + t * edge_dx;
+    closest_cart.y = edge_start_cart.y + t * edge_dy;
+    
+    // Convert back to lat/lon
+    return cartesianToLatLon(closest_cart, reference);
+}
+
+// Helper function to move along polygon perimeter by a specified distance
+inline LatLonPoint moveAlongPolygonPerimeter(const std::vector<LatLonPoint>& polygon_vertices,
+                                            const LatLonPoint& start_point,
+                                            int start_edge_index,
+                                            double distance_to_move,
+                                            bool move_forward) {
+    if (polygon_vertices.empty() || start_edge_index < 0 || start_edge_index >= static_cast<int>(polygon_vertices.size())) {
+        return start_point;
+    }
+    
+    LatLonPoint current_point = start_point;
+    double remaining_distance = distance_to_move;
+    int current_edge_index = start_edge_index;
+    
+    while (remaining_distance > 1.0) { // Continue until we've moved the required distance (within 1m)
+        // Get current edge endpoints
+        LatLonPoint edge_start = polygon_vertices[current_edge_index];
+        LatLonPoint edge_end = polygon_vertices[(current_edge_index + 1) % polygon_vertices.size()];
+        
+        // Calculate distance from current point to edge end (in movement direction)
+        double distance_to_edge_end;
+        LatLonPoint target_vertex;
+        
+        if (move_forward) {
+            distance_to_edge_end = calculate_distance(current_point, edge_end);
+            target_vertex = edge_end;
+        } else {
+            distance_to_edge_end = calculate_distance(current_point, edge_start);
+            target_vertex = edge_start;
+        }
+        
+        if (remaining_distance <= distance_to_edge_end) {
+            // We can complete the movement on this edge
+            double bearing = calculate_bearing(current_point, target_vertex);
+            return calculate_point_at_distance_bearing(current_point, remaining_distance, bearing);
+        } else {
+            // Move to the edge endpoint and continue on next edge
+            current_point = target_vertex;
+            remaining_distance -= distance_to_edge_end;
+            
+            // Move to next edge
+            if (move_forward) {
+                current_edge_index = (current_edge_index + 1) % polygon_vertices.size();
+            } else {
+                current_edge_index = (current_edge_index - 1 + polygon_vertices.size()) % polygon_vertices.size();
+            }
+        }
+    }
+    
+    return current_point;
 }

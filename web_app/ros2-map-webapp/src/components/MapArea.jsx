@@ -36,6 +36,28 @@ const blackMarkerIcon = new L.Icon({
   shadowAnchor: null,
 });
 
+// Yellow marker for debug start points
+const yellowMarkerIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png",
+  iconSize: [16, 16],
+  iconAnchor: [8, 16],
+  popupAnchor: [0, -16],
+  shadowUrl: null,
+  shadowSize: null,
+  shadowAnchor: null,
+});
+
+// Purple marker for debug end points
+const purpleMarkerIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png",
+  iconSize: [16, 16],
+  iconAnchor: [8, 16],
+  popupAnchor: [0, -16],
+  shadowUrl: null,
+  shadowSize: null,
+  shadowAnchor: null,
+});
+
 const DEFAULT_CENTER = [59.4303437, 10.4726724]; // Horten
 
 function ClickHandler({ addVertex, setStart, enableVertexPlacement }) {
@@ -115,7 +137,7 @@ export default function MapArea() {
   };
   
   // Calculate ray end point for visualization
-  const calculateRayEndPoint = (start, bearing, distance = 0.005) => {
+  const calculateRayEndPoint = (start, bearing, distance = 0.01) => { // Doubled the distance
     const R = 6371000; // Earth's radius in meters
     const lat1 = start[0] * Math.PI / 180;
     const lon1 = start[1] * Math.PI / 180;
@@ -226,40 +248,41 @@ export default function MapArea() {
         {/* Debug visualization */}
         {debugData && (
           <>
-            {/* Debug start point (black marker) */}
+            {/* Debug start point (yellow marker) */}
             <Marker
               position={debugData.start_point}
-              icon={blackMarkerIcon}
+              icon={yellowMarkerIcon}
             />
             
-            {/* Debug end point (black marker) if intersection found */}
+            {/* Debug end point (purple marker) if intersection found */}
             {(debugData.intersection_found === "true" || debugData.intersection_found === true) && (
               <Marker
                 position={debugData.end_point}
-                icon={blackMarkerIcon}
+                icon={purpleMarkerIcon}
               />
             )}
             
-            {/* Ray line (white line) showing survey bearing */}
+            {/* Ray line (cyan solid line) showing survey bearing */}
             {debugData.survey_bearing !== undefined && (
               <Polyline
                 positions={[
                   debugData.start_point,
                   calculateRayEndPoint(debugData.start_point, debugData.survey_bearing)
                 ]}
-                color="white"
+                color="cyan"
                 weight={3}
-                opacity={0.8}
+                opacity={0.9}
               />
             )}
             
-            {/* Survey leg line (red line) */}
+            {/* Survey leg line (red dashed line) */}
             {(debugData.intersection_found === "true" || debugData.intersection_found === true) && (
               <Polyline
                 positions={[debugData.start_point, debugData.end_point]}
                 color="red"
-                weight={2}
-                opacity={0.7}
+                weight={3}
+                opacity={0.8}
+                dashArray="8, 8"
               />
             )}
           </>
@@ -281,6 +304,10 @@ export default function MapArea() {
       </button>
       <div style={{ fontSize: "0.95em", marginTop: "6px", color: "#aaa", textAlign: "center", lineHeight: "1.3" }}>
         Left click to add vertex (when ON) &nbsp;|&nbsp; Right click to set start position &nbsp;|&nbsp; Undo/Erase buttons &nbsp;|&nbsp; Drag vertices when placement is OFF
+        <br />
+        <span style={{ fontSize: "0.85em", color: "#888" }}>
+          🟢 Start Position &nbsp;|&nbsp; 🔴 Vertices &nbsp;|&nbsp; 🟡 Leg Start &nbsp;|&nbsp; 🟣 Leg End &nbsp;|&nbsp; 🔵 Ray Direction
+        </span>
       </div>
       
       {/* Debug info display */}
