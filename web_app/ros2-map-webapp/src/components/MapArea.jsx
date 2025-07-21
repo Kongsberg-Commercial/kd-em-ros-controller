@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Polygon, Marker, Polyline, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { redDotIcon, greenMarkerIcon, yellowMarkerIcon, purpleMarkerIcon } from "../icons/LeafletIcons";
+import {postPolygon} from "../api/api";
 
 const DEFAULT_CENTER = [59.4303437, 10.4726724]; // Horten
 
@@ -237,11 +238,10 @@ const MapArea = () => {
         onClick={() => {
         console.log("Vertices:", vertices);
         console.log("Start position:", start);
-          fetch("http://localhost:3000/api/polygon", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ vertices, start }),
-          });
+        postPolygon({vertices, start}).then(
+          response => console.log("Polygon sent successfully:", response),
+          error => console.error("Error sending polygon:", error)
+        );
         }}
         style={{ marginTop: "10px", padding: "8px 12px", borderRadius: "4px", border: "none", fontWeight: "bold" }}
       >
