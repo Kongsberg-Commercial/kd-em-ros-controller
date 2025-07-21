@@ -13,3 +13,7 @@ web_app/backend/node_modules/
 
 # polygons.txt local save only
 web_app/backend/polygons.txt
+
+# other repos inside here...
+./src/em-data-distribution-cpp
+./src/kd-dds-ros-gateway
