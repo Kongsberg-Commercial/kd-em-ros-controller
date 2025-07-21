@@ -23,6 +23,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ModeInfo.msg"
   "msg/ErrorInfo.msg"
   "msg/OtterInfo.msg"
+  "msg/SwathLineStats.msg"
   DEPENDENCIES builtin_interfaces geometry_msgs
 )
 

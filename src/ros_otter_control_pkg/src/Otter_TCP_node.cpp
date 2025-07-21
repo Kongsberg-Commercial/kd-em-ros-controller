@@ -2,7 +2,7 @@
 
 OtterTCPNode::OtterTCPNode()
     : Node("otter_tcp_node"), stop_(false) {
-    ip_ = this->declare_parameter("device_ip", "192.168.48.211");
+    ip_ = this->declare_parameter("device_ip", "192.168.53.200");
     port_ = this->declare_parameter("device_port", 2009);
     connect_socket();
     receiver_thread_ = std::thread(&OtterTCPNode::receive_loop, this);
@@ -27,6 +27,14 @@ OtterTCPNode::OtterTCPNode()
     mode_pub_  = this->create_publisher<ros_otter_custom_interfaces::msg::ModeInfo>("mode_info", 10);
     error_pub_ = this->create_publisher<ros_otter_custom_interfaces::msg::ErrorInfo>("error_info", 10);
     otter_pub_ = this->create_publisher<ros_otter_custom_interfaces::msg::OtterInfo>("otter_info", 10);
+
+    // Publisher for leg_status topic
+    leg_status_pub_ = this->create_publisher<std_msgs::msg::Bool>("/leg_status", 10);
+    leg_active_ = false;
+    leg_end_lat_ = 0.0;
+    leg_end_lon_ = 0.0;
+    leg_end_lat_dir_ = "";
+    leg_end_lon_dir_ = "";
 }
 
 OtterTCPNode::~OtterTCPNode() {
@@ -81,7 +89,18 @@ void OtterTCPNode::process_line(const std::string& line) {
     RCLCPP_INFO(this->get_logger(), "Received: %s", line.c_str());
     if (line.rfind("$PMARGPS", 0) == 0) {
         auto msg = parse_gps(line);
-        if (msg) gps_pub_->publish(*msg);
+        if (msg) {
+            gps_pub_->publish(*msg);
+
+            // Check if leg is active and endpoint reached
+            if (leg_active_ && at_leg_endpoint(msg->lat, msg->lat_dir, msg->lon, msg->lon_dir)) {
+                std_msgs::msg::Bool status_msg;
+                status_msg.data = false;
+                leg_status_pub_->publish(status_msg);
+                leg_active_ = false;
+                RCLCPP_INFO(this->get_logger(), "Leg ended, set /leg_status to false.");
+            }
+        }
     } else if (line.rfind("$PMARIMU", 0) == 0) {
         auto msg = parse_imu(line);
         if (msg) imu_pub_->publish(*msg);
@@ -216,6 +235,16 @@ bool OtterTCPNode::send_nmea(const std::string &msg) {
     return true;
 }
 
+// Helper for endpoint detection
+bool OtterTCPNode::at_leg_endpoint(double curr_lat, const std::string& curr_lat_dir,
+                                   double curr_lon, const std::string& curr_lon_dir) {
+    double threshold = 0.0001; // ~11 meters at equator, adjust if needed
+    return leg_active_ &&
+           curr_lat_dir == leg_end_lat_dir_ && curr_lon_dir == leg_end_lon_dir_ &&
+           std::abs(curr_lat - leg_end_lat_) < threshold &&
+           std::abs(curr_lon - leg_end_lon_) < threshold;
+}
+
 // Service handlers
 
 void OtterTCPNode::handle_drift(const std::shared_ptr<ros_otter_custom_interfaces::srv::DriftMode::Request> request,
@@ -259,6 +288,18 @@ void OtterTCPNode::handle_leg(const std::shared_ptr<ros_otter_custom_interfaces:
     bool ok = send_nmea(oss.str());
     response->success = ok;
     response->message = ok ? "Leg mode command sent." : "Failed to send leg mode command.";
+
+    // Publish leg_status true and store endpoint
+    std_msgs::msg::Bool status_msg;
+    status_msg.data = true;
+    leg_status_pub_->publish(status_msg);
+
+    leg_end_lat_ = request->lat1;
+    leg_end_lat_dir_ = request->lat1_dir;
+    leg_end_lon_ = request->lon1;
+    leg_end_lon_dir_ = request->lon1_dir;
+    leg_active_ = true;
+    RCLCPP_INFO(this->get_logger(), "Leg started, set /leg_status to true.");
 }
 
 void OtterTCPNode::handle_station(const std::shared_ptr<ros_otter_custom_interfaces::srv::StationMode::Request> request,
