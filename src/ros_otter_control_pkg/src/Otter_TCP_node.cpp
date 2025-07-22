@@ -21,6 +21,9 @@ OtterTCPNode::OtterTCPNode()
     param_srv_ = this->create_service<ros_otter_custom_interfaces::srv::SetParameters>("set_parameters",
         std::bind(&OtterTCPNode::handle_parameters, this, std::placeholders::_1, std::placeholders::_2));
 
+    // Service client
+    ppnode_leg_client_ = this->create_client<ros_otter_custom_interfaces::srv::LegMode>("leg_srv");
+
     // Publishers for each incoming TCP message type
     gps_pub_   = this->create_publisher<ros_otter_custom_interfaces::msg::GpsInfo>("gps_info", 10);
     imu_pub_   = this->create_publisher<ros_otter_custom_interfaces::msg::ImuInfo>("imu_info", 10);
@@ -278,28 +281,93 @@ void OtterTCPNode::handle_course(const std::shared_ptr<ros_otter_custom_interfac
 
 void OtterTCPNode::handle_leg(const std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Request> request,
                               std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Response> response) {
-    std::ostringstream oss;
-    oss << "PMARLEG," 
-        << request->lat0 << "," << request->lat0_dir << ","
-        << request->lon0 << "," << request->lon0_dir << ","
-        << request->lat1 << "," << request->lat1_dir << ","
-        << request->lon1 << "," << request->lon1_dir << ","
-        << request->speed;
-    bool ok = send_nmea(oss.str());
-    response->success = ok;
-    response->message = ok ? "Leg mode command sent." : "Failed to send leg mode command.";
+    
+    // TODO: Leg selection/iterative logic TO BE IMPLEMENTED || currently leg_number from external client
+    RCLCPP_INFO(this->get_logger(), "Received leg mode request for leg number: %ld", request->leg_number);
+    
+    // Check if ppnode service is available
+    if (!ppnode_leg_client_->wait_for_service(std::chrono::seconds(2))) {
+        RCLCPP_ERROR(this->get_logger(), "ppnode leg_srv service not available");
+        response->success = false;
+        response->message = "ppnode leg_srv service not available";
+        return;
+    }
+    
+    // Create request to ppnode
+    auto ppnode_request = std::make_shared<ros_otter_custom_interfaces::srv::LegMode::Request>();
+    ppnode_request->leg_number = request->leg_number;
+    
+    // Call ppnode service synchronously
+    auto future = ppnode_leg_client_->async_send_request(ppnode_request);
+    
+    // Wait for response with timeout
+    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), future, std::chrono::seconds(5)) 
+        == rclcpp::FutureReturnCode::SUCCESS) {
+        
+        auto ppnode_response = future.get();
+        
+        if (ppnode_response->success) {
+            // Use coordinates from ppnode response
+            double lat0 = ppnode_response->lat0;
+            std::string lat0_dir = ppnode_response->lat0_dir;
+            double lon0 = ppnode_response->lon0;
+            std::string lon0_dir = ppnode_response->lon0_dir;
+            double lat1 = ppnode_response->lat1;
+            std::string lat1_dir = ppnode_response->lat1_dir;
+            double lon1 = ppnode_response->lon1;
+            std::string lon1_dir = ppnode_response->lon1_dir;
+            double speed = ppnode_response->speed;
+            
+            // Build NMEA message with the coordinates from ppnode
+            std::ostringstream oss;
+            oss << "PMARLEG," 
+                << lat0 << "," << lat0_dir << ","
+                << lon0 << "," << lon0_dir << ","
+                << lat1 << "," << lat1_dir << ","
+                << lon1 << "," << lon1_dir << ","
+                << speed;
+            
+            bool ok = send_nmea(oss.str());
+            
+            // Fill response with the coordinates that were sent
+            response->lat0 = lat0;
+            response->lat0_dir = lat0_dir;
+            response->lon0 = lon0;
+            response->lon0_dir = lon0_dir;
+            response->lat1 = lat1;
+            response->lat1_dir = lat1_dir;
+            response->lon1 = lon1;
+            response->lon1_dir = lon1_dir;
+            response->speed = speed;
+            response->success = ok;
+            response->message = ok ? 
+                ("Leg mode command sent with coordinates from ppnode: " + ppnode_response->message) : 
+                "Failed to send leg mode command";
+            
+            // Publish leg_status true and store endpoint
+            std_msgs::msg::Bool status_msg;
+            status_msg.data = true;
+            leg_status_pub_->publish(status_msg);
 
-    // Publish leg_status true and store endpoint
-    std_msgs::msg::Bool status_msg;
-    status_msg.data = true;
-    leg_status_pub_->publish(status_msg);
+            leg_end_lat_ = request->lat1;
+            leg_end_lat_dir_ = request->lat1_dir;
+            leg_end_lon_ = request->lon1;
+            leg_end_lon_dir_ = request->lon1_dir;
+            leg_active_ = true;
 
-    leg_end_lat_ = request->lat1;
-    leg_end_lat_dir_ = request->lat1_dir;
-    leg_end_lon_ = request->lon1;
-    leg_end_lon_dir_ = request->lon1_dir;
-    leg_active_ = true;
-    RCLCPP_INFO(this->get_logger(), "Leg started, set /leg_status to true.");
+            RCLCPP_INFO(this->get_logger(), "Successfully called ppnode and sent NMEA for leg %ld", request->leg_number);
+            RCLCPP_INFO(this->get_logger(), "Leg started, set /leg_status to true.");
+        } else {
+            RCLCPP_ERROR(this->get_logger(), "ppnode failed to calculate coordinates: %s", ppnode_response->message.c_str());
+            response->success = false;
+            response->message = "ppnode failed: " + ppnode_response->message;
+        }
+        
+    } else {
+        RCLCPP_ERROR(this->get_logger(), "Failed to call ppnode leg_srv service (timeout)");
+        response->success = false;
+        response->message = "Timeout calling ppnode leg_srv service";
+    }
 }
 
 void OtterTCPNode::handle_station(const std::shared_ptr<ros_otter_custom_interfaces::srv::StationMode::Request> request,
