@@ -27,7 +27,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/SurveyInfo.msg"
   "msg/Vertex.msg"
   "msg/Leg.msg"
-  "msg/Path.msg"
+  "msg/Paths.msg"
   DEPENDENCIES builtin_interfaces geometry_msgs
 )
 
