@@ -25,6 +25,9 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/OtterInfo.msg"
   "msg/SwathLineStats.msg"
   "msg/SurveyInfo.msg"
+  "msg/Vertex.msg"
+  "msg/Leg.msg"
+  "msg/Paths.msg"
   DEPENDENCIES builtin_interfaces geometry_msgs
 )
 

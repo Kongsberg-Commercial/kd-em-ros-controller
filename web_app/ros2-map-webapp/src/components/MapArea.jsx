@@ -1,62 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Polygon, Marker, Polyline, useMapEvents } from "react-leaflet";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-
-// Small red dot icon for vertices
-const redDotIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
-  iconSize: [16, 16],
-  iconAnchor: [8, 8],
-  popupAnchor: [0, -8],
-  shadowUrl: null,
-  shadowSize: null,
-  shadowAnchor: null,
-});
-
-// Green marker for start position
-const greenMarkerIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
-  iconSize: [22, 22],
-  iconAnchor: [11, 22],
-  popupAnchor: [0, -22],
-  shadowUrl: null,
-  shadowSize: null,
-  shadowAnchor: null,
-});
-
-// Black marker for debug intersection points
-const blackMarkerIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png",
-  iconSize: [16, 16],
-  iconAnchor: [8, 16],
-  popupAnchor: [0, -16],
-  shadowUrl: null,
-  shadowSize: null,
-  shadowAnchor: null,
-});
-
-// Yellow marker for debug start points
-const yellowMarkerIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png",
-  iconSize: [16, 16],
-  iconAnchor: [8, 16],
-  popupAnchor: [0, -16],
-  shadowUrl: null,
-  shadowSize: null,
-  shadowAnchor: null,
-});
-
-// Purple marker for debug end points
-const purpleMarkerIcon = new L.Icon({
-  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png",
-  iconSize: [16, 16],
-  iconAnchor: [8, 16],
-  popupAnchor: [0, -16],
-  shadowUrl: null,
-  shadowSize: null,
-  shadowAnchor: null,
-});
+import { redDotIcon, greenMarkerIcon, yellowMarkerIcon, purpleMarkerIcon } from "../icons/LeafletIcons";
+import {postPolygon} from "../api/api";
 
 const DEFAULT_CENTER = [59.4303437, 10.4726724]; // Horten
 
@@ -74,7 +20,7 @@ function ClickHandler({ addVertex, setStart, enableVertexPlacement }) {
   return null;
 }
 
-export default function MapArea() {
+const MapArea = () => {
   const [vertices, setVertices] = useState([]);
   const [start, setStart] = useState(null);
   const [enableVertexPlacement, setEnableVertexPlacement] = useState(true);
@@ -292,11 +238,10 @@ export default function MapArea() {
         onClick={() => {
         console.log("Vertices:", vertices);
         console.log("Start position:", start);
-          fetch("http://localhost:3000/api/polygon", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ vertices, start }),
-          });
+        postPolygon({vertices, start}).then(
+          response => console.log("Polygon sent successfully:", response),
+          error => console.error("Error sending polygon:", error)
+        );
         }}
         style={{ marginTop: "10px", padding: "8px 12px", borderRadius: "4px", border: "none", fontWeight: "bold" }}
       >
@@ -333,3 +278,5 @@ export default function MapArea() {
     </div>
   );
 }
+
+export default MapArea;
