@@ -1,6 +1,7 @@
 #pragma once
 
 #include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/bool.hpp>
 #include <thread>
 #include <atomic>
 #include <string>
@@ -46,6 +47,10 @@ private:
     // Helper: calculate NMEA checksum
     std::string compute_checksum(const std::string& msg);
     bool send_nmea(const std::string &msg);
+    
+    // Helper for leg endpoint detection
+    bool at_leg_endpoint(double curr_lat, const std::string& curr_lat_dir,
+                        double curr_lon, const std::string& curr_lon_dir);
 
     // Service handlers
     void handle_drift(const std::shared_ptr<ros_otter_custom_interfaces::srv::DriftMode::Request> request,
@@ -86,4 +91,12 @@ private:
     rclcpp::Publisher<ros_otter_custom_interfaces::msg::ModeInfo>::SharedPtr mode_pub_;
     rclcpp::Publisher<ros_otter_custom_interfaces::msg::ErrorInfo>::SharedPtr error_pub_;
     rclcpp::Publisher<ros_otter_custom_interfaces::msg::OtterInfo>::SharedPtr otter_pub_;
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr leg_status_pub_;
+    
+    // Leg tracking variables
+    bool leg_active_;
+    double leg_end_lat_;
+    double leg_end_lon_;
+    std::string leg_end_lat_dir_;
+    std::string leg_end_lon_dir_;
 };

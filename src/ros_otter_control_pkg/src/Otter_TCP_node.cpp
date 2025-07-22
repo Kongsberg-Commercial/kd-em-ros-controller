@@ -1,4 +1,5 @@
 #include <ros_otter_control_pkg/otter_tcp_node.hpp>
+#include <std_msgs/msg/bool.hpp>
 
 OtterTCPNode::OtterTCPNode()
     : Node("otter_tcp_node"), stop_(false) {
@@ -349,10 +350,10 @@ void OtterTCPNode::handle_leg(const std::shared_ptr<ros_otter_custom_interfaces:
             status_msg.data = true;
             leg_status_pub_->publish(status_msg);
 
-            leg_end_lat_ = request->lat1;
-            leg_end_lat_dir_ = request->lat1_dir;
-            leg_end_lon_ = request->lon1;
-            leg_end_lon_dir_ = request->lon1_dir;
+            leg_end_lat_ = lat1;
+            leg_end_lat_dir_ = lat1_dir;
+            leg_end_lon_ = lon1;
+            leg_end_lon_dir_ = lon1_dir;
             leg_active_ = true;
 
             RCLCPP_INFO(this->get_logger(), "Successfully called ppnode and sent NMEA for leg %ld", request->leg_number);
