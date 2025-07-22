@@ -5,7 +5,6 @@
 #include <std_msgs/msg/bool.hpp>
 #include "ros_otter_custom_interfaces/msg/swath_line_stats.hpp"
 #include "ros_otter_custom_interfaces/msg/gps_info.hpp"
-#include "ros_otter_custom_interfaces/msg/imu_info.hpp"
 #include <vector>
 #include <array>
 #include <limits>
@@ -14,6 +13,16 @@
 #include <sstream>
 #include <deque>
 #include <algorithm>
+#include <GeographicLib/LocalCartesian.hpp>
+
+struct GeoPoint {
+    double x; // ENU
+    double y;
+    double z;
+    double lat; // Global coordinates
+    double lon;
+    double alt;
+};
 
 class PointCloudAnalyzer : public rclcpp::Node
 {
@@ -29,13 +38,10 @@ public:
             std::bind(&PointCloudAnalyzer::pointcloud_callback, this, std::placeholders::_1)
         );
 
-        // GPS and IMU subscribers
+        // GPS subscriber
         gps_sub_ = this->create_subscription<ros_otter_custom_interfaces::msg::GpsInfo>(
             "gps_info", 100,
             std::bind(&PointCloudAnalyzer::gps_callback, this, std::placeholders::_1));
-        imu_sub_ = this->create_subscription<ros_otter_custom_interfaces::msg::ImuInfo>(
-            "imu_info", 100,
-            std::bind(&PointCloudAnalyzer::imu_callback, this, std::placeholders::_1));
 
         leg_status_subscription_ = this->create_subscription<std_msgs::msg::Bool>(
             "/leg_status",
@@ -47,9 +53,8 @@ public:
     }
 
 private:
-    // Buffers for GPS/IMU messages (keep last 100 for safety)
+    // Buffer for GPS messages (keep last 100 for safety)
     std::deque<ros_otter_custom_interfaces::msg::GpsInfo::SharedPtr> gps_buffer_;
-    std::deque<ros_otter_custom_interfaces::msg::ImuInfo::SharedPtr> imu_buffer_;
     const size_t buffer_size_ = 100;
 
     void gps_callback(const ros_otter_custom_interfaces::msg::GpsInfo::SharedPtr msg)
@@ -58,13 +63,7 @@ private:
         if (gps_buffer_.size() > buffer_size_) gps_buffer_.pop_front();
     }
 
-    void imu_callback(const ros_otter_custom_interfaces::msg::ImuInfo::SharedPtr msg)
-    {
-        imu_buffer_.push_back(msg);
-        if (imu_buffer_.size() > buffer_size_) imu_buffer_.pop_front();
-    }
-
-    // Find the closest message in a buffer by timestamp (header.stamp)
+    // Find the closest GPS message in a buffer by timestamp
     template<typename T>
     typename T::SharedPtr find_closest(const std::deque<typename T::SharedPtr>& buffer, const rclcpp::Time& stamp)
     {
@@ -73,7 +72,7 @@ private:
 
         for (const auto& msg : buffer) {
             if (!msg) continue;
-            rclcpp::Time msg_time = msg->header.stamp;
+            rclcpp::Time msg_time(static_cast<uint64_t>(msg->time * 1e9), RCL_SYSTEM_TIME); // use system time
             rclcpp::Duration diff = (msg_time > stamp) ? (msg_time - stamp) : (stamp - msg_time);
             if (diff < min_diff) {
                 min_diff = diff;
@@ -86,19 +85,17 @@ private:
     // Called for each pointcloud ping
     void pointcloud_callback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
     {
-        // --- Sync with closest GPS and IMU ---
-        rclcpp::Time stamp = msg->header.stamp;
+        // --- Sync with closest GPS ---
+        // Convert header.stamp to system time for fair comparison with GPS epoch time
+        rclcpp::Time stamp(msg->header.stamp.sec, msg->header.stamp.nanosec, RCL_SYSTEM_TIME);
         auto gps = find_closest<ros_otter_custom_interfaces::msg::GpsInfo>(gps_buffer_, stamp);
-        auto imu = find_closest<ros_otter_custom_interfaces::msg::ImuInfo>(imu_buffer_, stamp);
-
-        if (!gps || !imu) {
-            RCLCPP_WARN(this->get_logger(), "No matching GPS or IMU for pointcloud at time %.3f", stamp.seconds());
+        if (!gps) {
+            RCLCPP_WARN(this->get_logger(), "No matching GPS for pointcloud at time %.3f", stamp.seconds());
             return;
         }
-        // Optionally, you can add a threshold for "close enough" in seconds
 
-        // You now have synchronized GPS/IMU for this swath!
-        // Proceed with the rest of the original analysis...
+        // Set up ENU projection for this ping at vessel's position
+        GeographicLib::LocalCartesian proj(gps->lat, gps->lon, gps->alt);
 
         double min_y = std::numeric_limits<double>::max();
         double max_y = std::numeric_limits<double>::lowest();
@@ -131,7 +128,20 @@ private:
             depths.push_back(z);
 
             if (leg_active_) {
-                all_leg_points_.push_back({x, y, z});
+                // Transform to global coordinates using per-ping GPS
+                double lat, lon, h;
+                proj.Reverse(x, y, z, lat, lon, h);
+                // Also store back-transformed ENU for global grid analysis
+                double enu_x, enu_y, enu_z;
+                // For shadow analysis, use ENU with respect to a fixed origin for the leg.
+                if (!global_proj_initialized_) {
+                    // On first point of the leg, set global ENU origin
+                    global_proj_ = GeographicLib::LocalCartesian(gps->lat, gps->lon, gps->alt);
+                    global_proj_initialized_ = true;
+                }
+                global_proj_.Forward(lat, lon, h, enu_x, enu_y, enu_z);
+
+                all_leg_points_.push_back({enu_x, enu_y, enu_z, lat, lon, h});
             }
         }
 
@@ -144,11 +154,6 @@ private:
         double min_depth = *std::min_element(depths.begin(), depths.end());
         double max_depth = *std::max_element(depths.begin(), depths.end());
         double mean_depth = std::accumulate(depths.begin(), depths.end(), 0.0) / depths.size();
-
-        //RCLCPP_INFO(this->get_logger(), "Swath Length: %.2f m", swath_length);
-        //RCLCPP_INFO(this->get_logger(), "Outer Left Point: [%.2f, %.2f, %.2f]", outer_left.x, outer_left.y, outer_left.z);
-        //RCLCPP_INFO(this->get_logger(), "Outer Right Point: [%.2f, %.2f, %.2f]", outer_right.x, outer_right.y, outer_right.z);
-        //RCLCPP_INFO(this->get_logger(), "Min Depth: %.2f m, Max Depth: %.2f m, Mean Depth: %.2f m", min_depth, max_depth, mean_depth);
 
         // If vessel is driving a leg, collect stats
         if (leg_active_) {
@@ -171,6 +176,7 @@ private:
             swath_max_depths_.clear();
             swath_mean_depths_.clear();
             all_leg_points_.clear();
+            global_proj_initialized_ = false;
             RCLCPP_INFO(this->get_logger(), "Leg started, collecting swath statistics.");
         } else if (!msg->data && leg_active_) {
             // Leg ended
@@ -212,7 +218,7 @@ private:
             min_swath, max_swath, avg_swath, min_depth, max_depth, avg_depth);
     }
 
-    // Analyze leg for holes/shadows in point density
+    // Analyze leg for holes/shadows in point density, output both ENU and lat/lon of shadow cell centers
     void analyze_holes_and_shadows()
     {
         if (all_leg_points_.empty()) {
@@ -220,17 +226,17 @@ private:
             return;
         }
 
-        // 1. Find bounds
+        // 1. Find bounds in ENU (all_leg_points_ is now in common global ENU frame)
         double min_x = std::numeric_limits<double>::max();
         double max_x = std::numeric_limits<double>::lowest();
         double min_y = std::numeric_limits<double>::max();
         double max_y = std::numeric_limits<double>::lowest();
 
         for (const auto& pt : all_leg_points_) {
-            min_x = std::min(min_x, pt[0]);
-            max_x = std::max(max_x, pt[0]);
-            min_y = std::min(min_y, pt[1]);
-            max_y = std::max(max_y, pt[1]);
+            min_x = std::min(min_x, pt.x);
+            max_x = std::max(max_x, pt.x);
+            min_y = std::min(min_y, pt.y);
+            max_y = std::max(max_y, pt.y);
         }
 
         // 2. Create grid
@@ -241,8 +247,8 @@ private:
 
         // 3. Fill grid
         for (const auto& pt : all_leg_points_) {
-            int ix = static_cast<int>((pt[0] - min_x) / cell_size);
-            int iy = static_cast<int>((pt[1] - min_y) / cell_size);
+            int ix = static_cast<int>((pt.x - min_x) / cell_size);
+            int iy = static_cast<int>((pt.y - min_y) / cell_size);
             if (ix >= 0 && ix < nx && iy >= 0 && iy < ny)
                 grid[ix][iy]++;
         }
@@ -264,27 +270,47 @@ private:
         }
 
         RCLCPP_INFO(this->get_logger(), "Detected %zu shadow/low-density areas in leg.", shadow_cells.size());
+
+        // --- Step 5: Convert shadow cell centers from ENU to Lat/Lon using common global_proj_ ---
+        if (!global_proj_initialized_) {
+            RCLCPP_WARN(this->get_logger(), "Global ENU origin not initialized, cannot convert to lat/lon.");
+            for (size_t i = 0; i < shadow_cells.size(); ++i) {
+                RCLCPP_INFO(this->get_logger(), "Shadow cell #%zu at (x=%.2f, y=%.2f) [No lat/lon conversion]", i, shadow_cells[i].first, shadow_cells[i].second);
+            }
+            return;
+        }
+
         for (size_t i = 0; i < shadow_cells.size(); ++i) {
-            RCLCPP_INFO(this->get_logger(), "Shadow cell #%zu at (x=%.2f, y=%.2f)", i, shadow_cells[i].first, shadow_cells[i].second);
+            double cell_x = shadow_cells[i].first;
+            double cell_y = shadow_cells[i].second;
+            double cell_z = 0.0;
+
+            double lat, lon, h;
+            global_proj_.Reverse(cell_x, cell_y, cell_z, lat, lon, h);
+
+            RCLCPP_INFO(this->get_logger(),
+                "Shadow cell #%zu at ENU(x=%.2f, y=%.2f) -> (lat=%.8f, lon=%.8f)",
+                i, cell_x, cell_y, lat, lon);
         }
     }
 
     // ROS2 subscriptions and publisher
     rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr subscription_;
     rclcpp::Subscription<ros_otter_custom_interfaces::msg::GpsInfo>::SharedPtr gps_sub_;
-    rclcpp::Subscription<ros_otter_custom_interfaces::msg::ImuInfo>::SharedPtr imu_sub_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr leg_status_subscription_;
     rclcpp::Publisher<ros_otter_custom_interfaces::msg::SwathLineStats>::SharedPtr stats_publisher_;
 
     // State
     bool leg_active_;
+    GeographicLib::LocalCartesian global_proj_;
+    bool global_proj_initialized_ = false;
 
     // Data collected during a leg
     std::vector<double> swath_lengths_;
     std::vector<double> swath_min_depths_;
     std::vector<double> swath_max_depths_;
     std::vector<double> swath_mean_depths_;
-    std::vector<std::array<double, 3>> all_leg_points_; // Store x, y, z for each point in leg
+    std::vector<GeoPoint> all_leg_points_; // Store x, y, z (ENU global), lat, lon, alt for each point in leg
 };
 
 int main(int argc, char * argv[])
