@@ -3,13 +3,14 @@
 namespace ppnode
 {
 
+// Sets subscribers, publishers, services, and path planning algorithm
 PpNode::PpNode(const rclcpp::NodeOptions & options)
 : Node("pp_node", options), ref_lat_(0.0), ref_lon_(0.0), ref_point_set_(false),
   boat_position_available_(false), survey_received_(false)
 {
     RCLCPP_INFO(this->get_logger(), "===== Path Planning Node Initializing =====");
     
-    // Initialize path planner
+    // Initialize path planner with default algorithm (centroid + offset)
     path_planner_ = std::make_unique<SimplePathPlanner>();
     
     // Create subscriber for survey info (polygon vertices + start point)
@@ -22,7 +23,7 @@ PpNode::PpNode(const rclcpp::NodeOptions & options)
         "gps_info", ppnode_utils::config::DEFAULT_QUEUE_SIZE,
         std::bind(&PpNode::boatGpsCallback, this, std::placeholders::_1));
     
-    // Create service server for OTTER_TCP_node leg requests
+    // Create service server for OTTER_TCP_node leg requests | OBS Leg number is requested
     leg_srv_ = this->create_service<ros_otter_custom_interfaces::srv::LegMode>(
         "leg_srv",
         std::bind(&PpNode::legServiceCallback, this, 
@@ -36,13 +37,13 @@ PpNode::PpNode(const rclcpp::NodeOptions & options)
         "result_points_cartesian", ppnode_utils::config::DEFAULT_QUEUE_SIZE);
     
     RCLCPP_INFO(this->get_logger(), "Configured components:");
-    RCLCPP_INFO(this->get_logger(), "  Subscriber: polygon_vertices (SurveyInfo)");
-    RCLCPP_INFO(this->get_logger(), "  Subscriber: gps_info (boat position)");
     RCLCPP_INFO(this->get_logger(), "  Service: leg_srv (for OTTER_TCP_node)");
     RCLCPP_INFO(this->get_logger(), "  Publishers: result_points_gps, result_points_cartesian");
     RCLCPP_INFO(this->get_logger(), "===== Path Planning Node Ready =====");
 }
 
+
+// Callback for boat GPS position
 void PpNode::boatGpsCallback(const ros_otter_custom_interfaces::msg::GpsInfo::SharedPtr msg)
 {
     try {
@@ -50,6 +51,7 @@ void PpNode::boatGpsCallback(const ros_otter_custom_interfaces::msg::GpsInfo::Sh
         current_boat_position_ = ppnode_utils::gpsInfoToGpsPoint(*msg);
         
         // Set initial boat position if this is the first GPS message
+        // This becomes our coordinate system reference point if no survey received yet
         if (!boat_position_available_) {
             initial_boat_position_ = current_boat_position_;
             boat_position_available_ = true;
@@ -58,6 +60,7 @@ void PpNode::boatGpsCallback(const ros_otter_custom_interfaces::msg::GpsInfo::Sh
                         initial_boat_position_.lat, initial_boat_position_.lon);
             
             // Set as reference point if survey hasn't been received yet
+            // Boat position has priority over survey start point for coordinate reference
             if (!survey_received_) {
                 setReferencePoint(initial_boat_position_);
             }
@@ -67,15 +70,17 @@ void PpNode::boatGpsCallback(const ros_otter_custom_interfaces::msg::GpsInfo::Sh
     }
 }
 
+
+// Callback for survey polygon information
 void PpNode::surveyInfoCallback(const ros_otter_custom_interfaces::msg::SurveyInfo::SharedPtr msg)
 {
-    RCLCPP_INFO(this->get_logger(), "Received survey info with %zu polygon vertices", 
+    RCLCPP_DEBUG(this->get_logger(), "Received survey info with %zu polygon vertices", 
                 msg->vertices.size());
     
     try {
         survey_received_ = true;
         
-        // Parse polygon vertices from the Vertex array
+        // Parse polygon vertices from the Vertex array (lat/lon to internal format)
         polygon_vertices_gps_ = parseSurveyPolygon(msg->vertices);
         
         // Determine reference point priority: boat position > survey start point
@@ -94,16 +99,17 @@ void PpNode::surveyInfoCallback(const ros_otter_custom_interfaces::msg::SurveyIn
         
         setReferencePoint(reference_point);
         
-        // Convert all polygon vertices to Cartesian
+        // Convert all polygon vertices to Cartesian for path planning algorithms
+        // Path planning works in local Cartesian coordinates (meters) not GPS degrees
         polygon_vertices_cartesian_.clear();
         polygon_vertices_cartesian_ = ppnode_utils::gpsPolygonToCartesian(
             polygon_vertices_gps_, ref_lat_, ref_lon_);
         
-        // Log vertex conversions
+        // Log vertex conversions coordinate transform
         for (size_t i = 0; i < polygon_vertices_gps_.size(); ++i) {
             const auto& gps_point = polygon_vertices_gps_[i];
             const auto& cart_point = polygon_vertices_cartesian_[i];
-            RCLCPP_INFO(this->get_logger(), "Vertex %zu: GPS(%.6f, %.6f) -> Cartesian(%.2f, %.2f)", 
+            RCLCPP_DEBUG(this->get_logger(), "Vertex %zu: GPS(%.6f, %.6f) -> Cartesian(%.2f, %.2f)", 
                         i, gps_point.lat, gps_point.lon, cart_point.x, cart_point.y);
         }
         
@@ -116,6 +122,8 @@ void PpNode::surveyInfoCallback(const ros_otter_custom_interfaces::msg::SurveyIn
     }
 }
 
+
+// Parse survey polygon from /polygon_vertices topic to internal GPS points
 std::vector<ppnode_utils::GpsPoint> PpNode::parseSurveyPolygon(
     const std::vector<ros_otter_custom_interfaces::msg::Vertex>& vertices) const
 {
@@ -123,7 +131,7 @@ std::vector<ppnode_utils::GpsPoint> PpNode::parseSurveyPolygon(
         std::vector<ppnode_utils::GpsPoint> gps_vertices = 
             ppnode_utils::vertexArrayToGpsPoints(vertices);
         
-        RCLCPP_INFO(this->get_logger(), "Parsed %zu polygon vertices", gps_vertices.size());
+        RCLCPP_DEBUG(this->get_logger(), "Parsed %zu polygon vertices", gps_vertices.size());
         return gps_vertices;
     } catch (const std::exception& e) {
         RCLCPP_ERROR(this->get_logger(), "Error parsing survey polygon: %s", e.what());
@@ -131,6 +139,8 @@ std::vector<ppnode_utils::GpsPoint> PpNode::parseSurveyPolygon(
     }
 }
 
+
+// Set reference point - boat position || surveyinfo start point
 void PpNode::setReferencePoint(const ppnode_utils::GpsPoint& point)
 {
     if (!point.isValid()) {
@@ -142,10 +152,12 @@ void PpNode::setReferencePoint(const ppnode_utils::GpsPoint& point)
     ref_lon_ = point.lon;
     ref_point_set_ = true;
     
-    RCLCPP_INFO(this->get_logger(), "Reference point set to: lat=%.6f, lon=%.6f", 
+    RCLCPP_DEBUG(this->get_logger(), "Reference point set to: lat=%.6f, lon=%.6f", 
                 ref_lat_, ref_lon_);
 }
 
+
+// Calculate start & end points from polygon vertices using path planner
 std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint> PpNode::calculatePathPoints() const
 {
     if (!path_planner_) {
@@ -155,6 +167,8 @@ std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint> PpNode::ca
     return path_planner_->calculatePath(polygon_vertices_cartesian_);
 }
 
+
+// Process collected polygon vertices and publish result points
 void PpNode::processPolygonAndPublishResults()
 {
     if (!hasMinimumVertices()) {
@@ -163,22 +177,25 @@ void PpNode::processPolygonAndPublishResults()
         return;
     }
     
-    RCLCPP_INFO(this->get_logger(), "Processing polygon with %zu vertices", 
+    RCLCPP_DEBUG(this->get_logger(), "Processing polygon with %zu vertices", 
                 polygon_vertices_cartesian_.size());
     
     try {
+        // Calculate the path using the configured algorithm
         auto [start_point, end_point] = calculatePathPoints();
         
-        // Publish both result points for debugging/visualization
+        // Publish both result points for debugging/visualization tools
         publishResultPoint(start_point, 1);
         publishResultPoint(end_point, 2);
         
-        RCLCPP_INFO(this->get_logger(), "Successfully published result points for visualization");
+        RCLCPP_DEBUG(this->get_logger(), "Successfully published result points for visualization");
     } catch (const std::exception& e) {
         RCLCPP_ERROR(this->get_logger(), "Failed to process polygon: %s", e.what());
     }
 }
 
+
+// Publish a single result point in both GPS and Cartesian formats
 void PpNode::publishResultPoint(const ppnode_utils::CartesianPoint& cart_point, int point_id)
 {
     try {
@@ -189,18 +206,20 @@ void PpNode::publishResultPoint(const ppnode_utils::CartesianPoint& cart_point, 
         cart_msg.z = 0.0;  // Assuming 2D plane
         result_cartesian_pub_->publish(cart_msg);
         
-        // Convert to GPS and publish
+        // Convert to GPS coords and publish
         ppnode_utils::GpsPoint gps_point = ppnode_utils::cartesianToGps(cart_point, ref_lat_, ref_lon_);
         auto gps_msg = ppnode_utils::gpsPointToGpsInfo(gps_point, this->now().seconds());
         result_gps_pub_->publish(gps_msg);
         
-        RCLCPP_INFO(this->get_logger(), "Point %d - Cartesian: (%.2f, %.2f), GPS: (%.6f, %.6f)", 
+        RCLCPP_DEBUG(this->get_logger(), "Point %d - Cartesian: (%.2f, %.2f), GPS: (%.6f, %.6f)", 
                     point_id, cart_point.x, cart_point.y, gps_point.lat, gps_point.lon);
     } catch (const std::exception& e) {
         RCLCPP_ERROR(this->get_logger(), "Error publishing result point %d: %s", point_id, e.what());
     }
 }
 
+
+// Service callback for OTTER_TCP_node leg requests
 void PpNode::legServiceCallback(
     const std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Request> request,
     std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Response> response)
@@ -221,10 +240,10 @@ void PpNode::legServiceCallback(
             return;
         }
         
-        // Calculate path points
+        // Calculate path points using the configured path planning algorithm
         auto [start_cartesian, end_cartesian] = calculatePathPoints();
         
-        // Convert to GPS coordinates
+        // Convert Cartesian path points back to GPS coordinates for boat navigation
         ppnode_utils::GpsPoint start_gps = ppnode_utils::cartesianToGps(start_cartesian, ref_lat_, ref_lon_);
         ppnode_utils::GpsPoint end_gps = ppnode_utils::cartesianToGps(end_cartesian, ref_lat_, ref_lon_);
         
@@ -239,11 +258,11 @@ void PpNode::legServiceCallback(
         response->lon1 = std::abs(end_gps.lon);
         response->lon1_dir = (end_gps.lon >= 0) ? "E" : "W";
         
-        response->speed = ppnode_utils::config::DEFAULT_SPEED_MS;  // Default speed in m/s
+        response->speed = ppnode_utils::config::DEFAULT_SPEED_MS;  // Default survey speed in m/s
         response->success = true;
         response->message = "Leg coordinates calculated successfully from polygon vertices";
         
-        // Publish result points for debugging/visualization
+        // Also publish result points for debugging/visualization
         publishResultPoint(start_cartesian, 1);
         publishResultPoint(end_cartesian, 2);
         
@@ -263,16 +282,27 @@ void PpNode::legServiceCallback(
     }
 }
 
+
+// Utility functions for validation and configuration
+
+// Validate GPS coordinates
 bool PpNode::validateGpsCoordinates(double lat, double lon) const
 {
     return ppnode_utils::validateGpsCoordinates(lat, lon);
 }
 
+// Validate polygon vertices
 bool PpNode::validatePolygonVertices(const std::vector<ppnode_utils::GpsPoint>& vertices) const
 {
     return ppnode_utils::validatePolygonVertices(vertices);
 }
 
+
+/**
+ * @brief Set a custom path planning algorithm
+ * Allows runtime switching of path planning strategies for different survey types
+ * @param planner Unique pointer to a PathPlanner implementation
+ */
 void PpNode::setPathPlanner(std::unique_ptr<PathPlanner> planner)
 {
     if (planner) {

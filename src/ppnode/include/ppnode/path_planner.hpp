@@ -28,9 +28,7 @@ public:
      * @param polygon Vector of Cartesian polygon vertices
      * @return true if polygon is valid for path planning
      */
-    virtual bool validatePolygon(const std::vector<ppnode_utils::CartesianPoint>& polygon) const {
-        return polygon.size() >= ppnode_utils::config::MIN_POLYGON_VERTICES;
-    }
+    virtual bool validatePolygon(const std::vector<ppnode_utils::CartesianPoint>& polygon) const;
 };
 
 /**
@@ -51,41 +49,38 @@ public:
      * @throws std::runtime_error if polygon is invalid
      */
     std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint> 
-    calculatePath(const std::vector<ppnode_utils::CartesianPoint>& polygon) const override {
-        if (!validatePolygon(polygon)) {
-            throw std::runtime_error("Invalid polygon for path calculation");
-        }
-        
-        // Calculate centroid
-        double sum_x = 0.0, sum_y = 0.0;
-        for (const auto& point : polygon) {
-            sum_x += point.x;
-            sum_y += point.y;
-        }
-        
-        ppnode_utils::CartesianPoint centroid(sum_x / polygon.size(), sum_y / polygon.size());
-        
-        // Create second point offset in x direction
-        ppnode_utils::CartesianPoint offset_point(centroid.x + offset_distance_, centroid.y);
-        
-        return std::make_pair(centroid, offset_point);
-    }
+    calculatePath(const std::vector<ppnode_utils::CartesianPoint>& polygon) const override;
     
     /**
      * @brief Set the offset distance for the second point
      * @param distance Offset distance in meters
+     * @throws std::invalid_argument if distance is not positive
      */
-    void setOffsetDistance(double distance) {
-        offset_distance_ = distance;
-    }
+    void setOffsetDistance(double distance);
     
     /**
      * @brief Get the current offset distance
      * @return Offset distance in meters
      */
-    double getOffsetDistance() const {
-        return offset_distance_;
-    }
+    double getOffsetDistance() const;
+
+private:
+    /**
+     * @brief Calculate centroid of polygon
+     * @param polygon Vector of Cartesian polygon vertices
+     * @return Centroid point
+     * @throws std::invalid_argument if polygon is empty
+     */
+    ppnode_utils::CartesianPoint calculateCentroid(
+        const std::vector<ppnode_utils::CartesianPoint>& polygon) const;
+    
+    /**
+     * @brief Calculate area of polygon using shoelace formula
+     * @param polygon Vector of Cartesian polygon vertices
+     * @return Area in square meters
+     */
+    double calculatePolygonArea(
+        const std::vector<ppnode_utils::CartesianPoint>& polygon) const;
 };
 
 } // namespace ppnode

@@ -71,46 +71,88 @@ private:
     
     // Private member functions
     
-    /** @brief Callback for receiving survey info (polygon vertices + start point) */
-    void surveyInfoCallback(const ros_otter_custom_interfaces::msg::SurveyInfo::SharedPtr msg);
-    
-    /** @brief Callback for receiving boat GPS position */
+    /**
+     * @brief Callback for boat GPS position updates
+     * Tracks the boat's current location and sets the initial position for reference
+     * Priority: Uses the first GPS reading as the coordinate reference point
+     */
     void boatGpsCallback(const ros_otter_custom_interfaces::msg::GpsInfo::SharedPtr msg);
     
-    /** @brief Process collected polygon vertices and publish result points */
+    /**
+     * @brief Callback for receiving survey info (polygon vertices + start point)
+     * Processes the survey area definition and calculates the coordinate transformation
+     * Receives this from the polygon_vertices topic from the backend web app
+     * This is the main data input that defines where the boat should survey
+     */
+    void surveyInfoCallback(const ros_otter_custom_interfaces::msg::SurveyInfo::SharedPtr msg);
+    
+    /**
+     * @brief Parse survey polygon from ROS message format to internal GPS points
+     * Converts SurveyInfo Vertex[] message array to vector of GpsPoint
+     */
+    std::vector<ppnode_utils::GpsPoint> parseSurveyPolygon(
+    const std::vector<ros_otter_custom_interfaces::msg::Vertex>& vertices) const;
+
+    /**
+     * @brief Set the GPS reference point for coordinate transformations
+     * This point becomes the origin (0,0) of the local Cartesian coordinate system
+     * Critical for accurate GPS-to-Cartesian conversions in path planning
+     */
+    void setReferencePoint(const ppnode_utils::GpsPoint& point);
+    
+    /**
+     * @brief Calculate path points using the configured path planning algorithm
+     * Delegates to the path planner to generate start/end waypoints from polygon
+     * Returns Cartesian coordinates that need GPS conversion for boat navigation
+     */
+    std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint> calculatePathPoints() const;
+    
+    /**
+     * @brief Process polygon and publish visualization results
+     * Main processing function that calculates path points and publishes them
+     * Called automatically when survey data is received and polygon is valid
+     */
     void processPolygonAndPublishResults();
     
-    /** @brief Publish a single result point in both GPS and Cartesian formats */
+    /**
+     * @brief Publish a calculated path point for visualization and debugging
+     * Publishes the same point in both Cartesian and GPS coordinate systems
+     * External tools can subscribe to these topics to visualize the planned path
+     */
     void publishResultPoint(const ppnode_utils::CartesianPoint& cart_point, int point_id);
     
-    /** @brief Service callback for OTTER_TCP_node leg requests */
+    /**
+     * @brief Service callback for boat control system leg requests
+     * Called by OTTER_TCP_node when it needs waypoint coordinates for navigation
+     * Returns GPS coordinates in the specific format required by the boat control system
+     */
     void legServiceCallback(
-        const std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Request> request,
-        std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Response> response);
+    const std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Request> request,
+    std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Response> response);
+    
+    
     
     // Helper functions for coordinate calculations
-    
-    /** @brief Calculate start and end points from polygon vertices using path planner */
-    std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint> calculatePathPoints() const;
     
     /** @brief Check if we have minimum vertices for polygon processing */
     bool hasMinimumVertices() const { 
         return polygon_vertices_gps_.size() >= ppnode_utils::config::MIN_POLYGON_VERTICES; 
     }
     
-    /** @brief Set reference point from boat position or survey start point */
-    void setReferencePoint(const ppnode_utils::GpsPoint& point);
-    
-    /** @brief Convert SurveyInfo Vertex array to vector of GpsPoints */
-    std::vector<ppnode_utils::GpsPoint> parseSurveyPolygon(
-        const std::vector<ros_otter_custom_interfaces::msg::Vertex>& vertices) const;
-    
-    /** @brief Validate GPS coordinates */
+    /**
+     * @brief Validate GPS coordinates are within reasonable bounds
+     * Wrapper for utility function to maintain interface consistency
+     */
     bool validateGpsCoordinates(double lat, double lon) const;
     
-    /** @brief Validate polygon vertices */
+    /**
+     * @brief Validate polygon vertices for path planning
+     * Ensures polygon has enough vertices and coordinates are valid
+     */
     bool validatePolygonVertices(const std::vector<ppnode_utils::GpsPoint>& vertices) const;
     
+
+
 public:
     explicit PpNode(const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
     virtual ~PpNode() = default;
