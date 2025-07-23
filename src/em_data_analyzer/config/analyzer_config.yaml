@@ -1,0 +1,29 @@
+# PointCloud Analyzer Configuration
+# ROS2 parameter file format requires ros__parameters at the root level
+
+pointcloud_analyzer:
+  ros__parameters:
+    # Topic names
+    topics:
+      pointcloud: "/PointcloudFromKMALL"
+      gps: "gps_info"
+      leg_status: "/leg_status"
+      stats_output: "/swath_line_stats"
+      shadow_output: "/shadow_analysis"
+    
+    # Queue sizes for ROS2 subscriptions/publishers
+    queue_sizes:
+      pointcloud: 10
+      gps: 100
+      leg_status: 10
+      stats_output: 10
+      shadow_output: 10
+    
+    # GPS synchronization
+    gps:
+      buffer_size: 100
+    
+    # Shadow/hole detection parameters
+    shadow_detection:
+      grid_cell_size: 10.0        # Grid cell size in meters
+      density_threshold: 0.1      # Minimum density as fraction of mean (0.1 = 10%)
