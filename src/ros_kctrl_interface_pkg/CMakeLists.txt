@@ -28,7 +28,7 @@ target_include_directories(ros2ctrl_udp_receiver PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
-ament_target_dependencies(ros2ctrl_udp_receiver rclcpp std_msgs)
+ament_target_dependencies(ros2ctrl_udp_receiver rclcpp std_msgs ros_kctrl_custom_interfaces)
 
 install(TARGETS
   ros2ctrl_wrapper_node
