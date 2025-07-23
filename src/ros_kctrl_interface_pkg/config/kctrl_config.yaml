@@ -1,0 +1,13 @@
+# K-Controller ROS2 Interface Configuration
+# Default configuration file installed with the package
+
+ros2_ctrl_wrapper_node:
+  ros__parameters:
+    kctrl_ip: "192.168.48.1"
+    kctrl_port: 4001
+
+ros2_udp_receiver:
+  ros__parameters:
+    kctrl_ip: "192.168.48.1"
+    kctrl_port: 4001
+    listen_port: 4002

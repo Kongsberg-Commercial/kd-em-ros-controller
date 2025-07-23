@@ -1,8 +1,5 @@
 #include "ros_kctrl_interface_pkg/ros2ctrl_udp_receiver.hpp"
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <cstring>
+#include "ros_kctrl_interface_pkg/simple_udp.hpp"
 #include <sstream>
 #include <regex>
 #include <fstream>
@@ -13,6 +10,7 @@ using json = nlohmann::json;
 Ros2UdpReceiver::Ros2UdpReceiver()
 : Node("ros2_udp_receiver"), running_(true)
 {
+    // Set up publishers for custom messages and raw strings
     pub_version_      = this->create_publisher<ros_kctrl_custom_interfaces::msg::KctrlVersion>("kctrl/version", 10);
     pub_version_raw_  = this->create_publisher<std_msgs::msg::String>("kctrl/version_raw", 10);
 
@@ -37,8 +35,25 @@ Ros2UdpReceiver::Ros2UdpReceiver()
     pub_pu_params_ = this->create_publisher<ros_kctrl_custom_interfaces::msg::KctrlPUParams>("kctrl/pu_params", 10);
     pub_pu_params_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/pu_params_raw", 10);
 
-    RCLCPP_INFO(this->get_logger(), "ROS2 UDP Receiver Node started.");
+    // Declare configurable parameters
+    this->declare_parameter<std::string>("kctrl_ip", "192.168.48.1");
+    this->declare_parameter<int>("kctrl_port", 4001);
+    this->declare_parameter<int>("listen_port", 4002);
 
+    // Get parameter values
+    std::string kctrl_ip = this->get_parameter("kctrl_ip").as_string();
+    int kctrl_port = this->get_parameter("kctrl_port").as_int();
+    int listen_port = this->get_parameter("listen_port").as_int();
+
+    RCLCPP_INFO(this->get_logger(), "ROS2 UDP Receiver Node started.");
+    RCLCPP_INFO(this->get_logger(), "K-Controller at: %s:%d", kctrl_ip.c_str(), kctrl_port);
+    RCLCPP_INFO(this->get_logger(), "Listening on port: %d", listen_port);
+
+    // Set up UDP communication - much simpler now!
+    handshake_sender_ = SimpleUDP::createSender(kctrl_ip, kctrl_port);
+    message_receiver_ = SimpleUDP::createReceiver(listen_port);
+
+    // Send handshake and start listening
     send_handshake();
     thread_ = std::thread([this]() { udp_listen(); });
 }
@@ -49,71 +64,56 @@ Ros2UdpReceiver::~Ros2UdpReceiver() {
 }
 
 void Ros2UdpReceiver::send_handshake() {
-    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-    if (sockfd < 0) {
-        RCLCPP_ERROR(this->get_logger(), "UDP handshake socket creation failed");
+    if (!handshake_sender_ || !handshake_sender_->isValid()) {
+        RCLCPP_ERROR(this->get_logger(), "Handshake sender not available");
         return;
     }
-    sockaddr_in destaddr{};
-    destaddr.sin_family = AF_INET;
-    destaddr.sin_port = htons(4001);
-    std::string kctrl_host_ip = "192.168.48.1";
-    inet_pton(AF_INET, kctrl_host_ip.c_str(), &destaddr.sin_addr);
-
-    std::string msg = "Hello";
-    ssize_t sent = sendto(sockfd, msg.c_str(), msg.size(), 0,
-                          (sockaddr*)&destaddr, sizeof(destaddr));
-    if (sent < 0) {
-        RCLCPP_ERROR(this->get_logger(), "UDP handshake sendto failed");
+    
+    bool success = handshake_sender_->send("Hello");
+    if (!success) {
+        RCLCPP_ERROR(this->get_logger(), "Failed to send handshake: %s", 
+                     handshake_sender_->getLastError().c_str());
+    } else {
+        RCLCPP_INFO(this->get_logger(), "Handshake sent successfully");
     }
-    close(sockfd);
 }
 
 void Ros2UdpReceiver::udp_listen() {
-    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-    if (sockfd < 0) {
-        RCLCPP_ERROR(this->get_logger(), "UDP socket creation failed");
+    if (!message_receiver_ || !message_receiver_->isValid()) {
+        RCLCPP_ERROR(this->get_logger(), "Message receiver not available");
         return;
     }
+    
+    RCLCPP_INFO(this->get_logger(), "UDP listening started on port 4002");
 
-    sockaddr_in servaddr{};
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_addr.s_addr = INADDR_ANY;
-    servaddr.sin_port = htons(4002);
-
-    if (bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr)) < 0) {
-        RCLCPP_ERROR(this->get_logger(), "UDP socket bind failed");
-        close(sockfd);
-        return;
-    }
-    RCLCPP_INFO(this->get_logger(), "UDP socket bound to 0.0.0.0:4002");
-
-    char buffer[4096];
     while (running_) {
-        ssize_t n = recvfrom(sockfd, buffer, sizeof(buffer)-1, 0, nullptr, nullptr);
-        if (n > 0) {
-            buffer[n] = '\0';
-            std::string msg(buffer);
-
-            // Route by KSSIS number
+        std::string received_message;
+        
+        // Try to receive a message (with 100ms timeout to allow clean shutdown)
+        bool got_message = message_receiver_->receive(received_message, 100);
+        
+        if (got_message) {
+            // Route message by KSSIS number - same logic as before
             std::smatch match;
-            if (std::regex_search(msg, match, std::regex(R"(\$KSSIS,(\d+),)"))) {
+            if (std::regex_search(received_message, match, std::regex(R"(\$KSSIS,(\d+),)"))) {
                 int code = std::stoi(match[1]);
                 switch (code) {
-                    case 1: handle_kssis_1(msg); break;
-                    case 12: handle_kssis_12(msg); break;
-                    case 401: handle_kssis_401(msg); break;
-                    case 455: handle_kssis_455(msg); break;
-                    case 616: handle_kssis_616(msg); break;
-                    case 499: handle_kssis_499(msg); break;
-                    case 998: handle_kssis_998(msg); break;
-                    case 993: handle_kssis_993(msg); break;
+                    case 1: handle_kssis_1(received_message); break;
+                    case 12: handle_kssis_12(received_message); break;
+                    case 401: handle_kssis_401(received_message); break;
+                    case 455: handle_kssis_455(received_message); break;
+                    case 616: handle_kssis_616(received_message); break;
+                    case 499: handle_kssis_499(received_message); break;
+                    case 998: handle_kssis_998(received_message); break;
+                    case 993: handle_kssis_993(received_message); break;
                     default: break;
                 }
             }
         }
+        // If no message received, just continue the loop (timeout is normal)
     }
-    close(sockfd);
+    
+    RCLCPP_INFO(this->get_logger(), "UDP listening stopped");
 }
 
 // --- KSSIS HANDLER FUNCTIONS ---

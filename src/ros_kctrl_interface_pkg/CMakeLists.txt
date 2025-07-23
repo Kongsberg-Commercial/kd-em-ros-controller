@@ -9,7 +9,7 @@ find_package(ros_kctrl_custom_interfaces REQUIRED)
 
 include_directories(include)
 
-add_library(ros2ctrl_udp_client src/ros2ctrl_udp_client.cpp)
+add_library(ros2ctrl_udp_client src/ros2ctrl_udp_client.cpp src/simple_udp.cpp)
 target_include_directories(ros2ctrl_udp_client PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
@@ -23,7 +23,7 @@ target_link_libraries(ros2ctrl_wrapper_node
 )
 ament_target_dependencies(ros2ctrl_wrapper_node rclcpp std_msgs Boost ros_kctrl_custom_interfaces)
 
-add_executable(ros2ctrl_udp_receiver src/ros2ctrl_udp_receiver.cpp)
+add_executable(ros2ctrl_udp_receiver src/ros2ctrl_udp_receiver.cpp src/simple_udp.cpp)
 target_include_directories(ros2ctrl_udp_receiver PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
@@ -38,6 +38,11 @@ install(TARGETS
 )
 install(
   DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
 )
 

@@ -18,7 +18,11 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 #include <nlohmann/json.hpp>
+
+// Forward declaration
+class SimpleUDP;
 
 class Ros2UdpReceiver : public rclcpp::Node {
 public:
@@ -46,6 +50,10 @@ private:
     // Members
     std::thread thread_;
     std::atomic<bool> running_;
+    
+    // UDP communication objects
+    std::unique_ptr<SimpleUDP> handshake_sender_;
+    std::unique_ptr<SimpleUDP> message_receiver_;
 
     // Formatted publishers
     rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlVersion>::SharedPtr pub_version_;
