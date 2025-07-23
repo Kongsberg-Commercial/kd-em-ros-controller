@@ -1,2 +1,3 @@
 # Leg.msg
-Vertex[2] leg
+Vertex start
+Vertex end
