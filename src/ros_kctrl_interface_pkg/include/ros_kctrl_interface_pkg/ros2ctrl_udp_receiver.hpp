@@ -2,12 +2,27 @@
 
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
+#include "ros_kctrl_custom_interfaces/msg/kctrl_version.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_device.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_detected_devices.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_parameter.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_parameters.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_multicast.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_status_entry.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_status.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_info_warn_error.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_device_disconnected.hpp"
+#include "ros_kctrl_custom_interfaces/msg/kctrl_pu_params.hpp"
 #include <thread>
 #include <atomic>
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 #include <nlohmann/json.hpp>
+
+// Forward declaration
+class SimpleUDP;
 
 class Ros2UdpReceiver : public rclcpp::Node {
 public:
@@ -30,21 +45,25 @@ private:
 
     // Helpers
     void publish_string(const rclcpp::Publisher<std_msgs::msg::String>::SharedPtr& pub, const std::string& data);
-    std::string parse_and_pretty_print_devices(const std::string& msg);
+    std::vector<ros_kctrl_custom_interfaces::msg::KctrlDevice> parse_devices(const std::string& msg);
 
     // Members
     std::thread thread_;
     std::atomic<bool> running_;
+    
+    // UDP communication objects
+    std::unique_ptr<SimpleUDP> handshake_sender_;
+    std::unique_ptr<SimpleUDP> message_receiver_;
 
     // Formatted publishers
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_version_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_devices_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_param_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_multicast_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_status_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_info_warn_error_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_device_disconnected_;
-    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_pu_params_;
+    rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlVersion>::SharedPtr pub_version_;
+    rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlDetectedDevices>::SharedPtr pub_devices_;
+    rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlParameters>::SharedPtr pub_param_;
+    rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlMulticast>::SharedPtr pub_multicast_;
+    rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlStatus>::SharedPtr pub_status_;
+    rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlInfoWarnError>::SharedPtr pub_info_warn_error_;
+    rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlDeviceDisconnected>::SharedPtr pub_device_disconnected_;
+    rclcpp::Publisher<ros_kctrl_custom_interfaces::msg::KctrlPUParams>::SharedPtr pub_pu_params_;
 
     // Raw publishers
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_version_raw_;

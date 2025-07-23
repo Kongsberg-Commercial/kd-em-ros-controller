@@ -7,8 +7,20 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(std_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/KctrlVersion.msg"
+  "msg/KctrlDevice.msg"
+  "msg/KctrlDetectedDevices.msg"
+  "msg/KctrlParameter.msg"
+  "msg/KctrlParameters.msg"
+  "msg/KctrlMulticast.msg"
+  "msg/KctrlStatusEntry.msg"
+  "msg/KctrlStatus.msg"
+  "msg/KctrlInfoWarnError.msg"
+  "msg/KctrlDeviceDisconnected.msg"
+  "msg/KctrlPUParams.msg"
   "srv/SounderCommand.srv"
   "srv/SetPUParameters.srv"
   "srv/RequestPUParameters.srv"
@@ -16,7 +28,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/UpdateRecordingPath.srv"
   "srv/PUParameters.srv"
   "srv/RequestDetectedSounders.srv"
-  # Only add DEPENDENCIES if you use std_msgs types
-  # DEPENDENCIES std_msgs
+  DEPENDENCIES std_msgs
 )
 ament_package()

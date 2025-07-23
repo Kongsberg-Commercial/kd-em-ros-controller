@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <memory>
+
+// Forward declaration
+class SimpleUDP;
 
 class Ros2CtrlUdpClient {
 public:
@@ -29,6 +33,7 @@ public:
 private:
     std::string ip_;
     int port_;
+    std::unique_ptr<SimpleUDP> udp_sender_;
 
     bool send_udp_cmd(const std::string& msg, const std::string& action, const std::string& sounder_name);
 };

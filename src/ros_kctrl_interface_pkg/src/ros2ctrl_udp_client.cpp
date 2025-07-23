@@ -1,14 +1,23 @@
 #include "ros_kctrl_interface_pkg/ros2ctrl_udp_client.hpp"
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <cstring>
+#include "ros_kctrl_interface_pkg/simple_udp.hpp"
 #include <iostream>
 #include <sstream>
 #include <vector>
 
 Ros2CtrlUdpClient::Ros2CtrlUdpClient(const std::string& ip, int port)
-    : ip_(ip), port_(port) {}
+    : ip_(ip), port_(port) {
+    // Create a UDP sender that connects to the specified IP and port
+    udp_sender_ = SimpleUDP::createSender(ip, port);
+    
+    if (!udp_sender_ || !udp_sender_->isValid()) {
+        std::cerr << "[UDP Client] Failed to create UDP sender to " << ip << ":" << port << std::endl;
+        if (udp_sender_) {
+            std::cerr << "[UDP Client] Error: " << udp_sender_->getLastError() << std::endl;
+        }
+    } else {
+        std::cout << "[UDP Client] Ready to send commands to " << ip << ":" << port << std::endl;
+    }
+}
 
 bool Ros2CtrlUdpClient::send_start_sounder(const std::string& sounder_name) {
     return send_udp_cmd("$KSSIS,13," + sounder_name, "start sounder", sounder_name);
@@ -108,28 +117,20 @@ bool Ros2CtrlUdpClient::send_import_pu_parameters(const std::string& sounder_nam
 }
 
 bool Ros2CtrlUdpClient::send_udp_cmd(const std::string& msg, const std::string& action, const std::string& sounder_name) {
-    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-    if (sockfd < 0) {
-        std::cerr << "[UDP] Socket creation failed\n";
+    // Check if UDP sender is ready
+    if (!udp_sender_ || !udp_sender_->isValid()) {
+        std::cerr << "[UDP] UDP sender not available" << std::endl;
         return false;
     }
-    sockaddr_in servaddr{};
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(port_);
-    if (inet_pton(AF_INET, ip_.c_str(), &servaddr.sin_addr) <= 0) {
-        std::cerr << "[UDP] Invalid address/ Address not supported\n";
-        close(sockfd);
+    
+    // Send the message - that's it! No complex socket code needed.
+    bool success = udp_sender_->send(msg);
+    
+    if (!success) {
+        std::cerr << "[UDP] Failed to send message: " << udp_sender_->getLastError() << std::endl;
         return false;
     }
-
-    ssize_t sent = sendto(sockfd, msg.c_str(), msg.size(), 0,
-                          (sockaddr*)&servaddr, sizeof(servaddr));
-    close(sockfd);
-
-    if (sent < 0) {
-        std::cerr << "[UDP] sendto failed\n";
-        return false;
-    }
+    
     std::cout << "[UDP] Sent " << action << " for: " << sounder_name << " to " << ip_ << ":" << port_ << std::endl;
     return true;
 }
