@@ -5,6 +5,8 @@
 #include "ros_otter_custom_interfaces/msg/gps_info.hpp"
 #include "ros_otter_custom_interfaces/msg/survey_info.hpp"
 #include "ros_otter_custom_interfaces/msg/vertex.hpp"
+#include "ros_otter_custom_interfaces/msg/leg.hpp"
+#include "ros_otter_custom_interfaces/msg/paths.hpp"
 #include "ros_otter_custom_interfaces/srv/leg_mode.hpp"
 #include "geometry_msgs/msg/point.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -35,9 +37,9 @@ namespace ppnode
  * - Falls back to survey start point if boat GPS unavailable
  * - Uses this reference for GPS ↔ Cartesian coordinate conversions
  * 
- * Publishers (for debugging/visualization):
- * - result_points_gps: GPS coordinates of calculated points
- * - result_points_cartesian: Cartesian coordinates of calculated points
+ * Publishers:
+ * - path_gps (ros_otter_custom_interfaces::msg::Paths): Complete path in GPS coordinates
+ * - path_cartesian (ros_otter_custom_interfaces::msg::Paths): Complete path in Cartesian coordinates
  */
 class PpNode : public rclcpp::Node
 {
@@ -49,15 +51,19 @@ private:
     // Service server for leg_srv (called by OTTER_TCP_node)
     rclcpp::Service<ros_otter_custom_interfaces::srv::LegMode>::SharedPtr leg_srv_;
     
-    // Publishers for result points (debugging/monitoring)
-    rclcpp::Publisher<ros_otter_custom_interfaces::msg::GpsInfo>::SharedPtr result_gps_pub_;
-    rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr result_cartesian_pub_;
+    // Publishers for complete paths
+    rclcpp::Publisher<ros_otter_custom_interfaces::msg::Paths>::SharedPtr path_gps_pub_;
+    rclcpp::Publisher<ros_otter_custom_interfaces::msg::Paths>::SharedPtr path_cartesian_pub_;
     
     // Storage for polygon vertices and boat position
     std::vector<ppnode_utils::GpsPoint> polygon_vertices_gps_;
     std::vector<ppnode_utils::CartesianPoint> polygon_vertices_cartesian_;
     ppnode_utils::GpsPoint initial_boat_position_;
     ppnode_utils::GpsPoint current_boat_position_;
+    
+    // Pre-calculated path storage (lookup table for leg requests)
+    std::vector<ros_otter_custom_interfaces::msg::Leg> calculated_legs_;
+    static constexpr size_t MAX_LEGS = 5;  // Maximum number of legs in path
     
     // Reference point for coordinate conversion (boat's initial position)
     double ref_lat_;
@@ -101,34 +107,53 @@ private:
     void setReferencePoint(const ppnode_utils::GpsPoint& point);
     
     /**
-     * @brief Calculate path points using the configured path planning algorithm
-     * Delegates to the path planner to generate start/end waypoints from polygon
-     * Returns Cartesian coordinates that need GPS conversion for boat navigation
+     * @brief Calculate complete path with multiple legs from polygon vertices
+     * Uses the configured path planning algorithm to generate up to MAX_LEGS legs
+     * Stores results in calculated_legs_ for lookup table access
      */
-    std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint> calculatePathPoints() const;
+    void calculateAndStorePath();
     
     /**
-     * @brief Process polygon and publish visualization results
-     * Main processing function that calculates path points and publishes them
+     * @brief Process polygon and publish complete path
+     * Main processing function that calculates full path and publishes it
      * Called automatically when survey data is received and polygon is valid
      */
-    void processPolygonAndPublishResults();
+    void processPolygonAndPublishPath();
     
     /**
-     * @brief Publish a calculated path point for visualization and debugging
-     * Publishes the same point in both Cartesian and GPS coordinate systems
-     * External tools can subscribe to these topics to visualize the planned path
+     * @brief Publish the complete calculated path in both coordinate systems
+     * Publishes to path_gps and path_cartesian topics for external consumption
      */
-    void publishResultPoint(const ppnode_utils::CartesianPoint& cart_point, int point_id);
+    void publishCompletePath();
     
     /**
-     * @brief Service callback for boat control system leg requests
-     * Called by OTTER_TCP_node when it needs waypoint coordinates for navigation
+     * @brief Convert Cartesian leg coordinates to GPS leg coordinates
+     * Helper function for coordinate system conversion of leg data
+     */
+    ros_otter_custom_interfaces::msg::Leg cartesianLegToGpsLeg(
+        const ros_otter_custom_interfaces::msg::Leg& cartesian_leg) const;
+    
+    /**
+     * @brief Service callback for boat control system leg requests (lookup table)
+     * Called by OTTER_TCP_node when it needs coordinates for a specific leg number
+     * Uses pre-calculated legs as lookup table instead of recalculating
      * Returns GPS coordinates in the specific format required by the boat control system
      */
     void legServiceCallback(
-    const std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Request> request,
-    std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Response> response);
+        const std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Request> request,
+        std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Response> response);
+    
+    // Helper functions for path management
+    
+    /** @brief Check if calculated path is available for leg requests */
+    bool hasCalculatedPath() const { 
+        return !calculated_legs_.empty(); 
+    }
+    
+    /** @brief Get number of legs in the calculated path */
+    size_t getPathLegCount() const {
+        return calculated_legs_.size();
+    }
     
     
     

@@ -303,14 +303,32 @@ function CartesianPlot({ cartesianVertices = [], cartesianPath = [], width = 700
             strokeWidth={2}
           />
         )}
-        {/* Path */}
+        {/* Path - Multiple legs */}
         {safePath.length > 1 && (
-          <polyline
-            points={safePath.map(mapPoint).map(([x, y]) => `${x},${y}`).join(" ")}
-            fill="none"
-            stroke="#e74c3c"
-            strokeWidth={3}
-          />
+          <>
+            {/* Draw each leg as a separate line for better visualization */}
+            {Array.from({ length: Math.floor(safePath.length / 2) }, (_, i) => {
+              const startPoint = safePath[i * 2];
+              const endPoint = safePath[i * 2 + 1];
+              if (!startPoint || !endPoint) return null;
+              
+              const [x1, y1] = mapPoint(startPoint);
+              const [x2, y2] = mapPoint(endPoint);
+              
+              return (
+                <line
+                  key={`leg-${i}`}
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke="#e74c3c"
+                  strokeWidth={3}
+                  opacity={0.8}
+                />
+              );
+            })}
+          </>
         )}
         {/* Vertices */}
         {safeVertices.map((p, i) => {
@@ -319,12 +337,18 @@ function CartesianPlot({ cartesianVertices = [], cartesianPath = [], width = 700
             <circle key={i} cx={x} cy={y} r={8} fill="#e74c3c" stroke="#fff" strokeWidth={2} />
           );
         })}
-        {/* Path points with proper colors */}
+        {/* Path points with proper colors for leg endpoints */}
         {safePath.map((p, i) => {
           const [x, y] = mapPoint(p);
-          const color = i === 0 ? "#ffff00" : "#8b00ff"; // Yellow for start, Violet for end
+          // Color logic: yellow for start points (even indices), violet for end points (odd indices)
+          // First point is always yellow, last point is always violet
+          let color = "#8b00ff"; // Default violet
+          if (i === 0) color = "#ffff00"; // First point is yellow
+          else if (i === safePath.length - 1) color = "#8b00ff"; // Last point is violet
+          else if (i % 2 === 0) color = "#ffff00"; // Even indices (start points) are yellow
+          
           return (
-            <circle key={"path-" + i} cx={x} cy={y} r={8} fill={color} stroke="#fff" strokeWidth={2} />
+            <circle key={"path-" + i} cx={x} cy={y} r={6} fill={color} stroke="#fff" strokeWidth={2} />
           );
         })}
       </svg>
@@ -346,7 +370,7 @@ export default function MapArea() {
   const [start, setStart] = useState(null);
   const [enableVertexPlacement, setEnableVertexPlacement] = useState(true);
   const [pathData, setPathData] = useState([]);
-  const [resultPoints, setResultPoints] = useState({ gps: [], cartesian: [] });
+  const [surveyPaths, setSurveyPaths] = useState({ gps: [], cartesian: [], totalLegs: 0 });
 
   // Reference point: start position (boat), or fallback
   const refLat = start ? start[0] : (vertices[0]?.[0] ?? DEFAULT_CENTER[0]);
@@ -360,56 +384,64 @@ export default function MapArea() {
 
   const cartesianPath = useMemo(() => {
     try {
-      if (!resultPoints.cartesian || !Array.isArray(resultPoints.cartesian)) {
+      if (!surveyPaths.cartesian || !Array.isArray(surveyPaths.cartesian)) {
         return [];
       }
-      // Backend sends cartesian data as objects: {x: number, y: number}
-      return resultPoints.cartesian.map(p => [p.x, p.y]);
+      // Flatten all legs into a continuous path
+      const pathPoints = [];
+      surveyPaths.cartesian.forEach(leg => {
+        if (leg.start && leg.end) {
+          pathPoints.push([leg.start.x, leg.start.y]);
+          pathPoints.push([leg.end.x, leg.end.y]);
+        }
+      });
+      return pathPoints;
     } catch (error) {
       console.error("Error processing cartesian path:", error);
       return [];
     }
-  }, [resultPoints.cartesian]);
+  }, [surveyPaths.cartesian]);
 
-  // Function to fetch result points from backend
-  const fetchResultPoints = useCallback(async () => {
+  // Function to fetch survey paths from backend
+  const fetchSurveyPaths = useCallback(async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/result-points");
+      const response = await fetch("http://localhost:3000/api/survey-paths");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Raw fetched data:", data);
+      console.log("Raw fetched survey paths:", data);
       
-      // Backend sends: { gps: [{latitude, longitude, timestamp}, ...], cartesian: [{x, y}, ...] }
+      // Backend sends: { gps: [...legs], cartesian: [...legs], totalLegs: number }
       if (data && typeof data === 'object') {
         const safeData = {
           gps: Array.isArray(data.gps) ? data.gps : [],
-          cartesian: Array.isArray(data.cartesian) ? data.cartesian : []
+          cartesian: Array.isArray(data.cartesian) ? data.cartesian : [],
+          totalLegs: data.totalLegs || 0
         };
         
-        console.log("Setting result points:", safeData);
-        setResultPoints(safeData);
+        console.log("Setting survey paths:", safeData);
+        setSurveyPaths(safeData);
       } else {
         console.warn("Invalid data structure received:", data);
       }
     } catch (error) {
-      console.error("Error fetching result points:", error);
+      console.error("Error fetching survey paths:", error);
     }
   }, []);
 
-  // Auto-fetch result points every 2 seconds when we have vertices
+  // Auto-fetch survey paths every 2 seconds when we have vertices
   useEffect(() => {
     let interval;
     if (vertices.length > 0) {
-      interval = setInterval(fetchResultPoints, 2000);
+      interval = setInterval(fetchSurveyPaths, 2000);
     }
     return () => {
       if (interval) {
         clearInterval(interval);
       }
     };
-  }, [vertices.length, fetchResultPoints]);
+  }, [vertices.length, fetchSurveyPaths]);
 
   // Handlers
   const moveVertex = (index, newLatLng) => {
@@ -420,9 +452,24 @@ export default function MapArea() {
   const undoVertex = () => setVertices(vertices.slice(0, -1));
   const eraseAllVertices = () => {
     setVertices([]);
-    setResultPoints({ gps: [], cartesian: [] }); // Clear result points too
+    setSurveyPaths({ gps: [], cartesian: [], totalLegs: 0 }); // Clear survey paths too
   };
   const clearDebugData = () => setPathData([]);
+  
+  // Function to fetch a specific leg for testing
+  const fetchSpecificLeg = async (legNumber) => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/leg/${legNumber}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(`Leg ${legNumber} data:`, data);
+      return data;
+    } catch (error) {
+      console.error(`Error fetching leg ${legNumber}:`, error);
+    }
+  };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
@@ -484,11 +531,29 @@ export default function MapArea() {
             fontWeight: "bold",
             fontSize: "1.1em",
             backgroundColor: "#f39c12",
-            color: "white"
+            color: "white",
+            marginRight: "10px"
           }}
         >
           Clear Debug
         </button>
+        {/* Test individual leg fetch */}
+        {surveyPaths.totalLegs > 0 && (
+          <button
+            onClick={() => fetchSpecificLeg(1)}
+            style={{
+              padding: "8px 16px",
+              borderRadius: "4px",
+              border: "none",
+              fontWeight: "bold",
+              fontSize: "1.1em",
+              backgroundColor: "#9b59b6",
+              color: "white"
+            }}
+          >
+            Test Leg 1
+          </button>
+        )}
       </div>
       {/* Map+Plot side-by-side */}
       <div
@@ -549,30 +614,31 @@ export default function MapArea() {
             {start && (
               <Marker position={start} icon={greenMarkerIcon} />
             )}
-            {/* Result Points - Start (Yellow) and End (Violet) */}
-            {resultPoints.gps && resultPoints.gps.length > 0 && (
-              <Marker 
-                position={[resultPoints.gps[0].latitude, resultPoints.gps[0].longitude]} 
-                icon={yellowMarkerIcon} 
-              />
-            )}
-            {resultPoints.gps && resultPoints.gps.length > 1 && (
-              <Marker 
-                position={[resultPoints.gps[1].latitude, resultPoints.gps[1].longitude]} 
-                icon={violetMarkerIcon} 
-              />
-            )}
-            {/* Path Line between result points */}
-            {resultPoints.gps && resultPoints.gps.length === 2 && (
-              <Polyline 
-                positions={[
-                  [resultPoints.gps[0].latitude, resultPoints.gps[0].longitude], 
-                  [resultPoints.gps[1].latitude, resultPoints.gps[1].longitude]
-                ]} 
-                color="red" 
-                weight={3}
-              />
-            )}
+            {/* Survey Path Visualization - Multiple legs */}
+            {surveyPaths.gps && surveyPaths.gps.map((leg, legIndex) => (
+              <React.Fragment key={`leg-${legIndex}`}>
+                {/* Start point marker (always yellow) */}
+                <Marker 
+                  position={[leg.start.latitude, leg.start.longitude]} 
+                  icon={yellowMarkerIcon}
+                />
+                {/* End point marker (always violet) */}
+                <Marker 
+                  position={[leg.end.latitude, leg.end.longitude]} 
+                  icon={violetMarkerIcon}
+                />
+                {/* Leg path line */}
+                <Polyline 
+                  positions={[
+                    [leg.start.latitude, leg.start.longitude], 
+                    [leg.end.latitude, leg.end.longitude]
+                  ]} 
+                  color="red" 
+                  weight={3}
+                  opacity={0.8}
+                />
+              </React.Fragment>
+            ))}
             {/* Add Polyline/Path rendering here as needed */}
           </MapContainer>
         </div>
@@ -596,7 +662,7 @@ export default function MapArea() {
             
             // Start polling for results after sending
             setTimeout(() => {
-              fetchResultPoints();
+              fetchSurveyPaths();
             }, 1000);
           } catch (error) {
             console.error("Error sending survey:", error);
@@ -615,10 +681,23 @@ export default function MapArea() {
           fontSize: "1.1em",
           letterSpacing: ".05em",
           boxShadow: "0 2px 10px #0002"
-        }}
-      >
-        Send Survey Area
-      </button>
+        }}        >
+          Send Survey Area
+        </button>
+        {/* Survey Path Status */}
+        {surveyPaths.totalLegs > 0 && (
+          <div style={{
+            marginTop: "8px",
+            padding: "6px 12px",
+            backgroundColor: "#2ecc40",
+            color: "white",
+            borderRadius: "4px",
+            fontSize: "0.9em",
+            fontWeight: "bold"
+          }}>
+            Survey Path Ready: {surveyPaths.totalLegs} legs calculated
+          </div>
+        )}
       {/* Help Text */}
       <div style={{
         fontSize: "1em",

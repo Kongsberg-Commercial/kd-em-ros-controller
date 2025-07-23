@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 let polygonPublisher = null;
-let resultPoints = { gps: [], cartesian: [] }; // Store latest result points
+let surveyPaths = { gps: [], cartesian: [] }; // Store latest multi-leg paths
 
 // Initialize ROS2 node and publisher for SurveyInfo message
 rclnodejs.init().then(() => {
@@ -21,36 +21,61 @@ rclnodejs.init().then(() => {
     "polygon_vertices"
   );
 
-  // Subscribe to result points from ppnode
-  const gpsResultSub = node.createSubscription(
-    "ros_otter_custom_interfaces/msg/GpsInfo",
-    "result_points_gps",
+  // Subscribe to multi-leg paths from ppnode
+  const gpsPathSub = node.createSubscription(
+    "ros_otter_custom_interfaces/msg/Paths",
+    "path_gps",
     (msg) => {
-      // Reconstruct signed coordinates from absolute values + directions
-      const latitude = msg.lat * (msg.lat_dir === "N" ? 1 : -1);
-      const longitude = msg.lon * (msg.lon_dir === "E" ? 1 : -1);
+      // Process the complete path with multiple legs
+      surveyPaths.gps = [];
       
-      const gpsPoint = {
-        latitude: latitude,
-        longitude: longitude,
-        timestamp: msg.time
-      };
-      resultPoints.gps.push(gpsPoint);
-      console.log(`Received GPS result point: ${gpsPoint.latitude}, ${gpsPoint.longitude}`);
+      for (let i = 0; i < msg.paths.length; i++) {
+        const leg = msg.paths[i];
+        const gpsLeg = {
+          legNumber: i + 1,
+          start: {
+            latitude: leg.start.latitude,
+            longitude: leg.start.longitude
+          },
+          end: {
+            latitude: leg.end.latitude,
+            longitude: leg.end.longitude
+          }
+        };
+        surveyPaths.gps.push(gpsLeg);
+      }
+      
+      console.log(`Received GPS path with ${surveyPaths.gps.length} legs`);
+      surveyPaths.gps.forEach((leg, index) => {
+        console.log(`  Leg ${leg.legNumber}: [${leg.start.latitude.toFixed(6)}, ${leg.start.longitude.toFixed(6)}] -> [${leg.end.latitude.toFixed(6)}, ${leg.end.longitude.toFixed(6)}]`);
+      });
     }
   );
 
-  const cartesianResultSub = node.createSubscription(
-    "geometry_msgs/msg/Point",
-    "result_points_cartesian",
+  const cartesianPathSub = node.createSubscription(
+    "ros_otter_custom_interfaces/msg/Paths",
+    "path_cartesian",
     (msg) => {
-      const cartPoint = {
-        x: msg.x,
-        y: msg.y,
-        z: msg.z
-      };
-      resultPoints.cartesian.push(cartPoint);
-      console.log(`Received Cartesian result point: ${cartPoint.x}, ${cartPoint.y}`);
+      // Process the complete path with multiple legs (Cartesian coordinates)
+      surveyPaths.cartesian = [];
+      
+      for (let i = 0; i < msg.paths.length; i++) {
+        const leg = msg.paths[i];
+        const cartLeg = {
+          legNumber: i + 1,
+          start: {
+            x: leg.start.latitude,  // Using latitude field for x coordinate
+            y: leg.start.longitude  // Using longitude field for y coordinate
+          },
+          end: {
+            x: leg.end.latitude,    // Using latitude field for x coordinate
+            y: leg.end.longitude    // Using longitude field for y coordinate
+          }
+        };
+        surveyPaths.cartesian.push(cartLeg);
+      }
+      
+      console.log(`Received Cartesian path with ${surveyPaths.cartesian.length} legs`);
     }
   );
 
@@ -63,9 +88,9 @@ rclnodejs.init().then(() => {
 app.post("/api/polygon", (req, res) => {
   const { vertices, start } = req.body;
 
-  // Clear previous result points when new polygon is received
-  resultPoints.gps = [];
-  resultPoints.cartesian = [];
+  // Clear previous paths when new polygon is received
+  surveyPaths.gps = [];
+  surveyPaths.cartesian = [];
 
   // Validate input
   if (!Array.isArray(vertices) || vertices.length < 3) {
@@ -115,11 +140,36 @@ app.post("/api/polygon", (req, res) => {
   });
 });
 
-// GET endpoint to retrieve latest result points
-app.get("/api/result-points", (req, res) => {
+// GET endpoint to retrieve latest survey paths
+app.get("/api/survey-paths", (req, res) => {
   res.json({
-    gps: resultPoints.gps,
-    cartesian: resultPoints.cartesian
+    gps: surveyPaths.gps,
+    cartesian: surveyPaths.cartesian,
+    totalLegs: surveyPaths.gps.length
+  });
+});
+
+// GET endpoint to retrieve specific leg information
+app.get("/api/leg/:legNumber", (req, res) => {
+  const legNumber = parseInt(req.params.legNumber);
+  
+  if (isNaN(legNumber) || legNumber < 1) {
+    return res.status(400).json({ error: "Invalid leg number. Must be a positive integer." });
+  }
+  
+  if (legNumber > surveyPaths.gps.length) {
+    return res.status(404).json({ 
+      error: `Leg ${legNumber} not found. Available legs: 1-${surveyPaths.gps.length}` 
+    });
+  }
+  
+  const gpsLeg = surveyPaths.gps[legNumber - 1];  // Convert to 0-based indexing
+  const cartesianLeg = surveyPaths.cartesian[legNumber - 1];
+  
+  res.json({
+    legNumber: legNumber,
+    gps: gpsLeg,
+    cartesian: cartesianLeg
   });
 });
 
