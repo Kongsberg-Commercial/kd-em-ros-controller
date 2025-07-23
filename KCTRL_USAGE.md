@@ -1,7 +1,7 @@
 # Simple K-Controller Configuration Guide
 # =====================================
 
-# You now have ONE launch file that handles everything: ros2_ctrl.launch.py
+# There is ONE launch file that handles everything: ros2_ctrl.launch.py
 
 ## Method 1: Default Settings
 ros2 launch ros_kctrl_interface_pkg ros2_ctrl.launch.py
