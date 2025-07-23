@@ -13,6 +13,8 @@
 #include <mutex>
 #include <vector>
 #include <optional>
+#include <chrono>
+#include <future>
 
 #include "ros_otter_custom_interfaces/srv/drift_mode.hpp"
 #include "ros_otter_custom_interfaces/srv/manual_mode.hpp"
@@ -51,6 +53,11 @@ private:
     // Helper for leg endpoint detection
     bool at_leg_endpoint(double curr_lat, const std::string& curr_lat_dir,
                         double curr_lon, const std::string& curr_lon_dir);
+
+    // Automatic leg progression methods
+    void start_leg_progression();
+    void start_next_leg();
+    void request_leg_from_ppnode(int leg_number);
 
     // Service handlers
     void handle_drift(const std::shared_ptr<ros_otter_custom_interfaces::srv::DriftMode::Request> request,
@@ -99,4 +106,6 @@ private:
     double leg_end_lon_;
     std::string leg_end_lat_dir_;
     std::string leg_end_lon_dir_;
+    int current_leg_number_;
+    std::vector<rclcpp::TimerBase::SharedPtr> retry_timers_;
 };
