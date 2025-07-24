@@ -65,8 +65,6 @@ ros2 run em_data_analyzer pointcloud_analyzer_node --ros-args --params-file /pat
 # Monitor shadow analysis in terminal
 ros2 topic echo /shadow_analysis
 
-# Run the example shadow subscriber
-ros2 run em_data_analyzer shadow_subscriber_example.py
 ```
 
 ## Topics
