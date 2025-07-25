@@ -95,8 +95,6 @@ ros2 topic echo /swath_line_stats
 # Monitor shadow analysis
 ros2 topic echo /shadow_analysis
 
-# Check visualization topics
-ros2 topic list | grep viz
 ```
 
 ## Topics
