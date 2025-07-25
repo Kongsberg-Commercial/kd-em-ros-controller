@@ -10,6 +10,8 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 find_package(ros_otter_custom_interfaces REQUIRED)
 
 # Include directories
@@ -17,7 +19,13 @@ include_directories(include)
 
 # Create library for the analyzer
 add_library(pointcloud_analyzer_lib src/pointcloud_analyzer.cpp)
-ament_target_dependencies(pointcloud_analyzer_lib rclcpp sensor_msgs geometry_msgs ros_otter_custom_interfaces)
+ament_target_dependencies(pointcloud_analyzer_lib 
+  rclcpp 
+  sensor_msgs 
+  geometry_msgs 
+  visualization_msgs
+  std_msgs
+  ros_otter_custom_interfaces)
 target_link_libraries(pointcloud_analyzer_lib GeographicLib)
 
 # Create executable
@@ -31,24 +39,26 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
-install(DIRECTORY
-  config/
-  DESTINATION share/${PROJECT_NAME}/config
+# Install Python scripts
+install(PROGRAMS
+  src/publish_dummy_gps.py
+  src/publish_dummy_leg_status.py
+  DESTINATION lib/${PROJECT_NAME}
 )
 
-install(DIRECTORY
-  launch/
+# Install launch files
+install(DIRECTORY launch/
   DESTINATION share/${PROJECT_NAME}/launch
+)
+
+# Install config files  
+install(DIRECTORY config/
+  DESTINATION share/${PROJECT_NAME}/config
 )
 
 install(DIRECTORY
   include/em_data_analyzer
   DESTINATION include
-)
-
-install(PROGRAMS
-  src/publish_dummy_gps.py
-  DESTINATION lib/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)
