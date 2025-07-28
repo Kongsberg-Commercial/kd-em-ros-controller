@@ -186,7 +186,7 @@ em_data_analyzer/
 
 ## Testing
 
-For testing without real multibeam data, a dummy GPS publisher is included:
+For testing a dummy GPS publisher is included:
 
 ```bash
 # Optional: Start dummy GPS publisher for testing
