@@ -14,7 +14,7 @@
 class Ros2CtrlWrapperNode : public rclcpp::Node {
 public:
     Ros2CtrlWrapperNode() : Node("ros2_ctrl_wrapper_node") {
-        this->declare_parameter<std::string>("kctrl_ip", "192.168.48.1");
+        this->declare_parameter<std::string>("kctrl_ip", "192.168.53.3");
         this->declare_parameter<int>("kctrl_port", 14002);
 
         std::string kctrl_ip = this->get_parameter("kctrl_ip").as_string();
