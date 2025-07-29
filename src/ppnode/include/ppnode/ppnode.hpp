@@ -10,6 +10,7 @@
 #include "ros_otter_custom_interfaces/srv/leg_mode.hpp"
 #include "geometry_msgs/msg/point.hpp"
 #include "std_msgs/msg/string.hpp"
+#include "std_msgs/msg/bool.hpp"
 #include "ppnode/utils.hpp"
 #include "ppnode/path_planner.hpp"
 #include <vector>
@@ -47,6 +48,7 @@ private:
     // Subscribers
     rclcpp::Subscription<ros_otter_custom_interfaces::msg::SurveyInfo>::SharedPtr survey_sub_;
     rclcpp::Subscription<ros_otter_custom_interfaces::msg::GpsInfo>::SharedPtr gps_sub_;
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr path_upd_sub_;
     
     // Service server for leg_srv (called by OTTER_TCP_node)
     rclcpp::Service<ros_otter_custom_interfaces::srv::LegMode>::SharedPtr leg_srv_;
@@ -56,7 +58,7 @@ private:
     rclcpp::Publisher<ros_otter_custom_interfaces::msg::Paths>::SharedPtr path_cartesian_pub_;
     
     // Storage for polygon vertices and boat position
-    std::vector<ppnode_utils::GpsPoint> polygon_vertices_gps_;
+    std::vector<ros_otter_custom_interfaces::msg::Vertex> polygon_vertices_msg_;
     std::vector<ppnode_utils::CartesianPoint> polygon_vertices_cartesian_;
     ppnode_utils::GpsPoint initial_boat_position_;
     ppnode_utils::GpsPoint current_boat_position_;
@@ -76,6 +78,11 @@ private:
     std::unique_ptr<PathPlanner> path_planner_;
     
     // Private member functions
+
+    /**
+     * @brief Callback for original path update requests
+     */
+    void pathUpdateCallback(const std_msgs::msg::Bool::SharedPtr msg);
     
     /**
      * @brief Callback for boat GPS position updates
@@ -92,13 +99,6 @@ private:
      */
     void surveyInfoCallback(const ros_otter_custom_interfaces::msg::SurveyInfo::SharedPtr msg);
     
-    /**
-     * @brief Parse survey polygon from ROS message format to internal GPS points
-     * Converts SurveyInfo Vertex[] message array to vector of GpsPoint
-     */
-    std::vector<ppnode_utils::GpsPoint> parseSurveyPolygon(
-    const std::vector<ros_otter_custom_interfaces::msg::Vertex>& vertices) const;
-
     /**
      * @brief Set the GPS reference point for coordinate transformations
      * This point becomes the origin (0,0) of the local Cartesian coordinate system
@@ -161,7 +161,7 @@ private:
     
     /** @brief Check if we have minimum vertices for polygon processing */
     bool hasMinimumVertices() const { 
-        return polygon_vertices_gps_.size() >= ppnode_utils::config::MIN_POLYGON_VERTICES; 
+        return polygon_vertices_msg_.size() >= ppnode_utils::config::MIN_POLYGON_VERTICES; 
     }
     
     /**
@@ -169,12 +169,6 @@ private:
      * Wrapper for utility function to maintain interface consistency
      */
     bool validateGpsCoordinates(double lat, double lon) const;
-    
-    /**
-     * @brief Validate polygon vertices for path planning
-     * Ensures polygon has enough vertices and coordinates are valid
-     */
-    bool validatePolygonVertices(const std::vector<ppnode_utils::GpsPoint>& vertices) const;
     
 
 

@@ -43,6 +43,38 @@ const violetMarkerIcon = new L.Icon({
   shadowSize: null,
   shadowAnchor: null,
 });
+
+// Function to create numbered yellow marker
+const createNumberedYellowMarker = (number) => {
+  return new L.DivIcon({
+    html: `
+      <div style="position: relative;">
+        <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png" 
+             style="width: 22px; height: 22px;" />
+        <div style="
+          position: absolute;
+          top: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #333;
+          color: white;
+          border-radius: 10px;
+          padding: 2px 6px;
+          font-size: 10px;
+          font-weight: bold;
+          min-width: 16px;
+          text-align: center;
+          border: 1px solid white;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        ">${number}</div>
+      </div>
+    `,
+    className: 'numbered-yellow-marker',
+    iconSize: [22, 22],
+    iconAnchor: [11, 22],
+    popupAnchor: [0, -22],
+  });
+};
 // ...Add other icon definitions if needed
 
 function ClickHandler({ addVertex, setStart, enableVertexPlacement }) {
@@ -337,18 +369,43 @@ function CartesianPlot({ cartesianVertices = [], cartesianPath = [], width = 700
             <circle key={i} cx={x} cy={y} r={8} fill="#e74c3c" stroke="#fff" strokeWidth={2} />
           );
         })}
-        {/* Path points with proper colors for leg endpoints */}
+        {/* Path points with proper colors and numbers for leg endpoints */}
         {safePath.map((p, i) => {
           const [x, y] = mapPoint(p);
           // Color logic: yellow for start points (even indices), violet for end points (odd indices)
           // First point is always yellow, last point is always violet
           let color = "#8b00ff"; // Default violet
-          if (i === 0) color = "#ffff00"; // First point is yellow
-          else if (i === safePath.length - 1) color = "#8b00ff"; // Last point is violet
-          else if (i % 2 === 0) color = "#ffff00"; // Even indices (start points) are yellow
+          let isStartPoint = false;
+          if (i === 0) {
+            color = "#ffff00"; // First point is yellow
+            isStartPoint = true;
+          } else if (i === safePath.length - 1) {
+            color = "#8b00ff"; // Last point is violet
+          } else if (i % 2 === 0) {
+            color = "#ffff00"; // Even indices (start points) are yellow
+            isStartPoint = true;
+          }
           
           return (
-            <circle key={"path-" + i} cx={x} cy={y} r={6} fill={color} stroke="#fff" strokeWidth={2} />
+            <g key={"path-" + i}>
+              <circle cx={x} cy={y} r={6} fill={color} stroke="#fff" strokeWidth={2} />
+              {/* Add leg number for start points (yellow markers) */}
+              {isStartPoint && (
+                <text
+                  x={x}
+                  y={y - 12}
+                  fontSize="10"
+                  fill="#333"
+                  fontWeight="bold"
+                  textAnchor="middle"
+                  stroke="white"
+                  strokeWidth="2"
+                  paintOrder="stroke"
+                >
+                  {Math.floor(i / 2) + 1}
+                </text>
+              )}
+            </g>
           );
         })}
       </svg>
@@ -617,10 +674,10 @@ export default function MapArea() {
             {/* Survey Path Visualization - Multiple legs */}
             {surveyPaths.gps && surveyPaths.gps.map((leg, legIndex) => (
               <React.Fragment key={`leg-${legIndex}`}>
-                {/* Start point marker (always yellow) */}
+                {/* Start point marker with leg number */}
                 <Marker 
                   position={[leg.start.latitude, leg.start.longitude]} 
-                  icon={yellowMarkerIcon}
+                  icon={createNumberedYellowMarker(legIndex + 1)}
                 />
                 {/* End point marker (always violet) */}
                 <Marker 
