@@ -39,6 +39,10 @@ OtterTCPNode::OtterTCPNode()
     leg_end_lon_ = 0.0;
     leg_end_lat_dir_ = "";
     leg_end_lon_dir_ = "";
+    current_leg_number_ = 1;
+    
+    // Start the automatic leg progression
+    start_leg_progression();
 }
 
 OtterTCPNode::~OtterTCPNode() {
@@ -102,7 +106,11 @@ void OtterTCPNode::process_line(const std::string& line) {
                 status_msg.data = false;
                 leg_status_pub_->publish(status_msg);
                 leg_active_ = false;
-                RCLCPP_INFO(this->get_logger(), "Leg ended, set /leg_status to false.");
+                RCLCPP_INFO(this->get_logger(), "Leg %d ended, set /leg_status to false.", current_leg_number_);
+                
+                // Start next leg automatically
+                current_leg_number_++;
+                start_next_leg();
             }
         }
     } else if (line.rfind("$PMARIMU", 0) == 0) {
@@ -247,6 +255,129 @@ bool OtterTCPNode::at_leg_endpoint(double curr_lat, const std::string& curr_lat_
            curr_lat_dir == leg_end_lat_dir_ && curr_lon_dir == leg_end_lon_dir_ &&
            std::abs(curr_lat - leg_end_lat_) < threshold &&
            std::abs(curr_lon - leg_end_lon_) < threshold;
+}
+
+void OtterTCPNode::start_leg_progression() {
+    RCLCPP_INFO(this->get_logger(), "Starting automatic leg progression with leg 1");
+    start_next_leg();
+}
+
+void OtterTCPNode::start_next_leg() {
+    if (!leg_active_) {
+        RCLCPP_INFO(this->get_logger(), "Attempting to start leg %d", current_leg_number_);
+        request_leg_from_ppnode(current_leg_number_);
+    }
+}
+
+void OtterTCPNode::request_leg_from_ppnode(int leg_number) {
+    // Check if ppnode service is available
+    if (!ppnode_leg_client_->wait_for_service(std::chrono::seconds(1))) {
+        RCLCPP_WARN(this->get_logger(), "ppnode leg_srv service not available, retrying in 5 seconds...");
+        
+        // Create a timer to retry after 5 seconds
+        auto timer = this->create_wall_timer(
+            std::chrono::seconds(5),
+            [this, leg_number]() {
+                this->request_leg_from_ppnode(leg_number);
+            }
+        );
+        
+        // Store timer to prevent it from being destroyed
+        retry_timers_.push_back(timer);
+        return;
+    }
+    
+    // Create request to ppnode
+    auto ppnode_request = std::make_shared<ros_otter_custom_interfaces::srv::LegMode::Request>();
+    ppnode_request->leg_number = leg_number;
+    
+    RCLCPP_INFO(this->get_logger(), "Requesting leg %d from ppnode...", leg_number);
+    
+    // Call ppnode service synchronously with timeout
+    auto future = ppnode_leg_client_->async_send_request(ppnode_request);
+    
+    // Wait for response with timeout
+    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), future, std::chrono::seconds(10)) 
+        == rclcpp::FutureReturnCode::SUCCESS) {
+        
+        auto ppnode_response = future.get();
+        
+        if (ppnode_response->success) {
+            // Use coordinates from ppnode response
+            double lat0 = ppnode_response->lat0;
+            std::string lat0_dir = ppnode_response->lat0_dir;
+            double lon0 = ppnode_response->lon0;
+            std::string lon0_dir = ppnode_response->lon0_dir;
+            double lat1 = ppnode_response->lat1;
+            std::string lat1_dir = ppnode_response->lat1_dir;
+            double lon1 = ppnode_response->lon1;
+            std::string lon1_dir = ppnode_response->lon1_dir;
+            double speed = ppnode_response->speed;
+            
+            // Build NMEA message with the coordinates from ppnode
+            std::ostringstream oss;
+            oss << "PMARLEG," 
+                << lat0 << "," << lat0_dir << ","
+                << lon0 << "," << lon0_dir << ","
+                << lat1 << "," << lat1_dir << ","
+                << lon1 << "," << lon1_dir << ","
+                << speed;
+            
+            bool ok = send_nmea(oss.str());
+            
+            if (ok) {
+                // Publish leg_status true and store endpoint
+                std_msgs::msg::Bool status_msg;
+                status_msg.data = true;
+                leg_status_pub_->publish(status_msg);
+
+                leg_end_lat_ = lat1;
+                leg_end_lat_dir_ = lat1_dir;
+                leg_end_lon_ = lon1;
+                leg_end_lon_dir_ = lon1_dir;
+                leg_active_ = true;
+
+                RCLCPP_INFO(this->get_logger(), "Successfully started leg %d", leg_number);
+                RCLCPP_INFO(this->get_logger(), "Leg started, set /leg_status to true.");
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "Failed to send NMEA command for leg %d, retrying in 5 seconds...", leg_number);
+                // Retry after 5 seconds
+                auto retry_timer = this->create_wall_timer(
+                    std::chrono::seconds(5),
+                    [this, leg_number]() {
+                        this->request_leg_from_ppnode(leg_number);
+                    }
+                );
+                retry_timers_.push_back(retry_timer);
+            }
+        } else {
+            if (ppnode_response->message.find("No more legs") != std::string::npos || 
+                ppnode_response->message.find("completed") != std::string::npos) {
+                RCLCPP_INFO(this->get_logger(), "All legs completed: %s", ppnode_response->message.c_str());
+            } else {
+                RCLCPP_WARN(this->get_logger(), "ppnode failed for leg %d: %s, retrying in 5 seconds...", 
+                           leg_number, ppnode_response->message.c_str());
+                // Retry after 5 seconds
+                auto retry_timer = this->create_wall_timer(
+                    std::chrono::seconds(5),
+                    [this, leg_number]() {
+                        this->request_leg_from_ppnode(leg_number);
+                    }
+                );
+                retry_timers_.push_back(retry_timer);
+            }
+        }
+    } else {
+        RCLCPP_ERROR(this->get_logger(), "Timeout calling ppnode for leg %d, retrying in 5 seconds...", leg_number);
+        // Retry after 5 seconds
+        auto retry_timer = this->create_wall_timer(
+            std::chrono::seconds(5),
+            [this, leg_number]() {
+                this->request_leg_from_ppnode(leg_number);
+            }
+        );
+        retry_timers_.push_back(retry_timer);
+    }
 }
 
 // Service handlers

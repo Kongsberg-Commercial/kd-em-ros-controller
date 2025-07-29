@@ -15,6 +15,7 @@ find_package(ros_otter_custom_interfaces REQUIRED)
 add_executable(pp_node 
   src/ppnode.cpp
   src/ppnode_impl.cpp
+  src/path_planner.cpp
 )
 
 ament_target_dependencies(pp_node

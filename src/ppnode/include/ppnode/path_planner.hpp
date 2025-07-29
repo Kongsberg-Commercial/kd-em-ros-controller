@@ -24,13 +24,21 @@ public:
     calculatePath(const std::vector<ppnode_utils::CartesianPoint>& polygon) const = 0;
     
     /**
+     * @brief Calculate multiple legs from polygon vertices
+     * @param polygon Vector of Cartesian polygon vertices
+     * @param max_legs Maximum number of legs to generate
+     * @return Vector of leg pairs (start, end) in Cartesian coordinates
+     * @throws std::runtime_error if path calculation fails
+     */
+    virtual std::vector<std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint>>
+    calculateMultiLegPath(const std::vector<ppnode_utils::CartesianPoint>& polygon, size_t max_legs) const = 0;
+    
+    /**
      * @brief Validate polygon for path planning
      * @param polygon Vector of Cartesian polygon vertices
      * @return true if polygon is valid for path planning
      */
-    virtual bool validatePolygon(const std::vector<ppnode_utils::CartesianPoint>& polygon) const {
-        return polygon.size() >= ppnode_utils::config::MIN_POLYGON_VERTICES;
-    }
+    virtual bool validatePolygon(const std::vector<ppnode_utils::CartesianPoint>& polygon) const;
 };
 
 /**
@@ -51,41 +59,56 @@ public:
      * @throws std::runtime_error if polygon is invalid
      */
     std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint> 
-    calculatePath(const std::vector<ppnode_utils::CartesianPoint>& polygon) const override {
-        if (!validatePolygon(polygon)) {
-            throw std::runtime_error("Invalid polygon for path calculation");
-        }
-        
-        // Calculate centroid
-        double sum_x = 0.0, sum_y = 0.0;
-        for (const auto& point : polygon) {
-            sum_x += point.x;
-            sum_y += point.y;
-        }
-        
-        ppnode_utils::CartesianPoint centroid(sum_x / polygon.size(), sum_y / polygon.size());
-        
-        // Create second point offset in x direction
-        ppnode_utils::CartesianPoint offset_point(centroid.x + offset_distance_, centroid.y);
-        
-        return std::make_pair(centroid, offset_point);
-    }
+    calculatePath(const std::vector<ppnode_utils::CartesianPoint>& polygon) const override;
+    
+    /**
+     * @brief Calculate multiple legs using grid-based survey pattern
+     * @param polygon Vector of Cartesian polygon vertices
+     * @param max_legs Maximum number of legs to generate
+     * @return Vector of leg pairs in Cartesian coordinates
+     * @throws std::runtime_error if polygon is invalid
+     */
+    std::vector<std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint>>
+    calculateMultiLegPath(const std::vector<ppnode_utils::CartesianPoint>& polygon, size_t max_legs) const override;
     
     /**
      * @brief Set the offset distance for the second point
      * @param distance Offset distance in meters
+     * @throws std::invalid_argument if distance is not positive
      */
-    void setOffsetDistance(double distance) {
-        offset_distance_ = distance;
-    }
+    void setOffsetDistance(double distance);
     
     /**
      * @brief Get the current offset distance
      * @return Offset distance in meters
      */
-    double getOffsetDistance() const {
-        return offset_distance_;
-    }
+    double getOffsetDistance() const;
+
+private:
+    /**
+     * @brief Calculate centroid of polygon
+     * @param polygon Vector of Cartesian polygon vertices
+     * @return Centroid point
+     * @throws std::invalid_argument if polygon is empty
+     */
+    ppnode_utils::CartesianPoint calculateCentroid(
+        const std::vector<ppnode_utils::CartesianPoint>& polygon) const;
+    
+    /**
+     * @brief Calculate area of polygon using shoelace formula
+     * @param polygon Vector of Cartesian polygon vertices
+     * @return Area in square meters
+     */
+    double calculatePolygonArea(
+        const std::vector<ppnode_utils::CartesianPoint>& polygon) const;
+    
+    /**
+     * @brief Calculate bounding box of polygon
+     * @param polygon Vector of Cartesian polygon vertices
+     * @return Tuple of (min_x, max_x, min_y, max_y)
+     */
+    std::tuple<double, double, double, double> calculatePolygonBounds(
+        const std::vector<ppnode_utils::CartesianPoint>& polygon) const;
 };
 
 } // namespace ppnode
