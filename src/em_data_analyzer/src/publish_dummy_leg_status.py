@@ -27,7 +27,7 @@ class DummyLegStatusPublisher(Node):
         self.publisher_.publish(msg)
         
         status = "ACTIVE" if self.leg_active else "INACTIVE"
-        self.get_logger().info(f'Leg status: {status}')
+        # self.get_logger().info(f'Leg status: {status}')
 
 def main(args=None):
     rclpy.init(args=args)

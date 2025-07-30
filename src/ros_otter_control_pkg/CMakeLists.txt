@@ -20,4 +20,14 @@ install(TARGETS otter_tcp_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Install config files
+install(DIRECTORY config/
+  DESTINATION share/${PROJECT_NAME}/config
+)
+
+# Install run.sh from package root
+install(PROGRAMS run.sh
+  DESTINATION share/${PROJECT_NAME}
+)
+
 ament_package()

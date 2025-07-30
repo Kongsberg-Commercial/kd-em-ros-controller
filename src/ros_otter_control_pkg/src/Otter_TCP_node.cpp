@@ -3,8 +3,21 @@
 
 OtterTCPNode::OtterTCPNode()
     : Node("otter_tcp_node"), stop_(false) {
-    ip_ = this->declare_parameter("device_ip", "192.168.53.200");
+    // Declare and get parameters from config file
+    ip_ = this->declare_parameter("device_ip", "192.168.53.3");
     port_ = this->declare_parameter("device_port", 2009);
+    
+    // Additional configurable parameters
+    auto connection_timeout = this->declare_parameter("connection_timeout_sec", 10);
+    auto retry_interval = this->declare_parameter("retry_interval_sec", 5);
+    auto position_threshold = this->declare_parameter("position_threshold", 0.0001);
+    auto auto_leg_progression = this->declare_parameter("auto_leg_progression", true);
+    auto initial_leg_number = this->declare_parameter("initial_leg_number", 1);
+    
+    RCLCPP_INFO(this->get_logger(), "Starting OtterTCPNode with IP: %s, Port: %d", ip_.c_str(), port_);
+    RCLCPP_INFO(this->get_logger(), "Position threshold: %.6f degrees", position_threshold);
+    RCLCPP_INFO(this->get_logger(), "Auto leg progression: %s", auto_leg_progression ? "enabled" : "disabled");
+    
     connect_socket();
     receiver_thread_ = std::thread(&OtterTCPNode::receive_loop, this);
 
@@ -34,15 +47,19 @@ OtterTCPNode::OtterTCPNode()
 
     // Publisher for leg_status topic
     leg_status_pub_ = this->create_publisher<std_msgs::msg::Bool>("/leg_status", 10);
+
+    // Initialize leg tracking variables
     leg_active_ = false;
     leg_end_lat_ = 0.0;
     leg_end_lon_ = 0.0;
     leg_end_lat_dir_ = "";
     leg_end_lon_dir_ = "";
-    current_leg_number_ = 1;
+    current_leg_number_ = initial_leg_number;
     
-    // Start the automatic leg progression
-    start_leg_progression();
+    // Start the automatic leg progression if enabled
+    if (auto_leg_progression) {
+        start_leg_progression();
+    }
 }
 
 OtterTCPNode::~OtterTCPNode() {

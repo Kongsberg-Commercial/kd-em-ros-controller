@@ -147,9 +147,9 @@ class DummyGpsPublisher(Node):
         
         self.marker_publisher_.publish(marker_array)
         
-        self.get_logger().info(
-            f"Publishing dummy GPS: lat={msg.lat:.7f}, lon={msg.lon:.7f}, alt={msg.alt}, sog={msg.sog}, cog={msg.cog}"
-        )
+        # self.get_logger().info(
+        #    f"Publishing dummy GPS: lat={msg.lat:.7f}, lon={msg.lon:.7f}, alt={msg.alt}, sog={msg.sog}, cog={msg.cog}"
+        #)
 
 def main(args=None):
     rclpy.init(args=args)
