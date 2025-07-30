@@ -36,7 +36,7 @@ Ros2UdpReceiver::Ros2UdpReceiver()
     pub_pu_params_raw_ = this->create_publisher<std_msgs::msg::String>("kctrl/pu_params_raw", 10);
 
     // Declare configurable parameters
-    this->declare_parameter<std::string>("kctrl_ip", "192.168.48.1");
+    this->declare_parameter<std::string>("kctrl_ip", "192.168.53.3");
     this->declare_parameter<int>("kctrl_port", 4001);
     this->declare_parameter<int>("listen_port", 4002);
 
@@ -152,7 +152,7 @@ void Ros2UdpReceiver::handle_kssis_401(const std::string& msg) {
         auto j = json::parse(json_str);
         for (const auto& param : j) {
             auto kctrl_param = ros_kctrl_custom_interfaces::msg::KctrlParameter();
-            kctrl_param.name = param.contains("label") ? param["label"].get<std::string>() : param["id"].get<std::string>();
+            kctrl_param.name = param["id"].get<std::string>();
             kctrl_param.value = param["value"].get<std::string>();
             param_msg.parameters.push_back(kctrl_param);
         }

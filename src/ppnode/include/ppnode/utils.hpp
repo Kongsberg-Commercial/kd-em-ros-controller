@@ -65,20 +65,6 @@ inline bool validateGpsCoordinates(double lat, double lon) {
            lon >= config::MIN_LONGITUDE && lon <= config::MAX_LONGITUDE;
 }
 
-inline bool validatePolygonVertices(const std::vector<GpsPoint>& vertices) {
-    if (vertices.size() < config::MIN_POLYGON_VERTICES) {
-        return false;
-    }
-    
-    for (const auto& vertex : vertices) {
-        if (!vertex.isValid()) {
-            return false;
-        }
-    }
-    
-    return true;
-}
-
 /**
  * Convert GPS coordinates (lat/lon) to local Cartesian coordinates
  * Uses a simple equirectangular projection with a reference point
@@ -198,27 +184,6 @@ inline GpsPoint vertexToGpsPoint(const ros_otter_custom_interfaces::msg::Vertex&
 }
 
 /**
- * Convert vector of Vertex messages to vector of GpsPoints
- * @param vertices Vector of Vertex messages
- * @return Vector of GpsPoints
- * @throws std::invalid_argument if any GPS coordinates are invalid
- */
-inline std::vector<GpsPoint> vertexArrayToGpsPoints(const std::vector<ros_otter_custom_interfaces::msg::Vertex>& vertices) {
-    std::vector<GpsPoint> gps_points;
-    gps_points.reserve(vertices.size());
-    
-    for (const auto& vertex : vertices) {
-        gps_points.push_back(vertexToGpsPoint(vertex));
-    }
-    
-    if (!validatePolygonVertices(gps_points)) {
-        throw std::invalid_argument("Invalid polygon vertices");
-    }
-    
-    return gps_points;
-}
-
-/**
  * Calculate the distance between two GPS points in meters
  * Uses Haversine formula for accuracy over larger distances
  * @param point1 First GPS point
@@ -252,30 +217,6 @@ inline double calculateCartesianDistance(const CartesianPoint& point1, const Car
     double dx = point2.x - point1.x;
     double dy = point2.y - point1.y;
     return std::sqrt(dx*dx + dy*dy);
-}
-
-/**
- * Convert a vector of GPS points to Cartesian coordinates
- * @param gps_points Vector of GPS points
- * @param ref_lat Reference latitude
- * @param ref_lon Reference longitude
- * @return Vector of Cartesian points
- * @throws std::invalid_argument if any GPS coordinates are invalid
- */
-inline std::vector<CartesianPoint> gpsPolygonToCartesian(const std::vector<GpsPoint>& gps_points, 
-                                                         double ref_lat, double ref_lon) {
-    if (!validatePolygonVertices(gps_points)) {
-        throw std::invalid_argument("Invalid GPS polygon vertices");
-    }
-    
-    std::vector<CartesianPoint> cart_points;
-    cart_points.reserve(gps_points.size());
-    
-    for (const auto& gps_point : gps_points) {
-        cart_points.push_back(gpsToCartesian(gps_point, ref_lat, ref_lon));
-    }
-    
-    return cart_points;
 }
 
 /**
