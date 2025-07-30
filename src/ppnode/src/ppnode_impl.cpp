@@ -297,12 +297,7 @@ void PpNode::legServiceCallback(
     std::shared_ptr<ros_otter_custom_interfaces::srv::LegMode::Response> response)
 {
     RCLCPP_INFO(this->get_logger(), "Leg service called for leg number: %ld", request->leg_number);
-    RCLCPP_WARN(this->get_logger(), "=== LEG SERVICE DEBUG ===");
-    RCLCPP_WARN(this->get_logger(), "Requested leg number: %ld", request->leg_number);
-    RCLCPP_WARN(this->get_logger(), "Available calculated legs: %zu", calculated_legs_.size());
-    RCLCPP_WARN(this->get_logger(), "hasCalculatedPath(): %s", hasCalculatedPath() ? "true" : "false");
-    RCLCPP_WARN(this->get_logger(), "========================");
-
+    
     try {
         int64_t leg_number = request->leg_number;
         

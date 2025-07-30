@@ -10,6 +10,13 @@
 
 namespace ppnode {
 
+// Structure for boundary direction analysis
+struct BoundaryDirectionInfo {
+    size_t next_vertex_idx;
+    ppnode_utils::CartesianPoint direction;
+    double alignment_score = 0.0;  // Default value to avoid warnings
+};
+
 /**
  * @brief Abstract base class for path planning algorithms
  */
@@ -201,6 +208,18 @@ private:
     std::optional<ppnode_utils::CartesianPoint> lineSegmentIntersection(
         const ppnode_utils::CartesianPoint& p1, const ppnode_utils::CartesianPoint& p2,
         const ppnode_utils::CartesianPoint& p3, const ppnode_utils::CartesianPoint& p4) const;
+
+    /**
+     * @brief Find the optimal direction to move along polygon boundary
+     * @param polygon Vector of polygon vertices
+     * @param from_point Starting point on boundary
+     * @param suggested_forward True direction preference
+     * @return Information about optimal boundary direction
+     */
+    BoundaryDirectionInfo findOptimalBoundaryDirection(
+        const std::vector<ppnode_utils::CartesianPoint>& polygon,
+        const ppnode_utils::CartesianPoint& from_point,
+        bool suggested_forward) const;
 };
 
 } // namespace ppnode

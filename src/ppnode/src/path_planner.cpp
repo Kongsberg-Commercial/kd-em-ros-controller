@@ -95,7 +95,7 @@ SimplePathPlanner::calculateMultiLegPath(const std::vector<ppnode_utils::Cartesi
     std::vector<std::pair<ppnode_utils::CartesianPoint, ppnode_utils::CartesianPoint>> legs;
 
     // Step 1: Find nearest vertex to start position (using first polygon vertex as reference)
-    ppnode_utils::CartesianPoint start_reference = polygon[0];  // Default to first vertex
+    ppnode_utils::CartesianPoint start_reference(0,0);  // Default to first vertex
     size_t nearest_vertex_idx = findNearestVertexIndex(polygon, start_reference);
     RCLCPP_WARN(logger_, "Nearest vertex index: %zu", nearest_vertex_idx);
 
@@ -107,8 +107,8 @@ SimplePathPlanner::calculateMultiLegPath(const std::vector<ppnode_utils::Cartesi
     double dist_to_next = calculateDistance(polygon[nearest_vertex_idx], polygon[next_idx]);
     RCLCPP_WARN(logger_, "Distance to previous: %.2f, Distance to next: %.2f", dist_to_prev, dist_to_next);
 
-    // Choose direction and establish traversal order
-    bool traverse_forward = (dist_to_next <= dist_to_prev);  // true = CCW, false = CW
+    // Choose direction and establish traversal order || CCW [increasing index] or CW [decreasing index]
+    bool traverse_forward = (dist_to_next <= dist_to_prev);  // true = CCW | false = CW
     size_t target_vertex_idx = traverse_forward ? next_idx : prev_idx;
     RCLCPP_WARN(logger_, "Traversal direction: %s", traverse_forward ? "Forward" : "Backward");
 
@@ -136,22 +136,30 @@ SimplePathPlanner::calculateMultiLegPath(const std::vector<ppnode_utils::Cartesi
 
         // Find the direction to move along polygon boundary from current leg end
         size_t current_vertex_idx = findNearestVertexIndex(polygon, current_leg_end);
-        RCLCPP_WARN(logger_, "Current vertex index: %zu", current_vertex_idx); // DOES THIS EXCLUDE ITSELF? IF SAY THE POINT IT AT A VERTEX TO BEGIN WITH?
+        RCLCPP_WARN(logger_, "Current vertex index: %zu at (%.2f, %.2f)", current_vertex_idx, 
+            polygon[current_vertex_idx].x, polygon[current_vertex_idx].y); // DOES THIS EXCLUDE ITSELF? IF SAY THE POINT IT AT A VERTEX TO BEGIN WITH?
+        
+        // Find the optimal direction to move along the boundary
+        auto boundary_info = findOptimalBoundaryDirection(polygon, current_leg_end, traverse_forward);
+        size_t next_boundary_vertex_idx = boundary_info.next_vertex_idx;
+        ppnode_utils::CartesianPoint boundary_direction = boundary_info.direction;
+        RCLCPP_WARN(logger_, "Next boundary vertex inde: %zu (at vertex: %.2f, %.2f)", 
+            next_boundary_vertex_idx, polygon[next_boundary_vertex_idx].x, polygon[next_boundary_vertex_idx].y);
 
-        // Determine which neighboring vertex to move toward (continue in traverse_forward direction)
-        size_t next_boundary_vertex_idx;
-        if (traverse_forward) {
-            next_boundary_vertex_idx = (current_vertex_idx + 1) % polygon.size();
-        } else {
-            next_boundary_vertex_idx = (current_vertex_idx == 0) ? polygon.size() - 1 : current_vertex_idx - 1;
-        }
-        RCLCPP_WARN(logger_, "Next boundary vertex index: %zu", next_boundary_vertex_idx);
+        // // // // Determine which neighboring vertex to move toward (continue in traverse_forward direction)
+        // // // size_t next_boundary_vertex_idx;
+        // // // if (traverse_forward) {
+        // // //     next_boundary_vertex_idx = (current_vertex_idx + 1) % polygon.size();
+        // // // } else {
+        // // //     next_boundary_vertex_idx = (current_vertex_idx == 0) ? polygon.size() - 1 : current_vertex_idx - 1;
+        // // // }
+        // // // RCLCPP_WARN(logger_, "Next boundary vertex index: %zu", next_boundary_vertex_idx);
 
-        // Calculate direction along polygon boundary
-        ppnode_utils::CartesianPoint boundary_direction = normalizeVector(
-            vectorFromTo(polygon[current_vertex_idx], polygon[next_boundary_vertex_idx])
-        );
-        // NOT SURE ABOUT THAT TRAVERSE_FORWARD THINGY ... HAS TO BE SOME SMARTER AND EASIER WAY TO FIND NEXT BOUNDARY VERTEX IDX
+        // // // // Calculate direction along polygon boundary
+        // // // ppnode_utils::CartesianPoint boundary_direction = normalizeVector(
+        // // //     vectorFromTo(polygon[current_vertex_idx], polygon[next_boundary_vertex_idx])
+        // // // );
+        // // // // NOT SURE ABOUT THAT TRAVERSE_FORWARD THINGY ... HAS TO BE SOME SMARTER AND EASIER WAY TO FIND NEXT BOUNDARY VERTEX IDX
         RCLCPP_WARN(logger_, "Boundary direction: (%.2f, %.2f)", boundary_direction.x, boundary_direction.y);
 
         // Move along boundary by swath width to get next leg start
@@ -208,9 +216,9 @@ size_t SimplePathPlanner::findNearestVertexIndex(const std::vector<ppnode_utils:
     if (polygon.empty()) {
         throw std::runtime_error("Cannot find nearest vertex in empty polygon");
     }
-    
+
     size_t nearest_idx = 0;
-    double min_distance = calculateDistance(point, polygon[0]);
+    double min_distance = calculateDistance(point, polygon[nearest_idx]);
     
     for (size_t i = 1; i < polygon.size(); ++i) {
         double distance = calculateDistance(point, polygon[i]);
@@ -418,5 +426,38 @@ std::tuple<double, double, double, double> SimplePathPlanner::calculatePolygonBo
     
     return {min_x, max_x, min_y, max_y};
 }
+
+/**
+ * Finds the optimal direction to move along the polygon boundary from a given point.
+ * This considers both the suggested traversal direction and actual geometry.
+ */
+BoundaryDirectionInfo SimplePathPlanner::findOptimalBoundaryDirection(
+    const std::vector<ppnode_utils::CartesianPoint>& polygon,
+    const ppnode_utils::CartesianPoint& from_point,
+    bool suggested_forward) const {
+    
+    size_t current_vertex_idx = findNearestVertexIndex(polygon, from_point);
+
+    // Get the two possible directions along the boundary
+    size_t next_forward_idx = (current_vertex_idx + 1) % polygon.size();
+    size_t next_backward_idx = (current_vertex_idx == 0) ? polygon.size() - 1 : current_vertex_idx - 1;
+
+    ppnode_utils::CartesianPoint forward_dir = normalizeVector(
+        vectorFromTo(polygon[current_vertex_idx], polygon[next_forward_idx])
+    );
+    ppnode_utils::CartesianPoint backward_dir = normalizeVector(
+        vectorFromTo(polygon[current_vertex_idx], polygon[next_backward_idx])
+    );
+
+    // If we have a strong preference, use it
+    if (suggested_forward) {
+        RCLCPP_WARN(logger_, "Preferred FORDIR | Using suggested forward direction");
+        return {next_forward_idx, forward_dir}; // uses  default alignment_score = 0.0
+    } else {
+        RCLCPP_WARN(logger_, "Preferred BAKDIR | Using suggested backward direction");
+        return {next_backward_idx, backward_dir}; // uses  default alignment_score = 0.0
+    }
+}
+
 
 } // namespace ppnode
