@@ -56,7 +56,76 @@ pointcloud_analyzer:
       buffer_size: 100                      # Number of GPS messages to buffer
 ```
 
+## Quick Start
+
+The easiest way to run the analyzer is using the provided run script:
+
+```bash
+# Make the script executable (first time only)
+chmod +x src/em_data_analyzer/run.sh
+
+# Run with full visualization and dummy data
+./src/em_data_analyzer/run.sh
+
+# Or run only the analyzer
+./src/em_data_analyzer/run.sh analyzer
+
+# Or run with RViz but no dummy data (for real data)
+./src/em_data_analyzer/run.sh viz
+```
+
+### Run Script Modes
+
+The `run.sh` script provides several convenient modes:
+
+- **`full`** (default): Analyzer + RViz + dummy GPS and leg status - perfect for testing
+- **`viz`**: Analyzer + RViz without dummy data - for use with real data
+- **`analyzer`**: Only the analyzer node - minimal setup
+- **`test`**: Analyzer with dummy data but no RViz - for testing without GUI
+- **`launch`**: Use the ROS2 launch file - production setup
+
+### Run Script Options
+
+```bash
+./run.sh [MODE] [OPTIONS]
+
+Options:
+  --config FILE         Use custom configuration file
+  --log-level LEVEL     Set log level (debug, info, warn, error)  
+  --help, -h            Show help message
+
+Examples:
+  ./run.sh                              # Full setup with dummy data
+  ./run.sh analyzer --log-level debug   # Analyzer only with debug logging
+  ./run.sh viz --config my_config.yaml  # Custom config with visualization
+```
+
 ## Usage
+
+### Quick Testing
+```bash
+# Full setup with dummy data and visualization
+./src/em_data_analyzer/run.sh
+
+# This will start:
+# - Dummy GPS publisher (simulated vessel movement)
+# - Dummy leg status publisher (automatic leg switching)  
+# - PointCloud analyzer with full configuration
+# - RViz with preconfigured displays
+```
+
+### With Real Data
+```bash
+# Terminal 1: Start analyzer with RViz
+./src/em_data_analyzer/run.sh viz
+
+# Terminal 2: Play your bag file
+ros2 bag play your_multibeam_data.bag
+
+# Terminal 3: Control leg status manually
+ros2 topic pub /leg_status std_msgs/Bool "data: true"   # Start leg
+ros2 topic pub /leg_status std_msgs/Bool "data: false"  # End leg
+```
 
 ### Basic Execution
 ```bash

@@ -43,6 +43,7 @@ install(TARGETS
 install(PROGRAMS
   src/publish_dummy_gps.py
   src/publish_dummy_leg_status.py
+  run.sh
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -1,0 +1,24 @@
+otter_tcp_node:
+  ros__parameters:
+    # TCP connection settings
+    device_ip: "192.168.53.3"
+    device_port: 2009
+    
+    # Connection retry settings
+    connection_timeout_sec: 10
+    retry_interval_sec: 5
+    max_retries: 10
+    
+    # GPS position threshold for leg endpoint detection (degrees)
+    position_threshold: 0.0001  # ~11 meters at equator
+    
+    # Leg progression settings
+    auto_leg_progression: true
+    initial_leg_number: 1
+    
+    # Service timeout settings
+    ppnode_service_timeout_sec: 10
+    service_retry_interval_sec: 5
+    
+    # Logging level (DEBUG, INFO, WARN, ERROR)
+    log_level: "INFO"
