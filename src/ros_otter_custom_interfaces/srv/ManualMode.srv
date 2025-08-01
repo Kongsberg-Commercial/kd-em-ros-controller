@@ -1,6 +1,0 @@
-float64 force_x
-float64 force_y
-float64 torque_z
----
-bool success
-string message

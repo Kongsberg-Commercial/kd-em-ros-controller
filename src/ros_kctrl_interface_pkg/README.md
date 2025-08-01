@@ -303,3 +303,31 @@ Maintainer: [arveds](mailto:arve.daae.solberg@kd.kongsberg.com)
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE) for details.
+
+---
+
+## Removing Directories from the Main Branch
+
+If you need to remove directories from your `main` branch, follow these steps:
+
+1. **Delete the directory locally:**
+   ```bash
+   rm -rf <directory-name>
+   ```
+
+2. **Stage the removal:**
+   ```bash
+   git rm -r <directory-name>
+   ```
+
+3. **Commit the change:**
+   ```bash
+   git commit -m "Remove <directory-name> from main branch"
+   ```
+
+4. **Push to GitHub:**
+   ```bash
+   git push origin main
+   ```
+
+This will permanently remove the directory from the main branch in your repository.

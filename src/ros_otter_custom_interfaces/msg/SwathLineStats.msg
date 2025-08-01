@@ -1,6 +1,0 @@
-float64 min_swath_width
-float64 max_swath_width
-float64 avg_swath_width
-float64 min_depth
-float64 max_depth
-float64 avg_depth
