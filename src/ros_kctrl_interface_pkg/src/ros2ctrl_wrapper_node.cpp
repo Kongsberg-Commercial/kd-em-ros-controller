@@ -4,6 +4,7 @@
 #include "ros_kctrl_custom_interfaces/srv/sounder_command.hpp"
 #include "ros_kctrl_custom_interfaces/srv/request_pu_parameters.hpp"
 #include "ros_kctrl_interface_pkg/ros2ctrl_udp_client.hpp"
+#include "ros_kctrl_interface_pkg/simple_udp.hpp"
 #include "ros_kctrl_custom_interfaces/srv/set_pu_parameters.hpp"
 #include "ros_kctrl_custom_interfaces/srv/recording_control.hpp"
 #include "ros_kctrl_custom_interfaces/srv/update_recording_path.hpp"
@@ -13,7 +14,7 @@
 class Ros2CtrlWrapperNode : public rclcpp::Node {
 public:
     Ros2CtrlWrapperNode() : Node("ros2_ctrl_wrapper_node") {
-        this->declare_parameter<std::string>("kctrl_ip", "192.168.48.1");
+        this->declare_parameter<std::string>("kctrl_ip", "192.168.53.3");
         this->declare_parameter<int>("kctrl_port", 14002);
 
         std::string kctrl_ip = this->get_parameter("kctrl_ip").as_string();

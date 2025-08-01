@@ -1,0 +1,11 @@
+string name
+string ip
+string type
+string system_id
+string started
+string is_pinging
+string data_macst_ip
+string data_macst_port
+string cmdport_port
+string system_desc
+string license

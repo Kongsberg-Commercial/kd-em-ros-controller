@@ -1,0 +1,6 @@
+float64 lookahead_distance
+float64 radius_in
+float64 radius_out
+---
+bool success
+string message

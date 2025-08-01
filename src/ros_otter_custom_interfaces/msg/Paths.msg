@@ -1,0 +1,2 @@
+# Paths.msg
+Leg[] paths
