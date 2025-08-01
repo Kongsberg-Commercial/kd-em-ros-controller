@@ -41,10 +41,10 @@ case $choice in
             listen_port:=$listen_port
         ;;
     3)
-        echo "Using config file: /home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/kctrl_config.yaml"
+        echo "Using config file: /home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/config/kctrl_config.yaml"
         if [ -f "/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/kctrl_config.yaml" ]; then
             ros2 launch ros_kctrl_interface_pkg ros2_ctrl.launch.py \
-                config_file:=/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/kctrl_config.yaml
+                config_file:=/home/arveds/ros2_ws/src/ros_kctrl_interface_pkg/config/kctrl_config.yaml
         else
             echo "Config file not found! Please create it first."
             exit 1
