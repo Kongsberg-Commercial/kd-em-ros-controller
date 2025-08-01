@@ -238,7 +238,7 @@ This guides you through all configuration options.
 ## Shell Aliases for Simplified Service Calls
 
 To make working with the K-Controller ROS2 interface even easier, an **alias file** is provided:  
-[`ros_kctrl_aliases.sh`](src/ros_kctrl_interface_pkg./ros_kctrl_aliases.sh)
+[`ros_kctrl_aliases.sh`](src/ros_kctrl_interface_pkg/.ros2_kctrl_aliases.sh)
 
 This file contains convenient shell aliases for common service calls and other frequently used commands, allowing you to interact with the system using short, memorable commands.
 
@@ -269,7 +269,7 @@ This file contains convenient shell aliases for common service calls and other f
    - `kctrl_status`  
      Echoes the `/kctrl/status` topic.
 
-   *(See the [alias file](./ros_kctrl_aliases.sh) or `Lists/ros2_kctrl_bash_commands.md` for the full list and details.)*
+   *(See the [alias file](src/ros_kctrl_interface_pkg/.ros2_kctrl_aliases.sh) or [ros2_kctrl_bash_commands.md](Lists/ros2_kctrl_bash_commands.md) for the full list and details.)*
 
 3. **Benefits**
 
