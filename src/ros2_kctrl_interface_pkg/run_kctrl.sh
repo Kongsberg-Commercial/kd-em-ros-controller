@@ -29,8 +29,8 @@ case $choice in
         ;;
     2)
         read -p "Enter K-Controller IP address: " ip
-        read -p "Enter K-Controller port (default 4001): " port
-        port=${port:-4001}
+        read -p "Enter K-Controller port (default 14002): " port
+        port=${port:-14002}
         read -p "Enter listen port (default 4002): " listen_port
         listen_port=${listen_port:-4002}
         
