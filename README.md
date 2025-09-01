@@ -2,6 +2,8 @@
 
 This package provides a simple, unified ROS2 interface for controlling and monitoring Kongsberg K-Controller devices. It wraps UDP communication and exposes ROS2 services and topics for easy integration with your K-Controller.
 
+**Note: This is a student-written project developed as part of academic work.**
+
 ---
 
 ## Table of Contents
@@ -73,14 +75,14 @@ Make sure you know its IP address and port.
 ### 5. ROS2 Custom Interfaces
 
 This package depends on custom ROS2 message/service definitions.  
-These are included in the workspace as `ros_kctrl_custom_interfaces`.  
+These are included in the repository as `ros2_kctrl_custom_interfaces`.  
 No extra setup is needed if you build the workspace as described below.
 
 ---
 
 ## Workspace Setup
 
-1. **Clone or copy this package into your ROS2 workspace (`src` folder).**
+1. **Clone this repository into your ROS2 workspace (`src` folder).**
 2. **Build the workspace:**
    ```bash
    cd /home/<user>/ros2_ws
@@ -90,7 +92,7 @@ No extra setup is needed if you build the workspace as described below.
    ```
 3. **(Optional) Source the alias file for easier usage:**
    ```bash
-   source /home/<user>/ros2_ws/src/ros_kctrl_interface_pkg/ros_kctrl_aliases.sh
+   source /home/<user>/ros2_ws/src/ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh
    ```
    See [Shell Aliases for Simplified Service Calls](#shell-aliases-for-simplified-service-calls) for more info.
 
@@ -110,7 +112,7 @@ source install/setup.bash
 ### 2. Launch with Default Settings
 
 ```bash
-ros2 launch ros_kctrl_interface_pkg ros2_ctrl.launch.py
+ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py
 ```
 
 > **⚠️ Warning:**  
@@ -125,10 +127,10 @@ ros2 launch ros_kctrl_interface_pkg ros2_ctrl.launch.py
 Override IP and ports directly:
 
 ```bash
-ros2 launch ros_kctrl_interface_pkg ros2_ctrl.launch.py \
+ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
     kctrl_ip:=192.168.1.50 \
-    kctrl_port:=5000 \
-    listen_port:=5001
+    kctrl_port:=14002 \
+    listen_port:=4002
 ```
 
 ### Method 2: YAML Config File
@@ -139,19 +141,19 @@ Edit the YAML file (at `config/kctrl_config.yaml`):
 ros2_ctrl_wrapper_node:
   ros__parameters:
     kctrl_ip: "192.168.48.1"
-    kctrl_port: 4001
+    kctrl_port: 14002
 
 ros2_udp_receiver:
   ros__parameters:
     kctrl_ip: "192.168.48.1"
-    kctrl_port: 4001
+    kctrl_port: 14002
     listen_port: 4002
 ```
 
 Launch with:
 
 ```bash
-ros2 launch ros_kctrl_interface_pkg ros2_ctrl.launch.py \
+ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
     config_file:=/path/to/your/config.yaml
 ```
 
@@ -160,7 +162,7 @@ ros2 launch ros_kctrl_interface_pkg ros2_ctrl.launch.py \
 Run the interactive setup script:
 
 ```bash
-./src/ros_kctrl_interface_pkg/run_kctrl.sh
+./src/ros2_kctrl_interface_pkg/run_kctrl.sh
 ```
 This guides you through all configuration options.
 
@@ -223,14 +225,14 @@ This guides you through all configuration options.
 - **Run nodes individually** (for debugging):
 
   ```bash
-  ros2 run ros_kctrl_interface_pkg ros2ctrl_udp_receiver
-  ros2 run ros_kctrl_interface_pkg ros2ctrl_wrapper_node
+  ros2 run ros2_kctrl_interface_pkg ros2ctrl_udp_receiver
+  ros2 run ros2_kctrl_interface_pkg ros2ctrl_wrapper_node
   ```
 
 - **Edit config file**:
 
   ```bash
-  nano /home/<user>/ros2_ws/src/ros_kctrl_interface_pkg/config/kctrl_config.yaml
+  nano /home/<user>/ros2_ws/src/ros2_kctrl_interface_pkg/config/kctrl_config.yaml
   ```
 
 ---
@@ -238,7 +240,7 @@ This guides you through all configuration options.
 ## Shell Aliases for Simplified Service Calls
 
 To make working with the K-Controller ROS2 interface even easier, an **alias file** is provided:  
-[`ros_kctrl_aliases.sh`](src/ros_kctrl_interface_pkg/.ros2_kctrl_aliases.sh)
+[`ros_kctrl_aliases.sh`](ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh)
 
 This file contains convenient shell aliases for common service calls and other frequently used commands, allowing you to interact with the system using short, memorable commands.
 
@@ -247,7 +249,7 @@ This file contains convenient shell aliases for common service calls and other f
 1. **Source the alias file in your shell:**
 
    ```bash
-   source /home/<user>/ros2_ws/src/ros_kctrl_interface_pkg/ros_kctrl_aliases.sh
+   source /home/<user>/ros2_ws/src/ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh
    ```
 
    You can add this line to your `.bashrc` or `.zshrc` for automatic loading.
@@ -269,7 +271,7 @@ This file contains convenient shell aliases for common service calls and other f
    - `kctrl_status`  
      Echoes the `/kctrl/status` topic.
 
-   *(See the [alias file](src/ros_kctrl_interface_pkg/.ros2_kctrl_aliases.sh) or [ros2_kctrl_bash_commands.md](Lists/ros2_kctrl_bash_commands.md) for the full list and details.)*
+   *(See the [alias file](ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh) for the full list and details.)*
 
 3. **Benefits**
 
@@ -295,6 +297,8 @@ ros2_shutdown
 ## Support
 
 For issues or feature requests, please open a GitHub issue or contact the maintainer.
+
+**Academic Project Disclaimer**: This is a student project developed for educational purposes. While functional, it may require additional testing and validation for production use.
 
 Maintainer: [arveds](mailto:arve.daae.solberg@kd.kongsberg.com)
 
