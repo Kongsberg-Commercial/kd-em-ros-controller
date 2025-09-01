@@ -164,7 +164,15 @@ Run the interactive setup script:
 ```bash
 ./src/ros2_kctrl_interface_pkg/run_kctrl.sh
 ```
-This guides you through all configuration options.
+
+This interactive script provides five configuration options:
+1. **Use default settings** - Quick start with `192.168.48.1:14002`
+2. **Custom IP via command line** - Enter IP and ports interactively
+3. **Use workspace YAML config** - Uses the config file in the package
+4. **Use custom YAML config** - Specify your own config file path
+5. **Edit config file** - Opens the workspace config file for editing
+
+The script automatically sources ROS2 and the workspace, making it the easiest way to get started.
 
 ---
 
