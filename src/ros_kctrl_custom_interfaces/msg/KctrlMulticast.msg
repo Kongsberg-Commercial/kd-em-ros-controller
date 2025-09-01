@@ -1,3 +1,0 @@
-string sounder
-string multicast_addr
-string multicast_port
