@@ -1,0 +1,41 @@
+# K-Controller ROS2 Interface Configuration
+# This file contains network settings for connecting to the K-Controller system
+
+# Configuration for the wrapper node (sends commands to K-Controller)
+ros2_ctrl_wrapper_node:
+  ros__parameters:
+    kctrl_ip: "192.168.48.1"    # IP address of the K-Controller
+    kctrl_port: 14002            # Port for sending commands to K-Controller
+
+# Configuration for the UDP receiver (receives data from K-Controller)  
+ros2_udp_receiver:
+  ros__parameters:
+    kctrl_ip: "192.168.48.1"    # IP address of the K-Controller (same as above)
+    kctrl_port: 14002            # Port for sending handshake to K-Controller (same as above)
+    listen_port: 4002           # Port where this system listens for K-Controller messages
+
+# Example configurations for different network setups:
+#
+# For a different K-Controller IP:
+# ros2_ctrl_wrapper_node:
+#   ros__parameters:
+#     kctrl_ip: "10.0.0.100"
+#     kctrl_port: 4001
+#
+# ros2_udp_receiver:
+#   ros__parameters:
+#     kctrl_ip: "10.0.0.100"
+#     kctrl_port: 4001
+#     listen_port: 4002
+#
+# For different ports:
+# ros2_ctrl_wrapper_node:
+#   ros__parameters:
+#     kctrl_ip: "192.168.48.1"
+#     kctrl_port: 5000
+#
+# ros2_udp_receiver:
+#   ros__parameters:
+#     kctrl_ip: "192.168.48.1"
+#     kctrl_port: 5000
+#     listen_port: 5001
