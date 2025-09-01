@@ -57,6 +57,6 @@
 
 - Replace `MySounder` with your actual sounder name.
 - For boolean values (`true`/`false`), use lowercase.
-- For parameter lists, see [List of all runtime_params](List_of_all_runtrime_params.csv.xlsx) or [List of all params](List_of_all_params.csv).
-- For all commands supported by K-Controller see [K-Controller Command overwiev](K-Controller_Command_overview.xlsx)
+- For parameter lists, see [List of all runtime_params](Lists/List of all runtime_params.csv.xlsx) or [List of all params](Lists/List_of_all_params.csv).
+- For all commands supported by K-Controller see [K-Controller Command overwiev](Lists/K-Controller Command overview.xlsx)
 - All commands must be run in a terminal with your ROS2 workspace sourced (e.g., `source ~/ros2_ws/install/setup.bash`).
