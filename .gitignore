@@ -6,7 +6,6 @@ __pycache__/
 .env
 *.swp
 .vscode/
-.vscode
 .idea/
 
 # node_modules from backend webapp
