@@ -20,4 +20,3 @@ web_app/backend/polygons.txt
 ./src/kd-dds-ros-gateway
 ./src/em_data_analyzer
 ./src/ros_otter_custom_interfaces
-./src/ros2_kctrl_interface_pkg/include/pu_params.xml
