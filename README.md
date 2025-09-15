@@ -35,6 +35,7 @@ An EM multibeam is a sophisticated sonar system used to map the seafloor with hi
 
 ## Process
 The wrapper utilizes UDP communication with the K-Controller software, which in turn communicates with the Multibeam Processing Unit (PU). Between them a message structure is used to identify the command. In each end this message structure and data is parsed. On the ROS2 end this is parsed to, or from, a custom message for ease of use in further development. 
+
 ![Process Diagram](assets/ros2_md.drawio.png)
 
 
