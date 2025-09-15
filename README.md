@@ -199,6 +199,7 @@ ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
 
 
 ## Services
+Available services to call, resulting in command sent to EM Multibeam EchoSounder. 
 
 - `/kctrl/start_sounder`
 - `/kctrl/start_pinging`
@@ -221,6 +222,7 @@ ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
 
 
 ## Topics
+Information coming fro EM Multibeam EchoSounder is published on theese topics with custom message. Echo in terminal to read, or subscribe from node to use data.
 
 - `/kctrl/version`, `/kctrl/version_raw`
 - `/kctrl/detected_devices`, `/kctrl/detected_devices_raw`
@@ -230,13 +232,6 @@ ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
 - `/kctrl/info_warn_error`, `/kctrl/info_warn_error_raw`
 - `/kctrl/device_disconnected`, `/kctrl/device_disconnected_raw`
 - `/kctrl/pu_params`, `/kctrl/pu_params_raw`
-
-
-## Typical Workflow
-
-1. **Start the system** using one of the launch/config methods above.
-2. **Call services** (e.g., using aliases) to control devices.
-3. **Subscribe to topics** to monitor device status and events.
 
 
 ## Troubleshooting
