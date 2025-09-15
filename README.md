@@ -1,13 +1,17 @@
-# K-Controller ROS2 Interface Wrapper
 
-This package provides a simple, unified ROS2 interface for controlling and monitoring Kongsberg K-Controller devices. It wraps UDP communication and exposes ROS2 services and topics for easy integration with your K-Controller.
+# Kongsberg EM Multibeam EchoSounder ROS2 wrapper
+
+This package provides a simple, unified ROS2 interface for controlling and monitoring Kongsberg EM Multibeam EchoSounder devices. It wraps UDP communication and exposes ROS2 services and topics for easy integration with your K-Controller.
+
+An EM multibeam is a sophisticated sonar system used to map the seafloor with high accuracy. Developed by Kongsberg, it works by emitting multiple acoustic beams in a fan-shaped pattern from a transducer mounted on a vessel. These beams bounce off the seabed and return to the receiver, allowing the system to calculate depth and topography based on the time and angle of the returning signals. Unlike single-beam echo sounders, EM multibeam systems can cover a wide swath of the ocean floor in a single pass, making them ideal for hydrographic surveys, underwater research, and marine navigation. Their high resolution and reliability make them a preferred choice for both shallow coastal mapping and deep-sea exploration.
 
 **Note: This is a student-written project developed as part of academic work.**
+**Disclaimer: This wrapper is developed and tested only with ROS2 Jazzy distribution inside WSL2 on a windows computer.**
 
----
 
 ## Table of Contents
 - [Features](#features)
+- [Process](#process)
 - [Prerequisites & Setup](#prerequisites--setup)
 - [Workspace Setup](#workspace-setup)
 - [Quick Start](#quick-start)
@@ -22,25 +26,25 @@ This package provides a simple, unified ROS2 interface for controlling and monit
 - [Support](#support)
 - [License](#license)
 
----
 
 ## Features
 
-- **Unified Launch File**: Start everything with a single launch command.
-- **Flexible Configuration**: Use default settings, command-line arguments, or YAML config files.
-- **Helper Script**: Interactive shell script for guided setup.
+- **Flexible Configuration**: Multiple ways to run the wrapper with default or custom parameters
 - **ROS2 Services**: Control sounders, manage parameters, start/stop recording, and more.
 - **ROS2 Topics**: Receive device status, detected devices, multicast info, warnings/errors, and PU parameters.
 
----
+## Process
+The wrapper utilizes UDP communication with the K-Controller software, which in turn communicates with the Multibeam Processing Unit (PU). Between them a message structure is used to identify the command. In each end this message structure and data is parsed. On the ROS2 end this is parsed to, or from, a custom message for ease of use in further development. 
+![Process Diagram](assets/ros2_md.drawio.png)
+
 
 ## Prerequisites & Setup
 
 Before using this package, ensure the following are installed and set up:
 
-### 1. ROS2 Jazzy
+### 1. ROS2
 
-You need ROS2 Jazzy installed on your system.  
+You need a ROS2 distribution installed on your system. This wrapper is developed, and tested, using ROS2 jazzy
 Follow the official installation guide:  
 [ROS2 Jazzy Installation Guide (Ubuntu)](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debians.html)
 
@@ -78,7 +82,6 @@ This package depends on custom ROS2 message/service definitions.
 These are included in the repository as `ros2_kctrl_custom_interfaces`.  
 No extra setup is needed if you build the workspace as described below.
 
----
 
 ## Workspace Setup
 
@@ -86,7 +89,7 @@ No extra setup is needed if you build the workspace as described below.
 2. **Build the workspace:**
    ```bash
    cd /home/<user>/ros2_ws
-   source /opt/ros/jazzy/setup.bash
+   source /opt/ros/<distro>/setup.bash
    colcon build
    source install/setup.bash
    ```
@@ -94,9 +97,8 @@ No extra setup is needed if you build the workspace as described below.
    ```bash
    source /home/<user>/ros2_ws/src/ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh
    ```
-   See [Shell Aliases for Simplified Service Calls](#shell-aliases-for-simplified-service-calls) for more info.
+   See [Shell Aliases for Simplified Service Calls](assets/aliases.md) for more info.
 
----
 
 ## Quick Start
 
@@ -104,25 +106,61 @@ No extra setup is needed if you build the workspace as described below.
 
 ```bash
 cd /home/<user>/ros2_ws
-source /opt/ros/jazzy/setup.bash
+source /opt/ros/<distro>/setup.bash
 colcon build
 source install/setup.bash
 ```
 
-### 2. Launch with Default Settings
+### 2. Launch with helper script
 
 ```bash
-ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py
+cd /home/<user>/ros2_ws/src/ros2_kctrl_interface_pkg
+./run_kctrl.sh
 ```
+This will run the helper script, and you will be prompted to choose run mode. The recommended is to use custom IP via command line, until you set the right IP for your system in the YAML config file.
 
-> **⚠️ Warning:**  
-> This uses the default IP (`192.168.48.1`) and ports. You must change these to match your K-Controller.
+### 3. Send commands and listen to topics
+When node is running the topics and services are available and can be called or echoed from other sourced terminals. Recommended ways to interact with these is to utilize the aliases found in [`ros_kctrl_aliases.sh`](ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh).
+```bash
+   source /home/<user>/ros2_ws/src/ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh
+```
+   - `ros2_start_sounder <sounder_name>`  
+     Calls the `/kctrl/start_sounder` service for the given sounder.
 
----
+   - `ros2_start_pinging <sounder_name>`  
+     Calls the `/kctrl/start_pinging` service.
+
+   - `ros2_set_pu_parameters <sounder_name> <param_name> <param_value>`  
+     Calls the `/kctrl/set_pu_parameters` service.
+
+   - `kctrl_version`  
+     Echoes the `/kctrl/version` topic.
+
+   - `kctrl_status`  
+     Echoes the `/kctrl/status` topic.
+
+   *(See the [alias guide](assets/ros2_kctrl_bash_commands.md) for the full list and details.)*
 
 ## Configuration Methods
 
-### Method 1: Command-Line Arguments
+### Method 1: Helper Script (Recommended)
+
+Run the interactive setup script:
+
+```bash
+./src/ros2_kctrl_interface_pkg/run_kctrl.sh
+```
+
+This interactive script provides five configuration options:
+1. **Use default settings** - Quick start with `192.168.48.1:14002`
+2. **Custom IP via command line** - Enter IP and ports interactively
+3. **Use workspace YAML config** - Uses the config file in the package
+4. **Use custom YAML config** - Specify your own config file path
+5. **Edit config file** - Opens the workspace config file for editing
+
+The script automatically sources ROS2 and the workspace, making it the easiest way to get started.
+
+### Method 2: Command-Line Arguments
 
 Override IP and ports directly:
 
@@ -133,7 +171,7 @@ ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
     listen_port:=4002
 ```
 
-### Method 2: YAML Config File
+### Method 3: YAML Config File
 
 Edit the YAML file (at `config/kctrl_config.yaml`):
 
@@ -157,24 +195,6 @@ ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
     config_file:=/path/to/your/config.yaml
 ```
 
-### Method 3: Helper Script
-
-Run the interactive setup script:
-
-```bash
-./src/ros2_kctrl_interface_pkg/run_kctrl.sh
-```
-
-This interactive script provides five configuration options:
-1. **Use default settings** - Quick start with `192.168.48.1:14002`
-2. **Custom IP via command line** - Enter IP and ports interactively
-3. **Use workspace YAML config** - Uses the config file in the package
-4. **Use custom YAML config** - Specify your own config file path
-5. **Edit config file** - Opens the workspace config file for editing
-
-The script automatically sources ROS2 and the workspace, making it the easiest way to get started.
-
----
 
 ## Services
 
@@ -197,7 +217,6 @@ The script automatically sources ROS2 and the workspace, making it the easiest w
 - `/kctrl/request_detected_sounders`
 - `/kctrl/import_pu_parameters`
 
----
 
 ## Topics
 
@@ -210,7 +229,6 @@ The script automatically sources ROS2 and the workspace, making it the easiest w
 - `/kctrl/device_disconnected`, `/kctrl/device_disconnected_raw`
 - `/kctrl/pu_params`, `/kctrl/pu_params_raw`
 
----
 
 ## Typical Workflow
 
@@ -218,15 +236,15 @@ The script automatically sources ROS2 and the workspace, making it the easiest w
 2. **Call services** (e.g., using aliases) to control devices.
 3. **Subscribe to topics** to monitor device status and events.
 
----
 
 ## Troubleshooting
 
-- **No connection?** Check your network settings and firewall.
+- **No connection?** Check your network settings and firewall. 
 - **Wrong IP/port?** Use command-line arguments or YAML config to set correct values.
 - **Missing config file?** Copy and edit the example in `config/kctrl_config.yaml`.
+- **Not working in WSL2?** Try port forwarding. Tested and confirmed with ncat.
+   *(If additional help for troubleshooting is found, please add.)*
 
----
 
 ## Advanced Usage
 
@@ -243,7 +261,6 @@ The script automatically sources ROS2 and the workspace, making it the easiest w
   nano /home/<user>/ros2_ws/src/ros2_kctrl_interface_pkg/config/kctrl_config.yaml
   ```
 
----
 
 ## Shell Aliases for Simplified Service Calls
 
@@ -287,7 +304,6 @@ This file contains convenient shell aliases for common service calls and other f
    - Fast and error-free service calls.
    - Easy to extend with your own aliases.
 
----
 
 ## Example Workflow with Aliases
 
@@ -300,17 +316,16 @@ ros2_disconnect_sounder EM2040_38
 ros2_shutdown
 ```
 
----
 
 ## Support
 
-For issues or feature requests, please open a GitHub issue or contact the maintainer.
+For issues or feature requests, please open a GitHub issue or contact one of the ones listed below.
 
 **Academic Project Disclaimer**: This is a student project developed for educational purposes. While functional, it may require additional testing and validation for production use.
 
-Maintainer: [arveds](mailto:arve.daae.solberg@kd.kongsberg.com)
+Developer: [Arve Daae Solberg](mailto:arve.daae.solberg@kd.kongsberg.com)
+Issue contacts: [Ole-Jacob Enderud Jensen](mailto:ole-jacob.enderud.jensen@kd.kongsberg.com) 
 
----
 
 ## License
 
