@@ -140,7 +140,7 @@ When node is running the topics and services are available and can be called or 
    - `kctrl_status`  
      Echoes the `/kctrl/status` topic.
 
-   *(See the [alias guide](assets/ros2_kctrl_bash_commands.md) for the full list and details.)*
+   *(See the [alias guide](assets/alias_guide.md) for the full list and details.)*
 
 ## Configuration Methods
 
