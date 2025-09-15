@@ -6,6 +6,7 @@ This package provides a simple, unified ROS2 interface for controlling and monit
 An EM multibeam is a sophisticated sonar system used to map the seafloor with high accuracy. Developed by Kongsberg, it works by emitting multiple acoustic beams in a fan-shaped pattern from a transducer mounted on a vessel. These beams bounce off the seabed and return to the receiver, allowing the system to calculate depth and topography based on the time and angle of the returning signals. Unlike single-beam echo sounders, EM multibeam systems can cover a wide swath of the ocean floor in a single pass, making them ideal for hydrographic surveys, underwater research, and marine navigation. Their high resolution and reliability make them a preferred choice for both shallow coastal mapping and deep-sea exploration.
 
 **Note: This is a student-written project developed as part of academic work.**
+
 **Disclaimer: This wrapper is developed and tested only with ROS2 Jazzy distribution inside WSL2 on a windows computer.**
 
 
