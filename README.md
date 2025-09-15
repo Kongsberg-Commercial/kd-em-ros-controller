@@ -98,7 +98,7 @@ No extra setup is needed if you build the workspace as described below.
    ```bash
    source /home/<user>/ros2_ws/src/ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh
    ```
-   See [Shell Aliases for Simplified Service Calls](assets/aliases.md) for more info.
+   See [Shell Aliases for Simplified Service Calls](assets/alias_guide.md) for more info.
 
 
 ## Quick Start
