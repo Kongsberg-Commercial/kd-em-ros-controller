@@ -312,7 +312,11 @@ ros2_recording_control EM2040_38 true
 ros2_disconnect_sounder EM2040_38
 ros2_shutdown
 ```
+## Future functionality
 
+For future development:
+* There is planned to make is easy to create "profiles" with premade values to different PU parameters and other usefull settings.
+* For easy deployment the wrapper can be packaged in a container for docker.
 
 ## Support
 
