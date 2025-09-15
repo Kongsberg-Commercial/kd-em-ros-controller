@@ -266,7 +266,7 @@ ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
 ## Shell Aliases for Simplified Service Calls
 
 To make working with the K-Controller ROS2 interface even easier, an **alias file** is provided:  
-[`ros_kctrl_aliases.sh`](ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh)
+[`ros_kctrl_aliases.sh`](src/ros2_kctrl_interface_pkg/.ros2_kctrl_aliases.sh)
 
 This file contains convenient shell aliases for common service calls and other frequently used commands, allowing you to interact with the system using short, memorable commands.
 
