@@ -1,4 +1,4 @@
-# ROS2 K-Controller Bash Commands & Usage Examples
+# Aliases & Usage Examples
 
 ## Sounder control (SounderCommand-based services)
 
