@@ -297,7 +297,7 @@ This file contains convenient shell aliases for common service calls and other f
    - `kctrl_status`  
      Echoes the `/kctrl/status` topic.
 
-   *(See the [alias file](ros2_kctrl_interface_pkg/ros_kctrl_aliases.sh) for the full list and details.)*
+   *(See the [alias guide](assets/alias_guide.md) for the full list and details.)*
 
 3. **Benefits**
 
