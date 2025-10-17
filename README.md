@@ -201,37 +201,45 @@ ros2 launch ros2_kctrl_interface_pkg ros2_ctrl.launch.py \
 ## Services
 Available services to call, resulting in command sent to EM Multibeam EchoSounder. 
 
-- `/kctrl/start_sounder`
-- `/kctrl/start_pinging`
-- `/kctrl/stop_pinging`
-- `/kctrl/start_water_column`
-- `/kctrl/stop_water_column`
-- `/kctrl/start_stave`
-- `/kctrl/stop_stave`
-- `/kctrl/shutdown`
-- `/kctrl/request_pu_parameters`
-- `/kctrl/set_pu_parameters`
-- `/kctrl/request_install_runtime_parameters`
-- `/kctrl/request_multicast_address`
-- `/kctrl/recording_control`
-- `/kctrl/update_recording_path`
-- `/kctrl/disconnect_sounder`
-- `/kctrl/export_pu_parameters`
-- `/kctrl/request_detected_sounders`
-- `/kctrl/import_pu_parameters`
+- `/kctrl/start_sounder` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/start_pinging` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/stop_pinging` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/start_water_column` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/stop_water_column` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/start_stave` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/stop_stave` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/shutdown` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/request_pu_parameters` - Uses [`RequestPUParameters.srv`](src/ros2_kctrl_custom_interfaces/srv/RequestPUParameters.srv)
+- `/kctrl/set_pu_parameters` - Uses [`SetPUParameters.srv`](src/ros2_kctrl_custom_interfaces/srv/SetPUParameters.srv)
+- `/kctrl/request_install_runtime_parameters` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/request_multicast_address` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/recording_control` - Uses [`RecordingControl.srv`](src/ros2_kctrl_custom_interfaces/srv/RecordingControl.srv)
+- `/kctrl/update_recording_path` - Uses [`UpdateRecordingPath.srv`](src/ros2_kctrl_custom_interfaces/srv/UpdateRecordingPath.srv)
+- `/kctrl/disconnect_sounder` - Uses [`SounderCommand.srv`](src/ros2_kctrl_custom_interfaces/srv/SounderCommand.srv)
+- `/kctrl/export_pu_parameters` - Uses [`PUParameters.srv`](src/ros2_kctrl_custom_interfaces/srv/PUParameters.srv)
+- `/kctrl/request_detected_sounders` - Uses [`RequestDetectedSounders.srv`](src/ros2_kctrl_custom_interfaces/srv/RequestDetectedSounders.srv)
+- `/kctrl/import_pu_parameters` - Uses [`PUParameters.srv`](src/ros2_kctrl_custom_interfaces/srv/PUParameters.srv)
 
 
 ## Topics
 Information coming fro EM Multibeam EchoSounder is published on theese topics with custom message. Echo in terminal to read, or subscribe from node to use data.
 
-- `/kctrl/version`, `/kctrl/version_raw`
-- `/kctrl/detected_devices`, `/kctrl/detected_devices_raw`
-- `/kctrl/parameters`, `/kctrl/parameters_raw`
-- `/kctrl/multicast`, `/kctrl/multicast_raw`
-- `/kctrl/status`, `/kctrl/status_raw`
-- `/kctrl/info_warn_error`, `/kctrl/info_warn_error_raw`
-- `/kctrl/device_disconnected`, `/kctrl/device_disconnected_raw`
-- `/kctrl/pu_params`, `/kctrl/pu_params_raw`
+- `/kctrl/version` - Uses [`KctrlVersion.msg`](src/ros2_kctrl_custom_interfaces/msg/KctrlVersion.msg)
+- `/kctrl/version_raw` - Uses `std_msgs::msg::String`
+- `/kctrl/detected_devices` - Uses [`KctrlDetectedDevices.msg`](src/ros2_kctrl_custom_interfaces/msg/KctrlDetectedDevices.msg)
+- `/kctrl/detected_devices_raw` - Uses `std_msgs::msg::String`
+- `/kctrl/parameters` - Uses [`KctrlParameters.msg`](src/ros2_kctrl_custom_interfaces/msg/KctrlParameters.msg)
+- `/kctrl/parameters_raw` - Uses `std_msgs::msg::String`
+- `/kctrl/multicast` - Uses [`KctrlMulticast.msg`](src/ros2_kctrl_custom_interfaces/msg/KctrlMulticast.msg)
+- `/kctrl/multicast_raw` - Uses `std_msgs::msg::String`
+- `/kctrl/status` - Uses [`KctrlStatus.msg`](src/ros2_kctrl_custom_interfaces/msg/KctrlStatus.msg)
+- `/kctrl/status_raw` - Uses `std_msgs::msg::String`
+- `/kctrl/info_warn_error` - Uses [`KctrlInfoWarnError.msg`](src/ros2_kctrl_custom_interfaces/msg/KctrlInfoWarnError.msg)
+- `/kctrl/info_warn_error_raw` - Uses `std_msgs::msg::String`
+- `/kctrl/device_disconnected` - Uses [`KctrlDeviceDisconnected.msg`](src/ros2_kctrl_custom_interfaces/msg/KctrlDeviceDisconnected.msg)
+- `/kctrl/device_disconnected_raw` - Uses `std_msgs::msg::String`
+- `/kctrl/pu_params` - Uses [`KctrlPUParams.msg`](src/ros2_kctrl_custom_interfaces/msg/KctrlPUParams.msg)
+- `/kctrl/pu_params_raw` - Uses `std_msgs::msg::String`
 
 
 ## Troubleshooting
