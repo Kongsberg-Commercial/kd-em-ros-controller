@@ -338,4 +338,4 @@ Issue contacts: [Ole-Jacob Enderud Jensen](mailto:ole-jacob.enderud.jensen@kd.ko
 
 ## License
 
-Apache-2.0. See [LICENSE](LICENSE) for details.
+MIT. See [LICENSE](LICENSE) for details.
